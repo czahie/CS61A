@@ -1,0 +1,19 @@
+{
+    "name": "Homework 1",
+    "endpoint": "cal/cs61a/fa17/hw01",
+    "src": [
+        "hw01.py"
+    ],
+    "tests": {
+        "hw01.py:a_plus_abs_b": "doctest",
+        "hw01.py:two_of_three": "doctest",
+        "hw01.py:largest_factor": "doctest",
+        "hw01.py:hailstone": "doctest"
+    },
+    "protocols": [
+        "file_contents",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
