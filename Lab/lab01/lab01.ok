@@ -1,0 +1,34 @@
+{
+    "name": "Lab 1",
+    "endpoint": "cal/cs61a/fa17/lab01",
+    "src": [
+        "lab01.py",
+        "lab01_extra.py"
+    ],
+    "tests": {
+        "tests/truthiness.py": "ok_test",
+        "tests/short_circuiting.py": "ok_test",
+        "lab01_extra.py:both_positive": "doctest",
+        "tests/what_if.py": "ok_test",
+        "tests/loops.py": "ok_test",
+        "lab01_extra.py:falling": "doctest",
+        "lab01.py:repeated": "doctest",
+        "lab01.py:sum_digits": "doctest",
+        "lab01.py:double_eights": "doctest"
+    },
+    "default_tests": [
+        "short_circuiting",
+        "loops",
+        "repeated",
+        "sum_digits",
+        "double_eights"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}

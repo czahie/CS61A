@@ -1,0 +1,7 @@
+'Veritasiness-correct', (0, 70)
+'Loops-correct', (512, 70)
+'repeated-correct', (1024, 70)
+'sum_digits-correct', (1536, 70)
+'double_eights-correct', (2048, 70)
+'both_positive-correct', (2560, 70)
+'falling-correct', (3072, 70)
