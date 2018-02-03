@@ -3,7 +3,7 @@ Hog
 CS61A project1
 -------------------
 # Introduction
-In this project, you will develop a simulator and multiple strategies for the dice game Hog. You will need to use control statements and higher-order functions together, as described in Sections 1.2 through 1.6 of [Composing Programs](composingprograms.com).
+In this project, you will develop a simulator and multiple strategies for the dice game Hog. You will need to use control statements and higher-order functions together, as described in Sections 1.2 through 1.6 of [Composing Programs](www.composingprograms.com).
 
 In Hog, two players alternate turns trying to be the first to end a turn with at least 100 total points. On each turn, the current player chooses some number of dice to roll, up to 10. That player's score for the turn is the sum of the dice outcomes.
 
@@ -15,7 +15,7 @@ If any of the dice outcomes is a 1, the current player's score for the turn is 1
 Example 1: The current player rolls 7 dice, 5 of which are 1's. They score 1 point for the turn.
 Example 2: The current player rolls 4 dice, all of which are 3's. Since Pig Out did not occur, they score 12 points for the turn.
 
-## *Free Bacon. *
+## *Free Bacon.*
 A player who chooses to roll zero dice scores one more than the largest digit in the opponent's total score.
 
 Example 1: If the opponent has 42 points, the current player gains 1 + max(4, 2) = 5 points by rolling zero dice.
