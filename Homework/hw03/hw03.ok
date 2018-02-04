@@ -1,0 +1,26 @@
+{
+    "name": "Homework 3",
+    "endpoint": "cal/cs61a/fa17/hw03",
+    "src": [
+        "hw03.py"
+    ],
+    "tests": {
+        "hw03.py":  "doctest"
+    },
+    "default_tests": [
+        "has_seven",
+        "summation",
+        "accumulate",
+        "summation_using_accumulate",
+        "product_using_accumulate",
+        "filtered_accumulate",
+        "make_repeater"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
