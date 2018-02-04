@@ -1,0 +1,4 @@
+'lambda_curry2-correct', (0, 70)
+'composite_identity-correct', (512, 70)
+'count_cond-correct', (1024, 70)
+'cycle-correct', (1536, 70)

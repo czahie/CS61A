@@ -1,0 +1,32 @@
+{
+    "name": "Lab 2",
+    "endpoint": "cal/cs61a/fa17/lab02",
+    "src": [
+        "tests/lambda.py",
+        "tests/hof.py",
+        "lab02.py",
+        "lab02_extra.py"
+    ],
+    "tests": {
+        "tests/lambda.py": "ok_test",
+        "tests/hof.py": "ok_test",
+        "lab02.py:lambda_curry2": "doctest",
+        "lab02.py:composite_identity": "doctest",
+        "lab02_extra.py:count_cond": "doctest",
+        "lab02_extra.py:cycle": "doctest"
+    },
+    "default_tests": [
+        "lambda",
+        "hof",
+        "lambda_curry2",
+        "composite_identity"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}

@@ -1,0 +1,5971 @@
+{
+  "checksum": "2ce57257443773522c3872ca4bdded5b",
+  "db": {
+    "dictAssessId2Info": {
+      ">>> def even(f):\n...     def odd(x):\n...         if x < 0:\n...             return f(-x)\n...         return f(x)\n...     return odd\n>>> stevphen = lambda x: x\n>>> stewart = even(stevphen)\n>>> stewart\nFunction\n>>> stewart(61)\n61\n>>> stewart(-4)\nLOCKED_ANSWER\n": {
+        "assessNum": "17",
+        "dictWA2DictInfo": {
+          "['-4']": {
+            "dictTag2ConceptMsg": {
+              "sloppyifcondition-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyifcondition": "44"
+            },
+            "lstMisU": [
+              "sloppyifcondition",
+              "sloppyifcondition-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['-4']": [
+            [
+              "17",
+              "['Error']"
+            ],
+            [
+              "17",
+              "['Function']"
+            ],
+            [
+              "17",
+              "['Nothing']"
+            ],
+            [
+              "17",
+              "['even']"
+            ]
+          ],
+          "['Error']": [
+            [
+              "17",
+              "['-4']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "17",
+              "['-4']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "17",
+              "['-4']"
+            ]
+          ],
+          "['even']": [
+            [
+              "17",
+              "['-4']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": []
+      },
+      ">>> def even(f):\n...     def odd(x):\n...         if x < 0:\n...             return f(-x)\n...         return f(x)\n...     return odd\n>>> stevphen = lambda x: x\n>>> stewart = even(stevphen)\n>>> stewart\nFunction\n>>> stewart(61)\nLOCKED_ANSWER\n>>> stewart(-4)\nLOCKED_ANSWER\n": {
+        "assessNum": "16",
+        "dictWA2DictInfo": {
+          "['-61']": {
+            "dictTag2ConceptMsg": {
+              "sloppyifcondition-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyifcondition": "44"
+            },
+            "lstMisU": [
+              "sloppyifcondition",
+              "sloppyifcondition-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {},
+        "lstWrongAnsWatch": [
+          "['odd']",
+          "['Error']",
+          "['Nothing']",
+          "['Function']"
+        ]
+      },
+      ">>> def even(f):\n...     def odd(x):\n...         if x < 0:\n...             return f(-x)\n...         return f(x)\n...     return odd\n>>> stevphen = lambda x: x\n>>> stewart = even(stevphen)\n>>> stewart\nLOCKED_ANSWER\n>>> stewart(61)\nLOCKED_ANSWER\n>>> stewart(-4)\nLOCKED_ANSWER\n": {
+        "assessNum": "15",
+        "dictWA2DictInfo": {
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "fndispnothing-functiondisplay": "10"
+            },
+            "dictTag2KIMsg": {
+              "fndispnothing": "16"
+            },
+            "lstMisU": [
+              "fndispnothing",
+              "fndispnothing-functiondisplay"
+            ]
+          },
+          "['function']": {
+            "dictTag2ConceptMsg": {
+              "correct": "15"
+            },
+            "dictTag2KIMsg": {
+              "correct": "15"
+            },
+            "lstMisU": [
+              "correct"
+            ]
+          },
+          "['odd']": {
+            "dictTag2ConceptMsg": {
+              "sloppynoreadinstructions-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppynoreadinstructions": "33"
+            },
+            "lstMisU": [
+              "sloppynoreadinstructions",
+              "sloppynoreadinstructions-sloppy"
+            ]
+          },
+          "['x']": {
+            "dictTag2ConceptMsg": {
+              "bindvartovarname-assignment": "0",
+              "bindvartovarname-evalvar": "2",
+              "fnnameisfncall-evalfncall": "7"
+            },
+            "dictTag2KIMsg": {
+              "bindvartovarname": "37",
+              "fnnameisfncall": "38"
+            },
+            "lstMisU": [
+              "bindvartovarname",
+              "bindvartovarname-assignment",
+              "bindvartovarname-evalvar",
+              "fnnameisfncall",
+              "fnnameisfncall-evalfncall"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['-x']": [
+            [
+              "15",
+              "['odd']"
+            ],
+            [
+              "15",
+              "['x']"
+            ]
+          ],
+          "['0']": [
+            [
+              "15",
+              "['Nothing']"
+            ]
+          ],
+          "['None']": [
+            [
+              "15",
+              "['Nothing']"
+            ],
+            [
+              "15",
+              "['odd']"
+            ],
+            [
+              "15",
+              "['x']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "15",
+              "['0']"
+            ],
+            [
+              "15",
+              "['None']"
+            ],
+            [
+              "15",
+              "['f(x)']"
+            ]
+          ],
+          "['error']": [
+            [
+              "15",
+              "['odd']"
+            ]
+          ],
+          "['even']": [
+            [
+              "14",
+              "['second', '24']"
+            ],
+            [
+              "15",
+              "['odd']"
+            ],
+            [
+              "15",
+              "['x']"
+            ]
+          ],
+          "['even(x)']": [
+            [
+              "14",
+              "['second', '40']"
+            ]
+          ],
+          "['f(x)']": [
+            [
+              "12",
+              "['23']"
+            ],
+            [
+              "15",
+              "['Nothing']"
+            ],
+            [
+              "15",
+              "['odd']"
+            ],
+            [
+              "15",
+              "['x']"
+            ]
+          ],
+          "['lambda x']": [
+            [
+              "14",
+              "['second', '40']"
+            ],
+            [
+              "15",
+              "['x']"
+            ]
+          ],
+          "['odd']": [
+            [
+              "15",
+              "['-x']"
+            ],
+            [
+              "15",
+              "['None']"
+            ],
+            [
+              "15",
+              "['error']"
+            ],
+            [
+              "15",
+              "['even']"
+            ],
+            [
+              "15",
+              "['f(x)']"
+            ],
+            [
+              "15",
+              "['odd(x)']"
+            ],
+            [
+              "15",
+              "['stevphen']"
+            ],
+            [
+              "15",
+              "['stewart']"
+            ]
+          ],
+          "['odd(x)']": [
+            [
+              "15",
+              "['odd']"
+            ],
+            [
+              "15",
+              "['x']"
+            ]
+          ],
+          "['stevphen']": [
+            [
+              "15",
+              "['odd']"
+            ],
+            [
+              "15",
+              "['x']"
+            ]
+          ],
+          "['stewart']": [
+            [
+              "15",
+              "['odd']"
+            ]
+          ],
+          "['x']": [
+            [
+              "15",
+              "['-x']"
+            ],
+            [
+              "15",
+              "['None']"
+            ],
+            [
+              "15",
+              "['even']"
+            ],
+            [
+              "15",
+              "['f(x)']"
+            ],
+            [
+              "15",
+              "['lambda x']"
+            ],
+            [
+              "15",
+              "['odd(x)']"
+            ],
+            [
+              "15",
+              "['stevphen']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": [
+          "['Error']"
+        ]
+      },
+      ">>> def first(x):\n...     x += 8\n...     def second(y):\n...         print('second')\n...         return x + y\n...     print('first')\n...     return second\n>>> f = first(15)\nLOCKED_ANSWER\n>>> f\nLOCKED_ANSWER\n>>> f(16)\nLOCKED_ANSWER\nLOCKED_ANSWER\n": {
+        "assessNum": "12",
+        "dictWA2DictInfo": {
+          "[\"'first'\"]": {
+            "dictTag2ConceptMsg": {
+              "prntstrwithquotes-printstring": "4"
+            },
+            "dictTag2KIMsg": {
+              "prntstrwithquotes": "22"
+            },
+            "lstMisU": [
+              "prntstrwithquotes",
+              "prntstrwithquotes-printstring"
+            ]
+          },
+          "['15']": {
+            "dictTag2ConceptMsg": {
+              "sloppyskipprnt-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyskipprnt": "25"
+            },
+            "lstMisU": [
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy"
+            ]
+          },
+          "['23']": {
+            "dictTag2ConceptMsg": {
+              "sloppyskipprnt-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyskipprnt": "25"
+            },
+            "lstMisU": [
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy"
+            ]
+          },
+          "['Function']": {
+            "dictTag2ConceptMsg": {
+              "assignstmtrtnval-assignment": "0",
+              "sloppyskipprnt-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "assignstmtrtnval": "31",
+              "sloppyskipprnt": "25"
+            },
+            "lstMisU": [
+              "assignstmtrtnval",
+              "assignstmtrtnval-assignment",
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy"
+            ]
+          },
+          "['None']": {
+            "dictTag2ConceptMsg": {
+              "sloppyskipprnt-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyskipprnt": "25"
+            },
+            "lstMisU": [
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "sloppyskipprnt-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyskipprnt": "25"
+            },
+            "lstMisU": [
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy"
+            ]
+          },
+          "['second']": {
+            "dictTag2ConceptMsg": {
+              "sloppyskipprnt-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyskipprnt": "25"
+            },
+            "lstMisU": [
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "[\"'first\"]": [
+            [
+              "12",
+              "[\"'first'\"]"
+            ]
+          ],
+          "[\"'first'\"]": [
+            [
+              "12",
+              "[\"'first\"]"
+            ],
+            [
+              "12",
+              "[\"'second'\"]"
+            ],
+            [
+              "13",
+              "[\"'first'\"]"
+            ],
+            [
+              "14",
+              "[\"'first'\"]"
+            ]
+          ],
+          "[\"'second'\"]": [
+            [
+              "12",
+              "[\"'first'\"]"
+            ],
+            [
+              "12",
+              "['second']"
+            ]
+          ],
+          "['0']": [
+            [
+              "12",
+              "['15']"
+            ],
+            [
+              "12",
+              "['23']"
+            ]
+          ],
+          "['1']": [
+            [
+              "12",
+              "['15']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ]
+          ],
+          "['10']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['11']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['12']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['13']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['14']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['15']": [
+            [
+              "12",
+              "['0']"
+            ],
+            [
+              "12",
+              "['1']"
+            ],
+            [
+              "12",
+              "['10']"
+            ],
+            [
+              "12",
+              "['11']"
+            ],
+            [
+              "12",
+              "['12']"
+            ],
+            [
+              "12",
+              "['13']"
+            ],
+            [
+              "12",
+              "['14']"
+            ],
+            [
+              "12",
+              "['16']"
+            ],
+            [
+              "12",
+              "['17']"
+            ],
+            [
+              "12",
+              "['18']"
+            ],
+            [
+              "12",
+              "['19']"
+            ],
+            [
+              "12",
+              "['2']"
+            ],
+            [
+              "12",
+              "['20']"
+            ],
+            [
+              "12",
+              "['21']"
+            ],
+            [
+              "12",
+              "['22']"
+            ],
+            [
+              "12",
+              "['24']"
+            ],
+            [
+              "12",
+              "['25']"
+            ],
+            [
+              "12",
+              "['26']"
+            ],
+            [
+              "12",
+              "['27']"
+            ],
+            [
+              "12",
+              "['28']"
+            ],
+            [
+              "12",
+              "['29']"
+            ],
+            [
+              "12",
+              "['3']"
+            ],
+            [
+              "12",
+              "['30']"
+            ],
+            [
+              "12",
+              "['31']"
+            ],
+            [
+              "12",
+              "['4']"
+            ],
+            [
+              "12",
+              "['5']"
+            ],
+            [
+              "12",
+              "['6']"
+            ],
+            [
+              "12",
+              "['7']"
+            ],
+            [
+              "12",
+              "['8']"
+            ],
+            [
+              "12",
+              "['9']"
+            ],
+            [
+              "12",
+              "['nothing']"
+            ],
+            [
+              "12",
+              "['second(y)']"
+            ],
+            [
+              "12",
+              "['y']"
+            ],
+            [
+              "14",
+              "['15']"
+            ]
+          ],
+          "['16']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['17']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['18']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['19']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['2']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['20']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['21']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['22']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['23 + y']": [
+            [
+              "12",
+              "['second']"
+            ]
+          ],
+          "['23']": [
+            [
+              "12",
+              "['0']"
+            ],
+            [
+              "12",
+              "['31']"
+            ],
+            [
+              "12",
+              "['38']"
+            ],
+            [
+              "12",
+              "['46']"
+            ],
+            [
+              "12",
+              "['8']"
+            ],
+            [
+              "15",
+              "['f(x)']"
+            ]
+          ],
+          "['24']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['25']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['26']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['27']": [
+            [
+              "12",
+              "['15']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ]
+          ],
+          "['28']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['29']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['3']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['30']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['31']": [
+            [
+              "12",
+              "['15']"
+            ],
+            [
+              "12",
+              "['23']"
+            ],
+            [
+              "12",
+              "['Function']"
+            ],
+            [
+              "12",
+              "['Nothing']"
+            ]
+          ],
+          "['38']": [
+            [
+              "12",
+              "['23']"
+            ],
+            [
+              "12",
+              "['Function']"
+            ],
+            [
+              "12",
+              "['Nothing']"
+            ]
+          ],
+          "['4']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['46']": [
+            [
+              "12",
+              "['23']"
+            ]
+          ],
+          "['5']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['6']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['7']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['8']": [
+            [
+              "12",
+              "['15']"
+            ],
+            [
+              "12",
+              "['23']"
+            ],
+            [
+              "12",
+              "['Function']"
+            ],
+            [
+              "12",
+              "['second']"
+            ]
+          ],
+          "['9']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "12",
+              "['31']"
+            ],
+            [
+              "12",
+              "['38']"
+            ],
+            [
+              "12",
+              "['8']"
+            ],
+            [
+              "12",
+              "['f']"
+            ],
+            [
+              "12",
+              "['function']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "12",
+              "['31']"
+            ],
+            [
+              "12",
+              "['38']"
+            ],
+            [
+              "12",
+              "['f']"
+            ],
+            [
+              "12",
+              "['function']"
+            ]
+          ],
+          "['f']": [
+            [
+              "12",
+              "['Function']"
+            ],
+            [
+              "12",
+              "['Nothing']"
+            ]
+          ],
+          "['function']": [
+            [
+              "12",
+              "['Function']"
+            ],
+            [
+              "12",
+              "['Nothing']"
+            ]
+          ],
+          "['nothing']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['second']": [
+            [
+              "12",
+              "[\"'second'\"]"
+            ],
+            [
+              "12",
+              "['23 + y']"
+            ],
+            [
+              "12",
+              "['8']"
+            ]
+          ],
+          "['second(y)']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ],
+          "['y']": [
+            [
+              "12",
+              "['15']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": [
+          "['Error']"
+        ]
+      },
+      ">>> def first(x):\n...     x += 8\n...     def second(y):\n...         print('second')\n...         return x + y\n...     print('first')\n...     return second\n>>> f = first(15)\nfirst\n>>> f\nFunction\n>>> f(16)\nLOCKED_ANSWER\nLOCKED_ANSWER\n": {
+        "assessNum": "14",
+        "dictWA2DictInfo": {
+          "['16']": {
+            "dictTag2ConceptMsg": {
+              "sloppyskipprnt-sloppy": "5",
+              "sloppyvareval-sloppy": "5",
+              "varevalisemptyval-evalvar": "2"
+            },
+            "dictTag2KIMsg": {
+              "sloppyskipprnt": "25",
+              "sloppyvareval": "42",
+              "varevalisemptyval": "27"
+            },
+            "lstMisU": [
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy",
+              "varevalisemptyval",
+              "varevalisemptyval-evalvar"
+            ]
+          },
+          "['23']": {
+            "dictTag2ConceptMsg": {
+              "sloppyskipprnt-sloppy": "5",
+              "sloppyvareval-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyskipprnt": "25",
+              "sloppyvareval": "42"
+            },
+            "lstMisU": [
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['24']": {
+            "dictTag2ConceptMsg": {
+              "sloppyskipprnt-sloppy": "5",
+              "varvalfromcodenotenv-followparent": "9"
+            },
+            "dictTag2KIMsg": {
+              "sloppyskipprnt": "25",
+              "varvalfromcodenotenv": "41"
+            },
+            "lstMisU": [
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy",
+              "varvalfromcodenotenv",
+              "varvalfromcodenotenv-followparent"
+            ]
+          },
+          "['31']": {
+            "dictTag2ConceptMsg": {
+              "sloppyskipline-sloppy": "5",
+              "sloppyskipprnt-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyskipline": "43",
+              "sloppyskipprnt": "25"
+            },
+            "lstMisU": [
+              "sloppyskipline",
+              "sloppyskipline-sloppy",
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy"
+            ]
+          },
+          "['39']": {
+            "dictTag2ConceptMsg": {
+              "sloppyskipprnt-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyskipprnt": "25"
+            },
+            "lstMisU": [
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "rtnvalnotdisp-pyinterpreterdisplaynothing": "14",
+              "sloppyskipprnt-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "rtnvalnotdisp": "19",
+              "sloppyskipprnt": "25"
+            },
+            "lstMisU": [
+              "rtnvalnotdisp",
+              "rtnvalnotdisp-pyinterpreterdisplaynothing",
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy"
+            ]
+          },
+          "['second', '16']": {
+            "dictTag2ConceptMsg": {
+              "sloppyvareval-sloppy": "5",
+              "varevalisemptyval-evalvar": "2"
+            },
+            "dictTag2KIMsg": {
+              "sloppyvareval": "42",
+              "varevalisemptyval": "27"
+            },
+            "lstMisU": [
+              "sloppyvareval",
+              "sloppyvareval-sloppy",
+              "varevalisemptyval",
+              "varevalisemptyval-evalvar"
+            ]
+          },
+          "['second', '23']": {
+            "dictTag2ConceptMsg": {
+              "sloppyvareval-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyvareval": "42"
+            },
+            "lstMisU": [
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['second', '24']": {
+            "dictTag2ConceptMsg": {
+              "varvalfromcodenotenv-followparent": "9"
+            },
+            "dictTag2KIMsg": {
+              "varvalfromcodenotenv": "41"
+            },
+            "lstMisU": [
+              "varvalfromcodenotenv",
+              "varvalfromcodenotenv-followparent"
+            ]
+          },
+          "['second', '31']": {
+            "dictTag2ConceptMsg": {
+              "sloppyskipline-sloppy": "5",
+              "sloppyvareval-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyskipline": "43",
+              "sloppyvareval": "42"
+            },
+            "lstMisU": [
+              "sloppyskipline",
+              "sloppyskipline-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['second', '40']": {
+            "dictTag2ConceptMsg": {
+              "sloppyvareval-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyvareval": "42"
+            },
+            "lstMisU": [
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['second', 'Nothing']": {
+            "dictTag2ConceptMsg": {
+              "rtnvalnotdisp-pyinterpreterdisplaynothing": "14"
+            },
+            "dictTag2KIMsg": {
+              "rtnvalnotdisp": "19"
+            },
+            "lstMisU": [
+              "rtnvalnotdisp",
+              "rtnvalnotdisp-pyinterpreterdisplaynothing"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "[\"'first'\"]": [
+            [
+              "12",
+              "[\"'first'\"]"
+            ],
+            [
+              "14",
+              "['23']"
+            ]
+          ],
+          "['0']": [
+            [
+              "14",
+              "['Nothing']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['1']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ]
+          ],
+          "['10']": [
+            [
+              "14",
+              "['23']"
+            ]
+          ],
+          "['11']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['23']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ]
+          ],
+          "['12']": [
+            [
+              "14",
+              "['23']"
+            ]
+          ],
+          "['14']": [
+            [
+              "14",
+              "['31']"
+            ]
+          ],
+          "['15']": [
+            [
+              "12",
+              "['15']"
+            ],
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['23']"
+            ],
+            [
+              "14",
+              "['24']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ]
+          ],
+          "['16']": [
+            [
+              "14",
+              "['1']"
+            ],
+            [
+              "14",
+              "['11']"
+            ],
+            [
+              "14",
+              "['15']"
+            ],
+            [
+              "14",
+              "['2']"
+            ],
+            [
+              "14",
+              "['22']"
+            ],
+            [
+              "14",
+              "['3']"
+            ],
+            [
+              "14",
+              "['4']"
+            ],
+            [
+              "14",
+              "['5']"
+            ],
+            [
+              "14",
+              "['6']"
+            ],
+            [
+              "14",
+              "['7']"
+            ],
+            [
+              "14",
+              "['8']"
+            ],
+            [
+              "14",
+              "['9']"
+            ],
+            [
+              "14",
+              "['None']"
+            ],
+            [
+              "14",
+              "['first(16)']"
+            ],
+            [
+              "14",
+              "['first(x)']"
+            ],
+            [
+              "14",
+              "['second', '15']"
+            ],
+            [
+              "14",
+              "['second', 'x + y']"
+            ]
+          ],
+          "['17']": [
+            [
+              "14",
+              "['23']"
+            ]
+          ],
+          "['18']": [
+            [
+              "14",
+              "['23']"
+            ]
+          ],
+          "['19']": [
+            [
+              "14",
+              "['23']"
+            ]
+          ],
+          "['2']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ]
+          ],
+          "['20']": [
+            [
+              "14",
+              "['23']"
+            ]
+          ],
+          "['22']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['23']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ]
+          ],
+          "['23']": [
+            [
+              "14",
+              "[\"'first'\"]"
+            ],
+            [
+              "14",
+              "['10']"
+            ],
+            [
+              "14",
+              "['11']"
+            ],
+            [
+              "14",
+              "['12']"
+            ],
+            [
+              "14",
+              "['15']"
+            ],
+            [
+              "14",
+              "['17']"
+            ],
+            [
+              "14",
+              "['18']"
+            ],
+            [
+              "14",
+              "['19']"
+            ],
+            [
+              "14",
+              "['20']"
+            ],
+            [
+              "14",
+              "['22']"
+            ],
+            [
+              "14",
+              "['26']"
+            ],
+            [
+              "14",
+              "['8']"
+            ],
+            [
+              "14",
+              "['sceond']"
+            ]
+          ],
+          "['24']": [
+            [
+              "14",
+              "['15']"
+            ],
+            [
+              "14",
+              "['32']"
+            ],
+            [
+              "14",
+              "['40']"
+            ],
+            [
+              "14",
+              "['None']"
+            ],
+            [
+              "14",
+              "['first(16)']"
+            ],
+            [
+              "14",
+              "['second', 'None']"
+            ]
+          ],
+          "['26']": [
+            [
+              "14",
+              "['23']"
+            ]
+          ],
+          "['3']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ]
+          ],
+          "['31']": [
+            [
+              "14",
+              "['14']"
+            ],
+            [
+              "14",
+              "['34']"
+            ],
+            [
+              "14",
+              "['47']"
+            ],
+            [
+              "14",
+              "['49']"
+            ]
+          ],
+          "['32']": [
+            [
+              "14",
+              "['24']"
+            ]
+          ],
+          "['34']": [
+            [
+              "14",
+              "['31']"
+            ]
+          ],
+          "['38']": [
+            [
+              "14",
+              "['39']"
+            ]
+          ],
+          "['39']": [
+            [
+              "14",
+              "['38']"
+            ]
+          ],
+          "['4']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ]
+          ],
+          "['40']": [
+            [
+              "14",
+              "['24']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ]
+          ],
+          "['47']": [
+            [
+              "14",
+              "['31']"
+            ]
+          ],
+          "['49']": [
+            [
+              "14",
+              "['31']"
+            ]
+          ],
+          "['5']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ]
+          ],
+          "['6']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ]
+          ],
+          "['7']": [
+            [
+              "14",
+              "['16']"
+            ]
+          ],
+          "['8']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['23']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ]
+          ],
+          "['9']": [
+            [
+              "14",
+              "['16']"
+            ]
+          ],
+          "['First']": [
+            [
+              "14",
+              "['Nothing']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['None']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['24']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "14",
+              "['0']"
+            ],
+            [
+              "14",
+              "['1']"
+            ],
+            [
+              "14",
+              "['15']"
+            ],
+            [
+              "14",
+              "['2']"
+            ],
+            [
+              "14",
+              "['22']"
+            ],
+            [
+              "14",
+              "['3']"
+            ],
+            [
+              "14",
+              "['4']"
+            ],
+            [
+              "14",
+              "['5']"
+            ],
+            [
+              "14",
+              "['6']"
+            ],
+            [
+              "14",
+              "['8']"
+            ],
+            [
+              "14",
+              "['First']"
+            ],
+            [
+              "14",
+              "['None']"
+            ],
+            [
+              "14",
+              "['first(16)']"
+            ],
+            [
+              "14",
+              "['function']"
+            ],
+            [
+              "14",
+              "['second', '0']"
+            ],
+            [
+              "14",
+              "['second', '1']"
+            ],
+            [
+              "14",
+              "['second', '15']"
+            ],
+            [
+              "14",
+              "['second', 'None']"
+            ],
+            [
+              "14",
+              "['second', 'f']"
+            ],
+            [
+              "14",
+              "['second', 'y']"
+            ]
+          ],
+          "['Second']": [
+            [
+              "14",
+              "['second', '16']"
+            ]
+          ],
+          "['first second 39']": [
+            [
+              "13",
+              "['38']"
+            ]
+          ],
+          "['first(16)']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['24']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ]
+          ],
+          "['first(x)']": [
+            [
+              "14",
+              "['16']"
+            ]
+          ],
+          "['function']": [
+            [
+              "13",
+              "['first(15)']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ]
+          ],
+          "['s']": [
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['sceond']": [
+            [
+              "14",
+              "['23']"
+            ]
+          ],
+          "['second', \"'first'\"]": [
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', '']": [
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', '0']": [
+            [
+              "14",
+              "['Nothing']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '24']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', '1']": [
+            [
+              "14",
+              "['Nothing']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '24']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', '15']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '23']"
+            ],
+            [
+              "14",
+              "['second', '24']"
+            ],
+            [
+              "14",
+              "['second', '31']"
+            ],
+            [
+              "14",
+              "['second', '40']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', '16 + y']": [
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '24']"
+            ]
+          ],
+          "['second', '16']": [
+            [
+              "12",
+              "['1']"
+            ],
+            [
+              "12",
+              "['27']"
+            ],
+            [
+              "13",
+              "['0']"
+            ],
+            [
+              "13",
+              "['8']"
+            ],
+            [
+              "14",
+              "['1']"
+            ],
+            [
+              "14",
+              "['11']"
+            ],
+            [
+              "14",
+              "['2']"
+            ],
+            [
+              "14",
+              "['40']"
+            ],
+            [
+              "14",
+              "['8']"
+            ],
+            [
+              "14",
+              "['Second']"
+            ],
+            [
+              "14",
+              "['second', '0']"
+            ],
+            [
+              "14",
+              "['second', '1']"
+            ],
+            [
+              "14",
+              "['second', '15']"
+            ],
+            [
+              "14",
+              "['second', '16 + y']"
+            ],
+            [
+              "14",
+              "['second', '16+y']"
+            ],
+            [
+              "14",
+              "['second', '18']"
+            ],
+            [
+              "14",
+              "['second', '24 + y']"
+            ],
+            [
+              "14",
+              "['second', '32']"
+            ],
+            [
+              "14",
+              "['second', '48']"
+            ],
+            [
+              "14",
+              "['second', '8']"
+            ],
+            [
+              "14",
+              "['second', 'None']"
+            ],
+            [
+              "14",
+              "['second', 'error']"
+            ],
+            [
+              "14",
+              "['second', 'f']"
+            ],
+            [
+              "14",
+              "['second', 'first(15)']"
+            ],
+            [
+              "14",
+              "['second', 'first(16)']"
+            ],
+            [
+              "14",
+              "['second', 'function']"
+            ],
+            [
+              "14",
+              "['second', 'nothing']"
+            ],
+            [
+              "14",
+              "['second', 'x + y']"
+            ],
+            [
+              "14",
+              "['second', 'x']"
+            ],
+            [
+              "14",
+              "['second', 'x+y']"
+            ],
+            [
+              "14",
+              "['second', 'y']"
+            ]
+          ],
+          "['second', '16+y']": [
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '24']"
+            ]
+          ],
+          "['second', '18']": [
+            [
+              "14",
+              "['second', '16']"
+            ]
+          ],
+          "['second', '2']": [
+            [
+              "14",
+              "['second', '24']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', '20']": [
+            [
+              "14",
+              "['second', '40']"
+            ]
+          ],
+          "['second', '23']": [
+            [
+              "14",
+              "['second', '15']"
+            ],
+            [
+              "14",
+              "['second', '8']"
+            ],
+            [
+              "14",
+              "['second', 'None']"
+            ],
+            [
+              "14",
+              "['second', 'error']"
+            ],
+            [
+              "14",
+              "['second', 'y']"
+            ]
+          ],
+          "['second', '24 + y']": [
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '24']"
+            ],
+            [
+              "14",
+              "['second', '40']"
+            ]
+          ],
+          "['second', '24']": [
+            [
+              "14",
+              "['second', '0']"
+            ],
+            [
+              "14",
+              "['second', '1']"
+            ],
+            [
+              "14",
+              "['second', '15']"
+            ],
+            [
+              "14",
+              "['second', '16 + y']"
+            ],
+            [
+              "14",
+              "['second', '16+y']"
+            ],
+            [
+              "14",
+              "['second', '2']"
+            ],
+            [
+              "14",
+              "['second', '24 + y']"
+            ],
+            [
+              "14",
+              "['second', '32']"
+            ],
+            [
+              "14",
+              "['second', '48']"
+            ],
+            [
+              "14",
+              "['second', '8']"
+            ],
+            [
+              "14",
+              "['second', 'None']"
+            ],
+            [
+              "14",
+              "['second', 'x + y']"
+            ],
+            [
+              "14",
+              "['second', 'x']"
+            ],
+            [
+              "15",
+              "['even']"
+            ]
+          ],
+          "['second', '3']": [
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', '30']": [
+            [
+              "14",
+              "['second', '40']"
+            ]
+          ],
+          "['second', '31']": [
+            [
+              "14",
+              "['second', '15']"
+            ],
+            [
+              "14",
+              "['second', '32']"
+            ]
+          ],
+          "['second', '32']": [
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '24']"
+            ],
+            [
+              "14",
+              "['second', '31']"
+            ],
+            [
+              "14",
+              "['second', '40']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', '4']": [
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', '40']": [
+            [
+              "14",
+              "['second', '15']"
+            ],
+            [
+              "14",
+              "['second', '20']"
+            ],
+            [
+              "14",
+              "['second', '24 + y']"
+            ],
+            [
+              "14",
+              "['second', '30']"
+            ],
+            [
+              "14",
+              "['second', '32']"
+            ],
+            [
+              "14",
+              "['second', '48']"
+            ],
+            [
+              "14",
+              "['second', '8']"
+            ],
+            [
+              "14",
+              "['second', 'None']"
+            ],
+            [
+              "14",
+              "['second', 'x+16']"
+            ],
+            [
+              "15",
+              "['even(x)']"
+            ],
+            [
+              "15",
+              "['lambda x']"
+            ]
+          ],
+          "['second', '48']": [
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '24']"
+            ],
+            [
+              "14",
+              "['second', '40']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', '8']": [
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '23']"
+            ],
+            [
+              "14",
+              "['second', '24']"
+            ],
+            [
+              "14",
+              "['second', '40']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', 'None']": [
+            [
+              "13",
+              "['23']"
+            ],
+            [
+              "14",
+              "['24']"
+            ],
+            [
+              "14",
+              "['Nothing']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '23']"
+            ],
+            [
+              "14",
+              "['second', '24']"
+            ],
+            [
+              "14",
+              "['second', '40']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', 'Nothing']": [
+            [
+              "13",
+              "['8']"
+            ],
+            [
+              "14",
+              "['0']"
+            ],
+            [
+              "14",
+              "['First']"
+            ],
+            [
+              "14",
+              "['s']"
+            ],
+            [
+              "14",
+              "['second', \"'first'\"]"
+            ],
+            [
+              "14",
+              "['second', '']"
+            ],
+            [
+              "14",
+              "['second', '0']"
+            ],
+            [
+              "14",
+              "['second', '1']"
+            ],
+            [
+              "14",
+              "['second', '15']"
+            ],
+            [
+              "14",
+              "['second', '2']"
+            ],
+            [
+              "14",
+              "['second', '3']"
+            ],
+            [
+              "14",
+              "['second', '32']"
+            ],
+            [
+              "14",
+              "['second', '4']"
+            ],
+            [
+              "14",
+              "['second', '48']"
+            ],
+            [
+              "14",
+              "['second', '8']"
+            ],
+            [
+              "14",
+              "['second', 'None']"
+            ],
+            [
+              "14",
+              "['second', 'f']"
+            ],
+            [
+              "14",
+              "['second', 'function']"
+            ],
+            [
+              "14",
+              "['second', 'nothing']"
+            ],
+            [
+              "14",
+              "['second', 'x + y']"
+            ],
+            [
+              "14",
+              "['second', 'x']"
+            ],
+            [
+              "14",
+              "['second', 'x+y']"
+            ],
+            [
+              "14",
+              "['second', 'y']"
+            ]
+          ],
+          "['second', 'error']": [
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '23']"
+            ]
+          ],
+          "['second', 'f']": [
+            [
+              "14",
+              "['Nothing']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', 'first(15)']": [
+            [
+              "14",
+              "['second', '16']"
+            ]
+          ],
+          "['second', 'first(16)']": [
+            [
+              "14",
+              "['second', '16']"
+            ]
+          ],
+          "['second', 'function']": [
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', 'nothing']": [
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', 'x + y']": [
+            [
+              "14",
+              "['16']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '24']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', 'x']": [
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '24']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', 'x+16']": [
+            [
+              "14",
+              "['second', '40']"
+            ]
+          ],
+          "['second', 'x+y']": [
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['second', 'y']": [
+            [
+              "14",
+              "['Nothing']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', '23']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": [
+          "['Function']",
+          "['second', 'Error']",
+          "['Error']",
+          "['second', 'first']",
+          "['second', 'second']",
+          "['first']",
+          "['second', 'Function']"
+        ]
+      },
+      ">>> def first(x):\n...     x += 8\n...     def second(y):\n...         print('second')\n...         return x + y\n...     print('first')\n...     return second\n>>> f = first(15)\nfirst\n>>> f\nLOCKED_ANSWER\n>>> f(16)\nLOCKED_ANSWER\nLOCKED_ANSWER\n": {
+        "assessNum": "13",
+        "dictWA2DictInfo": {
+          "['23']": {
+            "dictTag2ConceptMsg": {
+              "fnnameisfncall-evalfncall": "7",
+              "varevalisemptyval-evalvar": "2"
+            },
+            "dictTag2KIMsg": {
+              "fnnameisfncall": "38",
+              "varevalisemptyval": "27"
+            },
+            "lstMisU": [
+              "fnnameisfncall",
+              "fnnameisfncall-evalfncall",
+              "varevalisemptyval",
+              "varevalisemptyval-evalvar"
+            ]
+          },
+          "['38']": {
+            "dictTag2ConceptMsg": {
+              "fnnameisfncall-evalfncall": "7",
+              "varevalisemptyval-evalvar": "2"
+            },
+            "dictTag2KIMsg": {
+              "fnnameisfncall": "38",
+              "varevalisemptyval": "27"
+            },
+            "lstMisU": [
+              "fnnameisfncall",
+              "fnnameisfncall-evalfncall",
+              "varevalisemptyval",
+              "varevalisemptyval-evalvar"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "fndispnothing-functiondisplay": "10"
+            },
+            "dictTag2KIMsg": {
+              "fndispnothing": "40"
+            },
+            "lstMisU": [
+              "fndispnothing",
+              "fndispnothing-functiondisplay"
+            ]
+          },
+          "['first']": {
+            "dictTag2ConceptMsg": {
+              "assignnameoffntovarwhencallexpr-assignment": "0",
+              "fnnameisfncall-evalfncall": "7"
+            },
+            "dictTag2KIMsg": {
+              "assignnameoffntovarwhencallexpr": "39",
+              "fnnameisfncall": "38"
+            },
+            "lstMisU": [
+              "assignnameoffntovarwhencallexpr",
+              "assignnameoffntovarwhencallexpr-assignment",
+              "fnnameisfncall",
+              "fnnameisfncall-evalfncall"
+            ]
+          },
+          "['first(15)']": {
+            "dictTag2ConceptMsg": {
+              "noevalexpr-evalexpr": "1"
+            },
+            "dictTag2KIMsg": {
+              "noevalexpr": "36"
+            },
+            "lstMisU": [
+              "noevalexpr",
+              "noevalexpr-evalexpr"
+            ]
+          },
+          "['function']": {
+            "dictTag2ConceptMsg": {
+              "correct": "15"
+            },
+            "dictTag2KIMsg": {
+              "correct": "15"
+            },
+            "lstMisU": [
+              "correct"
+            ]
+          },
+          "['second']": {
+            "dictTag2ConceptMsg": {
+              "fnnameisfncall-evalfncall": "7",
+              "varevalisemptyval-evalvar": "2"
+            },
+            "dictTag2KIMsg": {
+              "fnnameisfncall": "38",
+              "varevalisemptyval": "27"
+            },
+            "lstMisU": [
+              "fnnameisfncall",
+              "fnnameisfncall-evalfncall",
+              "varevalisemptyval",
+              "varevalisemptyval-evalvar"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "[\"'first'\"]": [
+            [
+              "12",
+              "[\"'first'\"]"
+            ]
+          ],
+          "[\"'second'\"]": [
+            [
+              "13",
+              "['23']"
+            ],
+            [
+              "13",
+              "['second']"
+            ]
+          ],
+          "['0']": [
+            [
+              "14",
+              "['second', '16']"
+            ]
+          ],
+          "['16']": [
+            [
+              "13",
+              "['first(15)']"
+            ]
+          ],
+          "['23']": [
+            [
+              "13",
+              "[\"'second'\"]"
+            ],
+            [
+              "13",
+              "['31']"
+            ],
+            [
+              "13",
+              "['46']"
+            ],
+            [
+              "13",
+              "['8']"
+            ],
+            [
+              "13",
+              "['first second']"
+            ],
+            [
+              "14",
+              "['second', 'None']"
+            ]
+          ],
+          "['30']": [
+            [
+              "13",
+              "['38']"
+            ],
+            [
+              "13",
+              "['second']"
+            ]
+          ],
+          "['31']": [
+            [
+              "13",
+              "['23']"
+            ],
+            [
+              "13",
+              "['38']"
+            ],
+            [
+              "13",
+              "['second']"
+            ]
+          ],
+          "['32']": [
+            [
+              "13",
+              "['38']"
+            ]
+          ],
+          "['38']": [
+            [
+              "13",
+              "['30']"
+            ],
+            [
+              "13",
+              "['31']"
+            ],
+            [
+              "13",
+              "['32']"
+            ],
+            [
+              "13",
+              "['45']"
+            ],
+            [
+              "13",
+              "['46']"
+            ],
+            [
+              "13",
+              "['8']"
+            ],
+            [
+              "13",
+              "['exit']"
+            ],
+            [
+              "13",
+              "['first 38']"
+            ],
+            [
+              "13",
+              "['first second']"
+            ],
+            [
+              "13",
+              "['second 15']"
+            ],
+            [
+              "13",
+              "['second 23']"
+            ],
+            [
+              "13",
+              "['second 38']"
+            ],
+            [
+              "14",
+              "['first second 39']"
+            ]
+          ],
+          "['45']": [
+            [
+              "13",
+              "['38']"
+            ]
+          ],
+          "['46']": [
+            [
+              "13",
+              "['23']"
+            ],
+            [
+              "13",
+              "['38']"
+            ]
+          ],
+          "['8']": [
+            [
+              "13",
+              "['23']"
+            ],
+            [
+              "13",
+              "['38']"
+            ],
+            [
+              "13",
+              "['first']"
+            ],
+            [
+              "13",
+              "['first(15)']"
+            ],
+            [
+              "13",
+              "['second']"
+            ],
+            [
+              "14",
+              "['second', '16']"
+            ],
+            [
+              "14",
+              "['second', 'Nothing']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "13",
+              "['f']"
+            ]
+          ],
+          "['exit']": [
+            [
+              "13",
+              "['38']"
+            ],
+            [
+              "13",
+              "['first(15)']"
+            ]
+          ],
+          "['f']": [
+            [
+              "13",
+              "['Nothing']"
+            ],
+            [
+              "13",
+              "['first']"
+            ],
+            [
+              "13",
+              "['first(15)']"
+            ]
+          ],
+          "['first 38']": [
+            [
+              "13",
+              "['38']"
+            ],
+            [
+              "13",
+              "['first(15)']"
+            ]
+          ],
+          "['first second']": [
+            [
+              "13",
+              "['23']"
+            ],
+            [
+              "13",
+              "['38']"
+            ],
+            [
+              "13",
+              "['first']"
+            ],
+            [
+              "13",
+              "['second']"
+            ]
+          ],
+          "['first']": [
+            [
+              "13",
+              "['8']"
+            ],
+            [
+              "13",
+              "['f']"
+            ],
+            [
+              "13",
+              "['first second']"
+            ]
+          ],
+          "['first(15)']": [
+            [
+              "13",
+              "['16']"
+            ],
+            [
+              "13",
+              "['8']"
+            ],
+            [
+              "13",
+              "['exit']"
+            ],
+            [
+              "13",
+              "['f']"
+            ],
+            [
+              "13",
+              "['first 38']"
+            ],
+            [
+              "13",
+              "['print']"
+            ],
+            [
+              "13",
+              "['second 15']"
+            ],
+            [
+              "13",
+              "['second 16']"
+            ],
+            [
+              "13",
+              "['second 38']"
+            ],
+            [
+              "13",
+              "['second(15)']"
+            ],
+            [
+              "14",
+              "['function']"
+            ]
+          ],
+          "['print']": [
+            [
+              "13",
+              "['first(15)']"
+            ]
+          ],
+          "['second 15']": [
+            [
+              "13",
+              "['38']"
+            ],
+            [
+              "13",
+              "['first(15)']"
+            ]
+          ],
+          "['second 16']": [
+            [
+              "13",
+              "['first(15)']"
+            ]
+          ],
+          "['second 23']": [
+            [
+              "13",
+              "['38']"
+            ]
+          ],
+          "['second 38']": [
+            [
+              "13",
+              "['38']"
+            ],
+            [
+              "13",
+              "['first(15)']"
+            ]
+          ],
+          "['second']": [
+            [
+              "13",
+              "[\"'second'\"]"
+            ],
+            [
+              "13",
+              "['30']"
+            ],
+            [
+              "13",
+              "['31']"
+            ],
+            [
+              "13",
+              "['8']"
+            ],
+            [
+              "13",
+              "['first second']"
+            ]
+          ],
+          "['second(15)']": [
+            [
+              "13",
+              "['first(15)']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": [
+          "['15']",
+          "['Error']",
+          "['None']"
+        ]
+      },
+      ">>> lambda x: x\nFunction\n>>> a = lambda x: x\n>>> a(5)\n5\n>>> b = lambda: 3\n>>> b()\n3\n>>> c = lambda x: lambda: print('123')\n>>> c(88)\nFunction\n>>> c(88)()\n123\n>>> d = lambda f: f(4)\n>>> def square(x):\n...     return x * x\n>>> d(square)\nLOCKED_ANSWER\n": {
+        "assessNum": "5",
+        "dictWA2DictInfo": {
+          "['Function']": {
+            "dictTag2ConceptMsg": {
+              "lambdacallexprnotcall-lambdacallexpr": "11",
+              "lambdamisidentifyrtnval-lambdacallexpr": "11",
+              "lambdamisidentifyrtnval-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "lambdacallexprnotcall": "17",
+              "lambdamisidentifyrtnval": "21"
+            },
+            "lstMisU": [
+              "lambdacallexprnotcall",
+              "lambdacallexprnotcall-lambdacallexpr",
+              "lambdamisidentifyrtnval",
+              "lambdamisidentifyrtnval-lambdacallexpr",
+              "lambdamisidentifyrtnval-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['Error']": [
+            [
+              "11",
+              "['Error']"
+            ],
+            [
+              "11",
+              "['Function']"
+            ],
+            [
+              "11",
+              "['Nothing']"
+            ],
+            [
+              "5",
+              "['Function']"
+            ],
+            [
+              "6",
+              "['Error']"
+            ],
+            [
+              "6",
+              "['Function']"
+            ],
+            [
+              "6",
+              "['Nothing']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "5",
+              "['Error']"
+            ],
+            [
+              "5",
+              "['Nothing']"
+            ],
+            [
+              "5",
+              "['f(4)']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "11",
+              "['Function']"
+            ],
+            [
+              "5",
+              "['Function']"
+            ],
+            [
+              "6",
+              "['Error']"
+            ],
+            [
+              "6",
+              "['Function']"
+            ],
+            [
+              "6",
+              "['Nothing']"
+            ]
+          ],
+          "['f(4)']": [
+            [
+              "5",
+              "['Function']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": []
+      },
+      ">>> lambda x: x\nFunction\n>>> a = lambda x: x\n>>> a(5)\n5\n>>> b = lambda: 3\n>>> b()\n3\n>>> c = lambda x: lambda: print('123')\n>>> c(88)\nFunction\n>>> c(88)()\nLOCKED_ANSWER\n>>> d = lambda f: f(4)\n>>> def square(x):\n...     return x * x\n>>> d(square)\nLOCKED_ANSWER\n": {
+        "assessNum": "4",
+        "dictWA2DictInfo": {
+          "[\"'123'\"]": {
+            "dictTag2ConceptMsg": {
+              "prntstrwithquotes-printstring": "4"
+            },
+            "dictTag2KIMsg": {
+              "prntstrwithquotes": "22"
+            },
+            "lstMisU": [
+              "prntstrwithquotes",
+              "prntstrwithquotes-printstring"
+            ]
+          },
+          "['88']": {
+            "dictTag2ConceptMsg": {
+              "lambdamisidentifyrtnval-lambdacallexpr": "11",
+              "lambdamisidentifyrtnval-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "lambdamisidentifyrtnval": "21"
+            },
+            "lstMisU": [
+              "lambdamisidentifyrtnval",
+              "lambdamisidentifyrtnval-lambdacallexpr",
+              "lambdamisidentifyrtnval-sloppy"
+            ]
+          },
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "fncallneedsarg-evalfncall": "7",
+              "stackedcallsiserr-evalstackedfncall": "8"
+            },
+            "dictTag2KIMsg": {
+              "fncallneedsarg": "20",
+              "stackedcallsiserr": "23"
+            },
+            "lstMisU": [
+              "fncallneedsarg",
+              "fncallneedsarg-evalfncall",
+              "stackedcallsiserr",
+              "stackedcallsiserr-evalstackedfncall"
+            ]
+          },
+          "['Function']": {
+            "dictTag2ConceptMsg": {
+              "lambdacallexprnotcall-lambdacallexpr": "11",
+              "lambdamisidentifyrtnval-lambdacallexpr": "11",
+              "lambdamisidentifyrtnval-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "lambdacallexprnotcall": "24",
+              "lambdamisidentifyrtnval": "21"
+            },
+            "lstMisU": [
+              "lambdacallexprnotcall",
+              "lambdacallexprnotcall-lambdacallexpr",
+              "lambdamisidentifyrtnval",
+              "lambdamisidentifyrtnval-lambdacallexpr",
+              "lambdamisidentifyrtnval-sloppy"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "lambdacallexprnotcall-lambdacallexpr": "11",
+              "sloppyskipprnt-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "lambdacallexprnotcall": "24",
+              "sloppyskipprnt": "25"
+            },
+            "lstMisU": [
+              "lambdacallexprnotcall",
+              "lambdacallexprnotcall-lambdacallexpr",
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "[\"'123'\"]": [
+            [
+              "10",
+              "[\"'summer'\"]"
+            ]
+          ],
+          "['()']": [
+            [
+              "4",
+              "['88']"
+            ],
+            [
+              "4",
+              "['Error']"
+            ],
+            [
+              "4",
+              "['Function']"
+            ],
+            [
+              "4",
+              "['Nothing']"
+            ]
+          ],
+          "['0']": [
+            [
+              "4",
+              "['88']"
+            ],
+            [
+              "4",
+              "['Error']"
+            ],
+            [
+              "4",
+              "['Function']"
+            ],
+            [
+              "4",
+              "['Nothing']"
+            ],
+            [
+              "7",
+              "['15']"
+            ]
+          ],
+          "['88']": [
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "[\"'dog'\"]"
+            ],
+            [
+              "11",
+              "['0']"
+            ],
+            [
+              "11",
+              "['1']"
+            ],
+            [
+              "11",
+              "['3']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "4",
+              "['()']"
+            ],
+            [
+              "4",
+              "['0']"
+            ],
+            [
+              "6",
+              "['2']"
+            ]
+          ],
+          "['Error']": [
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "2",
+              "['Function']"
+            ],
+            [
+              "4",
+              "['()']"
+            ],
+            [
+              "4",
+              "['0']"
+            ],
+            [
+              "6",
+              "['2']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "11",
+              "['0']"
+            ],
+            [
+              "4",
+              "['()']"
+            ],
+            [
+              "4",
+              "['0']"
+            ],
+            [
+              "6",
+              "['2']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "2",
+              "['Function']"
+            ],
+            [
+              "4",
+              "['()']"
+            ],
+            [
+              "4",
+              "['0']"
+            ],
+            [
+              "4",
+              "['lambda']"
+            ],
+            [
+              "6",
+              "['2']"
+            ]
+          ],
+          "['lambda']": [
+            [
+              "4",
+              "['Nothing']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": []
+      },
+      ">>> lambda x: x\nFunction\n>>> a = lambda x: x\n>>> a(5)\n5\n>>> b = lambda: 3\n>>> b()\n3\n>>> c = lambda x: lambda: print('123')\n>>> c(88)\nLOCKED_ANSWER\n>>> c(88)()\nLOCKED_ANSWER\n>>> d = lambda f: f(4)\n>>> def square(x):\n...     return x * x\n>>> d(square)\nLOCKED_ANSWER\n": {
+        "assessNum": "3",
+        "dictWA2DictInfo": {
+          "[\"'123'\"]": {
+            "dictTag2ConceptMsg": {
+              "lambdamisidentifyrtnval-lambdacallexpr": "11",
+              "lambdamisidentifyrtnval-sloppy": "5",
+              "prntstrwithquotes-printstring": "4"
+            },
+            "dictTag2KIMsg": {
+              "lambdamisidentifyrtnval": "21",
+              "prntstrwithquotes": "22"
+            },
+            "lstMisU": [
+              "lambdamisidentifyrtnval",
+              "lambdamisidentifyrtnval-lambdacallexpr",
+              "lambdamisidentifyrtnval-sloppy",
+              "prntstrwithquotes",
+              "prntstrwithquotes-printstring"
+            ]
+          },
+          "['123']": {
+            "dictTag2ConceptMsg": {
+              "lambdamisidentifyrtnval-lambdacallexpr": "11",
+              "lambdamisidentifyrtnval-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "lambdamisidentifyrtnval": "21"
+            },
+            "lstMisU": [
+              "lambdamisidentifyrtnval",
+              "lambdamisidentifyrtnval-lambdacallexpr",
+              "lambdamisidentifyrtnval-sloppy"
+            ]
+          },
+          "['88']": {
+            "dictTag2ConceptMsg": {
+              "lambdamisidentifyrtnval-lambdacallexpr": "11",
+              "lambdamisidentifyrtnval-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "lambdamisidentifyrtnval": "21"
+            },
+            "lstMisU": [
+              "lambdamisidentifyrtnval",
+              "lambdamisidentifyrtnval-lambdacallexpr",
+              "lambdamisidentifyrtnval-sloppy"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "fndispnothing-functiondisplay": "10"
+            },
+            "dictTag2KIMsg": {
+              "fndispnothing": "16"
+            },
+            "lstMisU": [
+              "fndispnothing",
+              "fndispnothing-functiondisplay"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "[\"'123'\"]": [
+            [
+              "10",
+              "[\"'summer'\"]"
+            ],
+            [
+              "3",
+              "[\"'88'\"]"
+            ],
+            [
+              "3",
+              "[\"print('123')\"]"
+            ],
+            [
+              "3",
+              "['\"123\"']"
+            ]
+          ],
+          "[\"'88'\"]": [
+            [
+              "3",
+              "[\"'123'\"]"
+            ],
+            [
+              "3",
+              "['88']"
+            ],
+            [
+              "7",
+              "['1']"
+            ]
+          ],
+          "[\"print('123')\"]": [
+            [
+              "3",
+              "[\"'123'\"]"
+            ],
+            [
+              "3",
+              "['123']"
+            ]
+          ],
+          "['\"123\"']": [
+            [
+              "3",
+              "[\"'123'\"]"
+            ]
+          ],
+          "['123']": [
+            [
+              "0",
+              "['None']"
+            ],
+            [
+              "0",
+              "['error']"
+            ],
+            [
+              "0",
+              "['n']"
+            ],
+            [
+              "0",
+              "['nothing']"
+            ],
+            [
+              "0",
+              "['y']"
+            ],
+            [
+              "10",
+              "[\"'summer'\"]"
+            ],
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "['4, dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "2",
+              "['Function']"
+            ],
+            [
+              "3",
+              "[\"print('123')\"]"
+            ],
+            [
+              "3",
+              "['88123']"
+            ],
+            [
+              "6",
+              "['2']"
+            ],
+            [
+              "6",
+              "['4']"
+            ],
+            [
+              "7",
+              "['225']"
+            ],
+            [
+              "7",
+              "['error']"
+            ],
+            [
+              "8",
+              "['32']"
+            ],
+            [
+              "8",
+              "['8']"
+            ],
+            [
+              "9",
+              "['b(x, y)']"
+            ]
+          ],
+          "['88 123']": [
+            [
+              "3",
+              "['88']"
+            ]
+          ],
+          "['88']": [
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "['4, dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "2",
+              "['Function']"
+            ],
+            [
+              "3",
+              "[\"'88'\"]"
+            ],
+            [
+              "3",
+              "['88 123']"
+            ],
+            [
+              "3",
+              "['88123']"
+            ],
+            [
+              "6",
+              "['2']"
+            ],
+            [
+              "7",
+              "['225']"
+            ],
+            [
+              "8",
+              "['32']"
+            ],
+            [
+              "8",
+              "['8']"
+            ]
+          ],
+          "['88123']": [
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "3",
+              "['88']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": [
+          "['None']",
+          "['Error']"
+        ]
+      },
+      ">>> lambda x: x\nFunction\n>>> a = lambda x: x\n>>> a(5)\n5\n>>> b = lambda: 3\n>>> b()\nLOCKED_ANSWER\n>>> c = lambda x: lambda: print('123')\n>>> c(88)\nLOCKED_ANSWER\n>>> c(88)()\nLOCKED_ANSWER\n>>> d = lambda f: f(4)\n>>> def square(x):\n...     return x * x\n>>> d(square)\nLOCKED_ANSWER\n": {
+        "assessNum": "2",
+        "dictWA2DictInfo": {
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "fncallneedsarg-evalfncall": "7"
+            },
+            "dictTag2KIMsg": {
+              "fncallneedsarg": "20"
+            },
+            "lstMisU": [
+              "fncallneedsarg",
+              "fncallneedsarg-evalfncall"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "lambdaneedsexplicitrtn-lambdacallexpr": "11",
+              "rtnvalnotdisp-pyinterpreterdisplaynothing": "14"
+            },
+            "dictTag2KIMsg": {
+              "lambdaneedsexplicitrtn": "21",
+              "rtnvalnotdisp": "19"
+            },
+            "lstMisU": [
+              "lambdaneedsexplicitrtn",
+              "lambdaneedsexplicitrtn-lambdacallexpr",
+              "rtnvalnotdisp",
+              "rtnvalnotdisp-pyinterpreterdisplaynothing"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['Error']": [
+            [
+              "2",
+              "['Function']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "11",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['summer']"
+            ],
+            [
+              "2",
+              "['Error']"
+            ],
+            [
+              "2",
+              "['Nothing']"
+            ],
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "3",
+              "['88']"
+            ],
+            [
+              "4",
+              "['Error']"
+            ],
+            [
+              "4",
+              "['Nothing']"
+            ],
+            [
+              "7",
+              "['15']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "2",
+              "['Function']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": []
+      },
+      ">>> lambda x: x\nFunction\n>>> a = lambda x: x\n>>> a(5)\nLOCKED_ANSWER\n>>> b = lambda: 3\n>>> b()\nLOCKED_ANSWER\n>>> c = lambda x: lambda: print('123')\n>>> c(88)\nLOCKED_ANSWER\n>>> c(88)()\nLOCKED_ANSWER\n>>> d = lambda f: f(4)\n>>> def square(x):\n...     return x * x\n>>> d(square)\nLOCKED_ANSWER\n": {
+        "assessNum": "1",
+        "dictWA2DictInfo": {
+          "['Function']": {
+            "dictTag2ConceptMsg": {
+              "lambdacallexprnotcall-lambdacallexpr": "11"
+            },
+            "dictTag2KIMsg": {
+              "lambdacallexprnotcall": "17"
+            },
+            "lstMisU": [
+              "lambdacallexprnotcall",
+              "lambdacallexprnotcall-lambdacallexpr"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "lambdacallexprnotcall-lambdacallexpr": "11",
+              "rtnvalnotdisp-pyinterpreterdisplaynothing": "14"
+            },
+            "dictTag2KIMsg": {
+              "lambdacallexprnotcall": "18",
+              "rtnvalnotdisp": "19"
+            },
+            "lstMisU": [
+              "lambdacallexprnotcall",
+              "lambdacallexprnotcall-lambdacallexpr",
+              "rtnvalnotdisp",
+              "rtnvalnotdisp-pyinterpreterdisplaynothing"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['False']": [
+            [
+              "1",
+              "['Function']"
+            ],
+            [
+              "1",
+              "['Nothing']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "1",
+              "['False']"
+            ],
+            [
+              "1",
+              "['True']"
+            ],
+            [
+              "1",
+              "['Yes']"
+            ],
+            [
+              "11",
+              "['4, dog']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "1",
+              "['False']"
+            ],
+            [
+              "1",
+              "['True']"
+            ],
+            [
+              "1",
+              "['Yes']"
+            ],
+            [
+              "1",
+              "['yes']"
+            ],
+            [
+              "10",
+              "['4']"
+            ]
+          ],
+          "['True']": [
+            [
+              "1",
+              "['Function']"
+            ],
+            [
+              "1",
+              "['Nothing']"
+            ]
+          ],
+          "['Yes']": [
+            [
+              "1",
+              "['Function']"
+            ],
+            [
+              "1",
+              "['Nothing']"
+            ]
+          ],
+          "['yes']": [
+            [
+              "1",
+              "['Nothing']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": [
+          "['Error']"
+        ]
+      },
+      ">>> lambda x: x\nLOCKED_ANSWER\n>>> a = lambda x: x\n>>> a(5)\nLOCKED_ANSWER\n>>> b = lambda: 3\n>>> b()\nLOCKED_ANSWER\n>>> c = lambda x: lambda: print('123')\n>>> c(88)\nLOCKED_ANSWER\n>>> c(88)()\nLOCKED_ANSWER\n>>> d = lambda f: f(4)\n>>> def square(x):\n...     return x * x\n>>> d(square)\nLOCKED_ANSWER\n": {
+        "assessNum": "0",
+        "dictWA2DictInfo": {
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "fndispnothing-functiondisplay": "10"
+            },
+            "dictTag2KIMsg": {
+              "fndispnothing": "16"
+            },
+            "lstMisU": [
+              "fndispnothing",
+              "fndispnothing-functiondisplay"
+            ]
+          },
+          "['function']": {
+            "dictTag2ConceptMsg": {
+              "correct": "15"
+            },
+            "dictTag2KIMsg": {
+              "correct": "15"
+            },
+            "lstMisU": [
+              "correct"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['None']": [
+            [
+              "0",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['summer']"
+            ],
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "9",
+              "['Function']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "0",
+              "['None']"
+            ],
+            [
+              "0",
+              "['error']"
+            ],
+            [
+              "0",
+              "['nothing']"
+            ]
+          ],
+          "['error']": [
+            [
+              "0",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['Error']"
+            ],
+            [
+              "11",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['summer']"
+            ],
+            [
+              "3",
+              "['123']"
+            ]
+          ],
+          "['n']": [
+            [
+              "3",
+              "['123']"
+            ]
+          ],
+          "['nothing']": [
+            [
+              "0",
+              "['Nothing']"
+            ],
+            [
+              "3",
+              "['123']"
+            ]
+          ],
+          "['y']": [
+            [
+              "3",
+              "['123']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": [
+          "['Error']",
+          "['x']"
+        ]
+      },
+      ">>> t = lambda f: lambda x: f(f(f(x)))\n>>> s = lambda x: x + 1\n>>> t(s)(0)\n3\n>>> bar = lambda y: lambda x: pow(x, y)\n>>> bar()(15)\nError\n>>> foo = lambda: 32\n>>> foobar = lambda x, y: x // y\n>>> a = lambda x: foobar(foo(), bar(4)(x))\n>>> a(2)\n2\n>>> b = lambda x, y: print('summer')\nLOCKED_ANSWER\n>>> c = b(4, 'dog')\nLOCKED_ANSWER\n>>> print(c)\nLOCKED_ANSWER\n": {
+        "assessNum": "9",
+        "dictWA2DictInfo": {
+          "[\"'summer'\"]": {
+            "dictTag2ConceptMsg": {
+              "assignstmtrtnval-assignment": "0",
+              "lambdadefevalatdef-lambdadefine": "12",
+              "prntstrwithquotes-printstring": "4"
+            },
+            "dictTag2KIMsg": {
+              "assignstmtrtnval": "31",
+              "lambdadefevalatdef": "32",
+              "prntstrwithquotes": "22"
+            },
+            "lstMisU": [
+              "assignstmtrtnval",
+              "assignstmtrtnval-assignment",
+              "lambdadefevalatdef",
+              "lambdadefevalatdef-lambdadefine",
+              "prntstrwithquotes",
+              "prntstrwithquotes-printstring"
+            ]
+          },
+          "['Function']": {
+            "dictTag2ConceptMsg": {
+              "assignstmtrtnval-assignment": "0"
+            },
+            "dictTag2KIMsg": {
+              "assignstmtrtnval": "31"
+            },
+            "lstMisU": [
+              "assignstmtrtnval",
+              "assignstmtrtnval-assignment"
+            ]
+          },
+          "['None']": {
+            "dictTag2ConceptMsg": {
+              "sloppynoreadinstructions-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppynoreadinstructions": "33"
+            },
+            "lstMisU": [
+              "sloppynoreadinstructions",
+              "sloppynoreadinstructions-sloppy"
+            ]
+          },
+          "['b']": {
+            "dictTag2ConceptMsg": {
+              "assignstmtrtnval-assignment": "0"
+            },
+            "dictTag2KIMsg": {
+              "assignstmtrtnval": "31"
+            },
+            "lstMisU": [
+              "assignstmtrtnval",
+              "assignstmtrtnval-assignment"
+            ]
+          },
+          "['summer']": {
+            "dictTag2ConceptMsg": {
+              "assignstmtrtnval-assignment": "0",
+              "lambdadefevalatdef-lambdadefine": "12"
+            },
+            "dictTag2KIMsg": {
+              "assignstmtrtnval": "31",
+              "lambdadefevalatdef": "32"
+            },
+            "lstMisU": [
+              "assignstmtrtnval",
+              "assignstmtrtnval-assignment",
+              "lambdadefevalatdef",
+              "lambdadefevalatdef-lambdadefine"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "[\"'summer'\"]": [
+            [
+              "10",
+              "[\"'summer'\"]"
+            ]
+          ],
+          "['Function']": [
+            [
+              "0",
+              "['None']"
+            ],
+            [
+              "6",
+              "['2']"
+            ],
+            [
+              "8",
+              "['8']"
+            ],
+            [
+              "9",
+              "['b(x,y)']"
+            ],
+            [
+              "9",
+              "['x']"
+            ],
+            [
+              "9",
+              "['y']"
+            ]
+          ],
+          "['None']": [
+            [
+              "7",
+              "['None']"
+            ],
+            [
+              "9",
+              "['none']"
+            ],
+            [
+              "9",
+              "['x']"
+            ]
+          ],
+          "['b']": [
+            [
+              "9",
+              "['b(x)']"
+            ],
+            [
+              "9",
+              "['b(x, y)']"
+            ],
+            [
+              "9",
+              "['b(x,y)']"
+            ],
+            [
+              "9",
+              "['lambda x, y']"
+            ],
+            [
+              "9",
+              "['lambda']"
+            ],
+            [
+              "9",
+              "['none']"
+            ],
+            [
+              "9",
+              "['print']"
+            ],
+            [
+              "9",
+              "['x']"
+            ],
+            [
+              "9",
+              "['x, y']"
+            ],
+            [
+              "9",
+              "['y']"
+            ]
+          ],
+          "['b(x)']": [
+            [
+              "9",
+              "['b']"
+            ]
+          ],
+          "['b(x, y)']": [
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "9",
+              "['b']"
+            ]
+          ],
+          "['b(x,y)']": [
+            [
+              "9",
+              "['Function']"
+            ],
+            [
+              "9",
+              "['b']"
+            ]
+          ],
+          "['lambda x, y']": [
+            [
+              "9",
+              "['b']"
+            ]
+          ],
+          "['lambda']": [
+            [
+              "9",
+              "['b']"
+            ]
+          ],
+          "['none']": [
+            [
+              "9",
+              "['None']"
+            ],
+            [
+              "9",
+              "['b']"
+            ]
+          ],
+          "['print']": [
+            [
+              "9",
+              "['b']"
+            ]
+          ],
+          "['summer']": [
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "9",
+              "['x']"
+            ],
+            [
+              "9",
+              "['y']"
+            ]
+          ],
+          "['x']": [
+            [
+              "6",
+              "['1']"
+            ],
+            [
+              "9",
+              "['Function']"
+            ],
+            [
+              "9",
+              "['None']"
+            ],
+            [
+              "9",
+              "['b']"
+            ],
+            [
+              "9",
+              "['summer']"
+            ]
+          ],
+          "['x, y']": [
+            [
+              "9",
+              "['b']"
+            ]
+          ],
+          "['y']": [
+            [
+              "9",
+              "['Function']"
+            ],
+            [
+              "9",
+              "['b']"
+            ],
+            [
+              "9",
+              "['summer']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": [
+          "['Error']",
+          "['b()']"
+        ]
+      },
+      ">>> t = lambda f: lambda x: f(f(f(x)))\n>>> s = lambda x: x + 1\n>>> t(s)(0)\n3\n>>> bar = lambda y: lambda x: pow(x, y)\n>>> bar()(15)\nError\n>>> foo = lambda: 32\n>>> foobar = lambda x, y: x // y\n>>> a = lambda x: foobar(foo(), bar(4)(x))\n>>> a(2)\n2\n>>> b = lambda x, y: print('summer')\nNothing\n>>> c = b(4, 'dog')\nLOCKED_ANSWER\n>>> print(c)\nLOCKED_ANSWER\n": {
+        "assessNum": "10",
+        "dictWA2DictInfo": {
+          "['Function']": {
+            "dictTag2ConceptMsg": {
+              "assignstmtrtnval-assignment": "0",
+              "sloppyskipprnt-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "assignstmtrtnval": "31",
+              "sloppyskipprnt": "25"
+            },
+            "lstMisU": [
+              "assignstmtrtnval",
+              "assignstmtrtnval-assignment",
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "sloppyskipprnt-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyskipprnt": "25"
+            },
+            "lstMisU": [
+              "sloppyskipprnt",
+              "sloppyskipprnt-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "[\"'dog'\"]": [
+            [
+              "10",
+              "['Function']"
+            ],
+            [
+              "10",
+              "['Nothing']"
+            ]
+          ],
+          "[\"'summer'\"]": [
+            [
+              "10",
+              "['Function']"
+            ],
+            [
+              "10",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "[\"'summer'\"]"
+            ],
+            [
+              "11",
+              "['Nothing']"
+            ],
+            [
+              "3",
+              "[\"'123'\"]"
+            ],
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "4",
+              "[\"'123'\"]"
+            ],
+            [
+              "8",
+              "['Error']"
+            ],
+            [
+              "9",
+              "[\"'summer'\"]"
+            ]
+          ],
+          "[\"b(4, 'dog')\"]": [
+            [
+              "10",
+              "['Function']"
+            ]
+          ],
+          "['0']": [
+            [
+              "10",
+              "['Function']"
+            ]
+          ],
+          "['1']": [
+            [
+              "10",
+              "['Function']"
+            ]
+          ],
+          "['3']": [
+            [
+              "10",
+              "['Function']"
+            ]
+          ],
+          "['4']": [
+            [
+              "1",
+              "['Nothing']"
+            ],
+            [
+              "10",
+              "['Function']"
+            ],
+            [
+              "10",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['Error']"
+            ],
+            [
+              "11",
+              "['Function']"
+            ],
+            [
+              "11",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['c']"
+            ],
+            [
+              "11",
+              "['summer']"
+            ],
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "3",
+              "['88']"
+            ],
+            [
+              "4",
+              "['88']"
+            ],
+            [
+              "4",
+              "['Error']"
+            ],
+            [
+              "4",
+              "['Function']"
+            ],
+            [
+              "4",
+              "['Nothing']"
+            ],
+            [
+              "5",
+              "['Function']"
+            ],
+            [
+              "6",
+              "['1']"
+            ],
+            [
+              "6",
+              "['Error']"
+            ],
+            [
+              "6",
+              "['Nothing']"
+            ],
+            [
+              "8",
+              "['Function']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "10",
+              "[\"'dog'\"]"
+            ],
+            [
+              "10",
+              "[\"'summer'\"]"
+            ],
+            [
+              "10",
+              "[\"b(4, 'dog')\"]"
+            ],
+            [
+              "10",
+              "['0']"
+            ],
+            [
+              "10",
+              "['1']"
+            ],
+            [
+              "10",
+              "['3']"
+            ],
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['None']"
+            ],
+            [
+              "10",
+              "['b']"
+            ],
+            [
+              "10",
+              "['c']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "8",
+              "['32']"
+            ],
+            [
+              "8",
+              "['8']"
+            ]
+          ],
+          "['None']": [
+            [
+              "10",
+              "['Function']"
+            ],
+            [
+              "10",
+              "['Nothing']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "10",
+              "[\"'dog'\"]"
+            ],
+            [
+              "10",
+              "[\"'summer'\"]"
+            ],
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['None']"
+            ],
+            [
+              "10",
+              "['c']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ]
+          ],
+          "['b']": [
+            [
+              "10",
+              "['Function']"
+            ]
+          ],
+          "['c']": [
+            [
+              "10",
+              "['Function']"
+            ],
+            [
+              "10",
+              "['Nothing']"
+            ]
+          ],
+          "['dog']": [
+            [
+              "10",
+              "['Function']"
+            ],
+            [
+              "10",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['Error']"
+            ],
+            [
+              "11",
+              "['Function']"
+            ],
+            [
+              "11",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['c']"
+            ],
+            [
+              "11",
+              "['summer']"
+            ],
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "3",
+              "['88']"
+            ],
+            [
+              "4",
+              "['88']"
+            ],
+            [
+              "4",
+              "['Error']"
+            ],
+            [
+              "4",
+              "['Nothing']"
+            ],
+            [
+              "6",
+              "['1']"
+            ],
+            [
+              "7",
+              "['15']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": [
+          "['Error']"
+        ]
+      },
+      ">>> t = lambda f: lambda x: f(f(f(x)))\n>>> s = lambda x: x + 1\n>>> t(s)(0)\n3\n>>> bar = lambda y: lambda x: pow(x, y)\n>>> bar()(15)\nError\n>>> foo = lambda: 32\n>>> foobar = lambda x, y: x // y\n>>> a = lambda x: foobar(foo(), bar(4)(x))\n>>> a(2)\n2\n>>> b = lambda x, y: print('summer')\nNothing\n>>> c = b(4, 'dog')\nsummer\n>>> print(c)\nLOCKED_ANSWER\n": {
+        "assessNum": "11",
+        "dictWA2DictInfo": {
+          "[\"'summer'\"]": {
+            "dictTag2ConceptMsg": {
+              "prntrtnsprntedval-printreturnvalue": "3",
+              "prntstrwithquotes-printstring": "4"
+            },
+            "dictTag2KIMsg": {
+              "prntrtnsprntedval": "34",
+              "prntstrwithquotes": "22"
+            },
+            "lstMisU": [
+              "prntrtnsprntedval",
+              "prntrtnsprntedval-printreturnvalue",
+              "prntstrwithquotes",
+              "prntstrwithquotes-printstring"
+            ]
+          },
+          "[\"b(4, 'dog')\"]": {
+            "dictTag2ConceptMsg": {
+              "noevalexpr-evalexpr": "1"
+            },
+            "dictTag2KIMsg": {
+              "noevalexpr": "36"
+            },
+            "lstMisU": [
+              "noevalexpr",
+              "noevalexpr-evalexpr"
+            ]
+          },
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "prntnoneisweird-printnone": "13"
+            },
+            "dictTag2KIMsg": {
+              "prntnoneisweird": "35"
+            },
+            "lstMisU": [
+              "prntnoneisweird",
+              "prntnoneisweird-printnone"
+            ]
+          },
+          "['Function']": {
+            "dictTag2ConceptMsg": {
+              "noevalexpr-evalexpr": "1"
+            },
+            "dictTag2KIMsg": {
+              "noevalexpr": "36"
+            },
+            "lstMisU": [
+              "noevalexpr",
+              "noevalexpr-evalexpr"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "prntnoneisweird-printnone": "13"
+            },
+            "dictTag2KIMsg": {
+              "prntnoneisweird": "35"
+            },
+            "lstMisU": [
+              "prntnoneisweird",
+              "prntnoneisweird-printnone"
+            ]
+          },
+          "['c']": {
+            "dictTag2ConceptMsg": {
+              "bindvartovarname-assignment": "0",
+              "bindvartovarname-evalvar": "2"
+            },
+            "dictTag2KIMsg": {
+              "bindvartovarname": "37"
+            },
+            "lstMisU": [
+              "bindvartovarname",
+              "bindvartovarname-assignment",
+              "bindvartovarname-evalvar"
+            ]
+          },
+          "['summer']": {
+            "dictTag2ConceptMsg": {
+              "prntrtnsprntedval-printreturnvalue": "3"
+            },
+            "dictTag2KIMsg": {
+              "prntrtnsprntedval": "34"
+            },
+            "lstMisU": [
+              "prntrtnsprntedval",
+              "prntrtnsprntedval-printreturnvalue"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "[\"'c'\"]": [
+            [
+              "11",
+              "[\"'summer'\"]"
+            ],
+            [
+              "11",
+              "['c']"
+            ]
+          ],
+          "[\"'dog'\"]": [
+            [
+              "11",
+              "[\"'summer'\"]"
+            ],
+            [
+              "11",
+              "['Error']"
+            ],
+            [
+              "11",
+              "['Function']"
+            ],
+            [
+              "11",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['c']"
+            ],
+            [
+              "4",
+              "['88']"
+            ]
+          ],
+          "[\"'summer\"]": [
+            [
+              "11",
+              "[\"'summer'\"]"
+            ]
+          ],
+          "[\"'summer'\"]": [
+            [
+              "10",
+              "[\"'summer'\"]"
+            ],
+            [
+              "11",
+              "[\"'c'\"]"
+            ],
+            [
+              "11",
+              "[\"'dog'\"]"
+            ],
+            [
+              "11",
+              "[\"'summer\"]"
+            ],
+            [
+              "11",
+              "['\"summer\"']"
+            ],
+            [
+              "11",
+              "['b']"
+            ]
+          ],
+          "[\"4, 'dog'\"]": [
+            [
+              "11",
+              "[\"b(4, 'dog')\"]"
+            ],
+            [
+              "11",
+              "['Error']"
+            ],
+            [
+              "11",
+              "['Function']"
+            ],
+            [
+              "11",
+              "['Nothing']"
+            ]
+          ],
+          "[\"b(4, 'dog')\"]": [
+            [
+              "11",
+              "[\"4, 'dog'\"]"
+            ],
+            [
+              "11",
+              "['4, dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ]
+          ],
+          "['\"summer\"']": [
+            [
+              "11",
+              "[\"'summer'\"]"
+            ],
+            [
+              "11",
+              "['Error']"
+            ],
+            [
+              "11",
+              "['summer']"
+            ]
+          ],
+          "['0']": [
+            [
+              "11",
+              "['Error']"
+            ],
+            [
+              "11",
+              "['Function']"
+            ],
+            [
+              "11",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['c']"
+            ],
+            [
+              "11",
+              "['summer']"
+            ],
+            [
+              "4",
+              "['88']"
+            ],
+            [
+              "4",
+              "['Function']"
+            ],
+            [
+              "6",
+              "['1']"
+            ]
+          ],
+          "['1']": [
+            [
+              "11",
+              "['c']"
+            ],
+            [
+              "4",
+              "['88']"
+            ]
+          ],
+          "['2']": [
+            [
+              "11",
+              "['c']"
+            ]
+          ],
+          "['3']": [
+            [
+              "11",
+              "['c']"
+            ],
+            [
+              "4",
+              "['88']"
+            ]
+          ],
+          "['4, dog']": [
+            [
+              "1",
+              "['Function']"
+            ],
+            [
+              "11",
+              "[\"b(4, 'dog')\"]"
+            ],
+            [
+              "11",
+              "['Error']"
+            ],
+            [
+              "11",
+              "['Function']"
+            ],
+            [
+              "11",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['c']"
+            ],
+            [
+              "11",
+              "['summer']"
+            ],
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "3",
+              "['88']"
+            ]
+          ],
+          "['Error']": [
+            [
+              "0",
+              "['error']"
+            ],
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "[\"'dog'\"]"
+            ],
+            [
+              "11",
+              "[\"4, 'dog'\"]"
+            ],
+            [
+              "11",
+              "['\"summer\"']"
+            ],
+            [
+              "11",
+              "['0']"
+            ],
+            [
+              "11",
+              "['4, dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "5",
+              "['Error']"
+            ],
+            [
+              "6",
+              "['2']"
+            ],
+            [
+              "8",
+              "['8']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "[\"'dog'\"]"
+            ],
+            [
+              "11",
+              "[\"4, 'dog'\"]"
+            ],
+            [
+              "11",
+              "['0']"
+            ],
+            [
+              "11",
+              "['4, dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "5",
+              "['Error']"
+            ],
+            [
+              "5",
+              "['Nothing']"
+            ],
+            [
+              "6",
+              "['2']"
+            ],
+            [
+              "8",
+              "['8']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "0",
+              "['error']"
+            ],
+            [
+              "10",
+              "[\"'summer'\"]"
+            ],
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "[\"'dog'\"]"
+            ],
+            [
+              "11",
+              "[\"4, 'dog'\"]"
+            ],
+            [
+              "11",
+              "['0']"
+            ],
+            [
+              "11",
+              "['4, dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "2",
+              "['Function']"
+            ],
+            [
+              "5",
+              "['Error']"
+            ],
+            [
+              "6",
+              "['2']"
+            ],
+            [
+              "8",
+              "['8']"
+            ]
+          ],
+          "['b']": [
+            [
+              "10",
+              "['Function']"
+            ],
+            [
+              "10",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "[\"'summer'\"]"
+            ],
+            [
+              "11",
+              "[\"b(4, 'dog')\"]"
+            ],
+            [
+              "11",
+              "['Error']"
+            ],
+            [
+              "11",
+              "['Function']"
+            ],
+            [
+              "11",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['c']"
+            ],
+            [
+              "11",
+              "['summer']"
+            ],
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "3",
+              "['88']"
+            ],
+            [
+              "4",
+              "['88']"
+            ],
+            [
+              "4",
+              "['Error']"
+            ],
+            [
+              "4",
+              "['Nothing']"
+            ],
+            [
+              "6",
+              "['1']"
+            ],
+            [
+              "6",
+              "['Function']"
+            ],
+            [
+              "7",
+              "['15']"
+            ],
+            [
+              "9",
+              "['summer']"
+            ]
+          ],
+          "['b(4, dog)']": [
+            [
+              "11",
+              "['c']"
+            ]
+          ],
+          "['c']": [
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "[\"'c'\"]"
+            ],
+            [
+              "11",
+              "[\"'dog'\"]"
+            ],
+            [
+              "11",
+              "['0']"
+            ],
+            [
+              "11",
+              "['1']"
+            ],
+            [
+              "11",
+              "['2']"
+            ],
+            [
+              "11",
+              "['3']"
+            ],
+            [
+              "11",
+              "['4, dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "11",
+              "['b(4, dog)']"
+            ],
+            [
+              "6",
+              "['2']"
+            ]
+          ],
+          "['summer']": [
+            [
+              "0",
+              "['None']"
+            ],
+            [
+              "0",
+              "['error']"
+            ],
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "['\"summer\"']"
+            ],
+            [
+              "11",
+              "['0']"
+            ],
+            [
+              "11",
+              "['4, dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "2",
+              "['Function']"
+            ],
+            [
+              "6",
+              "['2']"
+            ],
+            [
+              "7",
+              "['225']"
+            ],
+            [
+              "8",
+              "['8']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": [
+          "['4']",
+          "['dog']"
+        ]
+      },
+      ">>> t = lambda f: lambda x: f(f(f(x)))\n>>> s = lambda x: x + 1\n>>> t(s)(0)\n3\n>>> bar = lambda y: lambda x: pow(x, y)\n>>> bar()(15)\nError\n>>> foo = lambda: 32\n>>> foobar = lambda x, y: x // y\n>>> a = lambda x: foobar(foo(), bar(4)(x))\n>>> a(2)\nLOCKED_ANSWER\n>>> b = lambda x, y: print('summer')\nLOCKED_ANSWER\n>>> c = b(4, 'dog')\nLOCKED_ANSWER\n>>> print(c)\nLOCKED_ANSWER\n": {
+        "assessNum": "8",
+        "dictWA2DictInfo": {
+          "['16']": {
+            "dictTag2ConceptMsg": {
+              "sloppyarith-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "sloppyarith": "30"
+            },
+            "lstMisU": [
+              "sloppyarith",
+              "sloppyarith-sloppy"
+            ]
+          },
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "fncallneedsarg-evalfncall": "7"
+            },
+            "dictTag2KIMsg": {
+              "fncallneedsarg": "28"
+            },
+            "lstMisU": [
+              "fncallneedsarg",
+              "fncallneedsarg-evalfncall"
+            ]
+          },
+          "['Function']": {
+            "dictTag2ConceptMsg": {
+              "lambdacallexprnotcall-lambdacallexpr": "11"
+            },
+            "dictTag2KIMsg": {
+              "lambdacallexprnotcall": "29"
+            },
+            "lstMisU": [
+              "lambdacallexprnotcall",
+              "lambdacallexprnotcall-lambdacallexpr"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "lambdacallexprnotcall-lambdacallexpr": "11",
+              "rtnvalnotdisp-pyinterpreterdisplaynothing": "14"
+            },
+            "dictTag2KIMsg": {
+              "lambdacallexprnotcall": "29",
+              "rtnvalnotdisp": "19"
+            },
+            "lstMisU": [
+              "lambdacallexprnotcall",
+              "lambdacallexprnotcall-lambdacallexpr",
+              "rtnvalnotdisp",
+              "rtnvalnotdisp-pyinterpreterdisplaynothing"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['0']": [
+            [
+              "8",
+              "['Error']"
+            ]
+          ],
+          "['1']": [
+            [
+              "8",
+              "['Nothing']"
+            ]
+          ],
+          "['16']": [
+            [
+              "8",
+              "['32']"
+            ],
+            [
+              "8",
+              "['8']"
+            ]
+          ],
+          "['32']": [
+            [
+              "10",
+              "['Function']"
+            ],
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "3",
+              "['88']"
+            ],
+            [
+              "8",
+              "['16']"
+            ],
+            [
+              "8",
+              "['Error']"
+            ],
+            [
+              "8",
+              "['Function']"
+            ],
+            [
+              "8",
+              "['Nothing']"
+            ]
+          ],
+          "['8']": [
+            [
+              "10",
+              "['Function']"
+            ],
+            [
+              "11",
+              "['Error']"
+            ],
+            [
+              "11",
+              "['Function']"
+            ],
+            [
+              "11",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['summer']"
+            ],
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "3",
+              "['88']"
+            ],
+            [
+              "6",
+              "['1']"
+            ],
+            [
+              "8",
+              "['16']"
+            ],
+            [
+              "8",
+              "['Error']"
+            ],
+            [
+              "8",
+              "['Function']"
+            ],
+            [
+              "8",
+              "['Nothing']"
+            ],
+            [
+              "9",
+              "['Function']"
+            ]
+          ],
+          "['Error']": [
+            [
+              "10",
+              "[\"'summer'\"]"
+            ],
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "8",
+              "['32']"
+            ],
+            [
+              "8",
+              "['8']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "8",
+              "['32']"
+            ],
+            [
+              "8",
+              "['8']"
+            ],
+            [
+              "8",
+              "['None']"
+            ]
+          ],
+          "['None']": [
+            [
+              "8",
+              "['Function']"
+            ],
+            [
+              "8",
+              "['Nothing']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "8",
+              "['1']"
+            ],
+            [
+              "8",
+              "['32']"
+            ],
+            [
+              "8",
+              "['8']"
+            ],
+            [
+              "8",
+              "['None']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": [
+          "['4']"
+        ]
+      },
+      ">>> t = lambda f: lambda x: f(f(f(x)))\n>>> s = lambda x: x + 1\n>>> t(s)(0)\n3\n>>> bar = lambda y: lambda x: pow(x, y)\n>>> bar()(15)\nLOCKED_ANSWER\n>>> foo = lambda: 32\n>>> foobar = lambda x, y: x // y\n>>> a = lambda x: foobar(foo(), bar(4)(x))\n>>> a(2)\nLOCKED_ANSWER\n>>> b = lambda x, y: print('summer')\nLOCKED_ANSWER\n>>> c = b(4, 'dog')\nLOCKED_ANSWER\n>>> print(c)\nLOCKED_ANSWER\n": {
+        "assessNum": "7",
+        "dictWA2DictInfo": {
+          "['0']": {
+            "dictTag2ConceptMsg": {
+              "mismatchargnoerr-evalfncall": "7"
+            },
+            "dictTag2KIMsg": {
+              "mismatchargnoerr": "20"
+            },
+            "lstMisU": [
+              "mismatchargnoerr",
+              "mismatchargnoerr-evalfncall"
+            ]
+          },
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "mismatchargnoerr-evalfncall": "7",
+              "varevalisemptyval-evalvar": "2"
+            },
+            "dictTag2KIMsg": {
+              "mismatchargnoerr": "20",
+              "varevalisemptyval": "27"
+            },
+            "lstMisU": [
+              "mismatchargnoerr",
+              "mismatchargnoerr-evalfncall",
+              "varevalisemptyval",
+              "varevalisemptyval-evalvar"
+            ]
+          },
+          "['15']": {
+            "dictTag2ConceptMsg": {
+              "mismatchargnoerr-evalfncall": "7"
+            },
+            "dictTag2KIMsg": {
+              "mismatchargnoerr": "20"
+            },
+            "lstMisU": [
+              "mismatchargnoerr",
+              "mismatchargnoerr-evalfncall"
+            ]
+          },
+          "['Function']": {
+            "dictTag2ConceptMsg": {
+              "mismatchargnoerr-evalfncall": "7"
+            },
+            "dictTag2KIMsg": {
+              "mismatchargnoerr": "20"
+            },
+            "lstMisU": [
+              "mismatchargnoerr",
+              "mismatchargnoerr-evalfncall"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "mismatchargnoerr-evalfncall": "7"
+            },
+            "dictTag2KIMsg": {
+              "mismatchargnoerr": "20"
+            },
+            "lstMisU": [
+              "mismatchargnoerr",
+              "mismatchargnoerr-evalfncall"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['0']": [
+            [
+              "7",
+              "['225']"
+            ],
+            [
+              "7",
+              "['3']"
+            ],
+            [
+              "7",
+              "['None']"
+            ]
+          ],
+          "['1']": [
+            [
+              "3",
+              "[\"'88'\"]"
+            ],
+            [
+              "7",
+              "['225']"
+            ],
+            [
+              "7",
+              "['3']"
+            ],
+            [
+              "7",
+              "['5']"
+            ]
+          ],
+          "['15']": [
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "2",
+              "['Function']"
+            ],
+            [
+              "4",
+              "['0']"
+            ],
+            [
+              "6",
+              "['2']"
+            ],
+            [
+              "7",
+              "['225']"
+            ]
+          ],
+          "['225']": [
+            [
+              "11",
+              "['summer']"
+            ],
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "3",
+              "['88']"
+            ],
+            [
+              "7",
+              "['0']"
+            ],
+            [
+              "7",
+              "['1']"
+            ],
+            [
+              "7",
+              "['15']"
+            ]
+          ],
+          "['3']": [
+            [
+              "7",
+              "['0']"
+            ],
+            [
+              "7",
+              "['1']"
+            ]
+          ],
+          "['5']": [
+            [
+              "7",
+              "['1']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "6",
+              "['2']"
+            ]
+          ],
+          "['None']": [
+            [
+              "7",
+              "['0']"
+            ],
+            [
+              "9",
+              "['None']"
+            ]
+          ],
+          "['error']": [
+            [
+              "3",
+              "['123']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": []
+      },
+      ">>> t = lambda f: lambda x: f(f(f(x)))\n>>> s = lambda x: x + 1\n>>> t(s)(0)\nLOCKED_ANSWER\n>>> bar = lambda y: lambda x: pow(x, y)\n>>> bar()(15)\nLOCKED_ANSWER\n>>> foo = lambda: 32\n>>> foobar = lambda x, y: x // y\n>>> a = lambda x: foobar(foo(), bar(4)(x))\n>>> a(2)\nLOCKED_ANSWER\n>>> b = lambda x, y: print('summer')\nLOCKED_ANSWER\n>>> c = b(4, 'dog')\nLOCKED_ANSWER\n>>> print(c)\nLOCKED_ANSWER\n": {
+        "assessNum": "6",
+        "dictWA2DictInfo": {
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "composedfnisonefn-evalcomposedfn": "6",
+              "composedfnisonefn-evalfncall": "7"
+            },
+            "dictTag2KIMsg": {
+              "composedfnisonefn": "26"
+            },
+            "lstMisU": [
+              "composedfnisonefn",
+              "composedfnisonefn-evalcomposedfn",
+              "composedfnisonefn-evalfncall"
+            ]
+          },
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "stackedcallsiserr-evalstackedfncall": "8"
+            },
+            "dictTag2KIMsg": {
+              "stackedcallsiserr": "23"
+            },
+            "lstMisU": [
+              "stackedcallsiserr",
+              "stackedcallsiserr-evalstackedfncall"
+            ]
+          },
+          "['Function']": {
+            "dictTag2ConceptMsg": {
+              "lambdacallexprnotcall-lambdacallexpr": "11",
+              "lambdamisidentifyrtnval-lambdacallexpr": "11",
+              "lambdamisidentifyrtnval-sloppy": "5"
+            },
+            "dictTag2KIMsg": {
+              "lambdacallexprnotcall": "24",
+              "lambdamisidentifyrtnval": "21"
+            },
+            "lstMisU": [
+              "lambdacallexprnotcall",
+              "lambdacallexprnotcall-lambdacallexpr",
+              "lambdamisidentifyrtnval",
+              "lambdamisidentifyrtnval-lambdacallexpr",
+              "lambdamisidentifyrtnval-sloppy"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "lambdacallexprnotcall-lambdacallexpr": "11",
+              "rtnvalnotdisp-pyinterpreterdisplaynothing": "14"
+            },
+            "dictTag2KIMsg": {
+              "lambdacallexprnotcall": "24",
+              "rtnvalnotdisp": "19"
+            },
+            "lstMisU": [
+              "lambdacallexprnotcall",
+              "lambdacallexprnotcall-lambdacallexpr",
+              "rtnvalnotdisp",
+              "rtnvalnotdisp-pyinterpreterdisplaynothing"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['1']": [
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "10",
+              "['dog']"
+            ],
+            [
+              "11",
+              "['0']"
+            ],
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "6",
+              "['2']"
+            ],
+            [
+              "8",
+              "['8']"
+            ],
+            [
+              "9",
+              "['x']"
+            ]
+          ],
+          "['2']": [
+            [
+              "11",
+              "['Error']"
+            ],
+            [
+              "11",
+              "['Function']"
+            ],
+            [
+              "11",
+              "['Nothing']"
+            ],
+            [
+              "11",
+              "['c']"
+            ],
+            [
+              "11",
+              "['summer']"
+            ],
+            [
+              "3",
+              "['123']"
+            ],
+            [
+              "3",
+              "['88']"
+            ],
+            [
+              "4",
+              "['88']"
+            ],
+            [
+              "4",
+              "['Error']"
+            ],
+            [
+              "4",
+              "['Function']"
+            ],
+            [
+              "4",
+              "['Nothing']"
+            ],
+            [
+              "6",
+              "['1']"
+            ],
+            [
+              "6",
+              "['Error']"
+            ],
+            [
+              "6",
+              "['Function']"
+            ],
+            [
+              "6",
+              "['Nothing']"
+            ],
+            [
+              "7",
+              "['15']"
+            ],
+            [
+              "7",
+              "['Function']"
+            ],
+            [
+              "9",
+              "['Function']"
+            ]
+          ],
+          "['4']": [
+            [
+              "3",
+              "['123']"
+            ]
+          ],
+          "['Error']": [
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "5",
+              "['Error']"
+            ],
+            [
+              "5",
+              "['Nothing']"
+            ],
+            [
+              "6",
+              "['2']"
+            ],
+            [
+              "6",
+              "['x + 1']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "11",
+              "['b']"
+            ],
+            [
+              "5",
+              "['Error']"
+            ],
+            [
+              "5",
+              "['Nothing']"
+            ],
+            [
+              "6",
+              "['2']"
+            ],
+            [
+              "6",
+              "['s']"
+            ]
+          ],
+          "['Nothing']": [
+            [
+              "10",
+              "['4']"
+            ],
+            [
+              "5",
+              "['Error']"
+            ],
+            [
+              "5",
+              "['Nothing']"
+            ],
+            [
+              "6",
+              "['2']"
+            ],
+            [
+              "6",
+              "['s']"
+            ],
+            [
+              "6",
+              "['x + 1']"
+            ],
+            [
+              "6",
+              "['x']"
+            ]
+          ],
+          "['s']": [
+            [
+              "6",
+              "['Function']"
+            ],
+            [
+              "6",
+              "['Nothing']"
+            ]
+          ],
+          "['x + 1']": [
+            [
+              "6",
+              "['Error']"
+            ],
+            [
+              "6",
+              "['Nothing']"
+            ]
+          ],
+          "['x']": [
+            [
+              "6",
+              "['Nothing']"
+            ]
+          ]
+        },
+        "lstWrongAnsWatch": [
+          "['0']"
+        ]
+      }
+    },
+    "dictAssessNum2AssessId": {
+      "0": ">>> lambda x: x\nLOCKED_ANSWER\n>>> a = lambda x: x\n>>> a(5)\nLOCKED_ANSWER\n>>> b = lambda: 3\n>>> b()\nLOCKED_ANSWER\n>>> c = lambda x: lambda: print('123')\n>>> c(88)\nLOCKED_ANSWER\n>>> c(88)()\nLOCKED_ANSWER\n>>> d = lambda f: f(4)\n>>> def square(x):\n...     return x * x\n>>> d(square)\nLOCKED_ANSWER\n",
+      "1": ">>> lambda x: x\nFunction\n>>> a = lambda x: x\n>>> a(5)\nLOCKED_ANSWER\n>>> b = lambda: 3\n>>> b()\nLOCKED_ANSWER\n>>> c = lambda x: lambda: print('123')\n>>> c(88)\nLOCKED_ANSWER\n>>> c(88)()\nLOCKED_ANSWER\n>>> d = lambda f: f(4)\n>>> def square(x):\n...     return x * x\n>>> d(square)\nLOCKED_ANSWER\n",
+      "10": ">>> t = lambda f: lambda x: f(f(f(x)))\n>>> s = lambda x: x + 1\n>>> t(s)(0)\n3\n>>> bar = lambda y: lambda x: pow(x, y)\n>>> bar()(15)\nError\n>>> foo = lambda: 32\n>>> foobar = lambda x, y: x // y\n>>> a = lambda x: foobar(foo(), bar(4)(x))\n>>> a(2)\n2\n>>> b = lambda x, y: print('summer')\nNothing\n>>> c = b(4, 'dog')\nLOCKED_ANSWER\n>>> print(c)\nLOCKED_ANSWER\n",
+      "11": ">>> t = lambda f: lambda x: f(f(f(x)))\n>>> s = lambda x: x + 1\n>>> t(s)(0)\n3\n>>> bar = lambda y: lambda x: pow(x, y)\n>>> bar()(15)\nError\n>>> foo = lambda: 32\n>>> foobar = lambda x, y: x // y\n>>> a = lambda x: foobar(foo(), bar(4)(x))\n>>> a(2)\n2\n>>> b = lambda x, y: print('summer')\nNothing\n>>> c = b(4, 'dog')\nsummer\n>>> print(c)\nLOCKED_ANSWER\n",
+      "12": ">>> def first(x):\n...     x += 8\n...     def second(y):\n...         print('second')\n...         return x + y\n...     print('first')\n...     return second\n>>> f = first(15)\nLOCKED_ANSWER\n>>> f\nLOCKED_ANSWER\n>>> f(16)\nLOCKED_ANSWER\nLOCKED_ANSWER\n",
+      "13": ">>> def first(x):\n...     x += 8\n...     def second(y):\n...         print('second')\n...         return x + y\n...     print('first')\n...     return second\n>>> f = first(15)\nfirst\n>>> f\nLOCKED_ANSWER\n>>> f(16)\nLOCKED_ANSWER\nLOCKED_ANSWER\n",
+      "14": ">>> def first(x):\n...     x += 8\n...     def second(y):\n...         print('second')\n...         return x + y\n...     print('first')\n...     return second\n>>> f = first(15)\nfirst\n>>> f\nFunction\n>>> f(16)\nLOCKED_ANSWER\nLOCKED_ANSWER\n",
+      "15": ">>> def even(f):\n...     def odd(x):\n...         if x < 0:\n...             return f(-x)\n...         return f(x)\n...     return odd\n>>> stevphen = lambda x: x\n>>> stewart = even(stevphen)\n>>> stewart\nLOCKED_ANSWER\n>>> stewart(61)\nLOCKED_ANSWER\n>>> stewart(-4)\nLOCKED_ANSWER\n",
+      "16": ">>> def even(f):\n...     def odd(x):\n...         if x < 0:\n...             return f(-x)\n...         return f(x)\n...     return odd\n>>> stevphen = lambda x: x\n>>> stewart = even(stevphen)\n>>> stewart\nFunction\n>>> stewart(61)\nLOCKED_ANSWER\n>>> stewart(-4)\nLOCKED_ANSWER\n",
+      "17": ">>> def even(f):\n...     def odd(x):\n...         if x < 0:\n...             return f(-x)\n...         return f(x)\n...     return odd\n>>> stevphen = lambda x: x\n>>> stewart = even(stevphen)\n>>> stewart\nFunction\n>>> stewart(61)\n61\n>>> stewart(-4)\nLOCKED_ANSWER\n",
+      "2": ">>> lambda x: x\nFunction\n>>> a = lambda x: x\n>>> a(5)\n5\n>>> b = lambda: 3\n>>> b()\nLOCKED_ANSWER\n>>> c = lambda x: lambda: print('123')\n>>> c(88)\nLOCKED_ANSWER\n>>> c(88)()\nLOCKED_ANSWER\n>>> d = lambda f: f(4)\n>>> def square(x):\n...     return x * x\n>>> d(square)\nLOCKED_ANSWER\n",
+      "3": ">>> lambda x: x\nFunction\n>>> a = lambda x: x\n>>> a(5)\n5\n>>> b = lambda: 3\n>>> b()\n3\n>>> c = lambda x: lambda: print('123')\n>>> c(88)\nLOCKED_ANSWER\n>>> c(88)()\nLOCKED_ANSWER\n>>> d = lambda f: f(4)\n>>> def square(x):\n...     return x * x\n>>> d(square)\nLOCKED_ANSWER\n",
+      "4": ">>> lambda x: x\nFunction\n>>> a = lambda x: x\n>>> a(5)\n5\n>>> b = lambda: 3\n>>> b()\n3\n>>> c = lambda x: lambda: print('123')\n>>> c(88)\nFunction\n>>> c(88)()\nLOCKED_ANSWER\n>>> d = lambda f: f(4)\n>>> def square(x):\n...     return x * x\n>>> d(square)\nLOCKED_ANSWER\n",
+      "5": ">>> lambda x: x\nFunction\n>>> a = lambda x: x\n>>> a(5)\n5\n>>> b = lambda: 3\n>>> b()\n3\n>>> c = lambda x: lambda: print('123')\n>>> c(88)\nFunction\n>>> c(88)()\n123\n>>> d = lambda f: f(4)\n>>> def square(x):\n...     return x * x\n>>> d(square)\nLOCKED_ANSWER\n",
+      "6": ">>> t = lambda f: lambda x: f(f(f(x)))\n>>> s = lambda x: x + 1\n>>> t(s)(0)\nLOCKED_ANSWER\n>>> bar = lambda y: lambda x: pow(x, y)\n>>> bar()(15)\nLOCKED_ANSWER\n>>> foo = lambda: 32\n>>> foobar = lambda x, y: x // y\n>>> a = lambda x: foobar(foo(), bar(4)(x))\n>>> a(2)\nLOCKED_ANSWER\n>>> b = lambda x, y: print('summer')\nLOCKED_ANSWER\n>>> c = b(4, 'dog')\nLOCKED_ANSWER\n>>> print(c)\nLOCKED_ANSWER\n",
+      "7": ">>> t = lambda f: lambda x: f(f(f(x)))\n>>> s = lambda x: x + 1\n>>> t(s)(0)\n3\n>>> bar = lambda y: lambda x: pow(x, y)\n>>> bar()(15)\nLOCKED_ANSWER\n>>> foo = lambda: 32\n>>> foobar = lambda x, y: x // y\n>>> a = lambda x: foobar(foo(), bar(4)(x))\n>>> a(2)\nLOCKED_ANSWER\n>>> b = lambda x, y: print('summer')\nLOCKED_ANSWER\n>>> c = b(4, 'dog')\nLOCKED_ANSWER\n>>> print(c)\nLOCKED_ANSWER\n",
+      "8": ">>> t = lambda f: lambda x: f(f(f(x)))\n>>> s = lambda x: x + 1\n>>> t(s)(0)\n3\n>>> bar = lambda y: lambda x: pow(x, y)\n>>> bar()(15)\nError\n>>> foo = lambda: 32\n>>> foobar = lambda x, y: x // y\n>>> a = lambda x: foobar(foo(), bar(4)(x))\n>>> a(2)\nLOCKED_ANSWER\n>>> b = lambda x, y: print('summer')\nLOCKED_ANSWER\n>>> c = b(4, 'dog')\nLOCKED_ANSWER\n>>> print(c)\nLOCKED_ANSWER\n",
+      "9": ">>> t = lambda f: lambda x: f(f(f(x)))\n>>> s = lambda x: x + 1\n>>> t(s)(0)\n3\n>>> bar = lambda y: lambda x: pow(x, y)\n>>> bar()(15)\nError\n>>> foo = lambda: 32\n>>> foobar = lambda x, y: x // y\n>>> a = lambda x: foobar(foo(), bar(4)(x))\n>>> a(2)\n2\n>>> b = lambda x, y: print('summer')\nLOCKED_ANSWER\n>>> c = b(4, 'dog')\nLOCKED_ANSWER\n>>> print(c)\nLOCKED_ANSWER\n"
+    },
+    "dictId2Msg": {
+      "0": "An assignment statement first evaluates the expression on the right side of the\n|=| operator to get a value. This value is then bound to the name on the left\nside of the |=| in the first frame in the current environment. For example,\nwhile |a = 0| displays nothing, |a == 0| displays |True|. Notice that Python\ndistinguishes assignment |=| from equality comparison |==|.",
+      "1": "An expression is a combination of values, variables, operators, and functions\nthat a programming language interprets and evaluates to the simplest value.\nExpression are evaluated upon hitting \"Enter\" or \"Return\". Primitive values\n(e.g. |1| or |\"hello\"|) evaluate to themselves, while expressions are evaluated\nbased on the values, variables, operators, and functions it is made up of.",
+      "10": "A function in Python can be passed around as a value without executing the body.\nWhen the Python interpreter displays a function it uses the format: \n|<function FUNCTION_NAME at LOCATION>|. Additionally, Lambda functions use the \nformat |<function <lambda> at LOCATION>|.",
+      "11": "A lambda is defined as follows: |lambda PARAMETERS: RETURN_VAL|. When a lambda\nis called, the arguments are assigned to the PARAMETERS in the lambda's frame.\nThen the RETURN_VAL is evaluated and returned.",
+      "12": "A lambda is defined as follows: |lambda PARAMETERS: RETURN_VAL|. PARAMETERS is 0\nor more parameters and RETURN_VAL is the expression that is evaluated and\nreturned when the lambda is called.",
+      "13": "Python will only display |None| when the |print()| displays it. This is because\nthe print function converts the value of its argument into a string and displays\nthe content of that string.",
+      "14": "The Python interpreter evaluates an expression and displays its output\nimmediately. Evaluations that results in |None| and variable assignments do not\nhave an output, and thus for these statements nothing is displayed in the\ninterpreter.",
+      "15": "Typo?",
+      "16": "What does the interpreter display when a function is created?",
+      "17": "Isn't this calling the function?",
+      "18": "What does this lambda function return when called?",
+      "19": "What about displaying the return value?",
+      "2": "A variable is evaluated to the value it was assigned. If it was not assigned\nprior to being evaluated a NameError is raised.",
+      "20": "Look carefully at the parameters for the function. What kind of arguments does\nthe function call need?",
+      "21": "Look more closely at the lambda's return value.",
+      "22": "Is this printing or returning the string?",
+      "23": "What are the latter parentheses doing? Remember the steps to evaluate a\nfunction call.",
+      "24": "Isn't this calling the returned function?",
+      "25": "Hmm... Missed a |print()|?",
+      "26": "Be careful about what each function call receives as an argument, what each\nfunction call returns, and in what order this process happens.",
+      "27": "If the value of a variable cannot be found, what happens?",
+      "28": "Look carefully at the parameters for each function. What kind of arguments does\neach function call need?",
+      "29": "Make sure to evaluate each function fully.",
+      "3": "The function |print()| implicitly returns the value of |None|. The Python\ninterpretor does not display |None| unless it is explicitly forced to do so.",
+      "30": "Hmm... The math doesn't seem to add up.",
+      "31": "Should this assignment statement display a value?",
+      "32": "Does defining a function evaluate it?",
+      "33": "Double check the instructions?",
+      "34": "What is |print()|'s return value?",
+      "35": "What is the difference between printing and displaying |None|?",
+      "36": "Can't the expression be evaluated more?",
+      "37": "Hmm... What is the variable bound to?",
+      "38": "If f is a function, what is the difference between |f| and |f()|?",
+      "39": "Look closely at the assignment statement. What did the function call return?",
+      "4": "|print()| takes its arguments' values and displays them separated by spaces.\nNote that a string's value is the text between the quotes, thus when printing\nthe quotes are not displayed. For example, printing the string \"Hello World\"\nwill result in the interpreter displaying Hello World (no quotes).",
+      "40": "Is the variable really bound to |None|?",
+      "41": "Double check the variable's value for each frame?",
+      "42": "Double check the variable's value?",
+      "43": "Hmm... Did you miss a line of code?",
+      "44": "Double check the if condition?",
+      "5": "Try:\n1) Reading the code or instructions more carefully,\n2) Writing out the variable's values, or\n3) Drawing an environment diagram.",
+      "6": "A function is structured as |OPERATOR(OPERANDS)|. Each OPERAND in OPERANDS must\nbe fully evaluated before applying the OPERATOR to them. When the OPERAND is\nanother function call, this is referred to as function composition. For example,\nto evaluate |fizz(foo(bar(1)))| we first evaluate |bar(1)| as an argument for\n|foo(...)| which in turn is evaluated to become the argument for |fizz(...)|.",
+      "7": "A function is structured as |OPERATOR(OPERANDS)|, where OPERANDS is 0 or more\nOPERANDs. To evaluate the function: (1) evaluate the OPERATOR, (2) evaluate each\nOPERAND, and (3) apply the OPERATOR to the OPERANDs.\n\nFor example, in |pow(a, 2)|, where |a = 3|, (1) |pow| is evaluated to get the\nfunction value, (2) |a| evaluates to |3| and |2| is |2|, (3) apply the value of\n|pow| to the two arguments |3| and |2| to get the value |9|.",
+      "8": "When a function returns another function, a quick way to call the returned\nfunction is to use another set of parentheses. These parentheses have the\nreturned function's arguments. For example, |foo(23)(1, 4)| where |(1, 4)| is\npassed through as the arguments for the function that |foo()| returns.",
+      "9": "To find the value bound to a variable name |x| Python first looks in the current\nlocal frame environment. If no |x| exists, Python checks next in the parent\nframe, the next parent's frame, so forth until it reaches the Global Frame. If\n|x| is not defined in the Global Frame, a NameError is raised."
+    },
+    "dictTg2Func": {
+      "0": "none",
+      "1": "tag2ConceptMsg",
+      "2": "tag2KIMsg",
+      "3": "tag2ConceptMsg",
+      "4": "tag2KIMsg"
+    },
+    "wrongAnsThresh": 2
+  }
+}
