@@ -31,7 +31,7 @@ def roll_dice(num_rolls, dice=six_sided):
         else:
             sum += curr
         num_rolls -= 1
-    if have_num_one == True:
+    if have_num_one:
         return 1
     else:
         return sum
@@ -284,6 +284,9 @@ def max_scoring_num_rolls(dice=six_sided, num_samples=1000):
     >>> dice = make_test_dice(1, 6)
     >>> max_scoring_num_rolls(dice)
     1
+    >>> dice = make_test_dice(1, 2, 2, 2, 2, 2, 2, 2)
+    >>> max_scoring_num_rolls(dice)
+    4
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
@@ -385,14 +388,20 @@ def final_strategy(score, opponent_score):
             if opponent_score - score > 10:
                 return 0
             else:
-                return 4
-            """   n = 0
+                n = 0
                 while (score + n) < opponent_score // 2:
                     if opponent_score % (score + n) == 0:
                         if 1 <= n <= 6:
                             return 1
+                        elif 7 <= n <= 8:
+                            return 2
+                        elif 9 <= n <= 12:
+                            return 3
                         else:
-                            return 4"""
+                            return 4
+                    n += 1
+                else:
+                    return 4
         elif opponent_score >= 90 and opponent_score - score > 50:
             return 10
         else:
