@@ -1,0 +1,621 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}pre { word-wrap:break-word; }pre { white-space:pre-wrap; }</style><div id="google-cache-hdr"  dir=ltr><div>这是 <a href="https://cs61a.org/disc/disc07_sol.pdf" dir="ltr">https://cs61a.org/disc/disc07_sol.pdf</a> 的 HTML 档。<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> 在网路漫游时会自动将档案转换成 HTML 网页来储存。</div></div><div style="position:relative;margin:8px;">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX-1.40.18">
+<meta name="CreationDate" content="D:20180107084429Z">
+<meta name="ModDate" content="D:20180107084429Z">
+<meta name="Fullbanner" content="This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) kpathsea version 6.2.3">
+<title>CS 61A Scheme Fall 2017 1 Introduction 2 Primitives</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:258;left:81"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:258;left:537"><nobr>Scheme</nobr></div>
+<div style="position:absolute;top:294;left:81"><nobr>Fall 2017</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:301;left:377"><nobr>Discussion 7: October 25, 2017 <font color="#ff0000" style="font-size:19px">Solutions</font></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:363;left:81"><nobr>1 Introduction</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:417;left:81"><nobr>In the next part of the course, we will be working with the Scheme programming</nobr></div>
+<div style="position:absolute;top:438;left:81"><nobr>language. In addition to learning how to write Scheme programs, we will eventually</nobr></div>
+<div style="position:absolute;top:460;left:81"><nobr>write a Scheme interpreter in Project 4!</nobr></div>
+<div style="position:absolute;top:490;left:81"><nobr>Scheme is a dialect of the Lisp programming language, a language dating back</nobr></div>
+<div style="position:absolute;top:512;left:81"><nobr>to 1958. The popularity of Scheme within the programming language community</nobr></div>
+<div style="position:absolute;top:533;left:81"><nobr>stems from its simplicity – in fact, previous versions of CS 61A were taught in the</nobr></div>
+<div style="position:absolute;top:555;left:81"><nobr>Scheme language.</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:598;left:81"><nobr>2 Primitives</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:651;left:81"><nobr>Scheme has a set of atomic primitive expressions. Atomic means that these expres-</nobr></div>
+<div style="position:absolute;top:673;left:81"><nobr>sions cannot be divided up.</nobr></div>
+<div style="position:absolute;top:706;left:81"><nobr>scm&gt; 123</nobr></div>
+<div style="position:absolute;top:728;left:81"><nobr>123</nobr></div>
+<div style="position:absolute;top:749;left:81"><nobr>scm&gt; 123.123</nobr></div>
+<div style="position:absolute;top:771;left:81"><nobr>123.123</nobr></div>
+<div style="position:absolute;top:792;left:81"><nobr>scm&gt; #t</nobr></div>
+<div style="position:absolute;top:814;left:81"><nobr>True</nobr></div>
+<div style="position:absolute;top:835;left:81"><nobr>scm&gt; #f</nobr></div>
+<div style="position:absolute;top:857;left:81"><nobr>False</nobr></div>
+<div style="position:absolute;top:897;left:81"><nobr>Unlike in Python, the only primitive in Scheme that is a false value is #f and its</nobr></div>
+<div style="position:absolute;top:919;left:81"><nobr>equivalents, false and False.</nobr></div>
+<div style="position:absolute;top:919;left:308"><nobr>The define special form defines variables and</nobr></div>
+<div style="position:absolute;top:940;left:81"><nobr>procedures by binding a value to a variable, just like the assignment statement in</nobr></div>
+<div style="position:absolute;top:962;left:81"><nobr>Python. When a variable is defined, the define special form returns a symbol of</nobr></div>
+<div style="position:absolute;top:983;left:81"><nobr>its name. A procedure is what we call a function in Scheme!</nobr></div>
+<div style="position:absolute;top:1014;left:81"><nobr>The syntax to define a variable and procedure are:</nobr></div>
+<div style="position:absolute;top:1040;left:103"><nobr>• (define &lt;variable name&gt; &lt;value&gt;)</nobr></div>
+<div style="position:absolute;top:1071;left:103"><nobr>• (define (&lt;function name&gt; &lt;parameters&gt;) &lt;function body&gt;)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1363;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1400;left:81"><nobr>2 Scheme</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:1432;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:1482;left:52"><nobr>2.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1479;left:81"><nobr>What would Scheme display?</nobr></div>
+<div style="position:absolute;top:1505;left:81"><nobr>scm&gt; (<b>define </b>a 1)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1560;left:81"><nobr>a</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1606;left:81"><nobr>scm&gt; a</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1660;left:81"><nobr>1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1706;left:81"><nobr>scm&gt; (<b>define </b>b a)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1761;left:81"><nobr>b</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1806;left:81"><nobr>scm&gt; b</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1861;left:81"><nobr>1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1907;left:81"><nobr>scm&gt; (<b>define </b>c a)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1961;left:81"><nobr>c</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2007;left:81"><nobr>scm&gt; c</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2062;left:81"><nobr>a</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:2121;left:81"><nobr>3 Call Expressions</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2175;left:81"><nobr>To call a function in Scheme, you first need a set of parentheses. Inside the paren-</nobr></div>
+<div style="position:absolute;top:2196;left:81"><nobr>theses, you specify an operator expression, then zero or more oprand subexpressions</nobr></div>
+<div style="position:absolute;top:2218;left:81"><nobr>(remember the spaces!).</nobr></div>
+<div style="position:absolute;top:2248;left:81"><nobr>Operators may be symbols, such as + and * or more complex expressions, as long</nobr></div>
+<div style="position:absolute;top:2270;left:81"><nobr>as they evaluate to procedure values.</nobr></div>
+<div style="position:absolute;top:2296;left:81"><nobr>scm&gt; (- 1 1)</nobr></div>
+<div style="position:absolute;top:2296;left:298"><nobr>; 1 - 1</nobr></div>
+<div style="position:absolute;top:2318;left:81"><nobr>0</nobr></div>
+<div style="position:absolute;top:2340;left:81"><nobr>scm&gt; (/ 8 4 2)</nobr></div>
+<div style="position:absolute;top:2340;left:298"><nobr>; 8 / 4 / 2</nobr></div>
+<div style="position:absolute;top:2361;left:81"><nobr>1</nobr></div>
+<div style="position:absolute;top:2383;left:81"><nobr>scm&gt; (* (+ 1 2) (+ 1 2))</nobr></div>
+<div style="position:absolute;top:2383;left:298"><nobr>; (1 + 2) * (1 + 2)</nobr></div>
+<div style="position:absolute;top:2404;left:81"><nobr>9</nobr></div>
+<div style="position:absolute;top:2447;left:81"><nobr>Evaluating a Scheme function call works just like Python:</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2551;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2588;left:539"><nobr>Scheme</nobr></div>
+<div style="position:absolute;top:2588;left:609"><nobr>3</nobr></div>
+<div style="position:absolute;top:2625;left:99"><nobr>1. Evaluate the operator (the first expression after the (), then evaluate each of</nobr></div>
+<div style="position:absolute;top:2646;left:118"><nobr>the operands.</nobr></div>
+<div style="position:absolute;top:2677;left:99"><nobr>2. Apply the operator to those evaluated operands.</nobr></div>
+<div style="position:absolute;top:2707;left:81"><nobr>When you evaluate (+ 1 2), you evaluate the + symbol, which is bound to a built-in</nobr></div>
+<div style="position:absolute;top:2729;left:81"><nobr>addition function. Then, you evaluate 1 and 2, which are primitives. Finally, you</nobr></div>
+<div style="position:absolute;top:2750;left:81"><nobr>apply the addition function to 1 and 2.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:2784;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:2834;left:52"><nobr>3.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2831;left:81"><nobr>What would Scheme display?</nobr></div>
+<div style="position:absolute;top:2857;left:81"><nobr>scm&gt; (+ 1)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2912;left:81"><nobr>1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2958;left:81"><nobr>scm&gt; (* 3)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3012;left:81"><nobr>3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3058;left:81"><nobr>scm&gt; (+ (* 3 3) (* 4 4))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3113;left:81"><nobr>25</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3159;left:81"><nobr>scm&gt; (<b>define </b>a (<b>define </b>b 3))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3213;left:81"><nobr>a</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3259;left:81"><nobr>scm&gt; a</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3314;left:81"><nobr>b</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3359;left:81"><nobr>scm&gt; b</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3414;left:81"><nobr>3</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:3473;left:81"><nobr>4 Special Forms</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3527;left:81"><nobr>There are certain expressions that look like function calls, but don’t follow the rule</nobr></div>
+<div style="position:absolute;top:3548;left:81"><nobr>for order of evaluation. These are called special forms. You’ve already seen one —</nobr></div>
+<div style="position:absolute;top:3566;left:81"><nobr>define, where the first argument, the variable name, doesn’t actually get evaluated</nobr></div>
+<div style="position:absolute;top:3591;left:81"><nobr>to a value.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3739;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3776;left:81"><nobr>4 Scheme</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:3808;left:81"><nobr>4.1 If Expression</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3855;left:81"><nobr>Another common special form is the <b>if </b>form. An <b>if </b>expression looks like:</nobr></div>
+<div style="position:absolute;top:3872;left:239"><nobr>(<b>if </b>&lt;condition&gt; &lt;then&gt; &lt;<b>else</b>&gt;)</nobr></div>
+<div style="position:absolute;top:3907;left:81"><nobr>where &lt;condition&gt;, &lt;then&gt; and &lt;else&gt; are expressions. First, &lt;condition&gt; is evalu-</nobr></div>
+<div style="position:absolute;top:3928;left:81"><nobr>ated. If it evaluates to #t, then &lt;then&gt; is evaluated. Otherwise, &lt;else&gt; is evaluated.</nobr></div>
+<div style="position:absolute;top:3959;left:81"><nobr>Remember that only #f is a false-y value (also False for our interpreter); everything</nobr></div>
+<div style="position:absolute;top:3980;left:81"><nobr>else is truth-y.</nobr></div>
+<div style="position:absolute;top:4007;left:81"><nobr>scm&gt; (<b>if </b>(&lt; 4 5) 1 2)</nobr></div>
+<div style="position:absolute;top:4028;left:81"><nobr>1</nobr></div>
+<div style="position:absolute;top:4050;left:81"><nobr>scm&gt; (<b>if </b>#f (/ 1 0) 42)</nobr></div>
+<div style="position:absolute;top:4072;left:81"><nobr>42</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:4927;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4964;left:539"><nobr>Scheme</nobr></div>
+<div style="position:absolute;top:4964;left:609"><nobr>5</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:4996;left:81"><nobr>4.2 Boolean Operators</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5043;left:81"><nobr>Much like Python, Scheme also has the boolean operators <b>and</b>, <b>or</b>, and <b>not</b>. In addi-</nobr></div>
+<div style="position:absolute;top:5064;left:81"><nobr>tion, <b>and </b>and <b>or </b>are also special forms because they are short-circuiting operators.</nobr></div>
+<div style="position:absolute;top:5089;left:81"><nobr>scm&gt; (<b>and </b>25 32)</nobr></div>
+<div style="position:absolute;top:5110;left:81"><nobr>32</nobr></div>
+<div style="position:absolute;top:5132;left:81"><nobr>scm&gt; (<b>or </b>1 2)</nobr></div>
+<div style="position:absolute;top:5153;left:81"><nobr>1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:5201;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:5250;left:52"><nobr>4.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5247;left:81"><nobr>What would Scheme display?</nobr></div>
+<div style="position:absolute;top:5272;left:81"><nobr>scm&gt; (<b>if </b>(<b>or </b>#t (/ 1 0)) 1 (/ 1 0))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5324;left:81"><nobr>1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5368;left:81"><nobr>scm&gt; (<b>if </b>(&gt; 4 3) (+ 1 2 3 4) (+ 3 4 (* 3 2)))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5420;left:81"><nobr>10</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5463;left:81"><nobr>scm&gt; ((<b>if </b>(&lt; 4 3) + -) 4 100)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5516;left:81"><nobr>-96</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5559;left:81"><nobr>scm&gt; (<b>if </b>0 1 2)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5611;left:81"><nobr>1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:5660;left:81"><nobr>4.3 Lambdas and Defining Functions</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5707;left:81"><nobr>Scheme has lambdas too! The syntax is</nobr></div>
+<div style="position:absolute;top:5725;left:239"><nobr>(<b>lambda </b>(&lt;PARAMETERS&gt;) &lt;EXPR&gt;)</nobr></div>
+<div style="position:absolute;top:5759;left:81"><nobr>Like in Python, lambdas are function values. Also like in Python, when a lambda</nobr></div>
+<div style="position:absolute;top:5781;left:81"><nobr>expression is called in Scheme, a new frame is created where the parameters are</nobr></div>
+<div style="position:absolute;top:5802;left:81"><nobr>bound to the arguments passed in. Then, &lt;EXPR&gt; is evaluated in this new frame.</nobr></div>
+<div style="position:absolute;top:5824;left:81"><nobr>Note that &lt;EXPR&gt; is not evaluated until the lambda function is called.</nobr></div>
+<div style="position:absolute;top:5854;left:81"><nobr>Like in Python, lambda functions are also values! So you can do this to define</nobr></div>
+<div style="position:absolute;top:5876;left:81"><nobr>functions:</nobr></div>
+<div style="position:absolute;top:5900;left:81"><nobr>scm&gt; (define (square x) (* x x)) ; Create function square using define special form</nobr></div>
+<div style="position:absolute;top:5922;left:81"><nobr>square</nobr></div>
+<div style="position:absolute;top:5943;left:81"><nobr>scm&gt; (define square (<b>lambda </b>(x) (* x x))) ; Equivalently, bind the name square to a <b>lambda </b>function</nobr></div>
+<div style="position:absolute;top:5965;left:81"><nobr>square</nobr></div>
+<div style="position:absolute;top:5986;left:81"><nobr>scm&gt; (square 4)</nobr></div>
+<div style="position:absolute;top:6008;left:81"><nobr>16</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:6115;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=6><b>Page 6</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6152;left:81"><nobr>6 Scheme</nobr></div>
+<div style="position:absolute;top:6185;left:81"><nobr>let is another special form based around lambda. The structure of let is as follows:</nobr></div>
+<div style="position:absolute;top:6215;left:81"><nobr>(<b>let </b>( (&lt;SYMBOL1&gt; &lt;EXPR1&gt;)</nobr></div>
+<div style="position:absolute;top:6237;left:133"><nobr>...</nobr></div>
+<div style="position:absolute;top:6258;left:133"><nobr>(&lt;SYMBOLN&gt; &lt;EXPRN&gt;) )</nobr></div>
+<div style="position:absolute;top:6280;left:133"><nobr>&lt;BODY&gt; )</nobr></div>
+<div style="position:absolute;top:6323;left:81"><nobr>This binds the results of evaluating expressions 1 through n to their associated</nobr></div>
+<div style="position:absolute;top:6345;left:81"><nobr>symbols, creating temporary variables. Finally, the body of the let is evaluated.</nobr></div>
+<div style="position:absolute;top:6375;left:81"><nobr>This special form is really just equivalent to:</nobr></div>
+<div style="position:absolute;top:6402;left:81"><nobr>( (<b>lambda </b>(&lt;SYMBOL1&gt; ... &lt;SYMBOLN&gt;) &lt;BODY&gt;) &lt;EXPR1&gt; ... &lt;EXPRN&gt;)</nobr></div>
+<div style="position:absolute;top:6445;left:81"><nobr>Think of the temporary variables as being the parameters of a lambda function.</nobr></div>
+<div style="position:absolute;top:6466;left:81"><nobr>Then, the arguments are the values of the expressions, which we bind to the tem-</nobr></div>
+<div style="position:absolute;top:6488;left:81"><nobr>porary variables by calling the lambda.</nobr></div>
+<div style="position:absolute;top:6518;left:81"><nobr>Consider the following example:</nobr></div>
+<div style="position:absolute;top:6545;left:81"><nobr>(<b>let </b>((x 1)</nobr></div>
+<div style="position:absolute;top:6567;left:126"><nobr>(y 2))</nobr></div>
+<div style="position:absolute;top:6588;left:96"><nobr>(+ x y))</nobr></div>
+<div style="position:absolute;top:6631;left:81"><nobr>This is equivalent to:</nobr></div>
+<div style="position:absolute;top:6658;left:81"><nobr>((<b>lambda </b>(x y) (+ x y)) 1 2)</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:6708;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:6758;left:52"><nobr>4.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6755;left:81"><nobr>Write a function that calculates the factorial of a number.</nobr></div>
+<div style="position:absolute;top:6782;left:81"><nobr>(<b>define </b>(factorial x)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:6836;left:111"><nobr>(<b>if </b>(&lt; x 2)</nobr></div>
+<div style="position:absolute;top:6858;left:141"><nobr>1</nobr></div>
+<div style="position:absolute;top:6879;left:141"><nobr>(* x (factorial (- x 1))))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6925;left:484"><nobr>)</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:6972;left:52"><nobr>4.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6968;left:81"><nobr>Write a function that calculates the n<font style="font-size:8px">th </font>Fibonacci number.</nobr></div>
+<div style="position:absolute;top:6995;left:81"><nobr>(<b>define </b>(fib n)</nobr></div>
+<div style="position:absolute;top:7017;left:111"><nobr>(<b>if </b>(&lt; n 2)</nobr></div>
+<div style="position:absolute;top:7038;left:141"><nobr>1</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7093;left:141"><nobr>(+ (fib (- n 1)) (fib (- n 2))))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7139;left:477"><nobr>))</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:7303;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=7><b>Page 7</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7340;left:539"><nobr>Scheme</nobr></div>
+<div style="position:absolute;top:7340;left:609"><nobr>7</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:7372;left:81"><nobr>5 Pairs and Lists</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7426;left:81"><nobr>To construct a (linked) list in Scheme, you can use the constructor cons (which</nobr></div>
+<div style="position:absolute;top:7447;left:81"><nobr>takes two arguments). nil represents the empty list. If you have a linked list in</nobr></div>
+<div style="position:absolute;top:7469;left:81"><nobr>Scheme, you can use selector car to get the first element and selector cdr to get the</nobr></div>
+<div style="position:absolute;top:7490;left:81"><nobr>rest of the list. (car and cdr don’t stand for anything anymore, but if you want the</nobr></div>
+<div style="position:absolute;top:7512;left:81"><nobr>history go to <font color="#ec008c"><a href="http://en.wikipedia.org/wiki/CAR_and_CDR">http://en.wikipedia.org/wiki/CAR and CDR</a></font><a href="http://en.wikipedia.org/wiki/CAR_and_CDR"></a>).</nobr></div>
+<div style="position:absolute;top:7560;left:81"><nobr>scm&gt; nil</nobr></div>
+<div style="position:absolute;top:7581;left:81"><nobr>()</nobr></div>
+<div style="position:absolute;top:7603;left:81"><nobr>scm&gt; (null? nil)</nobr></div>
+<div style="position:absolute;top:7624;left:81"><nobr>#t</nobr></div>
+<div style="position:absolute;top:7646;left:81"><nobr>scm&gt; (cons 2 nil)</nobr></div>
+<div style="position:absolute;top:7667;left:81"><nobr>(2)</nobr></div>
+<div style="position:absolute;top:7689;left:81"><nobr>scm&gt; (cons 3 (cons 2 nil))</nobr></div>
+<div style="position:absolute;top:7710;left:81"><nobr>(3 2)</nobr></div>
+<div style="position:absolute;top:7732;left:81"><nobr>scm&gt; (<b>define </b>a (cons 3 (cons 2 nil)))</nobr></div>
+<div style="position:absolute;top:7753;left:81"><nobr>a</nobr></div>
+<div style="position:absolute;top:7775;left:81"><nobr>scm&gt; (car a)</nobr></div>
+<div style="position:absolute;top:7796;left:81"><nobr>3</nobr></div>
+<div style="position:absolute;top:7818;left:81"><nobr>scm&gt; (cdr a)</nobr></div>
+<div style="position:absolute;top:7840;left:81"><nobr>(2)</nobr></div>
+<div style="position:absolute;top:7861;left:81"><nobr>scm&gt; (car (cdr a))</nobr></div>
+<div style="position:absolute;top:7883;left:81"><nobr>2</nobr></div>
+<div style="position:absolute;top:7904;left:81"><nobr>scm&gt; (<b>define </b>(len a)</nobr></div>
+<div style="position:absolute;top:7926;left:133"><nobr>(<b>if </b>(null? a)</nobr></div>
+<div style="position:absolute;top:7947;left:148"><nobr>0</nobr></div>
+<div style="position:absolute;top:7969;left:148"><nobr>(+ 1 (len (cdr a)))))</nobr></div>
+<div style="position:absolute;top:7990;left:81"><nobr>len</nobr></div>
+<div style="position:absolute;top:8012;left:81"><nobr>scm&gt; (len a)</nobr></div>
+<div style="position:absolute;top:8033;left:81"><nobr>2</nobr></div>
+<div style="position:absolute;top:8076;left:81"><nobr>If a list is a “good looking” list, like the ones above where the second element is</nobr></div>
+<div style="position:absolute;top:8098;left:81"><nobr>always a linked list, we call it a well-formed list. Interestingly, in Scheme, the</nobr></div>
+<div style="position:absolute;top:8120;left:81"><nobr>second element does not have to be a linked list. You can supply something else</nobr></div>
+<div style="position:absolute;top:8141;left:81"><nobr>instead, creating a malformed list. The difference is shown with a dot:</nobr></div>
+<div style="position:absolute;top:8168;left:81"><nobr>scm&gt; (cons 2 3)</nobr></div>
+<div style="position:absolute;top:8189;left:81"><nobr>(2 . 3)</nobr></div>
+<div style="position:absolute;top:8211;left:81"><nobr>scm&gt; (cons 2 (cons 3 nil))</nobr></div>
+<div style="position:absolute;top:8232;left:81"><nobr>(2 3)</nobr></div>
+<div style="position:absolute;top:8254;left:81"><nobr>scm&gt; (cdr (cons 2 3))</nobr></div>
+<div style="position:absolute;top:8275;left:81"><nobr>3</nobr></div>
+<div style="position:absolute;top:8297;left:81"><nobr>scm&gt; (cdr (cons 2 (cons 3 nil)))</nobr></div>
+<div style="position:absolute;top:8318;left:81"><nobr>(3)</nobr></div>
+<div style="position:absolute;top:8362;left:81"><nobr>In general, the rule for displaying a pair is as follows: use the dot to separate the</nobr></div>
+<div style="position:absolute;top:8379;left:81"><nobr>car and cdr fields of a pair, but if the dot is immediately followed by an open</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:8491;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=8><b>Page 8</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8528;left:81"><nobr>8 Scheme</nobr></div>
+<div style="position:absolute;top:8565;left:81"><nobr>parenthesis, then remove the dot and the parenthesis pair. Thus, (0 . (1 . 2))</nobr></div>
+<div style="position:absolute;top:8586;left:81"><nobr>becomes (0 1 . 2)</nobr></div>
+<div style="position:absolute;top:8617;left:81"><nobr>There are many useful operations and shorthands on lists. list takes zero or more</nobr></div>
+<div style="position:absolute;top:8638;left:81"><nobr>arguments and returns a list of its arguments.</nobr></div>
+<div style="position:absolute;top:8669;left:81"><nobr>This typically behaves much like quoting a list, except that quoting will not evaluate</nobr></div>
+<div style="position:absolute;top:8690;left:81"><nobr>the list you have quoted which can result in some different outcomes.</nobr></div>
+<div style="position:absolute;top:8714;left:81"><nobr>scm&gt; (list 1 2 3)</nobr></div>
+<div style="position:absolute;top:8735;left:81"><nobr>(1 2 3)</nobr></div>
+<div style="position:absolute;top:8757;left:81"><nobr>scm&gt; (1 2 3)</nobr></div>
+<div style="position:absolute;top:8778;left:81"><nobr>(1 2 3)</nobr></div>
+<div style="position:absolute;top:8800;left:81"><nobr>scm&gt; (car (1 2 3))</nobr></div>
+<div style="position:absolute;top:8821;left:81"><nobr>1</nobr></div>
+<div style="position:absolute;top:8843;left:81"><nobr>scm&gt; (equal? (1 2 3) (list 1 2 3))</nobr></div>
+<div style="position:absolute;top:8864;left:81"><nobr>#t</nobr></div>
+<div style="position:absolute;top:8886;left:81"><nobr>scm&gt; (1 . (2 3))</nobr></div>
+<div style="position:absolute;top:8907;left:81"><nobr>(1 2 3)</nobr></div>
+<div style="position:absolute;top:8929;left:81"><nobr>scm&gt; (<b>define </b>(square x) (* x x))</nobr></div>
+<div style="position:absolute;top:8950;left:81"><nobr>(<b>define </b>(square x) (* x x))</nobr></div>
+<div style="position:absolute;top:8972;left:81"><nobr>scm&gt; square ; We didnt actually define square above because of the quote</nobr></div>
+<div style="position:absolute;top:8994;left:81"><nobr>Error</nobr></div>
+<div style="position:absolute;top:9015;left:81"><nobr>scm&gt; (list (cons 1 2))</nobr></div>
+<div style="position:absolute;top:9037;left:81"><nobr>((1 . 2))</nobr></div>
+<div style="position:absolute;top:9058;left:81"><nobr>scm&gt; ((cons 1 2))</nobr></div>
+<div style="position:absolute;top:9080;left:81"><nobr>((cons 1 2))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:9126;left:81"><nobr>=, eq?, equal?</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9169;left:103"><nobr>• = can only be used for comparing numbers.</nobr></div>
+<div style="position:absolute;top:9200;left:103"><nobr>• eq? behaves like == in Python for comparing two non-pairs (numbers, booleans,</nobr></div>
+<div style="position:absolute;top:9225;left:118"><nobr>etc.). Otherwise, eq? behaves like is in Python.</nobr></div>
+<div style="position:absolute;top:9252;left:103"><nobr>• equal? compares pairs by determining if their cars are equal? and their cdrs</nobr></div>
+<div style="position:absolute;top:9277;left:118"><nobr>are equal?(that is, they have the same contents). Otherwise, equal? behaves</nobr></div>
+<div style="position:absolute;top:9299;left:118"><nobr>like eq?.</nobr></div>
+<div style="position:absolute;top:9323;left:81"><nobr>scm&gt; (<b>define </b>a (1 2 3))</nobr></div>
+<div style="position:absolute;top:9344;left:81"><nobr>a</nobr></div>
+<div style="position:absolute;top:9366;left:81"><nobr>scm&gt; (= a a)</nobr></div>
+<div style="position:absolute;top:9387;left:81"><nobr>Error</nobr></div>
+<div style="position:absolute;top:9409;left:81"><nobr>scm&gt; (equal? a (1 2 3))</nobr></div>
+<div style="position:absolute;top:9430;left:81"><nobr>#t</nobr></div>
+<div style="position:absolute;top:9452;left:81"><nobr>scm&gt; (eq? a (1 2 3))</nobr></div>
+<div style="position:absolute;top:9473;left:81"><nobr>#f</nobr></div>
+<div style="position:absolute;top:9495;left:81"><nobr>scm&gt; (<b>define </b>b a)</nobr></div>
+<div style="position:absolute;top:9516;left:81"><nobr>b</nobr></div>
+<div style="position:absolute;top:9538;left:81"><nobr>scm&gt; (eq? a b)</nobr></div>
+<div style="position:absolute;top:9559;left:81"><nobr>#t</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:9679;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=9><b>Page 9</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9716;left:539"><nobr>Scheme</nobr></div>
+<div style="position:absolute;top:9716;left:609"><nobr>9</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:9748;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:9798;left:52"><nobr>5.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9795;left:81"><nobr>Define concat, which takes two lists and concatenates them.</nobr></div>
+<div style="position:absolute;top:9825;left:81"><nobr>Notice that simply calling (cons a b) would not work because it will create a deep</nobr></div>
+<div style="position:absolute;top:9847;left:81"><nobr>list.</nobr></div>
+<div style="position:absolute;top:9873;left:81"><nobr>(<b>define </b>(concat a b)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9928;left:96"><nobr>(<b>if </b>(null? a)</nobr></div>
+<div style="position:absolute;top:9949;left:111"><nobr>b</nobr></div>
+<div style="position:absolute;top:9971;left:111"><nobr>(cons (car a) (concat (cdr a) b)))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10017;left:484"><nobr>)</nobr></div>
+<div style="position:absolute;top:10038;left:81"><nobr>scm&gt; (concat (1 2 3) (2 3 4))</nobr></div>
+<div style="position:absolute;top:10060;left:81"><nobr>(1 2 3 2 3 4)</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:10106;left:52"><nobr>5.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10103;left:81"><nobr>Define replicate, which takes an element x and a non-negative integer n, and</nobr></div>
+<div style="position:absolute;top:10124;left:81"><nobr>returns a list with x repeated n times.</nobr></div>
+<div style="position:absolute;top:10151;left:81"><nobr>(<b>define </b>(replicate x n)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10206;left:111"><nobr>(<b>if </b>(= n 0)</nobr></div>
+<div style="position:absolute;top:10227;left:141"><nobr>nil</nobr></div>
+<div style="position:absolute;top:10249;left:141"><nobr>(cons x (replicate x (- n 1))))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10295;left:484"><nobr>)</nobr></div>
+<div style="position:absolute;top:10316;left:81"><nobr>scm&gt; (replicate 5 3)</nobr></div>
+<div style="position:absolute;top:10338;left:81"><nobr>(5 5 5)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:10867;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=10><b>Page 10</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10904;left:81"><nobr>10 Scheme</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:10944;left:52"><nobr>5.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10941;left:81"><nobr>A run-length encoding is a method of compressing a sequence of letters. The list</nobr></div>
+<div style="position:absolute;top:10958;left:81"><nobr>(a a a b a a a a) can be compressed to ((a 3) (b 1) (a 4)), where the compressed</nobr></div>
+<div style="position:absolute;top:10984;left:81"><nobr>version of the sequence keeps track of how many letters appear consecutively.</nobr></div>
+<div style="position:absolute;top:11014;left:81"><nobr>Write a Scheme function that takes a compressed sequence and expands it into the</nobr></div>
+<div style="position:absolute;top:11036;left:81"><nobr>original sequence. Hint: You may want to use concat and replicate.</nobr></div>
+<div style="position:absolute;top:11060;left:81"><nobr>(<b>define </b>(uncompress s)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11112;left:96"><nobr>(<b>if </b>(null? s)</nobr></div>
+<div style="position:absolute;top:11134;left:111"><nobr>s</nobr></div>
+<div style="position:absolute;top:11155;left:111"><nobr>(concat (replicate (car (car s)) (car (cdr (car s))))</nobr></div>
+<div style="position:absolute;top:11177;left:171"><nobr>(uncompress (cdr s))))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:11220;left:484"><nobr>)</nobr></div>
+<div style="position:absolute;top:11242;left:81"><nobr>scm&gt; (uncompress ((a 1) (b 2) (c 3)))</nobr></div>
+<div style="position:absolute;top:11263;left:81"><nobr>(a b b c c c)</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:11307;left:52"><nobr>5.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:11304;left:81"><nobr>Define map, which takes a procedure and applies it to every element in a given list.</nobr></div>
+<div style="position:absolute;top:11329;left:81"><nobr>(<b>define </b>(<b>map </b>fn lst)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11381;left:111"><nobr>(<b>if </b>(null? lst)</nobr></div>
+<div style="position:absolute;top:11402;left:141"><nobr>nil</nobr></div>
+<div style="position:absolute;top:11424;left:141"><nobr>(cons (fn (car lst)) (<b>map </b>fn (cdr lst))))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:11467;left:484"><nobr>)</nobr></div>
+<div style="position:absolute;top:11489;left:81"><nobr>scm&gt; (<b>map </b>(<b>lambda </b>(x) (* x x)) (1 2 3))</nobr></div>
+<div style="position:absolute;top:11510;left:81"><nobr>(1 4 9)</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:11555;left:52"><nobr>5.5</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:11551;left:81"><nobr>Define deep-map, which takes a procedure and applies to every element in a given</nobr></div>
+<div style="position:absolute;top:11573;left:81"><nobr>nested list.</nobr></div>
+<div style="position:absolute;top:11603;left:81"><nobr>The result should be a nested list with the same structure as the input list, but</nobr></div>
+<div style="position:absolute;top:11625;left:81"><nobr>with each element replaced by the result of applying the procedure to that element.</nobr></div>
+<div style="position:absolute;top:11655;left:81"><nobr>Use the built-in list? procedure to detect whether a value is a list.</nobr></div>
+<div style="position:absolute;top:11680;left:81"><nobr>(<b>define </b>(deep-map fn lst)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11732;left:96"><nobr>(<b>cond </b>((null? lst) lst)</nobr></div>
+<div style="position:absolute;top:11754;left:141"><nobr>((list? (car lst)) (cons (deep-map fn (car lst)) (deep-map fn (cdr lst))))</nobr></div>
+<div style="position:absolute;top:11775;left:141"><nobr>(<b>else </b>(cons (fn (car lst)) (deep-map fn (cdr lst))))</nobr></div>
+<div style="position:absolute;top:11797;left:141"><nobr>)</nobr></div>
+<div style="position:absolute;top:11818;left:96"><nobr>)</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:11862;left:484"><nobr>)</nobr></div>
+<div style="position:absolute;top:11883;left:81"><nobr>scm&gt; (deep-map (<b>lambda </b>(x) (* x x)) (1 2 3))</nobr></div>
+<div style="position:absolute;top:11905;left:81"><nobr>(1 4 9)</nobr></div>
+<div style="position:absolute;top:11926;left:81"><nobr>scm&gt; (deep-map (<b>lambda </b>(x) (* x x)) (1 ((4) 5) 9))</nobr></div>
+<div style="position:absolute;top:11948;left:81"><nobr>(1 ((16) 25) 81)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:12055;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=11><b>Page 11</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12092;left:531"><nobr>Scheme</nobr></div>
+<div style="position:absolute;top:12092;left:601"><nobr>11</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:12124;left:81"><nobr>6 Extra Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:12180;left:52"><nobr>6.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12177;left:81"><nobr>Fill in the following to complete an abstract tree data type:</nobr></div>
+<div style="position:absolute;top:12204;left:81"><nobr>(<b>define </b>(make-tree label branches) (cons label branches))</nobr></div>
+<div style="position:absolute;top:12247;left:81"><nobr>(<b>define </b>(label tree)</nobr></div>
+<div style="position:absolute;top:12247;left:499"><nobr>)</nobr></div>
+<div style="position:absolute;top:12290;left:81"><nobr>(<b>define </b>(branches tree)</nobr></div>
+<div style="position:absolute;top:12290;left:499"><nobr>)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:12344;left:81"><nobr>(<b>define </b>(label tree) (car tree))</nobr></div>
+<div style="position:absolute;top:12366;left:81"><nobr>(<b>define </b>(branches tree) (cdr tree))</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:12419;left:52"><nobr>6.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12416;left:81"><nobr>Using the abstract data type above, write a function that sums up the entries of a</nobr></div>
+<div style="position:absolute;top:12437;left:81"><nobr>tree, assuming that the entries are all numbers. Hint: you may want to use the map</nobr></div>
+<div style="position:absolute;top:12459;left:81"><nobr>function you defined above, as well as an additional helper function.</nobr></div>
+<div style="position:absolute;top:12485;left:81"><nobr>(<b>define </b>(tree-sum tree)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:12540;left:111"><nobr>(+ (label tree) (sum (<b>map </b>tree-sum (branches tree))))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12586;left:484"><nobr>)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:12640;left:81"><nobr>(<b>define </b>(sum lst)</nobr></div>
+<div style="position:absolute;top:12662;left:111"><nobr>(<b>if </b>(null? lst) 0 (+ (car lst) (sum (cdr lst)))))</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:12715;left:52"><nobr>6.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12712;left:81"><nobr>Using the abstract data type above, write a Scheme function that creates a new</nobr></div>
+<div style="position:absolute;top:12733;left:81"><nobr>tree where the entries are the product of the entries along the path to the root in</nobr></div>
+<div style="position:absolute;top:12755;left:81"><nobr>the original tree. Hint: you may want to write helper functions.</nobr></div>
+<div style="position:absolute;top:12787;left:245"><nobr>3</nobr></div>
+<div style="position:absolute;top:12830;left:160"><nobr>0</nobr></div>
+<div style="position:absolute;top:12872;left:114"><nobr>10</nobr></div>
+<div style="position:absolute;top:12872;left:203"><nobr>2</nobr></div>
+<div style="position:absolute;top:12830;left:245"><nobr>8</nobr></div>
+<div style="position:absolute;top:12828;left:325"><nobr>-2</nobr></div>
+<div style="position:absolute;top:12871;left:325"><nobr>-3</nobr></div>
+<div style="position:absolute;top:12787;left:492"><nobr>3</nobr></div>
+<div style="position:absolute;top:12830;left:407"><nobr>0</nobr></div>
+<div style="position:absolute;top:12872;left:364"><nobr>0</nobr></div>
+<div style="position:absolute;top:12872;left:449"><nobr>0</nobr></div>
+<div style="position:absolute;top:12830;left:488"><nobr>24</nobr></div>
+<div style="position:absolute;top:12828;left:571"><nobr>-6</nobr></div>
+<div style="position:absolute;top:12872;left:573"><nobr>18</nobr></div>
+<div style="position:absolute;top:12908;left:81"><nobr>(<b>define </b>(path-product-tree t)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:12963;left:111"><nobr>(define (path-product t product)</nobr></div>
+<div style="position:absolute;top:12984;left:141"><nobr>(let ((prod (* product (label t))))</nobr></div>
+<div style="position:absolute;top:13006;left:171"><nobr>(make-tree prod</nobr></div>
+<div style="position:absolute;top:13028;left:201"><nobr>(<b>map </b>(<b>lambda </b>(t) (path-product t prod))</nobr></div>
+<div style="position:absolute;top:13049;left:238"><nobr>(branches tree)))))</nobr></div>
+<div style="position:absolute;top:13071;left:111"><nobr>(path-product t 1))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:13116;left:484"><nobr>)</nobr></div>
+</span></font>
+<!-- t8770r3a3c8770e5621n3146u3l0m0k0 -->
+</body>
+</html>

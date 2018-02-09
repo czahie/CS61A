@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero, Paul Hilfinger" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="/assets/css/hw.css">
+
+
+    <title>
+Homework 6 Solutions | CS 61A Fall 2017
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Homework 6 Solutions
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="hw06.zip" class="label label-outline">hw06.zip</a></li>
+        </ul>
+        
+      </h1>
+    </header>
+    
+<h2>Solution Files</h2>
+<p>You can find the solutions in <a href="hw06.py">hw06.py</a>.</p>
+
+    
+<h2 id="object-oriented-programming">Object Oriented Programming</h2>
+
+
+<h3 class="question" id="q1">Q1: Retirement</h3>
+
+<p>Add a <code>time_to_retire</code> method to the <code>Account</code> class that takes an <code>amount</code>. It
+returns how many years the holder would need to wait in order for the current
+<code>balance</code> to grow to at least <code>amount</code>, assuming that the bank adds <code>balance</code>
+times the <code>interest</code> rate at the end of every year.</p>
+
+<pre><code>class Account:
+    &quot;&quot;&quot;An account has a balance and a holder.
+
+    &gt;&gt;&gt; a = Account(&#x27;John&#x27;)
+    &gt;&gt;&gt; a.deposit(10)
+    10
+    &gt;&gt;&gt; a.balance
+    10
+    &gt;&gt;&gt; a.interest
+    0.02
+
+    &gt;&gt;&gt; a.time_to_retire(10.25) # 10 &#x2d;&gt; 10.2 &#x2d;&gt; 10.404
+    2
+    &gt;&gt;&gt; a.balance               # balance should not change
+    10
+    &gt;&gt;&gt; a.time_to_retire(11)    # 10 &#x2d;&gt; 10.2 &#x2d;&gt; ... &#x2d;&gt; 11.040808032
+    5
+    &gt;&gt;&gt; a.time_to_retire(100)
+    117
+    &quot;&quot;&quot;
+
+    interest = 0.02  # A class attribute
+
+    def __init__(self, account_holder):
+        self.holder = account_holder
+        self.balance = 0
+
+    def deposit(self, amount):
+        &quot;&quot;&quot;Add amount to balance.&quot;&quot;&quot;
+        self.balance = self.balance + amount
+        return self.balance
+
+    def withdraw(self, amount):
+        &quot;&quot;&quot;Subtract amount from balance if funds are available.&quot;&quot;&quot;
+        if amount &gt; self.balance:
+            return &#x27;Insufficient funds&#x27;
+        self.balance = self.balance &#x2d; amount
+        return self.balance
+
+    def time_to_retire(self, amount):
+        &quot;&quot;&quot;Return the number of years until balance would grow to amount.&quot;&quot;&quot;
+        assert self.balance &gt; 0 and amount &gt; 0 and self.interest &gt; 0
+<div class="sol-highlight">        future = self.balance
+        years = 0
+        while future &lt; amount:
+            future += self.interest * future
+            years += 1
+        return years</div></code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q Account</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/fQzeZcI-4a0">https://youtu.be/fQzeZcI-4a0</a></p>
+
+</div>
+
+<h3 class="question" id="q2">Q2: Free Checking</h3>
+
+<p>Implement <code>FreeChecking</code>, which is like the <code>CheckingAccount</code> from lecture
+except that it only charges a withdraw fee after 2 free withdrawals.  Such a
+deal! Even unsuccessful withdrawals count against the free quota, but only
+successful withdrawals actually incur a fee.</p>
+
+<pre><code>class FreeChecking(Account):
+    &quot;&quot;&quot;A bank account that charges for withdrawals, but the first two are free!
+
+    &gt;&gt;&gt; ch = FreeChecking(&#x27;Jack&#x27;)
+    &gt;&gt;&gt; ch.balance = 20
+    &gt;&gt;&gt; ch.withdraw(100)  # First one&#x27;s free
+    &#x27;Insufficient funds&#x27;
+    &gt;&gt;&gt; ch.withdraw(3)    # And the second
+    17
+    &gt;&gt;&gt; ch.balance
+    17
+    &gt;&gt;&gt; ch.withdraw(3)    # Ok, two free withdrawals is enough
+    13
+    &gt;&gt;&gt; ch.withdraw(3)
+    9
+    &gt;&gt;&gt; ch2 = FreeChecking(&#x27;John&#x27;)
+    &gt;&gt;&gt; ch2.balance = 10
+    &gt;&gt;&gt; ch2.withdraw(3) # No fee
+    7
+    &gt;&gt;&gt; ch.withdraw(3)  # ch still charges a fee
+    5
+    &gt;&gt;&gt; ch.withdraw(5)  # Not enough to cover fee + withdraw
+    &#x27;Insufficient funds&#x27;
+    &quot;&quot;&quot;
+    withdraw_fee = 1
+    free_withdrawals = 2
+
+<div class="sol-highlight">    def __init__(self, account_holder):
+        Account.__init__(self, account_holder)
+        self.withdrawals = 0
+
+    def withdraw(self, amount):
+        self.withdrawals += 1
+        fee = 0
+        if self.withdrawals &gt; self.free_withdrawals:
+            fee = self.withdraw_fee
+        return Account.withdraw(self, amount + fee)
+
+    # Alternative solution where you don&#x27;t need to include init.
+    # Check out the video solution for more.
+    def withdraw(self, amount):
+        self.free_withdrawals &#x2d;= 1
+        if self.free_withdrawals &gt;= 0:
+            return Account.withdraw(self, amount)
+        return Account.withdraw(self, amount + self.withdraw_fee)</div></code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q FreeChecking</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/flIMJC2lY3M">https://youtu.be/flIMJC2lY3M</a></p>
+
+</div>
+
+
+<h2 id="mobiles">Mobiles</h2>
+
+
+<p><strong>Acknowledgements.</strong> This mobile example is based on
+a classic problem from Structure and Interpretation of Computer Programs,
+<a href="https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.2">Section 2.2.2</a>.</p>
+
+<p>A <a href="http://upload.wikimedia.org/wikipedia/commons/7/7e/Modern_mobile-art_mobiles_mobius.jpg">mobile</a> is a type of hanging sculpture. A binary mobile consists of two
+sides. Each side is a rod of a certain length, from which hangs either a weight
+or another mobile.</p>
+
+<p>We will represent a binary mobile using the data abstractions below, which use
+the <code>tree</code> data abstraction for their representation.</p>
+
+<ul>
+  <li>A <code>mobile</code> has a left side (index 0) and a right side (index 1).</li>
+  <li>A <code>side</code> has a length and a structure, which is either a <code>mobile</code> or <code>weight</code>.</li>
+  <li>A <code>weight</code> has a size, which is a positive number.</li>
+</ul>
+
+<h3 class="question" id="q3">Q3: Weights</h3>
+
+<p>Implement the <code>weight</code> data abstraction by completing the <code>weight</code> constructor,
+the <code>size</code> selector, and the <code>is_weight</code> predicate so that a weight is
+represented using a tree. The <code>total_weight</code> example is provided to demonstrate
+use of the mobile, side, and weight abstractions.</p>
+
+<pre><code>def mobile(left, right):
+    &quot;&quot;&quot;Construct a mobile from a left side and a right side.&quot;&quot;&quot;
+    return tree(None, [left, right])
+
+def sides(m):
+    &quot;&quot;&quot;Select the sides of a mobile.&quot;&quot;&quot;
+    return branches(m)</code></pre>
+
+<!-- hack -->
+
+<pre><code>def side(length, mobile_or_weight):
+    &quot;&quot;&quot;Construct a side: a length of rod with a mobile or weight at the end.&quot;&quot;&quot;
+    return tree(length, [mobile_or_weight])
+
+def length(s):
+    &quot;&quot;&quot;Select the length of a side.&quot;&quot;&quot;
+    return label(s)
+
+def end(s):
+    &quot;&quot;&quot;Select the mobile or weight hanging at the end of a side.&quot;&quot;&quot;
+    return branches(s)[0]</code></pre>
+
+<!-- hack -->
+
+<pre><code>def weight(size):
+    &quot;&quot;&quot;Construct a weight of some size.&quot;&quot;&quot;
+    assert size &gt; 0
+<div class="sol-highlight">    return tree(size)</div>
+def size(w):
+    &quot;&quot;&quot;Select the size of a weight.&quot;&quot;&quot;
+<div class="sol-highlight">    return label(w)</div>
+def is_weight(w):
+    &quot;&quot;&quot;Whether w is a weight, not a mobile.&quot;&quot;&quot;
+<div class="sol-highlight">    return is_leaf(w)</div></code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q total_weight</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/PP77C7u-IH4">https://youtu.be/PP77C7u-IH4</a></p>
+
+</div>
+
+<h3 class="question" id="q4">Q4: Balanced</h3>
+
+<p>Implement the <code>balanced</code> function, which returns whether <code>m</code> is a balanced
+mobile. A mobile is balanced if two conditions are met:</p>
+
+<ol>
+  <li>The torque applied by its left side is equal to that applied by its right
+  side. Torque of the left side is the length of the left rod multiplied by the
+  total weight hanging from that rod (a similar calculation is used for the
+  right side).</li>
+  <li>Each of the submobiles hanging off its sides is balanced.</li>
+</ol>
+
+<p><em>Hint:</em> You may find it helpful to assume that weights themselves are balanced.</p>
+
+<pre><code>def balanced(m):
+    &quot;&quot;&quot;Return whether m is balanced.
+
+    &gt;&gt;&gt; t, u, v = examples()
+    &gt;&gt;&gt; balanced(t)
+    True
+    &gt;&gt;&gt; balanced(v)
+    True
+    &gt;&gt;&gt; w = mobile(side(3, t), side(2, u))
+    &gt;&gt;&gt; balanced(w)
+    False
+    &gt;&gt;&gt; balanced(mobile(side(1, v), side(1, w)))
+    False
+    &gt;&gt;&gt; balanced(mobile(side(1, w), side(1, v)))
+    False
+    &quot;&quot;&quot;
+<div class="sol-highlight">    if is_weight(m):
+        return True
+    else:
+        left, right = sides(m)
+        left_s, right_s = end(left), end(right)
+        torque_left = length(left) * total_weight(left_s)
+        torque_right = length(right) * total_weight(right_s)
+        return balanced(left_s) and balanced(right_s) and torque_left == torque_right</div></code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q balanced</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/I5LNvo0R3Jw">https://youtu.be/I5LNvo0R3Jw</a></p>
+
+</div>
+
+<h3 class="question" id="q5">Q5: Totals</h3>
+
+<p>Implement the <code>with_totals</code> function, which takes a <code>mobile</code> and returns a
+<code>tree</code> representation of that same mobile in which the root label of each mobile
+tree is the total weight of the mobile it represents (instead of <code>None</code>).</p>
+
+<p><em>Note</em>: This function needs to assume that a mobile is represented as a tree.</p>
+
+<pre><code>def with_totals(m):
+    &quot;&quot;&quot;Return a mobile with total weights stored as the label of each mobile.
+
+    &gt;&gt;&gt; t, _, v = examples()
+    &gt;&gt;&gt; label(with_totals(t))
+    3
+    &gt;&gt;&gt; print(label(t))                           # t should not change
+    None
+    &gt;&gt;&gt; label(with_totals(v))
+    9
+    &gt;&gt;&gt; [label(end(s)) for s in sides(with_totals(v))]
+    [3, 6]
+    &gt;&gt;&gt; [label(end(s)) for s in sides(v)]         # v should not change
+    [None, None]
+    &quot;&quot;&quot;
+<div class="sol-highlight">    if is_weight(m):
+        return m
+    ends = [with_totals(end(s)) for s in sides(m)]
+    total = sum([label(s) for s in ends])
+    return tree(total, [side(length(s), t) for s, t in zip(sides(m), ends)])</div></code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q with_totals</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/bXQLySdNbmI">https://youtu.be/bXQLySdNbmI</a></p>
+
+</div>
+
+
+<h2 id="mutation">Mutation</h2>
+
+
+<h3 class="question" id="q6">Q6: Counter</h3>
+
+<p>Define a function <code>make_counter</code> that returns a <code>counter</code> function, which takes
+a string and returns the number of times that the function has been called on
+that string.</p>
+
+<solution>
+
+<pre><code>def make_counter():
+    &quot;&quot;&quot;Return a counter function.
+
+    &gt;&gt;&gt; c = make_counter()
+    &gt;&gt;&gt; c(&#x27;a&#x27;)
+    1
+    &gt;&gt;&gt; c(&#x27;a&#x27;)
+    2
+    &gt;&gt;&gt; c(&#x27;b&#x27;)
+    1
+    &gt;&gt;&gt; c(&#x27;a&#x27;)
+    3
+    &gt;&gt;&gt; c2 = make_counter()
+    &gt;&gt;&gt; c2(&#x27;b&#x27;)
+    1
+    &gt;&gt;&gt; c2(&#x27;b&#x27;)
+    2
+    &gt;&gt;&gt; c(&#x27;b&#x27;) + c2(&#x27;b&#x27;)
+    5
+    &quot;&quot;&quot;
+<div class="sol-highlight">    totals = {}
+    def counter(key):
+        totals[key] = totals.get(key, 0) + 1
+        return totals[key]
+    return counter</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q make_counter</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/bSUr0OUISuE">https://youtu.be/bSUr0OUISuE</a></p>
+
+</div>
+
+<h3 class="question" id="q7">Q7: Next Fibonacci</h3>
+
+<p>Write a function <code>make_fib</code> that returns a function that returns the
+next Fibonacci number each time it is called. (The Fibonacci sequence begins with 0
+and then 1, after which each element is the sum of the preceding two.)
+Use a <code>nonlocal</code> statement!</p>
+
+<solution>
+
+<pre><code>def make_fib():
+    &quot;&quot;&quot;Returns a function that returns the next Fibonacci number
+    every time it is called.
+
+    &gt;&gt;&gt; fib = make_fib()
+    &gt;&gt;&gt; fib()
+    0
+    &gt;&gt;&gt; fib()
+    1
+    &gt;&gt;&gt; fib()
+    1
+    &gt;&gt;&gt; fib()
+    2
+    &gt;&gt;&gt; fib()
+    3
+    &gt;&gt;&gt; fib2 = make_fib()
+    &gt;&gt;&gt; fib() + sum([fib2() for _ in range(5)])
+    12
+    &quot;&quot;&quot;
+<div class="sol-highlight">    cur, next = 0, 1
+    def fib():
+        nonlocal cur, next
+        result = cur
+        cur, next = next, cur + next
+        return result
+    return fib</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q make_fib</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/Tkp1wrXiQjI">https://youtu.be/bSUr0OUISuE</a></p>
+
+<explanation>
+
+<h3 class="question" id="q8">Q8: Password Protected Account</h3>
+
+<p>In lecture, we saw how to use functions to create mutable objects.
+Here, for example, is the function <code>make_withdraw</code> which produces a
+function that can withdraw money from an account:</p>
+
+<pre><code>def make_withdraw(balance):
+    &quot;&quot;&quot;Return a withdraw function with BALANCE as its starting balance.
+    &gt;&gt;&gt; withdraw = make_withdraw(1000)
+    &gt;&gt;&gt; withdraw(100)
+    900
+    &gt;&gt;&gt; withdraw(100)
+    800
+    &gt;&gt;&gt; withdraw(900)
+    &#x27;Insufficient funds&#x27;
+    &quot;&quot;&quot;
+    def withdraw(amount):
+        nonlocal balance
+        if amount &gt; balance:
+           return &#x27;Insufficient funds&#x27;
+        balance = balance &#x2d; amount
+        return balance
+    return withdraw</code></pre>
+
+<p>Write a version of the <code>make_withdraw</code> function that returns
+password-protected withdraw functions. That is, <code>make_withdraw</code> should
+take a password argument (a string) in addition to an initial balance.
+The returned function should take two arguments: an amount to withdraw
+and a password.</p>
+
+<p>A password-protected <code>withdraw</code> function should only process
+withdrawals that include a password that matches the original.  Upon
+receiving an incorrect password, the function should:</p>
+
+<ol>
+  <li>Store that incorrect password in a list, and</li>
+  <li>Return the string 'Incorrect password'.</li>
+</ol>
+
+<p>If a withdraw function has been called three times with incorrect
+passwords <code>p1</code>, <code>p2</code>, and <code>p3</code>, then it is locked.  All subsequent
+calls to the function should return:</p>
+
+<pre><code>&quot;Your account is locked. Attempts: [&lt;p1&gt;, &lt;p2&gt;, &lt;p3&gt;]&quot;</code></pre>
+
+<p>The incorrect passwords may be the same or different:</p>
+
+<solution>
+
+<pre><code>def make_withdraw(balance, password):
+    &quot;&quot;&quot;Return a password&#x2d;protected withdraw function.
+
+    &gt;&gt;&gt; w = make_withdraw(100, &#x27;hax0r&#x27;)
+    &gt;&gt;&gt; w(25, &#x27;hax0r&#x27;)
+    75
+    &gt;&gt;&gt; w(90, &#x27;hax0r&#x27;)
+    &#x27;Insufficient funds&#x27;
+    &gt;&gt;&gt; w(25, &#x27;hwat&#x27;)
+    &#x27;Incorrect password&#x27;
+    &gt;&gt;&gt; w(25, &#x27;hax0r&#x27;)
+    50
+    &gt;&gt;&gt; w(75, &#x27;a&#x27;)
+    &#x27;Incorrect password&#x27;
+    &gt;&gt;&gt; w(10, &#x27;hax0r&#x27;)
+    40
+    &gt;&gt;&gt; w(20, &#x27;n00b&#x27;)
+    &#x27;Incorrect password&#x27;
+    &gt;&gt;&gt; w(10, &#x27;hax0r&#x27;)
+    &quot;Your account is locked. Attempts: [&#x27;hwat&#x27;, &#x27;a&#x27;, &#x27;n00b&#x27;]&quot;
+    &gt;&gt;&gt; w(10, &#x27;l33t&#x27;)
+    &quot;Your account is locked. Attempts: [&#x27;hwat&#x27;, &#x27;a&#x27;, &#x27;n00b&#x27;]&quot;
+    &quot;&quot;&quot;
+<div class="sol-highlight">    attempts = []
+    def withdraw(amount, password_attempt):
+        nonlocal balance
+        if len(attempts) == 3:
+            return &#x27;Your account is locked. Attempts: &#x27; + str(attempts)
+        if password_attempt != password:
+            attempts.append(password_attempt)
+            return &#x27;Incorrect password&#x27;
+        if amount &gt; balance:
+            return &#x27;Insufficient funds&#x27;
+        balance = balance &#x2d; amount
+        return balance
+    return withdraw</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q make_withdraw</code></pre>
+
+<explanation>
+
+<p>Video walkthrough: <a href="https://youtu.be/YyjQoug0Mtg">https://youtu.be/YyjQoug0Mtg</a></p>
+
+</div>
+
+<h3 class="question" id="q9">Q9: Joint Account</h3>
+
+<p>Suppose that our banking system requires the ability to make joint
+accounts.  Define a function <code>make_joint</code> that takes three arguments.</p>
+
+<ol>
+  <li>A password-protected <code>withdraw</code> function,</li>
+  <li>The password with which that <code>withdraw</code> function was defined, and</li>
+  <li>A new password that can also access the original account.</li>
+</ol>
+
+<p>The <code>make_joint</code> function returns a <code>withdraw</code> function that provides
+additional access to the original account using <em>either</em> the new or old
+password. Both functions draw from the same balance. Incorrect
+passwords provided to either function will be stored and cause the
+functions to be locked after three wrong attempts.</p>
+
+<p><em>Hint</em>: The solution is short (less than 10 lines) and contains no string
+literals!  The key is to call <code>withdraw</code> with the right password and amount,
+then interpret the result.  You may assume that all failed attempts to withdraw
+will return some string (for incorrect passwords, locked accounts, or
+insufficient funds), while successful withdrawals will return a number.</p>
+
+<p>Use <code>type(value) == str</code> to test if some <code>value</code> is a string:</p>
+
+<solution>
+
+<pre><code>def make_joint(withdraw, old_password, new_password):
+    &quot;&quot;&quot;Return a password&#x2d;protected withdraw function that has joint access to
+    the balance of withdraw.
+
+    &gt;&gt;&gt; w = make_withdraw(100, &#x27;hax0r&#x27;)
+    &gt;&gt;&gt; w(25, &#x27;hax0r&#x27;)
+    75
+    &gt;&gt;&gt; make_joint(w, &#x27;my&#x27;, &#x27;secret&#x27;)
+    &#x27;Incorrect password&#x27;
+    &gt;&gt;&gt; j = make_joint(w, &#x27;hax0r&#x27;, &#x27;secret&#x27;)
+    &gt;&gt;&gt; w(25, &#x27;secret&#x27;)
+    &#x27;Incorrect password&#x27;
+    &gt;&gt;&gt; j(25, &#x27;secret&#x27;)
+    50
+    &gt;&gt;&gt; j(25, &#x27;hax0r&#x27;)
+    25
+    &gt;&gt;&gt; j(100, &#x27;secret&#x27;)
+    &#x27;Insufficient funds&#x27;
+
+    &gt;&gt;&gt; j2 = make_joint(j, &#x27;secret&#x27;, &#x27;code&#x27;)
+    &gt;&gt;&gt; j2(5, &#x27;code&#x27;)
+    20
+    &gt;&gt;&gt; j2(5, &#x27;secret&#x27;)
+    15
+    &gt;&gt;&gt; j2(5, &#x27;hax0r&#x27;)
+    10
+
+    &gt;&gt;&gt; j2(25, &#x27;password&#x27;)
+    &#x27;Incorrect password&#x27;
+    &gt;&gt;&gt; j2(5, &#x27;secret&#x27;)
+    &quot;Your account is locked. Attempts: [&#x27;my&#x27;, &#x27;secret&#x27;, &#x27;password&#x27;]&quot;
+    &gt;&gt;&gt; j(5, &#x27;secret&#x27;)
+    &quot;Your account is locked. Attempts: [&#x27;my&#x27;, &#x27;secret&#x27;, &#x27;password&#x27;]&quot;
+    &gt;&gt;&gt; w(5, &#x27;hax0r&#x27;)
+    &quot;Your account is locked. Attempts: [&#x27;my&#x27;, &#x27;secret&#x27;, &#x27;password&#x27;]&quot;
+    &gt;&gt;&gt; make_joint(w, &#x27;hax0r&#x27;, &#x27;hello&#x27;)
+    &quot;Your account is locked. Attempts: [&#x27;my&#x27;, &#x27;secret&#x27;, &#x27;password&#x27;]&quot;
+    &quot;&quot;&quot;
+<div class="sol-highlight">    error = withdraw(0, old_password)
+    if type(error) == str:
+        return error
+    def joint(amount, password_attempt):
+        if password_attempt == new_password:
+            return withdraw(amount, old_password)
+        return withdraw(amount, password_attempt)
+    return joint</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q make_joint</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/h5MvIM1k1II">https://youtu.be/h5MvIM1k1II</a></p>
+
+</div>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#object-oriented-programming">Object Oriented Programming</a></li>
+  <ul>
+    <li><a href="#q1">Q1: Retirement</a></li>
+    <li><a href="#q2">Q2: Free Checking</a></li>
+  </ul>
+  <li><a href="#mobiles">Mobiles</a></li>
+  <ul>
+    <li><a href="#q3">Q3: Weights</a></li>
+    <li><a href="#q4">Q4: Balanced</a></li>
+    <li><a href="#q5">Q5: Totals</a></li>
+  </ul>
+  <li><a href="#mutation">Mutation</a></li>
+  <ul>
+    <li><a href="#q6">Q6: Counter</a></li>
+    <li><a href="#q7">Q7: Next Fibonacci</a></li>
+    <li><a href="#q8">Q8: Password Protected Account</a></li>
+    <li><a href="#q9">Q9: Joint Account</a></li>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>

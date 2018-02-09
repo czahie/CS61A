@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="/assets/css/hw.css">
+
+
+    <title>
+Homework 9 Solutions | CS 61A Spring 2018
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Homework 9 Solutions
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="hw09.zip" class="label label-outline">hw09.zip</a></li>
+        </ul>
+        
+      </h1>
+    </header>
+    
+<h2>Solution Files</h2>
+
+
+    
+<h3 class="question" id="q1">Q1: Cadr and Caddr</h3>
+
+<p>Define the procedures <code>cadr</code> and <code>caddr</code>, which return the second
+and third elements of a list, respectively:</p>
+
+<solution>
+
+<pre><code>(define (cddr s)
+  (cdr (cdr s)))
+
+(define (cadr s)
+<div class="sol-highlight">  (car (cdr s))</div>)
+
+(define (caddr s)
+<div class="sol-highlight">  (car (cddr s))</div>)</code></pre>
+
+</solution>
+
+<div class="sol-highlight">
+
+<p>Following the given example of <code>cddr</code>, defining <code>cadr</code> and <code>caddr</code> should be
+fairly straightforward.</p>
+
+<p>Just for fun, if this were a Python linked list question instead, the solution
+might look something like this:</p>
+
+<pre><code>cadr = lambda l: l.rest.first
+caddr = lambda l: l.rest.rest.first</code></pre>
+
+</div>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q cadr-caddr -u
+python3 ok -q cadr-caddr</code></pre>
+
+
+<h3 id="conditional-expressions">Conditional expressions</h3>
+
+
+<p>The <code>cond</code> special form is a general conditional expression, similar to
+a multi-clause conditional statement in Python.  The general form of a
+conditional expression is:</p>
+
+<pre><code>(cond
+    (&lt;p1&gt; &lt;el1&gt;)
+    (&lt;p2&gt; &lt;el2&gt;)
+    ...
+    (&lt;pn&gt; &lt;eln&gt;)
+    (else &lt;else&#x2d;expressions&gt;))</code></pre>
+
+<p>This consists of the symbol <code>cond</code> followed by sequences of expressions <code>(&lt;p&gt;
+&lt;el&gt;)</code> called <em>clauses</em>.</p>
+
+<p>The first expression in each pair is a
+<em>predicate</em>: an expression whose value is interpreted as either being true
+or false.</p>
+
+<p>In Scheme, <em>all</em> values except the special boolean value <code>#f</code> are
+interpreted as true values (unlike Python). (Our particular version of the
+Scheme interpreter allows you to write <code>True</code> and <code>False</code> in place of
+<code>#t</code> and <code>#f</code>, and prints boolean values as <code>True</code> and <code>False</code>. This is not
+standard.)</p>
+
+<p>Conditional expressions are evaluated as follows:</p>
+
+<ul>
+  <li>The predicate <code>&lt;p1&gt;</code> is evaluated first. If its value is <code>#f</code>, then <code>&lt;p2&gt;</code> is evaluated.</li>
+  <li>If <code>&lt;p2&gt;</code>'s value is also <code>#f</code>, then <code>&lt;p3&gt;</code> is evaluated.</li>
+  <li><p>This process continues until the first predicate <code>&lt;pi&gt;</code> is found whose value
+  is true, in which case the interpreter returns the result of evaluating each
+  of the corresponding list of consequent expressions <code>&lt;eli&gt;</code> and returning the
+  last value as the value of the whole conditional expression.</p>
+
+  <p><strong>Note:</strong> Unless some of the expressions have side-effects, there is no point
+  in having more than one expression in an expression list <code>&lt;eli&gt;</code>.</p></li>
+  <li>The <code>else</code> keyword, if present, is taken to be true, so that if none of the
+  <code>&lt;p&gt;</code>'s is found to be true, the interpreter evaluates the <code>else&#x2d;expressions</code>
+  and returns the last value.</li>
+  <li>If no clause has a true predicate, the result is an "unspecified value".</li>
+</ul>
+
+<p>This is a somewhat simplified version of the semantics of <code>cond</code>, covering the
+cases we usually encounter.</p>
+
+<h3 class="question" id="q2">Q2: Sign</h3>
+
+<p>Using <code>cond</code>, define a procedure <code>sign</code> that returns <code>&#x2d;1</code> for negative
+arguments, <code>0</code> for zero, and <code>1</code> for positive arguments:</p>
+
+<solution>
+
+<pre><code>(define (sign x)
+<div class="sol-highlight">  (cond ((&gt; x 0) 1)
+        ((= x 0) 0)
+        ((&lt; x 0) &#x2d;1))</div>)</code></pre>
+
+</solution>
+
+<div class="sol-highlight">
+
+<p>The order of the cases doesn't really matter, and we could also use an <code>else</code>
+clause in the place of one of the conditions.</p>
+
+<p>The condition looks something like this in Python:</p>
+
+<pre><code>if x &gt; 0:
+    return 1
+elif x == 0:
+    return 0
+elif x &lt; 0:
+    return &#x2d;1</code></pre>
+
+<p>Opinions differ on which is better, but hopefully you can see that the Scheme
+<code>cond</code> is quite readable and compact once you get used to it.</p>
+
+</div>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q sign -u
+python3 ok -q sign</code></pre>
+
+<h3 class="question" id="q3">Q3: Pow</h3>
+
+<p>Implement a procedure <code>pow</code> for raising the number <code>b</code> to the power of a
+nonnegative integer <code>n</code> that runs in Θ(log n) time.</p>
+
+<blockquote><p><em>Hint:</em> Consider the following observations:</p>
+
+<ol>
+  <li>b<sup>2k</sup> = (b<sup>k</sup>)<sup>2</sup></li>
+  <li>b<sup>2k+1</sup> = b(b<sup>k</sup>)<sup>2</sup></li>
+</ol>
+
+<p>You may use the built-in predicates <code>even?</code> and <code>odd?</code>.</p></blockquote>
+
+<solution>
+
+<pre><code>(define (square x) (* x x))
+
+(define (pow b n)
+<div class="sol-highlight">  (cond ((= n 0) 1)
+        ((even? n) (square (pow b (/ n 2))))
+        (else (* b (pow b (&#x2d; n 1)))))</div>)</code></pre>
+
+</solution>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q pow -u
+python3 ok -q pow</code></pre>
+
+<div class="sol-highlight">
+
+<p>The <code>else</code> clause shows the basic recursive version of <code>pow</code> that we've seen
+before in class.</p>
+
+<p>We save time in computation by avoiding an extra n/2 multiplications of the
+base. Instead, we just square the result of <code>b^(n/2)</code>. This behaviour is what
+gives us Θ(log n) time performance.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/-yt2EOv9ZLU">https://youtu.be/-yt2EOv9ZLU</a></p>
+
+</div>
+
+<h3 class="question" id="q4">Q4: Ordered</h3>
+
+<p>Implement a procedure called <code>ordered?</code>, which takes a list of numbers and
+returns <code>True</code> if the numbers are in nondescending order, and <code>False</code> otherwise.
+Numbers are considered nondescending if they are in a monotonically increasing
+sequence, that is:</p>
+
+<pre><code>1 2 3 3 4</code></pre>
+
+<p>Is nondescending, but:</p>
+
+<pre><code>1 2 3 3 2</code></pre>
+
+<p>Is not.</p>
+
+<blockquote><p><em>Hint</em>: The built-in <code>null?</code> function returns whether its argument is <code>nil</code>.</p></blockquote>
+
+<pre><code>(define (ordered? s)
+<div class="sol-highlight">  (if (or (null? s) (null? (cdr s)))
+      true
+      (and (&lt;= (car s) (cadr s)) (ordered? (cdr s))))</div>)</code></pre>
+
+<div class="sol-highlight">
+
+<p>We approach this much like a standard Python linked list problem.</p>
+
+<ul>
+  <li>The base case is where <code>s</code> has zero or one items. Trivially, this is ordered.</li>
+  <li>Otherwise we check if the first element is in order -- that is, if it's
+  smaller than the second element. If it's not, then the list is out of order.
+  Otherwise, we check if the rest of <code>s</code> is in order.</li>
+</ul>
+
+<p>You should verify for yourself that a Python implementation of this for linked
+lists is similar.</p>
+
+</div>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q ordered -u
+python3 ok -q ordered</code></pre>
+
+<h3 class="question" id="q5">Q5: No Dots!</h3>
+
+<p>Implement the procedure <code>nodots</code>, which takes a nested list of numbers that
+may not be well-formed and returns a nested list with the same content and
+structure, but which does not have any dots when displayed.  Lists are not
+well-formed if they do not properly terminate in a null list.  In such cases,
+the list will print with a dot before the final item to indicate that its
+last two items are contained in a single pair.  For example,</p>
+
+<pre><code>(cons 1 (cons 2 3))</code></pre>
+
+<p>would print as</p>
+
+<pre><code>(1 2 . 3)</code></pre>
+
+<p>for which <code>nodots</code> should substitute</p>
+
+<pre><code>(1 2 3)</code></pre>
+
+<blockquote><p>You may find the built-in <code>null?</code> and <code>pair?</code> predicates useful.</p></blockquote>
+
+<pre><code>(define (nodots s)
+<div class="sol-highlight">  (define (dotted s) (and (pair? s)
+                          (not (or (pair? (cdr s))
+                                   (null? (cdr s))))))
+  (cond ((null? s) s)
+        ((dotted s) (list (nodots (car s)) (cdr s)))
+        ((pair? s) (cons (nodots (car s)) (nodots (cdr s))))
+        (else s))
+
+  ; Alternate solution
+  (define (dotted s) (and (pair? s)
+                          (not (or (pair? (cdr s))
+                                   (null? (cdr s))))))
+
+  (define (car&#x2d;number s) (not (pair? (car s))))
+
+  (cond ((null? s) s)
+        ((and (dotted s) (car&#x2d;number s)) (list (car s) (cdr s)))
+        ((dotted s) (list (nodots (car s)) (cdr s)))
+        ((and (pair? s) (car&#x2d;number s) (cons (car s) (nodots (cdr s)))))
+        ((pair? s) (cons (nodots (car s)) (nodots (cdr s)))))</div>)</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q nodots -u
+python3 ok -q nodots</code></pre>
+
+<div class="sol-highlight">
+
+<p>There are two general steps we need to do:</p>
+
+<ol>
+  <li>Figure out where there will be dots, and</li>
+  <li>Figure out how to remove the dots.</li>
+</ol>
+
+<p><strong>Where are the dots?</strong></p>
+
+<p>Dots appear whenever we encounter a malformed Scheme list. That means even if a
+Scheme expression has dots in it, the resulting list may not have any. Consider
+the following:</p>
+
+<pre><code>scm&gt; &#x27;(1 . (2)) ; Contains dot in original expr, but not in final result
+(1 2)
+scm&gt; (list 1 2) ; &quot;Regular&quot; list construction results in no dots
+(1 2)</code></pre>
+
+<p>The dot represents a pair of 1 with the list containing 2, so the result is a
+well-formed list.</p>
+
+<p>Meanwhile, this <em>will</em> preserve the dot:</p>
+
+<pre><code>scm&gt; &#x27;(1 . 2)
+(1 . 2)</code></pre>
+
+<p>This represents a pair of 1 with 2, and since 2 is not a list or nil, it's a
+malformed list.</p>
+
+<p>Therefore, all of the following conditions must be satisfied for us to see a
+dot between the first and second elements of <code>s</code>:</p>
+
+<ul>
+  <li><strong><code>s</code> must be a pair.</strong></li>
+  <li><strong><code>(cdr s)</code> cannot be nil.</strong> Otherwise, this is a well-formed list.</li>
+  <li><strong><code>(cdr s)</code> cannot be a pair.</strong> Otherwise, this could be a well-formed list.
+  At the very least, we will not see a dot at this location, though it may
+  appear later in the list.</li>
+</ul>
+
+<p>The conditions here are reflected in the <code>dotted</code> procedure in our solution.
+Note that there is nothing relating to <code>(car s)</code> for detecting dots.</p>
+
+<p><strong>How do we remove the dots?</strong></p>
+
+<p>Let's consider the example from above:</p>
+
+<pre><code>scm&gt; (define has&#x2d;dots &#x27;(1 . 2))
+has&#x2d;dots
+scm&gt; has&#x2d;dots
+(1 . 2)</code></pre>
+
+<p>We want to transform this into a well formed list of two items: <code>(1 2)</code></p>
+
+<pre><code>scm&gt; (cons (car has&#x2d;dots) (cons (cdr has&#x2d;dots) nil))
+(1 2)
+scm&gt; (list (car has&#x2d;dots) (cdr has&#x2d;dots)) ; equivalent
+(1 2)</code></pre>
+
+<p>This will remove the dot between <code>(car s)</code> and <code>(cdr s)</code>. Note that <code>(car s)</code>
+could still have dots in it, but we can handle that by recursing (see final
+steps below).</p>
+
+<p><strong>Final odds and ends</strong></p>
+
+<p>We have code to handle a dot, now we just need to code up the other cases.</p>
+
+<ul>
+  <li>The base case is if <code>s</code> is <code>nil</code>. There are no dots here, so we can return.</li>
+  <li>If <code>s</code> has dots, take the steps above to handle that. We also need to recurse
+  on <code>(car s)</code> since that could contain dots.</li>
+  <li>If <code>s</code> doesn't contain dots but is still a pair, then we need to recurse <code>(car
+  s)</code> since that could still contain dots, and likewise for <code>(cdr s)</code>. Note that
+  <code>nodots</code> is guaranteed to return well-formed lists when called on a list, so
+  the recursive call on <code>(cdr s)</code> will be a well-formed list that we can join
+  using <code>cons</code>.</li>
+  <li>Otherwise, <code>s</code> is not a pair or nil, so it's a number. Numbers don't have dots
+  (except decimals, but that's not the purpose of this question 🙂) so we can
+  return it as is.</li>
+</ul>
+
+<p>Video walkthrough: <a href="https://youtu.be/QH7oIOUHmKI">https://youtu.be/QH7oIOUHmKI</a></p>
+
+</div>
+
+
+<h3 id="sets-as-ordered-lists">Sets as Ordered Lists</h3>
+
+
+<p>One way to represent a set is by using an ordered list, where the ordering is
+used to speed up search (although only by a constant factor). The following few
+questions explore this idea, assuming a "set" is a Scheme list with no repeated
+elements that is already ordered from least to greatest.</p>
+
+<h3 class="question" id="q6">Q6: Contains</h3>
+
+<p>Define <code>contains?</code>, which returns whether a set <code>s</code> contains value <code>v</code>. The
+Python implementation of this procedure is provided for your reference.</p>
+
+<pre><code>; Sets as sorted lists
+
+(define (empty? s) (null? s))
+
+(define (contains? s v)
+    (cond ((empty? s) #f)
+<div class="sol-highlight">          ((&gt; (car s) v) #f)
+          ((= (car s) v) #t)
+          ((&lt; (car s) v) (contains? (cdr s) v))</div>          ))
+
+; Equivalent Python code, for your reference:
+;
+; def empty(s):
+;     return s is Link.empty
+;
+; def contains(s, v):
+;     if empty(s):
+;         return False
+;     elif s.first &gt; v:
+;         return False
+;     elif s.first == v:
+;         return True
+;     else:
+;         return contains(s.rest, v)</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q contains -u
+python3 ok -q contains</code></pre>
+
+<div class="sol-highlight">
+
+<p>Main idea:</p>
+
+<ul>
+  <li>If the beginning of <code>s</code> is equal to <code>v</code>, then we're done.</li>
+  <li>If the beginning of <code>s</code> is smaller than <code>v</code>, then <code>v</code> could appear in the rest
+  of <code>s</code>.</li>
+  <li>If the beginning of <code>s</code> is larger than <code>v</code>, then <strong>all</strong> the items of <code>s</code> are
+  larger than <code>v</code>. So, <code>v</code> cannot be in <code>s</code>.</li>
+</ul>
+
+<p>Video walkthrough: <a href="https://youtu.be/p3N-FhLjspg">https://youtu.be/p3N-FhLjspg</a></p>
+
+</div>
+
+<h3 class="question" id="q7">Q7: Add</h3>
+
+<p>Define <code>add</code>, which takes a set <code>s</code> and a value <code>v</code> as arguments. It returns a
+representation of a set containing the values in <code>s</code> and the value <code>v</code>. There
+should be no repeated elements in the return value.</p>
+
+<pre><code>(define (add s v)
+    (cond ((empty? s) (list v))
+<div class="sol-highlight">          ((= (car s) v) s)
+          ((&gt; (car s) v) (cons v s))
+          ((&lt; (car s) v) (cons (car s) (add (cdr s) v)))</div>          ))</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q add -u
+python3 ok -q add</code></pre>
+
+<div class="sol-highlight">
+
+<p>Inserting <code>v</code> into a sorted list is analogous to finding <code>v</code> in a sorted list.
+When we know that everything in <code>s</code> is larger than <code>v</code>, then we know that's the
+appropriate location to include <code>v</code>.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/H49bWAcT_pk">https://youtu.be/H49bWAcT_pk</a></p>
+
+</div>
+
+<h3 class="question" id="q8">Q8: Intersect and Union</h3>
+
+<p>Define <code>intersect</code>, which returns a set containing only values that appear in
+both sets <code>s</code> and <code>t</code>. Your implementation should run in linear time in the
+length of the input sets. A Python implementation of this procedure is
+provided for your reference.</p>
+
+<p>Also, define <code>union</code>, which returns a set containing all values that appear
+in either set <code>s</code> or <code>t</code>.</p>
+
+<pre><code>(define (intersect s t)
+    (cond ((or (empty? s) (empty? t)) nil)
+<div class="sol-highlight">          ((= (car s) (car t)) (cons (car s) (intersect (cdr s) (cdr t))))
+          ((&lt; (car s) (car t)) (intersect (cdr s) t))
+          ((&gt; (car s) (car t)) (intersect s (cdr t)))</div>          ))
+
+; Equivalent Python code, for your reference:
+;
+; def intersect(set1, set2):
+;     if empty(set1) or empty(set2):
+;         return Link.empty
+;     else:
+;         e1, e2 = set1.first, set2.first
+;         if e1 == e2:
+;             return Link(e1, intersect(set1.rest, set2.rest))
+;         elif e1 &lt; e2:
+;             return intersect(set1.rest, set2)
+;         elif e2 &lt; e1:
+;             return intersect(set1, set2.rest)
+
+(define (union s t)
+    (cond ((empty? s) t)
+          ((empty? t) s)
+<div class="sol-highlight">          ((= (car s) (car t)) (cons (car s) (union (cdr s) (cdr t))))
+          ((&lt; (car s) (car t)) (cons (car s) (union (cdr s) t)))
+          ((&gt; (car s) (car t)) (cons (car t) (union s (cdr t))))</div>          ))</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q intersect -u
+python3 ok -q intersect
+python3 ok -q union -u
+python3 ok -q union</code></pre>
+
+<div class="sol-highlight">
+
+<p><code>union</code> and <code>intersect</code> are quite similar. The main difference is that we
+include items in <code>union</code> that get skipped in <code>intersect</code> (i.e. when <code>(car s)</code>
+and <code>(car t)</code> differ).</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/EWxT_Id9UlM">https://youtu.be/EWxT_Id9UlM</a></p>
+
+</div>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#q1">Q1: Cadr and Caddr</a></li>
+  <li><a href="#conditional-expressions">Conditional expressions</a></li>
+  <li><a href="#q2">Q2: Sign</a></li>
+  <li><a href="#q3">Q3: Pow</a></li>
+  <li><a href="#q4">Q4: Ordered</a></li>
+  <li><a href="#q5">Q5: No Dots!</a></li>
+  <li><a href="#sets-as-ordered-lists">Sets as Ordered Lists</a></li>
+  <li><a href="#q6">Q6: Contains</a></li>
+  <li><a href="#q7">Q7: Add</a></li>
+  <li><a href="#q8">Q8: Intersect and Union</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>

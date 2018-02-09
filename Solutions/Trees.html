@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+    <title>
+Study Guide: Trees | CS 61A Spring 2018
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Study Guide: Trees
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="/quiz/quiz04.pdf" class="label label-outline">Quiz</a></li>
+          
+          <li><a href="/quiz/quiz04_sol.pdf" class="label label-outline">Solution</a></li>
+          
+        </ul>
+        
+      </h1>
+    </header>
+    
+
+<h2>Instructions</h2>
+
+<p>This is the companion guide to <a href="/quiz/quiz04.pdf">Quiz 4</a> with links to past
+lectures, assignments, and handouts, as well as isomorphic quiz problems and
+additional practice problems to assist you in learning the concepts.</p>
+
+
+  <p><strong>Assignments</strong></p>
+  <ul>
+  <li><a href="/hw/hw05">HW 5</a> (<a href="/hw/sol-hw05">Solutions</a>)</li>
+  <li><a href="/lab/lab05">Lab 5</a></li>
+  <li><a href="/hw/hw06">HW 6</a> (<a href="/hw/sol-hw06">Solutions</a>)</li>
+</ul>
+
+
+
+  <p><strong>Handouts</strong></p>
+  <ul>
+  <li><a href="/disc/disc03.pdf">Discussion 3</a> (<a href="/disc/disc03_sol.pdf">Solutions</a>)</li>
+</ul>
+
+
+
+  <p><strong>Lectures</strong></p>
+  <ul>
+  <li><a href="/assets/slides/11-Trees_full.pdf">Trees</a></li>
+</ul>
+
+
+
+  <p><strong>Readings</strong></p>
+  <ul>
+  <li><a href="http://composingprograms.com/pages/23-sequences.html">Section 2.3</a></li>
+</ul>
+
+
+
+    
+<h1 id="guides">Guides</h1>
+
+
+
+<h2 id="trees">Trees</h2>
+
+
+<p>A <strong>tree</strong> is an abstract model of a hierarchical structure. It consists of
+nodes with a parent-child relationship. Its name comes from the fact that when
+drawn, it resembles an upside-down tree: the <strong>root</strong> of the tree is at the top
+and the <strong>leaves</strong> are at the bottom.</p>
+
+<p>A tree is a recursive data structure; each <strong>node</strong> of the tree contains a
+<strong>label</strong> value and a list of <strong>branches</strong>, each of which are also trees. The
+label can be <em>any</em> data type, while the branches are represented as a list of
+trees. The lecture slides provide a good overview of tree terminology and a
+visual to help demonstrate.</p>
+
+
+<h3 id="hierarchical-data">Hierarchical Data</h3>
+
+
+<p>We learned in lecture about lists, containers which hold sequences of data.
+These sequences can also be arbitrarily nested to create nested lists.</p>
+
+<pre><code>&gt;&gt;&gt; l = [1, 2, 3]
+&gt;&gt;&gt; [l, [l]]
+[[1, 2, 3], [[1, 2, 3]]]</code></pre>
+
+<p>This results in a hierarchy that lets us model, organize, and represent complex
+systems.</p>
+
+<p>Trees build upon this idea of hierarchy by constraining the structure of the
+tree. We are only allowed to build trees in a certain way, and they take on a
+certain visual representation, but underlying all of the nodes and their labels
+and branches is the same story of a nested, list hierarchy. What the <strong>tree
+data abstraction</strong> allows us to do is think of trees as larger units and not
+worry about manipulating individual lists.</p>
+
+<p>In this class, we have two different views of trees which we often switch
+between depending on the situation.</p>
+
+<ol>
+  <li>We can <strong>view trees as individual nodes</strong>. In Python, our tree data
+  abstraction is compound type. This means that we reference it with a pointer or
+  arrow, just like a list. But this means that, in our list of branches, each
+  tree is pointed to with a pointer too! You can imagine this can get complicated
+  quickly, so when we view trees as individual nodes, we consider what we can do
+  with an individual node of a tree.  Python sees trees this same way: not as a
+  whole, but as an individual node in a larger structure that happens to be
+  connected.</li>
+  <li>We can also <strong>view trees as larger, connected structures</strong>. Just like
+  functional abstraction allows us to reason about the behavior of a program in
+  terms of its domain, range, and behavior, thinking abstractly about tree
+  structures allow us to reason about the behavior of programs at a larger scale.
+  We can say, for example, that calling <code>replace_leaf</code> on a branch of a tree will
+  return a branch replacing all of its leaves' label values.</li>
+</ol>
+
+
+<h3 id="tree-traversal">Tree Traversal</h3>
+
+
+<p>Hierarchy and structure helps us organize data, but at the cost of making that
+very same data harder to find. Now that we've organized data into a tree, we'd
+like to be able to use and manipulate that data.</p>
+
+<p><strong>Tree traversal</strong> refers to the process of visiting each node in a tree data
+abstraction, exactly once. Just like how we saw that we needed to come up with
+an organized way to explore the space of possible solutions in tree recursion,
+we also need an organized way to traverse trees to avoid repeating work or
+getting stuck in an infinite loop.</p>
+
+<p>Each node of a tree has a predefined structure: a label value and a list of
+branches. This structure lets us explore tree structures in a very specific
+pattern where we visit each node of the tree one-by-one until we've completed
+the traversal and solved the problem.</p>
+
+<ol>
+  <li><em>Visit</em> the current node and check or otherwise <em>process</em> the node. Our base
+  case often falls under this category: we process the node by checking if the
+  node is a leaf, or some other stopping condition.</li>
+  <li>Iterate across the branches of the tree and recurse down. We often write a
+  <code>for</code> loop or list comprehension to iterate across the branches of the tree and
+  recurse on the branch to explore down the tree.</li>
+  <li>Combine the result obtained from the recursive call to determine the final
+  result. To find the sum of all the label values in a tree, for example, it's
+  not sufficient to stop at making a recursive call: we also need to determine
+  what to do with the number returned from the sum of the values in the branch.</li>
+</ol>
+
+<p>Tree problems tend toward recursive solutions. This also makes it convenient
+for understanding the structure of tree problems by first examining the
+expected behavior by coming up with small example cases. How should our program
+behave when we call it on a leaf, for example? How about if we scale up to a
+larger tree of 2 or 3 nodes? And so forth.</p>
+
+
+<h1 id="practice-problems">Practice Problems</h1>
+
+
+
+<h2 id="easy">Easy</h2>
+
+
+<h3 class="question" id="q1">Q1: Acorn Finder</h3>
+
+<p>The squirrels on campus need your help! There are a lot of trees on campus and
+the squirrels would like to know which ones contain acorns. Define the function
+<code>acorn_finder</code>, which takes in a tree and returns <code>True</code> if the tree contains a
+node with the value <code>&#x27;acorn&#x27;</code> and <code>False</code> otherwise.</p>
+
+
+
+<pre><code>def acorn_finder(t):
+    &quot;&quot;&quot;Returns True if t contains a node with the value &#x27;acorn&#x27; and
+    False otherwise.
+
+    &gt;&gt;&gt; scrat = tree(&#x27;acorn&#x27;)
+    &gt;&gt;&gt; acorn_finder(scrat)
+    True
+    &gt;&gt;&gt; sproul = tree(&#x27;roots&#x27;, [tree(&#x27;branch1&#x27;, [tree(&#x27;leaf&#x27;), tree(&#x27;acorn&#x27;)]), tree(&#x27;branch2&#x27;)])
+    &gt;&gt;&gt; acorn_finder(sproul)
+    True
+    &gt;&gt;&gt; numbers = tree(1, [tree(2), tree(3, [tree(4), tree(5)]), tree(6, [tree(7)])])
+    &gt;&gt;&gt; acorn_finder(numbers)
+    False
+    &quot;&quot;&quot;
+<div class="alt solution-1">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-1">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x28;&#x74;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x27;&#x61;&#x63;&#x6f;&#x72;&#x6e;&#x27;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x20;&#x69;&#x6e;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x61;&#x63;&#x6f;&#x72;&#x6e;&#x5f;&#x66;&#x69;&#x6e;&#x64;&#x65;&#x72;&#x28;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x54;&#x72;&#x75;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#xa;&#x23;&#x20;&#x41;&#x6c;&#x74;&#x65;&#x72;&#x6e;&#x61;&#x74;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x61;&#x63;&#x6f;&#x72;&#x6e;&#x5f;&#x66;&#x69;&#x6e;&#x64;&#x65;&#x72;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x28;&#x74;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x27;&#x61;&#x63;&#x6f;&#x72;&#x6e;&#x27;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x6e;&#x79;&#x28;&#x61;&#x63;&#x6f;&#x72;&#x6e;&#x5f;&#x66;&#x69;&#x6e;&#x64;&#x65;&#x72;&#x28;&#x63;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x63;&#x20;&#x69;&#x6e;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x29;&#x29;&#x20;&#x20;&#x20;&#x20;</div></code></pre>
+
+
+        <button id='solution-1' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<h3 class="question" id="q2">Q2: Height</h3>
+
+<p>The <em>depth</em> of a node in a tree is defined as the number of edges between that
+node and the root. Define the function <code>height</code>, which takes in a tree as an
+argument and returns the depth of the leaf that is deepest (furthest away from
+the root).</p>
+
+<blockquote><p><em>Note</em>: given the definition of the <em>height of a tree</em>, if <code>height</code> is given
+a leaf, what should it return?</p></blockquote>
+
+
+
+<pre><code>def height(t):
+    &quot;&quot;&quot;Return the depth of the deepest node in the tree.
+
+    &gt;&gt;&gt; height(tree(1))
+    0
+    &gt;&gt;&gt; height(tree(1, [tree(2), tree(3)]))
+    1
+    &gt;&gt;&gt; numbers = tree(1,
+    ...                [tree(2,
+    ...                      [tree(3),
+    ...                       tree(4)]),
+    ...                 tree(5,
+    ...                      [tree(6,
+    ...                            [tree(7)]),
+    ...                       tree(8)])])
+    &gt;&gt;&gt; print_tree(numbers)
+    1
+      2
+      3
+        4
+        5
+      6
+        7
+    &gt;&gt;&gt; height(numbers)
+    2
+    &quot;&quot;&quot;
+<div class="alt solution-2">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-2">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x73;&#x5f;&#x6c;&#x65;&#x61;&#x66;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x65;&#x70;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x20;&#x69;&#x6e;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x65;&#x70;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x64;&#x65;&#x65;&#x70;&#x65;&#x73;&#x74;&#x2c;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x28;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x65;&#x65;&#x70;&#x65;&#x73;&#x74;&#x20;&#x2b;&#x20;&#x31;&#xa;&#xa;&#x23;&#x20;&#x41;&#x6c;&#x74;&#x65;&#x72;&#x6e;&#x61;&#x74;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x73;&#x5f;&#x6c;&#x65;&#x61;&#x66;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x31;&#x20;&#x2b;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x5b;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x28;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x20;&#x69;&#x6e;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x29;&#x5d;&#x29;&#xa;&#xa;&#x23;&#x20;&#x41;&#x6c;&#x74;&#x65;&#x72;&#x6e;&#x61;&#x74;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x32;&#xa;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x66;&#x75;&#x6e;&#x63;&#x74;&#x6f;&#x6f;&#x6c;&#x73;&#x20;&#x69;&#x6d;&#x70;&#x6f;&#x72;&#x74;&#x20;&#x72;&#x65;&#x64;&#x75;&#x63;&#x65;&#xa;&#xa;&#x64;&#x65;&#x66;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x73;&#x5f;&#x6c;&#x65;&#x61;&#x66;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x64;&#x75;&#x63;&#x65;&#x28;&#x6d;&#x61;&#x78;&#x2c;&#x20;&#x5b;&#x31;&#x20;&#x2b;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x28;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x20;&#x69;&#x6e;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x29;&#x5d;&#x2c;&#x20;&#x30;&#x29;</div></code></pre>
+
+
+        <button id='solution-2' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<h3 class="question" id="q3">Q3: Tree Map</h3>
+
+<p>Define the function <code>tree_map</code>, which takes in a tree and a
+one-argument function as arguments and returns a new tree which is the
+result of mapping the function over the entries of the input tree.</p>
+
+
+
+<pre><code>def tree_map(fn, t):
+    &quot;&quot;&quot;Maps the function fn over the entries of tree and returns the
+    result in a new tree.
+
+    &gt;&gt;&gt; numbers = tree(1,
+    ...                [tree(2,
+    ...                      [tree(3),
+    ...                       tree(4)]),
+    ...                 tree(5,
+    ...                      [tree(6,
+    ...                            [tree(7)]),
+    ...                       tree(8)])])
+    &gt;&gt;&gt; print_tree(tree_map(lambda x: 2**x, numbers))
+    2
+      4
+        8
+        16
+      32
+        64
+          128
+        256
+    &quot;&quot;&quot;
+<div class="alt solution-3">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-3">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x72;&#x65;&#x6e;&#x28;&#x74;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x5b;&#x5d;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x72;&#x65;&#x65;&#x28;&#x66;&#x6e;&#x28;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x28;&#x74;&#x29;&#x29;&#x2c;&#x20;&#x5b;&#x5d;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x61;&#x70;&#x70;&#x65;&#x64;&#x5f;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x20;&#x69;&#x6e;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x72;&#x65;&#x6e;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x61;&#x70;&#x70;&#x65;&#x64;&#x5f;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x73;&#x20;&#x2b;&#x3d;&#x20;&#x5b;&#x20;&#x74;&#x72;&#x65;&#x65;&#x5f;&#x6d;&#x61;&#x70;&#x28;&#x66;&#x6e;&#x2c;&#x20;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x29;&#x20;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x72;&#x65;&#x65;&#x28;&#x66;&#x6e;&#x28;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x28;&#x74;&#x29;&#x29;&#x2c;&#x20;&#x6d;&#x61;&#x70;&#x70;&#x65;&#x64;&#x5f;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x73;&#x29;&#xa;&#xa;&#x23;&#x20;&#x41;&#x6c;&#x74;&#x65;&#x72;&#x6e;&#x61;&#x74;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x74;&#x72;&#x65;&#x65;&#x5f;&#x6d;&#x61;&#x70;&#x28;&#x66;&#x6e;&#x2c;&#x20;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x72;&#x65;&#x65;&#x28;&#x66;&#x6e;&#x28;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x28;&#x74;&#x29;&#x29;&#x2c;&#x20;&#x5b;&#x74;&#x72;&#x65;&#x65;&#x5f;&#x6d;&#x61;&#x70;&#x28;&#x66;&#x6e;&#x2c;&#x20;&#x74;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x74;&#x20;&#x69;&#x6e;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x72;&#x65;&#x6e;&#x28;&#x74;&#x29;&#x5d;&#x29;</div></code></pre>
+
+
+        <button id='solution-3' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<h3 class="question" id="q4">Q4: Same shape</h3>
+
+<p>Define a function <code>same_shape</code> that, given two trees, <code>t1</code> and <code>t2</code>,
+returns <code>True</code> if the two trees have the same shape (but not
+necessarily the same data in each node) and <code>False</code> otherwise.</p>
+
+
+
+<pre><code>def same_shape(t1, t2):
+    &quot;&quot;&quot;Return True if t1 is indentical in shape to t2.
+
+    &gt;&gt;&gt; test_tree1 = tree(1, [tree(2), tree(3)])
+    &gt;&gt;&gt; test_tree2 = tree(4, [tree(5), tree(6)])
+    &gt;&gt;&gt; test_tree3 = tree(1,
+    ...                   [tree(2,
+    ...                         [tree(3)])])
+    &gt;&gt;&gt; test_tree4 = tree(4,
+    ...                   [tree(5,
+    ...                         [tree(6)])])
+    &gt;&gt;&gt; same_shape(test_tree1, test_tree2)
+    True
+    &gt;&gt;&gt; same_shape(test_tree3, test_tree4)
+    True
+    &gt;&gt;&gt; same_shape(test_tree2, test_tree4)
+    False
+    &quot;&quot;&quot;
+<div class="alt solution-4">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-4">&#x20;&#x20;&#x20;&#x20;&#x73;&#x31;&#x2c;&#x20;&#x73;&#x32;&#x20;&#x3d;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x31;&#x29;&#x2c;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x32;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x73;&#x31;&#x29;&#x20;&#x21;&#x3d;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x73;&#x32;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6c;&#x65;&#x6e;&#x28;&#x73;&#x31;&#x29;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x73;&#x61;&#x6d;&#x65;&#x5f;&#x73;&#x68;&#x61;&#x70;&#x65;&#x28;&#x73;&#x31;&#x5b;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x5d;&#x2c;&#x20;&#x73;&#x32;&#x5b;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x5d;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#xa;&#x23;&#x20;&#x41;&#x6c;&#x74;&#x65;&#x72;&#x6e;&#x61;&#x74;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x73;&#x61;&#x6d;&#x65;&#x5f;&#x73;&#x68;&#x61;&#x70;&#x65;&#x28;&#x74;&#x31;&#x2c;&#x20;&#x74;&#x32;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x72;&#x65;&#x6e;&#x5f;&#x73;&#x61;&#x6d;&#x65;&#x20;&#x3d;&#x20;&#x61;&#x6c;&#x6c;&#x28;&#x6d;&#x61;&#x70;&#x28;&#x73;&#x61;&#x6d;&#x65;&#x5f;&#x73;&#x68;&#x61;&#x70;&#x65;&#x2c;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x31;&#x29;&#x2c;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x32;&#x29;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x31;&#x29;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x32;&#x29;&#x29;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x72;&#x65;&#x6e;&#x5f;&#x73;&#x61;&#x6d;&#x65;</div></code></pre>
+
+
+        <button id='solution-4' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+
+<h2 id="medium">Medium</h2>
+
+
+<h3 class="question" id="q5">Q5: Sprout leaves</h3>
+
+<p>Define a function <code>sprout_leaves</code> that, given a tree, <code>t</code>, and a list
+of values, <code>vals</code>, and produces a tree with every leaf having new
+branches that contain each of the items in <code>vals</code>. Do not add new
+branches to non-leaf nodes.</p>
+
+
+
+<pre><code>def sprout_leaves(t, vals):
+    &quot;&quot;&quot;Sprout new leaves containing the data in vals at each leaf in
+    the original tree t and return the resulting tree.
+
+    &gt;&gt;&gt; t1 = tree(1, [tree(2), tree(3)])
+    &gt;&gt;&gt; print_tree(t1)
+    1
+      2
+      3
+    &gt;&gt;&gt; new1 = sprout_leaves(t1, [4, 5])
+    &gt;&gt;&gt; print_tree(new1)
+    1
+      2
+        4
+        5
+      3
+        4
+        5
+
+    &gt;&gt;&gt; t2 = tree(1, [tree(2, [tree(3)])])
+    &gt;&gt;&gt; print_tree(t2)
+    1
+      2
+        3
+    &gt;&gt;&gt; new2 = sprout_leaves(t2, [6, 1, 2])
+    &gt;&gt;&gt; print_tree(new2)
+    1
+      2
+        3
+          6
+          1
+          2
+    &quot;&quot;&quot;
+<div class="alt solution-5">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-5">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x73;&#x5f;&#x6c;&#x65;&#x61;&#x66;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x72;&#x65;&#x65;&#x28;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x28;&#x74;&#x29;&#x2c;&#x20;&#x5b;&#x74;&#x72;&#x65;&#x65;&#x28;&#x76;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x76;&#x20;&#x69;&#x6e;&#x20;&#x76;&#x61;&#x6c;&#x73;&#x5d;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x72;&#x65;&#x65;&#x28;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x28;&#x74;&#x29;&#x2c;&#x20;&#x5b;&#x73;&#x70;&#x72;&#x6f;&#x75;&#x74;&#x5f;&#x6c;&#x65;&#x61;&#x76;&#x65;&#x73;&#x28;&#x73;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x73;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x73;&#x20;&#x69;&#x6e;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x29;&#x5d;&#x29;</div></code></pre>
+
+
+        <button id='solution-5' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<h3 class="question" id="q6">Q6: Has Path</h3>
+
+<p>Write a function <code>has_path</code> that takes in a tree <code>t</code> and a string <code>word</code>. It
+returns <code>True</code> if there is a path that starts from the root where the entries
+along the path spell out the <code>word</code>, and <code>False</code> otherwise.</p>
+
+
+
+<pre><code>def has_path(t, word):
+    &quot;&quot;&quot;Return whether there is a path in a tree where the entries along the path
+    spell out a particular word.
+
+    &gt;&gt;&gt; greetings = tree(&#x27;h&#x27;, [tree(&#x27;i&#x27;),
+    ...                        tree(&#x27;e&#x27;, [tree(&#x27;l&#x27;, [tree(&#x27;l&#x27;, [tree(&#x27;o&#x27;)])]),
+    ...                                   tree(&#x27;y&#x27;)])])
+    &gt;&gt;&gt; print_tree(greetings)
+    h
+      i
+      e
+        l
+          l
+            o
+        y
+    &gt;&gt;&gt; has_path(greetings, &#x27;h&#x27;)
+    True
+    &gt;&gt;&gt; has_path(greetings, &#x27;i&#x27;)
+    False
+    &gt;&gt;&gt; has_path(greetings, &#x27;hi&#x27;)
+    True
+    &gt;&gt;&gt; has_path(greetings, &#x27;hello&#x27;)
+    True
+    &gt;&gt;&gt; has_path(greetings, &#x27;hey&#x27;)
+    True
+    &gt;&gt;&gt; has_path(greetings, &#x27;bye&#x27;)
+    False
+
+<div class="solution solution-6">&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x63;&#x20;&#x3d;&#x20;&#x74;&#x72;&#x65;&#x65;&#x28;&#x27;&#x63;&#x27;&#x2c;&#x20;&#x5b;&#x74;&#x72;&#x65;&#x65;&#x28;&#x27;&#x61;&#x27;&#x2c;&#x20;&#x5b;&#x74;&#x72;&#x65;&#x65;&#x28;&#x27;&#x74;&#x27;&#x29;&#x5d;&#x29;&#x2c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x2e;&#x2e;&#x2e;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x65;&#x65;&#x28;&#x27;&#x6f;&#x27;&#x2c;&#x20;&#x5b;&#x74;&#x72;&#x65;&#x65;&#x28;&#x27;&#x6c;&#x27;&#x2c;&#x20;&#x5b;&#x74;&#x72;&#x65;&#x65;&#x28;&#x27;&#x6f;&#x27;&#x2c;&#x20;&#x5b;&#x74;&#x72;&#x65;&#x65;&#x28;&#x27;&#x72;&#x27;&#x29;&#x5d;&#x29;&#x5d;&#x29;&#x2c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x2e;&#x2e;&#x2e;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x65;&#x65;&#x28;&#x27;&#x79;&#x27;&#x29;&#x5d;&#x29;&#x5d;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x68;&#x61;&#x73;&#x5f;&#x70;&#x61;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x27;&#x63;&#x27;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x68;&#x61;&#x73;&#x5f;&#x70;&#x61;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x27;&#x61;&#x74;&#x27;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x68;&#x61;&#x73;&#x5f;&#x70;&#x61;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x27;&#x63;&#x61;&#x74;&#x75;&#x72;&#x64;&#x61;&#x79;&#x27;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x68;&#x61;&#x73;&#x5f;&#x70;&#x61;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x27;&#x63;&#x6f;&#x6c;&#x6f;&#x72;&#x27;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x68;&#x61;&#x73;&#x5f;&#x70;&#x61;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x27;&#x63;&#x6f;&#x62;&#x6f;&#x6c;&#x27;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x68;&#x61;&#x73;&#x5f;&#x70;&#x61;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x27;&#x63;&#x6f;&#x6c;&#x27;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x68;&#x61;&#x73;&#x5f;&#x70;&#x61;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x27;&#x63;&#x6f;&#x79;&#x27;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x68;&#x61;&#x73;&#x5f;&#x70;&#x61;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x27;&#x6f;&#x6c;&#x6f;&#x27;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x68;&#x61;&#x73;&#x5f;&#x70;&#x61;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x27;&#x6f;&#x79;&#x27;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;</div>    &quot;&quot;&quot;
+    assert len(word) &gt; 0, &#x27;no path for empty words.&#x27;
+<div class="alt solution-6">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-6">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x28;&#x74;&#x29;&#x20;&#x21;&#x3d;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x5b;&#x30;&#x5d;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x77;&#x6f;&#x72;&#x64;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x62;&#x20;&#x69;&#x6e;&#x20;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x68;&#x61;&#x73;&#x5f;&#x70;&#x61;&#x74;&#x68;&#x28;&#x62;&#x2c;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x5b;&#x31;&#x3a;&#x5d;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;</div></code></pre>
+
+
+        <button id='solution-6' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#guides">Guides</a></li>
+  <ul>
+    <li><a href="#trees">Trees</a></li>
+    <ul>
+      <li><a href="#hierarchical-data">Hierarchical Data</a></li>
+      <li><a href="#tree-traversal">Tree Traversal</a></li>
+    </ul>
+  </ul>
+  <li><a href="#practice-problems">Practice Problems</a></li>
+  <ul>
+    <li><a href="#easy">Easy</a></li>
+    <ul>
+      <li><a href="#q1">Q1: Acorn Finder</a></li>
+      <li><a href="#q2">Q2: Height</a></li>
+      <li><a href="#q3">Q3: Tree Map</a></li>
+      <li><a href="#q4">Q4: Same shape</a></li>
+    </ul>
+    <li><a href="#medium">Medium</a></li>
+    <ul>
+      <li><a href="#q5">Q5: Sprout leaves</a></li>
+      <li><a href="#q6">Q6: Has Path</a></li>
+    </ul>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+<script>
+  $(function() {
+    $('.toggle').css('display', 'inline-block');
+    $('.toggle').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
+
+  </body>
+</html>

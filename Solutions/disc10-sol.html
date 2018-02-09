@@ -1,0 +1,457 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}pre { word-wrap:break-word; }pre { white-space:pre-wrap; }</style><div id="google-cache-hdr"  dir=ltr><div>这是 <a href="https://cs61a.org/disc/disc10_sol.pdf" dir="ltr">https://cs61a.org/disc/disc10_sol.pdf</a> 的 HTML 档。<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> 在网路漫游时会自动将档案转换成 HTML 网页来储存。</div></div><div style="position:relative;margin:8px;">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX-1.40.18">
+<meta name="CreationDate" content="D:20171219170043Z">
+<meta name="ModDate" content="D:20171219170043Z">
+<meta name="Fullbanner" content="This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) kpathsea version 6.2.3">
+<title>CS 61A SQL Fall 2017 1 Introduction 2 Creating Tables</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:258;left:81"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:258;left:570"><nobr>SQL</nobr></div>
+<div style="position:absolute;top:298;left:81"><nobr>Fall 2017</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:306;left:353"><nobr>Discussion 10: November 15, 2017 <font color="#ff0000" style="font-size:19px">Solutions</font></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:368;left:81"><nobr>1 Introduction</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:422;left:81"><nobr>SQL is an example of a declarative programming language. Statements do not de-</nobr></div>
+<div style="position:absolute;top:443;left:81"><nobr>scribe computations directly, but instead describe the desired result of some com-</nobr></div>
+<div style="position:absolute;top:465;left:81"><nobr>putation. It is the role of the query interpreter of the database system to plan and</nobr></div>
+<div style="position:absolute;top:486;left:81"><nobr>perform a computational process to produce such a result.</nobr></div>
+<div style="position:absolute;top:517;left:81"><nobr>In SQL, data is organized into tables. A table has a fixed number of named</nobr></div>
+<div style="position:absolute;top:538;left:81"><nobr>columns. A row of the table represents a single data record and has one value for</nobr></div>
+<div style="position:absolute;top:560;left:81"><nobr>each column. For example, we have a table named records that stores information</nobr></div>
+<div style="position:absolute;top:581;left:81"><nobr>about the employees at a small company<a href="#1"></a><font color="#ff0000" style="font-size:8px"><a href="#1">1</a></font><a href="#1"></a>. Each of the eight rows represents an</nobr></div>
+<div style="position:absolute;top:603;left:81"><nobr>employee.</nobr></div>
+<div style="position:absolute;top:629;left:325"><nobr>records</nobr></div>
+<div style="position:absolute;top:650;left:90"><nobr>Name</nobr></div>
+<div style="position:absolute;top:650;left:217"><nobr>Division</nobr></div>
+<div style="position:absolute;top:650;left:334"><nobr>Title</nobr></div>
+<div style="position:absolute;top:650;left:487"><nobr>Salary</nobr></div>
+<div style="position:absolute;top:650;left:553"><nobr>Supervisor</nobr></div>
+<div style="position:absolute;top:672;left:90"><nobr>Ben Bitdiddle</nobr></div>
+<div style="position:absolute;top:672;left:217"><nobr>Computer</nobr></div>
+<div style="position:absolute;top:672;left:334"><nobr>Wizard</nobr></div>
+<div style="position:absolute;top:672;left:487"><nobr>60000</nobr></div>
+<div style="position:absolute;top:672;left:553"><nobr>Oliver Warbucks</nobr></div>
+<div style="position:absolute;top:694;left:90"><nobr>Alyssa P Hacker Computer</nobr></div>
+<div style="position:absolute;top:694;left:334"><nobr>Programmer</nobr></div>
+<div style="position:absolute;top:694;left:487"><nobr>40000</nobr></div>
+<div style="position:absolute;top:694;left:553"><nobr>Ben Bitdiddle</nobr></div>
+<div style="position:absolute;top:715;left:90"><nobr>Cy D Fect</nobr></div>
+<div style="position:absolute;top:715;left:217"><nobr>Computer</nobr></div>
+<div style="position:absolute;top:715;left:334"><nobr>Programmer</nobr></div>
+<div style="position:absolute;top:715;left:487"><nobr>35000</nobr></div>
+<div style="position:absolute;top:715;left:553"><nobr>Ben Bitdiddle</nobr></div>
+<div style="position:absolute;top:737;left:90"><nobr>Lem E Tweakit</nobr></div>
+<div style="position:absolute;top:737;left:217"><nobr>Computer</nobr></div>
+<div style="position:absolute;top:737;left:334"><nobr>Technician</nobr></div>
+<div style="position:absolute;top:737;left:487"><nobr>25000</nobr></div>
+<div style="position:absolute;top:737;left:553"><nobr>Ben Bitdiddle</nobr></div>
+<div style="position:absolute;top:758;left:90"><nobr>Louis Reasoner</nobr></div>
+<div style="position:absolute;top:758;left:217"><nobr>Computer</nobr></div>
+<div style="position:absolute;top:758;left:334"><nobr>Programmer Trainee 30000</nobr></div>
+<div style="position:absolute;top:758;left:553"><nobr>Alyssa P Hacker</nobr></div>
+<div style="position:absolute;top:780;left:90"><nobr>Oliver Warbucks Administration Big Wheel</nobr></div>
+<div style="position:absolute;top:780;left:487"><nobr>150000</nobr></div>
+<div style="position:absolute;top:780;left:553"><nobr>Oliver Warbucks</nobr></div>
+<div style="position:absolute;top:801;left:90"><nobr>Eben Scrooge</nobr></div>
+<div style="position:absolute;top:801;left:217"><nobr>Accounting</nobr></div>
+<div style="position:absolute;top:801;left:334"><nobr>Chief Accountant</nobr></div>
+<div style="position:absolute;top:801;left:487"><nobr>75000</nobr></div>
+<div style="position:absolute;top:801;left:553"><nobr>Oliver Warbucks</nobr></div>
+<div style="position:absolute;top:823;left:90"><nobr>Robert Cratchet Accounting</nobr></div>
+<div style="position:absolute;top:823;left:334"><nobr>Scrivener</nobr></div>
+<div style="position:absolute;top:823;left:487"><nobr>18000</nobr></div>
+<div style="position:absolute;top:823;left:553"><nobr>Eben Scrooge</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:869;left:81"><nobr>2 Creating Tables</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:923;left:81"><nobr>We can use a SELECT statement to create tables. The following statement creates a</nobr></div>
+<div style="position:absolute;top:944;left:81"><nobr>table with a single row, with columns named “first” and “last”:</nobr></div>
+<div style="position:absolute;top:971;left:96"><nobr>sqlite&gt; <b>SELECT </b>Ben <b>AS first</b>, Bitdiddle <b>AS last</b>;</nobr></div>
+<div style="position:absolute;top:993;left:96"><nobr>Ben|Bitdiddle</nobr></div>
+<div style="position:absolute;top:1036;left:81"><nobr>Given two tables with the same number of columns, we can combine their rows into</nobr></div>
+<div style="position:absolute;top:1057;left:81"><nobr>a larger table with UNION:</nobr></div>
+<div style="position:absolute;top:1084;left:81"><nobr>sqlite&gt; <b>SELECT </b>Ben <b>AS first</b>, Bitdiddle <b>AS last UNION</b></nobr></div>
+<div style="position:absolute;top:1106;left:103"><nobr>...&gt; <b>SELECT </b>Louis ,</nobr></div>
+<div style="position:absolute;top:1106;left:320"><nobr>Reasoner ;</nobr></div>
+<div style="position:absolute;top:1127;left:81"><nobr>Ben|Bitdiddle</nobr></div>
+<div style="position:absolute;top:1149;left:81"><nobr>Louis|Reasoner</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:1191;left:98"><nobr>1<font style="font-size:9px">Example adapted from Structure and Interpretation of Computer Programs</font></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1363;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1400;left:81"><nobr>2 SQL</nobr></div>
+<div style="position:absolute;top:1432;left:81"><nobr>To save a table, use CREATE TABLE and a name. Here we’re going to create the table</nobr></div>
+<div style="position:absolute;top:1453;left:81"><nobr>of employees from the previous section and assign it to the name records:</nobr></div>
+<div style="position:absolute;top:1480;left:81"><nobr>sqlite&gt; <b>CREATE TABLE </b>records <b>AS</b></nobr></div>
+<div style="position:absolute;top:1502;left:103"><nobr>...&gt;</nobr></div>
+<div style="position:absolute;top:1506;left:156"><nobr><b>SELECT </b>Ben Bitdiddle <b>AS </b>name, Computer <b>AS </b>division,</nobr></div>
+<div style="position:absolute;top:1523;left:103"><nobr>...&gt;</nobr></div>
+<div style="position:absolute;top:1523;left:178"><nobr>Wizard <b>AS </b>title, 60000 <b>AS </b>salary,</nobr></div>
+<div style="position:absolute;top:1545;left:103"><nobr>...&gt;</nobr></div>
+<div style="position:absolute;top:1545;left:178"><nobr>Oliver Warbucks <b>AS </b>supervisor <b>UNION</b></nobr></div>
+<div style="position:absolute;top:1566;left:103"><nobr>...&gt;</nobr></div>
+<div style="position:absolute;top:1570;left:156"><nobr><b>SELECT </b>Alyssa P Hacker , Computer ,</nobr></div>
+<div style="position:absolute;top:1588;left:103"><nobr>...&gt;</nobr></div>
+<div style="position:absolute;top:1588;left:178"><nobr>Programmer , 40000, Ben Bitdiddle <b>UNION </b>... ;</nobr></div>
+<div style="position:absolute;top:1628;left:81"><nobr>We can SELECT rows from an existing table using a FROM clause. This query creates</nobr></div>
+<div style="position:absolute;top:1649;left:81"><nobr>a table with two columns, with a row for each row in the records table:</nobr></div>
+<div style="position:absolute;top:1676;left:81"><nobr>sqlite&gt; <b>SELECT </b>name, division <b>FROM </b>records;</nobr></div>
+<div style="position:absolute;top:1698;left:81"><nobr>Alyssa P Hacker|Computer</nobr></div>
+<div style="position:absolute;top:1719;left:81"><nobr>Ben Bitdiddle|Computer</nobr></div>
+<div style="position:absolute;top:1741;left:81"><nobr>Cy D Fect|Computer</nobr></div>
+<div style="position:absolute;top:1762;left:81"><nobr>Eben Scrooge|Accounting</nobr></div>
+<div style="position:absolute;top:1784;left:81"><nobr>Lem E Tweakit|Computer</nobr></div>
+<div style="position:absolute;top:1805;left:81"><nobr>Louis Reasoner|Computer</nobr></div>
+<div style="position:absolute;top:1827;left:81"><nobr>Oliver Warbucks|Administration</nobr></div>
+<div style="position:absolute;top:1848;left:81"><nobr>Robert Cratchet|Accounting</nobr></div>
+<div style="position:absolute;top:1891;left:81"><nobr>The special syntax SELECT * will select all columns from a table. It’s an easy way</nobr></div>
+<div style="position:absolute;top:1913;left:81"><nobr>to print the contents of a table.</nobr></div>
+<div style="position:absolute;top:1940;left:81"><nobr>sqlite&gt; <b>SELECT </b>* <b>FROM </b>records;</nobr></div>
+<div style="position:absolute;top:1961;left:81"><nobr>Alyssa P Hacker|Computer|Programmer|40000|Ben Bitdiddle</nobr></div>
+<div style="position:absolute;top:1983;left:81"><nobr>Ben Bitdiddle|Computer|Wizard|60000|Oliver Warbucks</nobr></div>
+<div style="position:absolute;top:2004;left:81"><nobr>Cy D Fect|Computer|Programmer|35000|Ben Bitdiddle</nobr></div>
+<div style="position:absolute;top:2026;left:81"><nobr>Eben Scrooge|Accounting|Chief Accountant|75000|Oliver Warbucks</nobr></div>
+<div style="position:absolute;top:2047;left:81"><nobr>Lem E Tweakit|Computer|Technician|25000|Ben Bitdiddle</nobr></div>
+<div style="position:absolute;top:2069;left:81"><nobr>Louis Reasoner|Computer|Programmer Trainee|30000|Alyssa P Hacker</nobr></div>
+<div style="position:absolute;top:2090;left:81"><nobr>Oliver Warbucks|Administration|Big Wheel|150000|Oliver Warbucks</nobr></div>
+<div style="position:absolute;top:2112;left:81"><nobr>Robert Cratchet|Accounting|Scrivener|18000|Eben Scrooge</nobr></div>
+<div style="position:absolute;top:2155;left:81"><nobr>We can choose which columns to show in the first part of the SELECT, we can filter</nobr></div>
+<div style="position:absolute;top:2177;left:81"><nobr>out rows using a WHERE clause, and sort the resulting rows with an ORDER BY clause.</nobr></div>
+<div style="position:absolute;top:2198;left:81"><nobr>In general the syntax is:</nobr></div>
+<div style="position:absolute;top:2229;left:81"><nobr><b>SELECT </b>[columns] <b>FROM </b>[tables]</nobr></div>
+<div style="position:absolute;top:2250;left:96"><nobr><b>WHERE </b>[condition] <b>ORDER BY </b>[criteria];</nobr></div>
+<div style="position:absolute;top:2290;left:81"><nobr>For instance, the following statement lists all information about employees with the</nobr></div>
+<div style="position:absolute;top:2311;left:81"><nobr>“Programmer” title.</nobr></div>
+<div style="position:absolute;top:2338;left:81"><nobr>sqlite&gt; <b>SELECT </b>* <b>FROM </b>records <b>WHERE </b>title = Programmer ;</nobr></div>
+<div style="position:absolute;top:2359;left:81"><nobr>Alyssa P Hacker|Computer|Programmer|40000|Ben Bitdiddle</nobr></div>
+<div style="position:absolute;top:2381;left:81"><nobr>Cy D Fect|Computer|Programmer|35000|Ben Bitdiddle</nobr></div>
+<div style="position:absolute;top:2424;left:81"><nobr>The following statement lists the names and salaries of each employee under the</nobr></div>
+<div style="position:absolute;top:2446;left:81"><nobr>accounting division, sorted in descending order by their salaries.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2551;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2588;left:559"><nobr>SQL</nobr></div>
+<div style="position:absolute;top:2588;left:609"><nobr>3</nobr></div>
+<div style="position:absolute;top:2621;left:81"><nobr>sqlite&gt; <b>SELECT </b>name, salary <b>FROM </b>records</nobr></div>
+<div style="position:absolute;top:2642;left:103"><nobr>...&gt;</nobr></div>
+<div style="position:absolute;top:2646;left:156"><nobr><b>WHERE </b>division = Accounting <b>ORDER BY </b>-salary;</nobr></div>
+<div style="position:absolute;top:2664;left:81"><nobr>Eben Scrooge|75000</nobr></div>
+<div style="position:absolute;top:2685;left:81"><nobr>Robert Cratchet|18000</nobr></div>
+<div style="position:absolute;top:2729;left:81"><nobr>Note that all valid SQL statements must be terminated by a semicolon (;). Addi-</nobr></div>
+<div style="position:absolute;top:2750;left:81"><nobr>tionally, you can split up your statement over many lines and add as much whites-</nobr></div>
+<div style="position:absolute;top:2772;left:81"><nobr>pace as you want, much like Scheme. But keep in mind that having consistent</nobr></div>
+<div style="position:absolute;top:2793;left:81"><nobr>indentation and line breaking does make your code a lot more readable to others</nobr></div>
+<div style="position:absolute;top:2815;left:81"><nobr>(and your future self)!</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:2849;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2896;left:81"><nobr>Our tables:</nobr></div>
+<div style="position:absolute;top:2923;left:138"><nobr>records: Name Division Title Salary</nobr></div>
+<div style="position:absolute;top:2927;left:474"><nobr>Supervisor</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:2960;left:52"><nobr>2.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2957;left:81"><nobr>Write a query that outputs the names of employees that Oliver Warbucks directly</nobr></div>
+<div style="position:absolute;top:2979;left:81"><nobr>supervises.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3025;left:81"><nobr><b>SELECT </b>name <b>FROM </b>records <b>WHERE </b>supervisor = Oliver Warbucks ;</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:3073;left:52"><nobr>2.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3070;left:81"><nobr>Write a query that outputs all information about self-supervising employees.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3116;left:81"><nobr><b>SELECT </b>* <b>FROM </b>records <b>WHERE </b>name = supervisor;</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:3165;left:52"><nobr>2.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3162;left:81"><nobr>Write a query that outputs the names of all employees with salary greater than</nobr></div>
+<div style="position:absolute;top:3183;left:81"><nobr>50,000 in alphabetical order.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3229;left:81"><nobr><b>SELECT </b>name <b>FROM </b>records <b>WHERE </b>salary &gt; 50000 <b>ORDER BY </b>name;</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:3284;left:81"><nobr>3 Joins</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3338;left:81"><nobr>Suppose we have another table meetings which records the divisional meetings.</nobr></div>
+<div style="position:absolute;top:3364;left:321"><nobr>meetings</nobr></div>
+<div style="position:absolute;top:3387;left:227"><nobr>Division</nobr></div>
+<div style="position:absolute;top:3387;left:345"><nobr>Day</nobr></div>
+<div style="position:absolute;top:3387;left:436"><nobr>Time</nobr></div>
+<div style="position:absolute;top:3409;left:227"><nobr>Accounting</nobr></div>
+<div style="position:absolute;top:3409;left:345"><nobr>Monday</nobr></div>
+<div style="position:absolute;top:3409;left:436"><nobr>9am</nobr></div>
+<div style="position:absolute;top:3431;left:227"><nobr>Computer</nobr></div>
+<div style="position:absolute;top:3431;left:345"><nobr>Wednesday 4pm</nobr></div>
+<div style="position:absolute;top:3452;left:227"><nobr>Administration Monday</nobr></div>
+<div style="position:absolute;top:3452;left:436"><nobr>11am</nobr></div>
+<div style="position:absolute;top:3474;left:227"><nobr>Administration Thursday</nobr></div>
+<div style="position:absolute;top:3474;left:436"><nobr>1pm</nobr></div>
+<div style="position:absolute;top:3501;left:81"><nobr>Data are combined by joining multiple tables together into one, a fundamental</nobr></div>
+<div style="position:absolute;top:3523;left:81"><nobr>operation in database systems. There are many methods of joining, all closely</nobr></div>
+<div style="position:absolute;top:3544;left:81"><nobr>related, but we will focus on just one method (the inner join) in this class.</nobr></div>
+<div style="position:absolute;top:3575;left:81"><nobr>When tables are joined, the resulting table contains a new row for each combination</nobr></div>
+<div style="position:absolute;top:3596;left:81"><nobr>of rows in the input tables. If two tables are joined and the left table has m rows</nobr></div>
+<div style="position:absolute;top:3618;left:81"><nobr>and the right table has n rows, then the joined table will have mn rows. Joins are</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3739;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3776;left:81"><nobr>4 SQL</nobr></div>
+<div style="position:absolute;top:3813;left:81"><nobr>expressed in SQL by separating table names by commas in the FROM clause of a</nobr></div>
+<div style="position:absolute;top:3830;left:81"><nobr>SELECT statement.</nobr></div>
+<div style="position:absolute;top:3858;left:81"><nobr>sqlite&gt; <b>SELECT </b>name, <b>day FROM </b>records, meetings;</nobr></div>
+<div style="position:absolute;top:3880;left:81"><nobr>Ben Bitdiddle|Monday</nobr></div>
+<div style="position:absolute;top:3901;left:81"><nobr>Ben Bitdiddle|Wednesday</nobr></div>
+<div style="position:absolute;top:3923;left:81"><nobr>...</nobr></div>
+<div style="position:absolute;top:3944;left:81"><nobr>Alyssa P Hacker|Monday</nobr></div>
+<div style="position:absolute;top:3966;left:81"><nobr>...</nobr></div>
+<div style="position:absolute;top:4007;left:81"><nobr>Tables may have overlapping column names, and so we need a method for disam-</nobr></div>
+<div style="position:absolute;top:4028;left:81"><nobr>biguating column names by table. A table may also be joined with itself, and so we</nobr></div>
+<div style="position:absolute;top:4050;left:81"><nobr>need a method for disambiguating tables. To do so, SQL allows us to give aliases</nobr></div>
+<div style="position:absolute;top:4071;left:81"><nobr>to tables within a FROM clause using the keyword AS and to refer to a column within</nobr></div>
+<div style="position:absolute;top:4093;left:81"><nobr>a particular table using a dot expression. In the example below we find the name</nobr></div>
+<div style="position:absolute;top:4114;left:81"><nobr>and title of Louis Reasoner’s supervisor.</nobr></div>
+<div style="position:absolute;top:4139;left:81"><nobr>sqlite&gt; <b>SELECT </b>b.name, b.title <b>FROM </b>records <b>AS </b>a, records <b>AS </b>b</nobr></div>
+<div style="position:absolute;top:4160;left:103"><nobr>...&gt;</nobr></div>
+<div style="position:absolute;top:4164;left:156"><nobr><b>WHERE </b>a.name = Louis Reasoner <b>AND</b></nobr></div>
+<div style="position:absolute;top:4182;left:103"><nobr>...&gt;</nobr></div>
+<div style="position:absolute;top:4182;left:201"><nobr>a.supervisor = b.name;</nobr></div>
+<div style="position:absolute;top:4203;left:81"><nobr>Alyssa P Hacker|Programmer</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:4250;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4297;left:81"><nobr>Our tables:</nobr></div>
+<div style="position:absolute;top:4324;left:138"><nobr>records: Name Division Title Salary</nobr></div>
+<div style="position:absolute;top:4328;left:474"><nobr>Supervisor</nobr></div>
+<div style="position:absolute;top:4354;left:222"><nobr>meetings: Division Day</nobr></div>
+<div style="position:absolute;top:4359;left:432"><nobr>Time</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:4392;left:52"><nobr>3.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4389;left:81"><nobr>Write a query that creates a table with columns: employee, salary, supervisor and</nobr></div>
+<div style="position:absolute;top:4410;left:81"><nobr>supervisor’s salary, containing all supervisors who earn more than twice as much as</nobr></div>
+<div style="position:absolute;top:4432;left:81"><nobr>the employee.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4478;left:81"><nobr><b>SELECT </b>e.name, e.salary, s.name, s.salary</nobr></div>
+<div style="position:absolute;top:4499;left:96"><nobr><b>FROM </b>records <b>AS </b>e, records <b>AS </b>s</nobr></div>
+<div style="position:absolute;top:4521;left:96"><nobr><b>WHERE </b>e.supervisor = s.name <b>AND </b>e.salary * 2 &lt; s.salary;</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:4569;left:52"><nobr>3.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4566;left:81"><nobr>Write a query that outputs the names of employees whose supervisor is in a different</nobr></div>
+<div style="position:absolute;top:4588;left:81"><nobr>division.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4634;left:81"><nobr><b>SELECT </b>e.name <b>FROM </b>records <b>AS </b>e, records <b>AS </b>s</nobr></div>
+<div style="position:absolute;top:4655;left:96"><nobr><b>WHERE </b>e.supervisor = s.name <b>AND </b>e.division != s.division;</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:4704;left:52"><nobr>3.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4701;left:81"><nobr>Write a query that outputs the meeting days and times of all employees directly</nobr></div>
+<div style="position:absolute;top:4722;left:81"><nobr>supervised by Oliver Warbucks.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4767;left:81"><nobr><b>SELECT </b>m.<b>day</b>, m.<b>time FROM </b>records <b>AS </b>r, meetings <b>AS </b>m</nobr></div>
+<div style="position:absolute;top:4788;left:96"><nobr><b>WHERE </b>r.division = m.division <b>AND</b></nobr></div>
+<div style="position:absolute;top:4806;left:141"><nobr>r.supervisor = Oliver Warbucks ;</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:4927;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4964;left:559"><nobr>SQL</nobr></div>
+<div style="position:absolute;top:4964;left:609"><nobr>5</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:5004;left:52"><nobr>3.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5001;left:81"><nobr>A middle manager is a person who is both supervising someone and is supervised</nobr></div>
+<div style="position:absolute;top:5022;left:81"><nobr>by someone different. Write a query that outputs the names of all middle managers.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5089;left:81"><nobr><b>SELECT </b>b.name <b>FROM </b>records <b>AS </b>a, records <b>AS </b>b</nobr></div>
+<div style="position:absolute;top:5111;left:96"><nobr><b>WHERE </b>a.supervisor = b.name <b>AND </b>b.supervisor != b.name;</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:5160;left:52"><nobr>3.5</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5157;left:81"><nobr>What is the output of the query in the previous part? Explain the output you get.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5220;left:81"><nobr>Alyssa P Hacker</nobr></div>
+<div style="position:absolute;top:5241;left:81"><nobr>Ben Bitdiddle</nobr></div>
+<div style="position:absolute;top:5263;left:81"><nobr>Ben Bitdiddle</nobr></div>
+<div style="position:absolute;top:5284;left:81"><nobr>Ben Bitdiddle</nobr></div>
+<div style="position:absolute;top:5306;left:81"><nobr>Eben Scrooge</nobr></div>
+<div style="position:absolute;top:5349;left:81"><nobr>There are multiple people with Ben Bitdiddle as supervisor, and joining tables</nobr></div>
+<div style="position:absolute;top:5371;left:81"><nobr>together does not remove these duplicates. If we wanted to remove duplicates, we</nobr></div>
+<div style="position:absolute;top:5392;left:81"><nobr>could use the DISTINCT keyword.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:5429;left:52"><nobr>3.6</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5426;left:81"><nobr>Write a query that results in the names of all employees that have a meeting on the</nobr></div>
+<div style="position:absolute;top:5447;left:81"><nobr>same day as their supervisor.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5493;left:81"><nobr><b>SELECT </b>e.name <b>FROM </b>records <b>AS </b>e, records <b>AS </b>s, meetings <b>AS </b>em, meetings <b>AS </b>sm</nobr></div>
+<div style="position:absolute;top:5514;left:96"><nobr><b>WHERE </b>e.supervisor = s.name <b>AND </b>em.<b>day </b>= sm.<b>day AND</b></nobr></div>
+<div style="position:absolute;top:5532;left:141"><nobr>e.division = em.division <b>AND </b>s.division = sm.division;</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:6115;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=6><b>Page 6</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6152;left:81"><nobr>6 SQL</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:6184;left:81"><nobr>4 Extra Questions</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6237;left:81"><nobr>Use the following table called courses for the questions below:</nobr></div>
+<div style="position:absolute;top:6264;left:325"><nobr>courses</nobr></div>
+<div style="position:absolute;top:6284;left:238"><nobr>Professor</nobr></div>
+<div style="position:absolute;top:6284;left:346"><nobr>Course Semester</nobr></div>
+<div style="position:absolute;top:6307;left:230"><nobr>John DeNero</nobr></div>
+<div style="position:absolute;top:6307;left:347"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:6307;left:435"><nobr>Fa17</nobr></div>
+<div style="position:absolute;top:6328;left:228"><nobr>Paul Hilfinger</nobr></div>
+<div style="position:absolute;top:6328;left:347"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:6328;left:435"><nobr>Fa17</nobr></div>
+<div style="position:absolute;top:6350;left:228"><nobr>Paul Hilfinger</nobr></div>
+<div style="position:absolute;top:6350;left:347"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:6350;left:435"><nobr>Sp17</nobr></div>
+<div style="position:absolute;top:6371;left:230"><nobr>John DeNero</nobr></div>
+<div style="position:absolute;top:6371;left:350"><nobr>Data 8</nobr></div>
+<div style="position:absolute;top:6371;left:435"><nobr>Sp17</nobr></div>
+<div style="position:absolute;top:6393;left:242"><nobr>Josh Hug</nobr></div>
+<div style="position:absolute;top:6393;left:348"><nobr>CS 61B</nobr></div>
+<div style="position:absolute;top:6393;left:435"><nobr>Sp17</nobr></div>
+<div style="position:absolute;top:6414;left:237"><nobr>Satish Rao</nobr></div>
+<div style="position:absolute;top:6414;left:353"><nobr>CS 70</nobr></div>
+<div style="position:absolute;top:6414;left:435"><nobr>Sp17</nobr></div>
+<div style="position:absolute;top:6436;left:219"><nobr>Nicholas Weaver</nobr></div>
+<div style="position:absolute;top:6436;left:347"><nobr>CS 61C</nobr></div>
+<div style="position:absolute;top:6436;left:435"><nobr>Sp17</nobr></div>
+<div style="position:absolute;top:6457;left:217"><nobr>Gerald Friedland</nobr></div>
+<div style="position:absolute;top:6457;left:347"><nobr>CS 61C</nobr></div>
+<div style="position:absolute;top:6457;left:435"><nobr>Sp17</nobr></div>
+<div style="position:absolute;top:6479;left:230"><nobr>John DeNero</nobr></div>
+<div style="position:absolute;top:6479;left:347"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:6479;left:435"><nobr>Fa16</nobr></div>
+<div style="position:absolute;top:6500;left:228"><nobr>Paul Hilfinger</nobr></div>
+<div style="position:absolute;top:6500;left:348"><nobr>CS 61B</nobr></div>
+<div style="position:absolute;top:6500;left:435"><nobr>Fa16</nobr></div>
+<div style="position:absolute;top:6517;left:271"><nobr>...</nobr></div>
+<div style="position:absolute;top:6517;left:370"><nobr>...</nobr></div>
+<div style="position:absolute;top:6517;left:448"><nobr>...</nobr></div>
+<div style="position:absolute;top:6557;left:81"><nobr>There’s also an additional table which we have constructed from courses, named</nobr></div>
+<div style="position:absolute;top:6574;left:81"><nobr>num_taught. It contains the number of times each professor has taught a given</nobr></div>
+<div style="position:absolute;top:6600;left:81"><nobr>course:</nobr></div>
+<div style="position:absolute;top:6626;left:314"><nobr>num_taught</nobr></div>
+<div style="position:absolute;top:6649;left:249"><nobr>Professor</nobr></div>
+<div style="position:absolute;top:6649;left:357"><nobr>Course Times</nobr></div>
+<div style="position:absolute;top:6671;left:229"><nobr>Gerald Friedland</nobr></div>
+<div style="position:absolute;top:6671;left:359"><nobr>CS 61C</nobr></div>
+<div style="position:absolute;top:6671;left:447"><nobr>1</nobr></div>
+<div style="position:absolute;top:6693;left:241"><nobr>John DeNero</nobr></div>
+<div style="position:absolute;top:6693;left:358"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:6693;left:447"><nobr>2</nobr></div>
+<div style="position:absolute;top:6714;left:241"><nobr>John DeNero</nobr></div>
+<div style="position:absolute;top:6714;left:361"><nobr>Data 8</nobr></div>
+<div style="position:absolute;top:6714;left:447"><nobr>1</nobr></div>
+<div style="position:absolute;top:6736;left:253"><nobr>Josh Hug</nobr></div>
+<div style="position:absolute;top:6736;left:359"><nobr>CS 61B</nobr></div>
+<div style="position:absolute;top:6736;left:447"><nobr>1</nobr></div>
+<div style="position:absolute;top:6757;left:230"><nobr>Nicholas Weaver</nobr></div>
+<div style="position:absolute;top:6757;left:359"><nobr>CS 61C</nobr></div>
+<div style="position:absolute;top:6757;left:447"><nobr>1</nobr></div>
+<div style="position:absolute;top:6779;left:239"><nobr>Paul Hilfinger</nobr></div>
+<div style="position:absolute;top:6779;left:358"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:6779;left:447"><nobr>2</nobr></div>
+<div style="position:absolute;top:6800;left:239"><nobr>Paul Hilfinger</nobr></div>
+<div style="position:absolute;top:6800;left:359"><nobr>CS 61B</nobr></div>
+<div style="position:absolute;top:6800;left:447"><nobr>1</nobr></div>
+<div style="position:absolute;top:6822;left:249"><nobr>Satish Rao</nobr></div>
+<div style="position:absolute;top:6822;left:364"><nobr>CS 70</nobr></div>
+<div style="position:absolute;top:6822;left:447"><nobr>1</nobr></div>
+<div style="position:absolute;top:6839;left:282"><nobr>...</nobr></div>
+<div style="position:absolute;top:6839;left:381"><nobr>...</nobr></div>
+<div style="position:absolute;top:6839;left:448"><nobr>...</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:6881;left:52"><nobr>4.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6878;left:81"><nobr>Write a query that selects all courses Paul Hilfinger taught once.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:6924;left:81"><nobr><b>SELECT </b>course <b>FROM </b>num_taught <b>WHERE </b>professor = Paul Hilfinger <b>AND </b>times = 1;</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:6973;left:52"><nobr>4.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6970;left:81"><nobr>Write a query that outputs all the rows from courses where the professor teaching</nobr></div>
+<div style="position:absolute;top:6991;left:81"><nobr>that semester has taught the course at least one other time.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7037;left:81"><nobr><b>SELECT </b>a.professor, a.course, a.semester</nobr></div>
+<div style="position:absolute;top:7059;left:96"><nobr><b>FROM </b>courses <b>AS </b>a, num_taught <b>as </b>b</nobr></div>
+<div style="position:absolute;top:7080;left:96"><nobr><b>WHERE </b>a.professor = b.professor <b>AND </b>a.course = b.course <b>AND </b>b.times &gt; 1;</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:7129;left:52"><nobr>4.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7126;left:81"><nobr>Write a query that outputs two professors and a course if they have taught that</nobr></div>
+<div style="position:absolute;top:7147;left:81"><nobr>course the same number of times.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:7303;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=7><b>Page 7</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7340;left:559"><nobr>SQL</nobr></div>
+<div style="position:absolute;top:7340;left:609"><nobr>7</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7392;left:81"><nobr><b>SELECT </b>a.professor, b.professor, a.course</nobr></div>
+<div style="position:absolute;top:7413;left:96"><nobr><b>FROM </b>num_taught <b>AS </b>a, num_taught <b>AS </b>b</nobr></div>
+<div style="position:absolute;top:7435;left:96"><nobr><b>WHERE </b>a.professor &gt; b.professor</nobr></div>
+<div style="position:absolute;top:7456;left:111"><nobr><b>AND </b>a.course = b.course</nobr></div>
+<div style="position:absolute;top:7478;left:111"><nobr><b>AND </b>a.times = b.times;</nobr></div>
+</span></font>
+</body>
+</html>

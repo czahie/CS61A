@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero, Paul Hilfinger" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="/assets/css/hw.css">
+
+
+    <title>
+Homework 4 Solutions | CS 61A Fall 2017
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Homework 4 Solutions
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="hw04.zip" class="label label-outline">hw04.zip</a></li>
+        </ul>
+        
+      </h1>
+    </header>
+    
+<h2>Solution Files</h2>
+<p>You can find solutions for all questions in <a href="hw04.py">hw04.py</a>.</p>
+
+    
+<p>The <code>construct_check</code> module is used in this assignment, which defines a
+function <code>check</code>.  For example, a call such as</p>
+
+<pre><code>check(&quot;foo.py&quot;, &quot;func1&quot;, [&quot;While&quot;, &quot;For&quot;, &quot;Recursion&quot;])</code></pre>
+
+<p>checks that the function <code>func1</code> in file <code>foo.py</code> does <em>not</em> contain
+any <code>while</code> or <code>for</code> constructs, and is not an overtly recursive function (i.e.,
+one in which a function contains a call to itself by name.)</p>
+
+
+<h2 id="required-questions">Required questions</h2>
+
+
+<h3 class="question" id="q1">Q1: Taxicab Distance</h3>
+
+<p>An intersection in midtown Manhattan can be identified by an avenue and a
+street, which are both indexed by positive integers. The <em>Manhattan distance</em> or
+<em>taxicab distance</em> between two intersections is the number of blocks that must
+be traversed to reach one from the other, ignoring one-way street restrictions
+and construction.  For example, <a href="https://goo.gl/maps/LeXMb2vHuAB2">Times Square</a>
+is on 46th Street and 7th Avenue.
+<a href="https://goo.gl/maps/nM9ecFDD66D2">Ess-a-Bagel</a> is on 51st Street and 3rd
+Avenue.   The taxicab distance between them is 9 blocks.</p>
+
+<p>Implement <code>taxicab</code>, which computes the taxicab distance between two
+intersections using the following data abstraction. <em>Hint</em>: You don't need to
+know what a Cantor pairing function is; just use the abstraction.</p>
+
+<pre><code>def intersection(st, ave):
+    &quot;&quot;&quot;Represent an intersection using the Cantor pairing function.&quot;&quot;&quot;
+    return (st+ave)*(st+ave+1)//2 + ave
+
+def street(inter):
+    return w(inter) &#x2d; avenue(inter)
+
+def avenue(inter):
+    return inter &#x2d; (w(inter) ** 2 + w(inter)) // 2
+
+w = lambda z: int(((8*z+1)**0.5&#x2d;1)/2)
+
+def taxicab(a, b):
+    &quot;&quot;&quot;Return the taxicab distance between two intersections.
+
+    &gt;&gt;&gt; times_square = intersection(46, 7)
+    &gt;&gt;&gt; ess_a_bagel = intersection(51, 3)
+    &gt;&gt;&gt; taxicab(times_square, ess_a_bagel)
+    9
+    &gt;&gt;&gt; taxicab(ess_a_bagel, times_square)
+    9
+    &quot;&quot;&quot;
+<div class="sol-highlight">    return abs(street(a)&#x2d;street(b)) + abs(avenue(a)&#x2d;avenue(b))</div></code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q taxicab</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/QueVasKQQBI">https://youtu.be/QueVasKQQBI</a></p>
+
+</div>
+<h3 class="question" id="q2">Q2: Squares only</h3>
+
+<p>Implement the function <code>squares</code>, which takes in a list of positive integers.
+It returns a list that contains the square roots of the elements of the original
+list that are perfect squares. Try using a list comprehension.</p>
+
+<solution>
+
+<pre><code>def squares(s):
+    &quot;&quot;&quot;Returns a new list containing square roots of the elements of the
+    original list that are perfect squares.
+
+    &gt;&gt;&gt; seq = [8, 49, 8, 9, 2, 1, 100, 102]
+    &gt;&gt;&gt; squares(seq)
+    [7, 3, 1, 10]
+    &gt;&gt;&gt; seq = [500, 30]
+    &gt;&gt;&gt; squares(seq)
+    []
+    &quot;&quot;&quot;
+<div class="sol-highlight">    return [round(n ** 0.5) for n in s if n == round(n ** 0.5) ** 2]</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q squares</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/YwLFB9paET0">https://youtu.be/YwLFB9paET0</a></p>
+
+</div>
+<h3 class="question" id="q3">Q3: G function</h3>
+
+<p>A mathematical function <code>G</code> on positive integers is defined by two
+cases:</p>
+
+<pre><code>G(n) = n,                                       if n &lt;= 3
+G(n) = G(n &#x2d; 1) + 2 * G(n &#x2d; 2) + 3 * G(n &#x2d; 3),  if n &gt; 3</code></pre>
+
+<p>Write a recursive function <code>g</code> that computes <code>G(n)</code>. Then, write an
+iterative function <code>g_iter</code> that also computes <code>G(n)</code>:</p>
+
+<solution>
+
+<pre><code>def g(n):
+    &quot;&quot;&quot;Return the value of G(n), computed recursively.
+
+    &gt;&gt;&gt; g(1)
+    1
+    &gt;&gt;&gt; g(2)
+    2
+    &gt;&gt;&gt; g(3)
+    3
+    &gt;&gt;&gt; g(4)
+    10
+    &gt;&gt;&gt; g(5)
+    22
+    &gt;&gt;&gt; from construct_check import check
+    &gt;&gt;&gt; check(HW_SOURCE_FILE, &#x27;g&#x27;, [&#x27;While&#x27;, &#x27;For&#x27;])
+    True
+    &quot;&quot;&quot;
+<div class="sol-highlight">    if n in (1, 2, 3):
+        return n
+    return g(n&#x2d;1) + 2*g(n&#x2d;2) + 3*g(n&#x2d;3)</div>
+def g_iter(n):
+    &quot;&quot;&quot;Return the value of G(n), computed iteratively.
+
+    &gt;&gt;&gt; g_iter(1)
+    1
+    &gt;&gt;&gt; g_iter(2)
+    2
+    &gt;&gt;&gt; g_iter(3)
+    3
+    &gt;&gt;&gt; g_iter(4)
+    10
+    &gt;&gt;&gt; g_iter(5)
+    22
+    &gt;&gt;&gt; from construct_check import check
+    &gt;&gt;&gt; check(HW_SOURCE_FILE, &#x27;g_iter&#x27;, [&#x27;Recursion&#x27;])
+    True
+    &quot;&quot;&quot;
+<div class="sol-highlight">    if n == 1 or n == 2 or n == 3:
+        return n
+    a, b, c = 1, 2, 3
+    while n &gt; 3:
+        a, b, c = b, c, c + 2*b + 3*a
+        n = n &#x2d; 1
+    return c</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q g
+python3 ok -q g_iter</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/pltx7u2kGGEw">https://youtu.be/pltx7u2kGGE</a></p>
+
+</div>
+
+<h3 class="question" id="q4">Q4: Ping pong</h3>
+
+<p>The ping-pong sequence counts up starting from 1 and is always either counting
+up or counting down.  At element <code>k</code>, the direction switches if <code>k</code> is a
+multiple of 7 or contains the digit 7.  The first 30 elements of the ping-pong
+sequence are listed below, with direction swaps marked using brackets at the
+7th, 14th, 17th, 21st, 27th, and 28th elements:</p>
+
+<pre><code>1 2 3 4 5 6 [7] 6 5 4 3 2 1 [0] 1 2 [3] 2 1 0 [&#x2d;1] 0 1 2 3 4 [5] [4] 5 6</code></pre>
+
+<p>Implement a function <code>pingpong</code> that returns the nth element of the
+ping-pong sequence. <em>Do not use any assignment statements; however, you
+may use <code>def</code> statements</em>.</p>
+
+<blockquote><p><em>Hint</em>: If you're stuck, try implementing <code>pingpong</code> first using
+assignment and a <code>while</code> statement. Any name that changes value will become
+an argument to a function in the recursive definition.</p></blockquote>
+
+<solution>
+
+<pre><code>def pingpong(n):
+    &quot;&quot;&quot;Return the nth element of the ping&#x2d;pong sequence.
+
+    &gt;&gt;&gt; pingpong(7)
+    7
+    &gt;&gt;&gt; pingpong(8)
+    6
+    &gt;&gt;&gt; pingpong(15)
+    1
+    &gt;&gt;&gt; pingpong(21)
+    &#x2d;1
+    &gt;&gt;&gt; pingpong(22)
+    0
+    &gt;&gt;&gt; pingpong(30)
+    6
+    &gt;&gt;&gt; pingpong(68)
+    2
+    &gt;&gt;&gt; pingpong(69)
+    1
+    &gt;&gt;&gt; pingpong(70)
+    0
+    &gt;&gt;&gt; pingpong(71)
+    1
+    &gt;&gt;&gt; pingpong(72)
+    0
+    &gt;&gt;&gt; pingpong(100)
+    2
+    &gt;&gt;&gt; from construct_check import check
+    &gt;&gt;&gt; check(HW_SOURCE_FILE, &#x27;pingpong&#x27;, [&#x27;Assign&#x27;, &#x27;AugAssign&#x27;])
+    True
+    &quot;&quot;&quot;
+<div class="sol-highlight">    def pingpong_next(k, p, up):
+        if k == n:
+            return p
+        if up:
+            return pingpong_switch(k+1, p+1, up)
+        else:
+            return pingpong_switch(k+1, p&#x2d;1, up)
+
+    def pingpong_switch(k, p, up):
+        if k % 7 == 0 or has_seven(k):
+            return pingpong_next(k, p, not up)
+        else:
+            return pingpong_next(k, p, up)
+
+    return pingpong_next(1, 1, True)
+
+# Alternate solution
+def pingpong2(n):
+    if n &lt;= 7:
+        return n
+    return direction(n) + pingpong(n&#x2d;1)
+
+def direction(n):
+    if n &lt; 7:
+        return 1
+    if (n&#x2d;1) % 7 == 0 or has_seven(n&#x2d;1):
+        return &#x2d;1 * direction(n&#x2d;1)
+    return direction(n&#x2d;1)</div></code></pre>
+
+</solution>
+
+<p>You may use the function <code>has_seven</code>, which returns True if a number <code>k</code>
+contains the digit 7 at least once.</p>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q pingpong</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/74gwPjgrN_k">https://youtu.be/74gwPjgrN_k</a></p>
+
+</div>
+
+<pre><code>def has_seven(k):
+    &quot;&quot;&quot;Returns True if at least one of the digits of k is a 7, False otherwise.
+
+    &gt;&gt;&gt; has_seven(3)
+    False
+    &gt;&gt;&gt; has_seven(7)
+    True
+    &gt;&gt;&gt; has_seven(2734)
+    True
+    &gt;&gt;&gt; has_seven(2634)
+    False
+    &gt;&gt;&gt; has_seven(734)
+    True
+    &gt;&gt;&gt; has_seven(7777)
+    True
+    &quot;&quot;&quot;
+    if k % 10 == 7:
+        return True
+    elif k &lt; 10:
+        return False
+    else:
+        return has_seven(k // 10)</code></pre>
+
+<h3 class="question" id="q5">Q5: Count change</h3>
+
+<p>Once the machines take over, the denomination of every coin will be a
+power of two: 1-cent, 2-cent, 4-cent, 8-cent, 16-cent, etc.  There will
+be no limit to how much a coin can be worth.</p>
+
+<p>A set of coins makes change for <code>n</code> if the sum of the values of the
+coins is <code>n</code>.  For example, the following sets make change for <code>7</code>:</p>
+
+<ul>
+  <li>7 1-cent coins</li>
+  <li>5 1-cent, 1 2-cent coins</li>
+  <li>3 1-cent, 2 2-cent coins</li>
+  <li>3 1-cent, 1 4-cent coins</li>
+  <li>1 1-cent, 3 2-cent coins</li>
+  <li>1 1-cent, 1 2-cent, 1 4-cent coins</li>
+</ul>
+
+<p>Thus, there are 6 ways to make change for <code>7</code>.  Write a function
+<code>count_change</code> that takes a positive integer <code>n</code> and returns the number
+of ways to make change for <code>n</code> using these coins of the future:</p>
+
+<solution>
+
+<pre><code>def count_change(amount):
+    &quot;&quot;&quot;Return the number of ways to make change for amount.
+
+    &gt;&gt;&gt; count_change(7)
+    6
+    &gt;&gt;&gt; count_change(10)
+    14
+    &gt;&gt;&gt; count_change(20)
+    60
+    &gt;&gt;&gt; count_change(100)
+    9828
+    &quot;&quot;&quot;
+<div class="sol-highlight">    return count_using(1, amount)
+
+def count_using(min_coin, amount):
+    if amount &lt; 0:
+        return 0
+    elif amount == 0:
+        return 1
+    elif min_coin &gt; amount:
+        return 0
+    else:
+        with_min = count_using(min_coin, amount &#x2d; min_coin)
+        without_min = count_using(2*min_coin, amount)
+        return with_min + without_min</div></code></pre>
+
+</solution>
+
+<blockquote><p>Hint: you may find it helpful to refer to the
+<a href="http://composingprograms.com/pages/17-recursive-functions.html#example-partitions">implementation</a>
+of <code>count_partitions</code>.</p></blockquote>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q count_change</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/EgZJPNFnoxM">https://youtu.be/EgZJPNFnoxM</a></p>
+
+</div>
+
+
+<h2 id="extra-questions">Extra questions</h2>
+
+
+<blockquote><p>Extra questions are not worth extra credit and are entirely optional.
+They are designed to challenge you to think creatively!</p></blockquote>
+
+<h3 class="question" id="q6">Q6: Anonymous factorial</h3>
+
+<p>The recursive factorial function can be written as a single expression
+by using a <a href="http://docs.python.org/py3k/reference/expressions.html#conditional-expressions">conditional expression</a>.</p>
+
+<pre><code>&gt;&gt;&gt; fact = lambda n: 1 if n == 1 else mul(n, fact(sub(n, 1)))
+&gt;&gt;&gt; fact(5)
+120</code></pre>
+
+<p>However, this implementation relies on the fact (no pun intended) that
+<code>fact</code> has a name, to which we refer in the body of <code>fact</code>.  To write a
+recursive function, we have always given it a name using a <code>def</code> or
+assignment statement so that we can refer to the function within its
+own body.  In this question, your job is to define fact recursively
+without giving it a name!</p>
+
+<p>Write an expression that computes <code>n</code> factorial using only call
+expressions, conditional expressions, and lambda expressions (no
+assignment or def statements).  <em>Note in particular that you are not
+allowed to use <code>make_anonymous_factorial</code> in your return expression.</em>
+The <code>sub</code> and <code>mul</code> functions from the <code>operator</code> module are the only
+built-in functions required to solve this problem:</p>
+
+<solution>
+
+<pre><code>from operator import sub, mul
+
+def make_anonymous_factorial():
+    &quot;&quot;&quot;Return the value of an expression that computes factorial.
+
+    &gt;&gt;&gt; make_anonymous_factorial()(5)
+    120
+    &gt;&gt;&gt; from construct_check import check
+    &gt;&gt;&gt; check(HW_SOURCE_FILE, &#x27;make_anonymous_factorial&#x27;, [&#x27;Assign&#x27;, &#x27;AugAssign&#x27;, &#x27;FunctionDef&#x27;, &#x27;Recursion&#x27;])
+    True
+    &quot;&quot;&quot;
+<div class="sol-highlight">    return (lambda f: lambda k: f(f, k))(lambda f, k: k if k == 1 else mul(k, f(f, sub(k, 1))))</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q make_anonymous_factorial</code></pre>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#required-questions">Required questions</a></li>
+  <ul>
+    <li><a href="#q1">Q1: Taxicab Distance</a></li>
+    <li><a href="#q2">Q2: Squares only</a></li>
+    <li><a href="#q3">Q3: G function</a></li>
+    <li><a href="#q4">Q4: Ping pong</a></li>
+    <li><a href="#q5">Q5: Count change</a></li>
+  </ul>
+  <li><a href="#extra-questions">Extra questions</a></li>
+  <ul>
+    <li><a href="#q6">Q6: Anonymous factorial</a></li>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>

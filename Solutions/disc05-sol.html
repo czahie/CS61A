@@ -1,0 +1,554 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}pre { word-wrap:break-word; }pre { white-space:pre-wrap; }</style><div id="google-cache-hdr"  dir=ltr><div>这是 <a href="https://cs61a.org/disc/disc05_sol.pdf" dir="ltr">https://cs61a.org/disc/disc05_sol.pdf</a> 的 HTML 档。<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> 在网路漫游时会自动将档案转换成 HTML 网页来储存。</div></div><div style="position:relative;margin:8px;">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX-1.40.18">
+<meta name="CreationDate" content="D:20171219170039Z">
+<meta name="ModDate" content="D:20171219170039Z">
+<meta name="Fullbanner" content="This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) kpathsea version 6.2.3">
+<title>CS 61A Object Oriented Programming Fall 2017 1 Object Oriented Programming</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:258;left:81"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:258;left:275"><nobr>Object Oriented Programming</nobr></div>
+<div style="position:absolute;top:299;left:81"><nobr>Fall 2017</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:306;left:386"><nobr>Discussion 5: October 4, 2017 <font color="#ff0000" style="font-size:19px">Solutions</font></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:368;left:81"><nobr>1 Object Oriented Programming</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:422;left:81"><nobr>In a previous lecture, you were introduced to the programming paradigm known</nobr></div>
+<div style="position:absolute;top:443;left:81"><nobr>as Object-Oriented Programming (OOP). OOP allows us to treat data as objects -</nobr></div>
+<div style="position:absolute;top:465;left:81"><nobr>like we do in real life.</nobr></div>
+<div style="position:absolute;top:495;left:81"><nobr>For example, consider the class Student. Each of you as individuals are an instance</nobr></div>
+<div style="position:absolute;top:517;left:81"><nobr>of this class. So, a student Angela would be an instance of the class Student.</nobr></div>
+<div style="position:absolute;top:547;left:81"><nobr>Details that all CS 61A students have, such as name, year, and major, are called</nobr></div>
+<div style="position:absolute;top:569;left:81"><nobr>instance attributes. Every student has these attributes, but their values differ</nobr></div>
+<div style="position:absolute;top:590;left:81"><nobr>from student to student. An attribute that is shared among all instances of Student</nobr></div>
+<div style="position:absolute;top:612;left:81"><nobr>is known as a class attribute. An example would be the instructors attribute;</nobr></div>
+<div style="position:absolute;top:633;left:81"><nobr>the instructors for CS 61A, DeNero and Hilfinger, are the same for every student</nobr></div>
+<div style="position:absolute;top:655;left:81"><nobr>in CS 61A.</nobr></div>
+<div style="position:absolute;top:685;left:81"><nobr>All students are able to do homework, attend lecture, and go to office hours. When</nobr></div>
+<div style="position:absolute;top:707;left:81"><nobr>functions belong to a specific object, they are said to be methods. In this case,</nobr></div>
+<div style="position:absolute;top:729;left:81"><nobr>these actions would be bound methods of Student objects.</nobr></div>
+<div style="position:absolute;top:759;left:81"><nobr>Here is a recap of what we discussed above:</nobr></div>
+<div style="position:absolute;top:789;left:81"><nobr>• class: a template for creating objects</nobr></div>
+<div style="position:absolute;top:819;left:81"><nobr>• instance: a single object created from a class</nobr></div>
+<div style="position:absolute;top:850;left:81"><nobr>• instance attribute: a property of an object, specific to an instance</nobr></div>
+<div style="position:absolute;top:880;left:81"><nobr>• class attribute: a property of an object, shared by all instances of a class</nobr></div>
+<div style="position:absolute;top:911;left:81"><nobr>• method: an action (function) that all instances of a class may perform</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1363;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1400;left:81"><nobr>2 Object Oriented Programming</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:1432;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:1482;left:52"><nobr>1.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1479;left:81"><nobr>Below we have defined the classes Instructor, Student, and TeachingAssistant,</nobr></div>
+<div style="position:absolute;top:1500;left:81"><nobr>implementing some of what was described above. Remember that we pass the self</nobr></div>
+<div style="position:absolute;top:1522;left:81"><nobr>argument implicitly to instance methods when using dot-notation.</nobr></div>
+<div style="position:absolute;top:1552;left:81"><nobr><b>class </b>Instructor:</nobr></div>
+<div style="position:absolute;top:1570;left:111"><nobr>degree = PhD (Magic) # this is a class attribute</nobr></div>
+<div style="position:absolute;top:1595;left:111"><nobr><b>def </b>__init__(self, name):</nobr></div>
+<div style="position:absolute;top:1613;left:141"><nobr>self.name = name # this is an instance attribute</nobr></div>
+<div style="position:absolute;top:1660;left:111"><nobr><b>def </b>lecture(self, topic):</nobr></div>
+<div style="position:absolute;top:1681;left:141"><nobr><b>print</b>( Today were learning about + topic)</nobr></div>
+<div style="position:absolute;top:1720;left:81"><nobr>dumbledore = Instructor( Dumbledore )</nobr></div>
+<div style="position:absolute;top:1746;left:81"><nobr><b>class </b>Student:</nobr></div>
+<div style="position:absolute;top:1763;left:111"><nobr>instructor = dumbledore</nobr></div>
+<div style="position:absolute;top:1811;left:111"><nobr><b>def </b>__init__(self, name, ta):</nobr></div>
+<div style="position:absolute;top:1828;left:141"><nobr>self.name = name</nobr></div>
+<div style="position:absolute;top:1849;left:141"><nobr>self.understanding = 0</nobr></div>
+<div style="position:absolute;top:1871;left:141"><nobr>ta.add_student(self)</nobr></div>
+<div style="position:absolute;top:1918;left:111"><nobr><b>def </b>attend_lecture(self, topic):</nobr></div>
+<div style="position:absolute;top:1936;left:126"><nobr>Student.instructor.lecture(topic)</nobr></div>
+<div style="position:absolute;top:1961;left:126"><nobr><b>if </b>Student.instructor == dumbledore:</nobr></div>
+<div style="position:absolute;top:1983;left:141"><nobr><b>print</b>(Student.instructor.name + is awesome! )</nobr></div>
+<div style="position:absolute;top:2004;left:126"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:2026;left:141"><nobr><b>print</b>( I miss Dumbledore. )</nobr></div>
+<div style="position:absolute;top:2043;left:126"><nobr>self.understanding += 1</nobr></div>
+<div style="position:absolute;top:2090;left:111"><nobr><b>def </b>visit_office_hours(self, staff):</nobr></div>
+<div style="position:absolute;top:2108;left:141"><nobr>staff.assist(self)</nobr></div>
+<div style="position:absolute;top:2133;left:141"><nobr><b>print</b>( Thanks, + staff.name)</nobr></div>
+<div style="position:absolute;top:2176;left:81"><nobr><b>class </b>TeachingAssistant:</nobr></div>
+<div style="position:absolute;top:2198;left:111"><nobr><b>def </b>__init__(self, name):</nobr></div>
+<div style="position:absolute;top:2215;left:141"><nobr>self.name = name</nobr></div>
+<div style="position:absolute;top:2237;left:141"><nobr>self.students = {}</nobr></div>
+<div style="position:absolute;top:2284;left:111"><nobr><b>def </b>add_student(self, student):</nobr></div>
+<div style="position:absolute;top:2301;left:141"><nobr>self.students[student.name] = student</nobr></div>
+<div style="position:absolute;top:2349;left:111"><nobr><b>def </b>assist(self, student):</nobr></div>
+<div style="position:absolute;top:2366;left:141"><nobr>student.understanding += 1</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2551;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2588;left:393"><nobr>Object Oriented Programming</nobr></div>
+<div style="position:absolute;top:2588;left:609"><nobr>3</nobr></div>
+<div style="position:absolute;top:2625;left:81"><nobr>What will the following lines output?</nobr></div>
+<div style="position:absolute;top:2673;left:81"><nobr>&gt;&gt;&gt; snape = TeachingAssistant( Snape )</nobr></div>
+<div style="position:absolute;top:2694;left:81"><nobr>&gt;&gt;&gt; harry = Student( Harry , snape)</nobr></div>
+<div style="position:absolute;top:2716;left:81"><nobr>&gt;&gt;&gt; harry.attend_lecture( potions )</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2770;left:81"><nobr>Today were learning about potions</nobr></div>
+<div style="position:absolute;top:2792;left:81"><nobr>Dumbledore is awesome!</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2838;left:81"><nobr>&gt;&gt;&gt; hermione = Student( Hermione , snape)</nobr></div>
+<div style="position:absolute;top:2859;left:81"><nobr>&gt;&gt;&gt; hermione.attend_lecture( herbology )</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2914;left:81"><nobr>Today were learning about herbology</nobr></div>
+<div style="position:absolute;top:2935;left:81"><nobr>Dumbledore is awesome!</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2981;left:81"><nobr>&gt;&gt;&gt; hermione.visit_office_hours(TeachingAssistant( Hagrid ))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3036;left:81"><nobr>Thanks, Hagrid</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3082;left:81"><nobr>&gt;&gt;&gt; harry.understanding</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3136;left:81"><nobr>1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3182;left:81"><nobr>&gt;&gt;&gt; snape.students[ Hermione ].understanding</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3237;left:81"><nobr>2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3282;left:81"><nobr>&gt;&gt;&gt; Student.instructor = Instructor( Umbridge )</nobr></div>
+<div style="position:absolute;top:3304;left:81"><nobr>&gt;&gt;&gt; Student.attend_lecture(harry, transfiguration )</nobr></div>
+<div style="position:absolute;top:3325;left:81"><nobr># Equivalent to harry.attend_lecture( transfiguration )</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3380;left:81"><nobr>Today were learning about transfiguration</nobr></div>
+<div style="position:absolute;top:3401;left:81"><nobr>I miss Dumbledore.</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:12px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:3453;left:81"><nobr><a href="https://www.youtube.com/watch?v=BatqjYa7WZ8&list=PLx38hZJ5RLZfel-Gi9pjaUbfQDCZIsWMU&vq=hd1080&t=15m20s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3739;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3776;left:81"><nobr>4 Object Oriented Programming</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:3816;left:52"><nobr>1.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3813;left:81"><nobr>We now want to write three different classes, Mailman, Client, and Email to simulate</nobr></div>
+<div style="position:absolute;top:3834;left:81"><nobr>email. Fill in the definitions below to finish the implementation!</nobr></div>
+<div style="position:absolute;top:3865;left:81"><nobr><b>class </b>Email:</nobr></div>
+<div style="position:absolute;top:3882;left:133"><nobr>Every email object has 3 instance attributes: the</nobr></div>
+<div style="position:absolute;top:3904;left:111"><nobr>message, the sender name, and the recipient name.</nobr></div>
+<div style="position:absolute;top:3951;left:111"><nobr><b>def </b>__init__(self, msg, sender_name, recipient_name):</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4001;left:141"><nobr>self.msg = msg</nobr></div>
+<div style="position:absolute;top:4023;left:141"><nobr>self.sender_name = sender_name</nobr></div>
+<div style="position:absolute;top:4044;left:141"><nobr>self.recipient_name = recipient_name</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4094;left:81"><nobr><b>class </b>Mailman:</nobr></div>
+<div style="position:absolute;top:4112;left:133"><nobr>Each Mailman has an instance attribute clients, which</nobr></div>
+<div style="position:absolute;top:4133;left:111"><nobr>is a dictionary that associates client names with</nobr></div>
+<div style="position:absolute;top:4155;left:111"><nobr>client objects.</nobr></div>
+<div style="position:absolute;top:4202;left:111"><nobr><b>def </b>__init__(self):</nobr></div>
+<div style="position:absolute;top:4219;left:141"><nobr>self.clients = {}</nobr></div>
+<div style="position:absolute;top:4267;left:111"><nobr><b>def </b>send(self, email):</nobr></div>
+<div style="position:absolute;top:4284;left:163"><nobr>Take an email and put it in the inbox of the client</nobr></div>
+<div style="position:absolute;top:4305;left:141"><nobr>it is addressed to.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4381;left:141"><nobr>client = self.clients[email.recipient_name]</nobr></div>
+<div style="position:absolute;top:4403;left:141"><nobr>client.receive(email)</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4453;left:111"><nobr><b>def </b>register_client(self, client, client_name):</nobr></div>
+<div style="position:absolute;top:4470;left:163"><nobr>Takes a client object and client_name and adds it</nobr></div>
+<div style="position:absolute;top:4492;left:141"><nobr>to the clients instance attribute.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4568;left:141"><nobr>self.clients[client_name] = client</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:4927;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4964;left:393"><nobr>Object Oriented Programming</nobr></div>
+<div style="position:absolute;top:4964;left:609"><nobr>5</nobr></div>
+<div style="position:absolute;top:5001;left:81"><nobr><b>class </b>Client:</nobr></div>
+<div style="position:absolute;top:5018;left:133"><nobr>Every Client has instance attributes name (which is</nobr></div>
+<div style="position:absolute;top:5040;left:111"><nobr>used for addressing emails to the client), mailman</nobr></div>
+<div style="position:absolute;top:5061;left:111"><nobr>(which is used to send emails out to other clients), and</nobr></div>
+<div style="position:absolute;top:5083;left:111"><nobr>inbox (a list of all emails the client has received).</nobr></div>
+<div style="position:absolute;top:5130;left:111"><nobr><b>def </b>__init__(self, mailman, name):</nobr></div>
+<div style="position:absolute;top:5147;left:141"><nobr>self.inbox = []</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5202;left:141"><nobr>self.mailman = mailman</nobr></div>
+<div style="position:absolute;top:5223;left:141"><nobr>self.name = name</nobr></div>
+<div style="position:absolute;top:5245;left:141"><nobr>self.mailman.register_client(self, self.name)</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5295;left:111"><nobr><b>def </b>compose(self, msg, recipient_name):</nobr></div>
+<div style="position:absolute;top:5312;left:163"><nobr>Send an email with the given message msg to the</nobr></div>
+<div style="position:absolute;top:5334;left:141"><nobr>given recipient client.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5410;left:141"><nobr>email = Email(msg, self.name, recipient_name)</nobr></div>
+<div style="position:absolute;top:5431;left:141"><nobr>self.mailman.send(email)</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5482;left:111"><nobr><b>def </b>receive(self, email):</nobr></div>
+<div style="position:absolute;top:5499;left:163"><nobr>Take an email and add it to the inbox of this</nobr></div>
+<div style="position:absolute;top:5520;left:141"><nobr>client.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5596;left:141"><nobr>self.inbox.append(email)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:6115;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=6><b>Page 6</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6152;left:81"><nobr>6 Object Oriented Programming</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:6184;left:81"><nobr>2 Inheritance</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6238;left:81"><nobr>Let’s explore another tool: inheritance. Suppose we want the Dog and Cat classes.</nobr></div>
+<div style="position:absolute;top:6268;left:81"><nobr><b>class </b>Dog(<b>object</b>):</nobr></div>
+<div style="position:absolute;top:6290;left:111"><nobr><b>def </b>__init__(self, name, owner):</nobr></div>
+<div style="position:absolute;top:6307;left:141"><nobr>self.name = name</nobr></div>
+<div style="position:absolute;top:6329;left:141"><nobr>self.owner = owner</nobr></div>
+<div style="position:absolute;top:6354;left:111"><nobr><b>def </b>eat(self, thing):</nobr></div>
+<div style="position:absolute;top:6376;left:141"><nobr><b>print</b>(self.name + ate a + <b>str</b>(thing) + ! )</nobr></div>
+<div style="position:absolute;top:6397;left:111"><nobr><b>def </b>talk(self):</nobr></div>
+<div style="position:absolute;top:6419;left:141"><nobr><b>print</b>(self.name + says woof! )</nobr></div>
+<div style="position:absolute;top:6462;left:81"><nobr><b>class </b>Cat(<b>object</b>):</nobr></div>
+<div style="position:absolute;top:6484;left:111"><nobr><b>def </b>__init__(self, name, owner, lives=9):</nobr></div>
+<div style="position:absolute;top:6501;left:141"><nobr>self.name = name</nobr></div>
+<div style="position:absolute;top:6522;left:141"><nobr>self.owner = owner</nobr></div>
+<div style="position:absolute;top:6544;left:141"><nobr>self.lives = lives</nobr></div>
+<div style="position:absolute;top:6570;left:111"><nobr><b>def </b>eat(self, thing):</nobr></div>
+<div style="position:absolute;top:6591;left:141"><nobr><b>print</b>(self.name + ate a + <b>str</b>(thing) + ! )</nobr></div>
+<div style="position:absolute;top:6613;left:111"><nobr><b>def </b>talk(self):</nobr></div>
+<div style="position:absolute;top:6634;left:141"><nobr><b>print</b>(self.name + says meow! )</nobr></div>
+<div style="position:absolute;top:6673;left:81"><nobr>Notice that there’s a lot of repeated code! This is where inheritance comes in. In</nobr></div>
+<div style="position:absolute;top:6695;left:81"><nobr>Python, a class can inherit the instance variables and methods of another class.</nobr></div>
+<div style="position:absolute;top:6724;left:81"><nobr><b>class </b>Pet(<b>object</b>):</nobr></div>
+<div style="position:absolute;top:6745;left:111"><nobr><b>def </b>__init__(self, name, owner):</nobr></div>
+<div style="position:absolute;top:6762;left:141"><nobr>self.is_alive = True</nobr></div>
+<div style="position:absolute;top:6762;left:320"><nobr># Its alive!!!</nobr></div>
+<div style="position:absolute;top:6784;left:141"><nobr>self.name = name</nobr></div>
+<div style="position:absolute;top:6805;left:141"><nobr>self.owner = owner</nobr></div>
+<div style="position:absolute;top:6831;left:111"><nobr><b>def </b>eat(self, thing):</nobr></div>
+<div style="position:absolute;top:6853;left:141"><nobr><b>print</b>(self.name + ate a + <b>str</b>(thing) + ! )</nobr></div>
+<div style="position:absolute;top:6874;left:111"><nobr><b>def </b>talk(self):</nobr></div>
+<div style="position:absolute;top:6896;left:141"><nobr><b>print</b>(self.name)</nobr></div>
+<div style="position:absolute;top:6939;left:81"><nobr><b>class </b>Dog(Pet):</nobr></div>
+<div style="position:absolute;top:6960;left:111"><nobr><b>def </b>__init__(self, name, owner):</nobr></div>
+<div style="position:absolute;top:6978;left:141"><nobr>Pet.__init__(self, name, owner)</nobr></div>
+<div style="position:absolute;top:7003;left:111"><nobr><b>def </b>talk(self):</nobr></div>
+<div style="position:absolute;top:7025;left:141"><nobr><b>print</b>(self.name +</nobr></div>
+<div style="position:absolute;top:7021;left:290"><nobr>says woof!)</nobr></div>
+<div style="position:absolute;top:7061;left:81"><nobr>Inheritance often represents a hierarchical relationship between two or more classes</nobr></div>
+<div style="position:absolute;top:7082;left:81"><nobr>where one class is a more specific version of the other. For example, a dog is</nobr></div>
+<div style="position:absolute;top:7104;left:81"><nobr>a pet. By making Dog a subclass of Pet, we did not have to redefine self.name,</nobr></div>
+<div style="position:absolute;top:7122;left:81"><nobr>self.owner, or eat. However, since we want Dog to talk differently, we did redefine,</nobr></div>
+<div style="position:absolute;top:7147;left:81"><nobr>or override, the talk method.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:7303;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=7><b>Page 7</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7340;left:393"><nobr>Object Oriented Programming</nobr></div>
+<div style="position:absolute;top:7340;left:609"><nobr>7</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:7372;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:7422;left:52"><nobr>2.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7419;left:81"><nobr>Implement the Cat class by inheriting from the Pet class. Make sure to use super-</nobr></div>
+<div style="position:absolute;top:7440;left:81"><nobr>class methods wherever possible. In addition, add a lose life method to the Cat</nobr></div>
+<div style="position:absolute;top:7462;left:81"><nobr>class.</nobr></div>
+<div style="position:absolute;top:7492;left:81"><nobr><b>class </b>Cat(Pet):</nobr></div>
+<div style="position:absolute;top:7514;left:111"><nobr><b>def </b>__init__(self, name, owner, lives=9):</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7586;left:141"><nobr>Pet.__init__(self, name, owner)</nobr></div>
+<div style="position:absolute;top:7607;left:141"><nobr>self.lives = lives</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7679;left:111"><nobr><b>def </b>talk(self):</nobr></div>
+<div style="position:absolute;top:7696;left:163"><nobr>A cat says meow! when asked to talk.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7776;left:141"><nobr><b>print</b>(meow!)</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7908;left:111"><nobr><b>def </b>lose_life(self):</nobr></div>
+<div style="position:absolute;top:7926;left:163"><nobr>A cat can only lose a life if they have at</nobr></div>
+<div style="position:absolute;top:7947;left:141"><nobr>least one life. When lives reaches zero, is_alive</nobr></div>
+<div style="position:absolute;top:7969;left:141"><nobr>becomes False.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8071;left:141"><nobr><b>if </b>self.lives &gt; 0:</nobr></div>
+<div style="position:absolute;top:8088;left:171"><nobr>self.lives -= 1</nobr></div>
+<div style="position:absolute;top:8114;left:171"><nobr><b>if </b>self.lives == 0:</nobr></div>
+<div style="position:absolute;top:8131;left:201"><nobr>self.is_alive = False</nobr></div>
+<div style="position:absolute;top:8157;left:141"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:8178;left:171"><nobr><b>print</b>( This cat has no more lives to lose :( )</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:12px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:8247;left:81"><nobr><a href="https://www.youtube.com/watch?v=BatqjYa7WZ8&list=PLx38hZJ5RLZfel-Gi9pjaUbfQDCZIsWMU&vq=hd1080&t=34m50s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:8283;left:52"><nobr>2.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8280;left:81"><nobr>More cats! Fill in the methods for NoisyCat, which is just like a normal Cat.</nobr></div>
+<div style="position:absolute;top:8302;left:81"><nobr>However, NoisyCat talks a lot, printing twice whatever a Cat says.</nobr></div>
+<div style="position:absolute;top:8332;left:81"><nobr><b>class </b>NoisyCat(Cat):</nobr></div>
+<div style="position:absolute;top:8350;left:133"><nobr>A Cat that repeats things twice.</nobr></div>
+<div style="position:absolute;top:8375;left:111"><nobr><b>def </b>__init__(self, name, owner, lives=9):</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:8491;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=8><b>Page 8</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8528;left:81"><nobr>8 Object Oriented Programming</nobr></div>
+<div style="position:absolute;top:8561;left:141"><nobr># Is this method necessary? Why or why not?</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8637;left:141"><nobr>Cat.__init__(self, name, owner, lives)</nobr></div>
+<div style="position:absolute;top:8702;left:81"><nobr>No, this method is not necessary because NoisyCat already inherits Cat’s init</nobr></div>
+<div style="position:absolute;top:8723;left:81"><nobr>method</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8754;left:111"><nobr><b>def </b>talk(self):</nobr></div>
+<div style="position:absolute;top:8771;left:163"><nobr>Repeat what a Cat says twice.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8847;left:141"><nobr>Cat.talk(self)</nobr></div>
+<div style="position:absolute;top:8869;left:141"><nobr>Cat.talk(self)</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:12px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:8942;left:81"><nobr><a href="https://www.youtube.com/watch?v=BatqjYa7WZ8&list=PLx38hZJ5RLZfel-Gi9pjaUbfQDCZIsWMU&vq=hd1080&t=38m10s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:8978;left:52"><nobr>2.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8975;left:81"><nobr>(Summer 2013 Final) What would Python display?</nobr></div>
+<div style="position:absolute;top:9006;left:81"><nobr><b>class </b>A:</nobr></div>
+<div style="position:absolute;top:9027;left:111"><nobr><b>def </b>f(self):</nobr></div>
+<div style="position:absolute;top:9049;left:141"><nobr><b>return </b>2</nobr></div>
+<div style="position:absolute;top:9070;left:111"><nobr><b>def </b>g(self, obj, x):</nobr></div>
+<div style="position:absolute;top:9092;left:141"><nobr><b>if </b>x == 0:</nobr></div>
+<div style="position:absolute;top:9113;left:171"><nobr><b>return </b>A.f(obj)</nobr></div>
+<div style="position:absolute;top:9135;left:141"><nobr><b>return </b>obj.f() + self.g(self, x - 1)</nobr></div>
+<div style="position:absolute;top:9178;left:81"><nobr><b>class </b>B(A):</nobr></div>
+<div style="position:absolute;top:9199;left:111"><nobr><b>def </b>f(self):</nobr></div>
+<div style="position:absolute;top:9221;left:141"><nobr><b>return </b>4</nobr></div>
+<div style="position:absolute;top:9260;left:81"><nobr>&gt;&gt;&gt; x, y = A(), B()</nobr></div>
+<div style="position:absolute;top:9281;left:81"><nobr>&gt;&gt;&gt; x.f()</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9321;left:81"><nobr>2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9352;left:81"><nobr>&gt;&gt;&gt; B.f()</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9393;left:81"><nobr>Error (missing self argument)</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9428;left:81"><nobr>&gt;&gt;&gt; x.g(x, 1)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9467;left:81"><nobr>4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9498;left:81"><nobr>&gt;&gt;&gt; y.g(x, 2)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9538;left:81"><nobr>8</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:12px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:9563;left:81"><nobr><a href="https://www.youtube.com/watch?v=BatqjYa7WZ8&list=PLx38hZJ5RLZfel-Gi9pjaUbfQDCZIsWMU&vq=hd1080&t=48m20s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:9679;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=9><b>Page 9</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9716;left:393"><nobr>Object Oriented Programming</nobr></div>
+<div style="position:absolute;top:9716;left:609"><nobr>9</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:9756;left:52"><nobr>2.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9753;left:81"><nobr>Implement the Yolo class so that the following interpreter session works as expected.</nobr></div>
+<div style="position:absolute;top:9774;left:81"><nobr>(Summer 2013 Final)</nobr></div>
+<div style="position:absolute;top:9801;left:81"><nobr>&gt;&gt;&gt; x = Yolo(1)</nobr></div>
+<div style="position:absolute;top:9822;left:81"><nobr>&gt;&gt;&gt; x.g(3)</nobr></div>
+<div style="position:absolute;top:9844;left:81"><nobr>4</nobr></div>
+<div style="position:absolute;top:9865;left:81"><nobr>&gt;&gt;&gt; x.g(5)</nobr></div>
+<div style="position:absolute;top:9887;left:81"><nobr>6</nobr></div>
+<div style="position:absolute;top:9908;left:81"><nobr>&gt;&gt;&gt; x.motto = 5</nobr></div>
+<div style="position:absolute;top:9930;left:81"><nobr>&gt;&gt;&gt; x.g(5)</nobr></div>
+<div style="position:absolute;top:9951;left:81"><nobr>10</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10010;left:81"><nobr><b>class </b>Yolo:</nobr></div>
+<div style="position:absolute;top:10032;left:111"><nobr><b>def </b>__init__(self, motto):</nobr></div>
+<div style="position:absolute;top:10049;left:141"><nobr>self.motto = motto</nobr></div>
+<div style="position:absolute;top:10075;left:111"><nobr><b>def </b>g(self, n):</nobr></div>
+<div style="position:absolute;top:10096;left:141"><nobr><b>return </b>self.motto + n</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:10867;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=10><b>Page 10</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10904;left:81"><nobr>10 Object Oriented Programming</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:10944;left:52"><nobr>2.5</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10941;left:81"><nobr>(Summer 2015 Final) The TAs are building a social networking website called</nobr></div>
+<div style="position:absolute;top:10962;left:81"><nobr>CS61A+. The TAs plan to represent the network in a class called Network that</nobr></div>
+<div style="position:absolute;top:10984;left:81"><nobr>supports the following method:</nobr></div>
+<div style="position:absolute;top:11010;left:99"><nobr>• add friend(user1, user2) adds user1 and user2 to each other’s friends lists.</nobr></div>
+<div style="position:absolute;top:11036;left:114"><nobr>If user1 or user2 are not in the Network, add them to the dictionary of friends.</nobr></div>
+<div style="position:absolute;top:11066;left:81"><nobr>Help the TAs implement these two methods to make their social networking website</nobr></div>
+<div style="position:absolute;top:11088;left:81"><nobr>popular!</nobr></div>
+<div style="position:absolute;top:11117;left:81"><nobr><b>class </b>Network:</nobr></div>
+<div style="position:absolute;top:11156;left:111"><nobr>&gt;&gt;&gt; cs61a_plus = Network()</nobr></div>
+<div style="position:absolute;top:11178;left:111"><nobr>&gt;&gt;&gt; cs61a_plus.add_friend(Robert, Jeffrey)</nobr></div>
+<div style="position:absolute;top:11199;left:111"><nobr>&gt;&gt;&gt; cs61a_plus.friends[Robert]</nobr></div>
+<div style="position:absolute;top:11221;left:111"><nobr>[Jeffrey]</nobr></div>
+<div style="position:absolute;top:11242;left:111"><nobr>&gt;&gt;&gt; cs61a_plus.friends[Jeffrey]</nobr></div>
+<div style="position:absolute;top:11264;left:111"><nobr>[Robert]</nobr></div>
+<div style="position:absolute;top:11285;left:111"><nobr>&gt;&gt;&gt; cs61a_plus.add_friend(Jessica, Robert)</nobr></div>
+<div style="position:absolute;top:11307;left:111"><nobr>&gt;&gt;&gt; cs61a_plus.friends[Robert]</nobr></div>
+<div style="position:absolute;top:11328;left:111"><nobr>[Jeffrey, Jessica]</nobr></div>
+<div style="position:absolute;top:11376;left:111"><nobr><b>def </b>__init__(self):</nobr></div>
+<div style="position:absolute;top:11393;left:141"><nobr>self.friends = {}</nobr></div>
+<div style="position:absolute;top:11393;left:320"><nobr># Maps users to a list of their friends</nobr></div>
+<div style="position:absolute;top:11440;left:111"><nobr><b>def </b>add_friend(self, user1, user2):</nobr></div>
+<div style="position:absolute;top:11505;left:141"><nobr><b>if </b>__________________________________________________:</nobr></div>
+<div style="position:absolute;top:11565;left:171"><nobr>_________________________________________________</nobr></div>
+<div style="position:absolute;top:11634;left:141"><nobr><b>if </b>__________________________________________________:</nobr></div>
+<div style="position:absolute;top:11694;left:171"><nobr>_________________________________________________</nobr></div>
+<div style="position:absolute;top:11759;left:141"><nobr>_____________________________________________________</nobr></div>
+<div style="position:absolute;top:11823;left:141"><nobr>_____________________________________________________</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11881;left:111"><nobr><b>def </b>add_friend(self, user1, user2):</nobr></div>
+<div style="position:absolute;top:11902;left:141"><nobr><b>if </b>user1 <b>not in </b>self.friends:</nobr></div>
+<div style="position:absolute;top:11920;left:171"><nobr>self.friends[user1] = []</nobr></div>
+<div style="position:absolute;top:11945;left:141"><nobr><b>if </b>user2 <b>not in </b>self.friends:</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:12055;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=11><b>Page 11</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12092;left:385"><nobr>Object Oriented Programming</nobr></div>
+<div style="position:absolute;top:12092;left:601"><nobr>11</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:12131;left:171"><nobr>self.friends[user2] = []</nobr></div>
+<div style="position:absolute;top:12152;left:141"><nobr>self.friends[user1].append(user2)</nobr></div>
+<div style="position:absolute;top:12174;left:141"><nobr>self.friends[user2].append(user1)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:13243;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=12><b>Page 12</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:13280;left:81"><nobr>12 Object Oriented Programming</nobr></div>
+<div style="position:absolute;top:13317;left:81"><nobr>CS61A+ turns out to be unpopular. To attract more users, the TAs want to</nobr></div>
+<div style="position:absolute;top:13338;left:81"><nobr>implement a feature that checks if two users have at most n degrees of separation.</nobr></div>
+<div style="position:absolute;top:13360;left:81"><nobr>Consider the following CS61A+ Network:</nobr></div>
+<div style="position:absolute;top:13386;left:81"><nobr>self.friends = {</nobr></div>
+<div style="position:absolute;top:13408;left:118"><nobr>Robert: [Jeffrey, Jessica],</nobr></div>
+<div style="position:absolute;top:13429;left:118"><nobr>Jeffrey: [Robert, Jessica, Yulin],</nobr></div>
+<div style="position:absolute;top:13451;left:118"><nobr>Jessica: [Robert, Jeffrey, Yulin],</nobr></div>
+<div style="position:absolute;top:13472;left:118"><nobr>Yulin:</nobr></div>
+<div style="position:absolute;top:13472;left:193"><nobr>[Jeffrey, Jessica],</nobr></div>
+<div style="position:absolute;top:13494;left:118"><nobr>Albert: []</nobr></div>
+<div style="position:absolute;top:13515;left:81"><nobr>}</nobr></div>
+<div style="position:absolute;top:13555;left:99"><nobr>• There is 1 degree of separation between Robert and Jeffrey, because they are</nobr></div>
+<div style="position:absolute;top:13580;left:114"><nobr>direct friends.</nobr></div>
+<div style="position:absolute;top:13607;left:99"><nobr>• There are 2 degrees of separation between Robert and Yulin (Robert → Jessica</nobr></div>
+<div style="position:absolute;top:13631;left:114"><nobr>→ Yulin)</nobr></div>
+<div style="position:absolute;top:13659;left:99"><nobr>• The degree of separation between Albert and anyone else is undefined, since</nobr></div>
+<div style="position:absolute;top:13684;left:114"><nobr>Albert has no friends.</nobr></div>
+<div style="position:absolute;top:13715;left:81"><nobr><b>class </b>Network:</nobr></div>
+<div style="position:absolute;top:13732;left:111"><nobr># Code from previous question</nobr></div>
+<div style="position:absolute;top:13780;left:111"><nobr><b>def </b>degrees(self, user1, user2, n):</nobr></div>
+<div style="position:absolute;top:13797;left:163"><nobr>In these doctests, assume cs61a_plus is a Network with the</nobr></div>
+<div style="position:absolute;top:13818;left:141"><nobr>dictionary of friends described in the example.</nobr></div>
+<div style="position:absolute;top:13861;left:141"><nobr>&gt;&gt;&gt; cs61a_plus.degrees(Robert, Yulin, 2)</nobr></div>
+<div style="position:absolute;top:13861;left:499"><nobr># Exactly 2 degrees</nobr></div>
+<div style="position:absolute;top:13883;left:141"><nobr>True</nobr></div>
+<div style="position:absolute;top:13904;left:141"><nobr>&gt;&gt;&gt; cs61a_plus.degrees(Robert, Jessica, 2) # Less than 2 degrees</nobr></div>
+<div style="position:absolute;top:13926;left:141"><nobr>True</nobr></div>
+<div style="position:absolute;top:13948;left:141"><nobr>&gt;&gt;&gt; cs61a_plus.degrees(Yulin, Robert, 1)</nobr></div>
+<div style="position:absolute;top:13948;left:499"><nobr># More than 1 degree</nobr></div>
+<div style="position:absolute;top:13969;left:141"><nobr>False</nobr></div>
+<div style="position:absolute;top:13991;left:141"><nobr>&gt;&gt;&gt; cs61a_plus.degrees(Albert, Jessica, 10) # No friends!</nobr></div>
+<div style="position:absolute;top:14012;left:141"><nobr>False</nobr></div>
+<div style="position:absolute;top:14059;left:141"><nobr><b>if </b>______________________________________:</nobr></div>
+<div style="position:absolute;top:14081;left:171"><nobr><b>return </b>True</nobr></div>
+<div style="position:absolute;top:14124;left:141"><nobr><b>elif </b>____________________________________:</nobr></div>
+<div style="position:absolute;top:14145;left:171"><nobr><b>return </b>False</nobr></div>
+<div style="position:absolute;top:14188;left:141"><nobr><b>for </b>friend <b>in </b>_______________________________:</nobr></div>
+<div style="position:absolute;top:14231;left:171"><nobr><b>if </b>______________________________________:</nobr></div>
+<div style="position:absolute;top:14253;left:201"><nobr><b>return </b>True</nobr></div>
+<div style="position:absolute;top:14296;left:141"><nobr><b>return </b>______________________________________</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:14431;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=13><b>Page 13</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:14468;left:385"><nobr>Object Oriented Programming</nobr></div>
+<div style="position:absolute;top:14468;left:601"><nobr>13</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:14520;left:81"><nobr><b>class </b>Network:</nobr></div>
+<div style="position:absolute;top:14537;left:111"><nobr># Code from previous question</nobr></div>
+<div style="position:absolute;top:14584;left:111"><nobr><b>def </b>degrees(self, user1, user2, n):</nobr></div>
+<div style="position:absolute;top:14623;left:141"><nobr>&gt;&gt;&gt; cs61a_plus = Network()</nobr></div>
+<div style="position:absolute;top:14645;left:141"><nobr>&gt;&gt;&gt; cs61a_plus.friends = {</nobr></div>
+<div style="position:absolute;top:14666;left:141"><nobr>...</nobr></div>
+<div style="position:absolute;top:14666;left:208"><nobr>Robert: [Jeffrey, Jessica],</nobr></div>
+<div style="position:absolute;top:14688;left:141"><nobr>...</nobr></div>
+<div style="position:absolute;top:14688;left:208"><nobr>Jeffrey: [Robert, Jessica, Yulin],</nobr></div>
+<div style="position:absolute;top:14709;left:141"><nobr>...</nobr></div>
+<div style="position:absolute;top:14709;left:208"><nobr>Jessica: [Robert, Jeffrey, Yulin],</nobr></div>
+<div style="position:absolute;top:14731;left:141"><nobr>...</nobr></div>
+<div style="position:absolute;top:14731;left:208"><nobr>Yulin: [Jeffrey, Jessica],</nobr></div>
+<div style="position:absolute;top:14752;left:141"><nobr>...</nobr></div>
+<div style="position:absolute;top:14752;left:208"><nobr>Albert: []</nobr></div>
+<div style="position:absolute;top:14774;left:141"><nobr>... }</nobr></div>
+<div style="position:absolute;top:14796;left:141"><nobr>&gt;&gt;&gt; cs61a_plus.degrees(Robert, Yulin, 2)</nobr></div>
+<div style="position:absolute;top:14796;left:499"><nobr># Exactly 2 degrees</nobr></div>
+<div style="position:absolute;top:14817;left:141"><nobr>True</nobr></div>
+<div style="position:absolute;top:14839;left:141"><nobr>&gt;&gt;&gt; cs61a_plus.degrees(Robert, Jessica, 2) # Less than 2 degrees</nobr></div>
+<div style="position:absolute;top:14860;left:141"><nobr>True</nobr></div>
+<div style="position:absolute;top:14882;left:141"><nobr>&gt;&gt;&gt; cs61a_plus.degrees(Yulin, Robert, 1)</nobr></div>
+<div style="position:absolute;top:14882;left:499"><nobr># More than 1 degree</nobr></div>
+<div style="position:absolute;top:14903;left:141"><nobr>False</nobr></div>
+<div style="position:absolute;top:14925;left:141"><nobr>&gt;&gt;&gt; cs61a_plus.degrees(Albert, Jessica, 10) # No friends!</nobr></div>
+<div style="position:absolute;top:14946;left:141"><nobr>False</nobr></div>
+<div style="position:absolute;top:15015;left:141"><nobr><b>if </b>user1 == user2:</nobr></div>
+<div style="position:absolute;top:15058;left:171"><nobr><b>return </b>True</nobr></div>
+<div style="position:absolute;top:15101;left:141"><nobr><b>elif </b>n &lt;= 0:</nobr></div>
+<div style="position:absolute;top:15144;left:171"><nobr><b>return </b>False</nobr></div>
+<div style="position:absolute;top:15187;left:141"><nobr><b>for </b>friend <b>in </b>self.friends[user1]:</nobr></div>
+<div style="position:absolute;top:15230;left:171"><nobr><b>if </b>self.degrees(friend, user2, n - 1):</nobr></div>
+<div style="position:absolute;top:15273;left:201"><nobr><b>return </b>True</nobr></div>
+<div style="position:absolute;top:15316;left:141"><nobr><b>return </b>False</nobr></div>
+</span></font>
+</body>
+</html>

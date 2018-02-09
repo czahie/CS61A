@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero, Paul Hilfinger" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="/assets/css/hw.css">
+
+
+    <title>
+Homework 7 Solutions | CS 61A Fall 2017
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Homework 7 Solutions
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="hw07.zip" class="label label-outline">hw07.zip</a></li>
+        </ul>
+        
+      </h1>
+    </header>
+    
+<h2>Solution Files</h2>
+<p>You can find the solutions in <a href="hw07.py">hw07.py</a>.</p>
+
+    
+<h3 class="question" id="q1">Q1: Digits</h3>
+
+<p>Implement <code>digits</code>, which returns a linked list containing the digits of a
+non-negative integer <code>n</code>.</p>
+
+<pre><code>def digits(n):
+    &quot;&quot;&quot;Return the digits of n as a linked list.
+
+    &gt;&gt;&gt; digits(0) is Link.empty
+    True
+    &gt;&gt;&gt; digits(543)
+    Link(5, Link(4, Link(3)))
+    &quot;&quot;&quot;
+    s = Link.empty
+    while n &gt; 0:
+        n, last = n // 10, n % 10
+<div class="sol-highlight">        s = Link(last, s)</div>    return s</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q digits</code></pre>
+
+<div class="sol-highlight">
+
+<p>We append each digit of <code>n</code> to the front of the linked list in the loop. At the
+end of the loop, we will end up with all the digits in a linked list and in the
+correct order.</p>
+
+<p>As an extra challenge, think about how you would store the digits in reverse
+order.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/emONeSLkI04">https://youtu.be/emONeSLkI04</a></p>
+
+</div>
+
+<h3 class="question" id="q2">Q2: Next Fibonacci Object</h3>
+
+<p>Implement the <code>next</code> method of the <code>Fib</code> class. For this class, the <code>value</code>
+attribute is a Fibonacci number. The <code>next</code> method returns a <code>Fib</code> instance
+whose <code>value</code> is the next Fibonacci number. The <code>next</code> method should take only
+constant time.</p>
+
+<p><em>Hint</em>: Assign <code>value</code> and <code>previous</code> attributes within <code>next</code>.</p>
+
+<pre><code>class Fib():
+    &quot;&quot;&quot;A Fibonacci number.
+
+    &gt;&gt;&gt; start = Fib()
+    &gt;&gt;&gt; start
+    0
+    &gt;&gt;&gt; start.next()
+    1
+    &gt;&gt;&gt; start.next().next()
+    1
+    &gt;&gt;&gt; start.next().next().next()
+    2
+    &gt;&gt;&gt; start.next().next().next().next()
+    3
+    &gt;&gt;&gt; start.next().next().next().next().next()
+    5
+    &gt;&gt;&gt; start.next().next().next().next().next().next()
+    8
+    &gt;&gt;&gt; start.next().next().next().next().next().next() # Ensure start isn&#x27;t changed
+    8
+    &quot;&quot;&quot;
+
+    def __init__(self, value=0):
+        self.value = value
+
+    def next(self):
+<div class="sol-highlight">        if self.value == 0:
+            result = Fib(1)
+        else:
+            result = Fib(self.value + self.previous)
+        result.previous = self.value
+        return result</div>
+    def __repr__(self):
+        return str(self.value)</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q Fib</code></pre>
+
+<div class="sol-highlight">
+
+<p>Remember that <code>next</code> must return a <code>Fibonacci</code> object! With this in mind, our
+first goal is to calculate the next <code>Fibonacci</code> object and return it. One
+approach is to figure out the base case (<code>self.value == 0</code>) and then decide what
+information is needed for the following call to <code>next</code>.</p>
+
+<p>You might also note that storing the current value makes the solution look very
+similar to the iterative version of the <code>fib</code> problem.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/-_bn87W4oOE">https://youtu.be/-_bn87W4oOE</a></p>
+
+</div>
+
+<h3 class="question" id="q3">Q3: Vending Machine</h3>
+
+<p>Create a class called <code>VendingMachine</code> that represents a vending
+machine for some product. A <code>VendingMachine</code> object returns strings
+describing its interactions.  See the doctest below for examples:</p>
+
+<solution>
+
+<pre><code>class VendingMachine:
+    &quot;&quot;&quot;A vending machine that vends some product for some price.
+
+    &gt;&gt;&gt; v = VendingMachine(&#x27;candy&#x27;, 10)
+    &gt;&gt;&gt; v.vend()
+    &#x27;Machine is out of stock.&#x27;
+    &gt;&gt;&gt; v.deposit(15)
+    &#x27;Machine is out of stock. Here is your $15.&#x27;
+    &gt;&gt;&gt; v.restock(2)
+    &#x27;Current candy stock: 2&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;You must deposit $10 more.&#x27;
+    &gt;&gt;&gt; v.deposit(7)
+    &#x27;Current balance: $7&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;You must deposit $3 more.&#x27;
+    &gt;&gt;&gt; v.deposit(5)
+    &#x27;Current balance: $12&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;Here is your candy and $2 change.&#x27;
+    &gt;&gt;&gt; v.deposit(10)
+    &#x27;Current balance: $10&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;Here is your candy.&#x27;
+    &gt;&gt;&gt; v.deposit(15)
+    &#x27;Machine is out of stock. Here is your $15.&#x27;
+
+    &gt;&gt;&gt; w = VendingMachine(&#x27;soda&#x27;, 2)
+    &gt;&gt;&gt; w.restock(3)
+    &#x27;Current soda stock: 3&#x27;
+    &gt;&gt;&gt; w.restock(3)
+    &#x27;Current soda stock: 6&#x27;
+    &gt;&gt;&gt; w.deposit(2)
+    &#x27;Current balance: $2&#x27;
+    &gt;&gt;&gt; w.vend()
+    &#x27;Here is your soda.&#x27;
+    &quot;&quot;&quot;
+<div class="sol-highlight">    def __init__(self, product, price):
+        self.product = product
+        self.price = price
+        self.stock = 0
+        self.balance = 0
+
+    def restock(self, n):
+        self.stock += n
+        return &#x27;Current {0} stock: {1}&#x27;.format(self.product, self.stock)
+
+    def deposit(self, n):
+        if self.stock == 0:
+            return &#x27;Machine is out of stock. Here is your ${0}.&#x27;.format(n)
+        self.balance += n
+        return &#x27;Current balance: ${0}&#x27;.format(self.balance)
+
+    def vend(self):
+        if self.stock == 0:
+            return &#x27;Machine is out of stock.&#x27;
+        difference = self.price &#x2d; self.balance
+        if difference &gt; 0:
+            return &#x27;You must deposit ${0} more.&#x27;.format(difference)
+        message = &#x27;Here is your {0}&#x27;.format(self.product)
+        if difference != 0:
+            message += &#x27; and ${0} change&#x27;.format(&#x2d;difference)
+        self.balance = 0
+        self.stock &#x2d;= 1
+        return message + &#x27;.&#x27;</div></code></pre>
+
+</solution>
+
+<blockquote><p>You may find <a href="https://docs.python.org/2/library/stdtypes.html#str.format">Python string formatting
+syntax</a> useful.
+A quick example:</p></blockquote>
+
+<pre><code>&gt;&gt;&gt; ten, twenty, thirty = 10, &#x27;twenty&#x27;, [30]
+&gt;&gt;&gt; &#x27;{0} plus {1} is {2}&#x27;.format(ten, twenty, thirty)
+&#x27;10 plus twenty is [30]&#x27;</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q VendingMachine</code></pre>
+
+<div class="sol-highlight">
+
+<p>Reading through the doctests, it should be clear which functions we should add
+to ensure that the vending machine class behaves correctly.</p>
+
+<p><code>__init__</code></p>
+
+<ul>
+  <li>This can be difficult to fill out at first. Both <code>product</code> and <code>price</code> seem
+  pretty obvious to keep around, but <code>stock</code> and <code>balance</code> are quantities that
+  are needed only after attempting other functions.</li>
+</ul>
+
+<p><code>restock</code></p>
+
+<ul>
+  <li>Even though <code>v.restock(2)</code> takes only one argument in the doctest, remember
+  that <code>self</code> is bound to the object the <code>restock</code> method is invoked on.
+  Therefore, this function has two parameters.</li>
+  <li>While implementing this function, you will probably realize that you would
+  like to keep track of the stock somewhere. While it might be possible to set
+  the stock in this function as an instance attribute, it would lose whatever
+  the old stock was.
+  Therefore, the natural solution is to initialize stock in the constructor, and
+  then update it in <code>restock</code>.</li>
+</ul>
+
+<p><code>deposit</code></p>
+
+<ul>
+  <li>This behaves very similarly to <code>restock</code>. See comments above.</li>
+  <li>Also yes, this is quite the expensive vending machine.</li>
+</ul>
+
+<p><code>vend</code></p>
+
+<ul>
+  <li><p>The trickiest thing here is to make sure we handle all the cases. You may find
+  it helpful when implementing a problem like this to keep track of all the
+  errors we run into in the doctest.</p>
+
+  <ol>
+    <li>No stock</li>
+    <li>Not enough balance</li>
+    <li>Leftover balance after purchase (return change to customer)</li>
+    <li>No leftover balance after purchase</li>
+  </ol></li>
+  <li><p>We use some string concatenation at the end when handling case 3 and 4 to try
+  and reduce the amount of code. This isn't necessary for correctness -- it's ok
+  to have something like:</p>
+
+<pre><code>if difference != 0:
+    return ...
+else:
+    return ...</code></pre>
+
+  <p>Of course, that would require decrementing the balance and stock beforehand.</p></li>
+</ul>
+
+<p>Video walkthrough: <a href="https://youtu.be/7A8WtnX89z4">https://youtu.be/7A8WtnX89z4</a></p>
+
+</div>
+
+<h3 class="question" id="q4">Q4: Miss Manners</h3>
+
+<p>Create a class called <code>MissManners</code> that promotes politeness among our
+objects. A <code>MissManners</code> object takes another object on construction.
+It has one method, called <code>ask</code>.  It responds by calling methods on the
+object it contains, but only if the caller said please first.</p>
+
+<p>We can also compose multiple instances of <code>MissManners</code> objects upon
+each other (see <code>double_fussy</code> in doctests). A multilevel <code>MissManners</code> object
+must be politely requested to ask its own <code>MissManners</code> object. This continues
+until we reach the bottom level <code>MissManners</code> object.</p>
+
+<blockquote><p><em>Hint</em>: Use <code>getattr</code> and <code>hasattr</code> to access methods using strings.</p>
+
+<p><em>Hint</em>: Your implementation will need to use the <code>*args</code> notation that allows
+functions to take a flexible number of arguments.</p></blockquote>
+
+<pre><code>class MissManners:
+    &quot;&quot;&quot;A container class that only forwards messages that say please.
+
+    &gt;&gt;&gt; v = VendingMachine(&#x27;teaspoon&#x27;, 10)
+    &gt;&gt;&gt; v.restock(2)
+    &#x27;Current teaspoon stock: 2&#x27;
+
+    &gt;&gt;&gt; m = MissManners(v)
+    &gt;&gt;&gt; m.ask(&#x27;vend&#x27;)
+    &#x27;You must learn to say please first.&#x27;
+    &gt;&gt;&gt; m.ask(&#x27;please vend&#x27;)
+    &#x27;You must deposit $10 more.&#x27;
+    &gt;&gt;&gt; m.ask(&#x27;please deposit&#x27;, 20)
+    &#x27;Current balance: $20&#x27;
+    &gt;&gt;&gt; m.ask(&#x27;now will you vend?&#x27;)
+    &#x27;You must learn to say please first.&#x27;
+    &gt;&gt;&gt; m.ask(&#x27;please hand over a teaspoon&#x27;)
+    &#x27;Thanks for asking, but I know not how to hand over a teaspoon.&#x27;
+    &gt;&gt;&gt; m.ask(&#x27;please vend&#x27;)
+    &#x27;Here is your teaspoon and $10 change.&#x27;
+
+    &gt;&gt;&gt; double_fussy = MissManners(m) # Composed MissManners objects
+    &gt;&gt;&gt; double_fussy.ask(&#x27;deposit&#x27;, 10)
+    &#x27;You must learn to say please first.&#x27;
+    &gt;&gt;&gt; double_fussy.ask(&#x27;please deposit&#x27;, 10)
+    &#x27;Thanks for asking, but I know not how to deposit.&#x27;
+    &gt;&gt;&gt; double_fussy.ask(&#x27;please please deposit&#x27;, 10)
+    &#x27;Thanks for asking, but I know not how to please deposit.&#x27;
+    &gt;&gt;&gt; double_fussy.ask(&#x27;please ask&#x27;, &#x27;please deposit&#x27;, 10)
+    &#x27;Current balance: $10&#x27;
+    &quot;&quot;&quot;
+    def __init__(self, obj):
+        self.obj = obj
+
+    def ask(self, message, *args):
+        magic_word = &#x27;please &#x27;
+        if not message.startswith(magic_word):
+            return &#x27;You must learn to say please first.&#x27;
+<div class="sol-highlight">        attr = message[len(magic_word):]
+        if not hasattr(self.obj, attr):
+            return &#x27;Thanks for asking, but I know not how to &#x27; + attr + &#x27;.&#x27;
+        return getattr(self.obj, attr)(*args)</div></code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q MissManners</code></pre>
+
+<div class="sol-highlight">
+
+<p>Since the check for "please" has been handled, all that's left is to add the
+code to support calling the stored object.</p>
+
+<p>The first step is to check that the function we're trying to call exists in our
+object. If it does, then we let the object do the heavy lifting by getting the
+method and calling it on our arguments.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/IctuoebJN7A">https://youtu.be/IctuoebJN7A</a></p>
+
+</div>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#q1">Q1: Digits</a></li>
+  <li><a href="#q2">Q2: Next Fibonacci Object</a></li>
+  <li><a href="#q3">Q3: Vending Machine</a></li>
+  <li><a href="#q4">Q4: Miss Manners</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>

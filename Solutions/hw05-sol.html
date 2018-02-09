@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero, Paul Hilfinger" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="/assets/css/hw.css">
+
+
+    <title>
+Homework 5 Solutions | CS 61A Fall 2017
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Homework 5 Solutions
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="hw05.zip" class="label label-outline">hw05.zip</a></li>
+        </ul>
+        
+      </h1>
+    </header>
+    
+<h2>Solution Files</h2>
+<p>You can find the solutions in the <a href="hw05.py">hw05.py</a> file.</p>
+
+    
+<h1 id="required-questions">Required Questions</h1>
+
+<h3 class="question" id="q1">Q1: Replace Leaf</h3>
+
+<p>Define <code>replace_leaf</code>, which takes a tree <code>t</code>, a value <code>old</code>, and a value <code>new</code>.
+<code>replace_leaf</code> returns a new tree that's the same as <code>t</code> except that every leaf
+value equal to <code>old</code>  has been replaced with <code>new</code>.</p>
+
+<solution>
+
+<pre><code>def replace_leaf(t, old, new):
+    &quot;&quot;&quot;Returns a new tree where every leaf value equal to old has
+    been replaced with new.
+
+    &gt;&gt;&gt; yggdrasil = tree(&#x27;odin&#x27;,
+    ...                  [tree(&#x27;balder&#x27;,
+    ...                        [tree(&#x27;thor&#x27;),
+    ...                         tree(&#x27;loki&#x27;)]),
+    ...                   tree(&#x27;frigg&#x27;,
+    ...                        [tree(&#x27;thor&#x27;)]),
+    ...                   tree(&#x27;thor&#x27;,
+    ...                        [tree(&#x27;sif&#x27;),
+    ...                         tree(&#x27;thor&#x27;)]),
+    ...                   tree(&#x27;thor&#x27;)])
+    &gt;&gt;&gt; laerad = copy_tree(yggdrasil) # copy yggdrasil for testing purposes
+    &gt;&gt;&gt; print_tree(replace_leaf(yggdrasil, &#x27;thor&#x27;, &#x27;freya&#x27;))
+    odin
+      balder
+        freya
+        loki
+      frigg
+        freya
+      thor
+        sif
+        freya
+      freya
+    &gt;&gt;&gt; laerad == yggdrasil # Make sure original tree is unmodified
+    True
+    &quot;&quot;&quot;
+<div class="sol-highlight">    if is_leaf(t) and label(t) == old:
+        return tree(new)
+    else:
+        bs = [replace_leaf(b, old, new) for b in branches(t)]
+        return tree(label(t), bs)</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q replace_leaf</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/c4CJBcyrFgI">https://youtu.be/c4CJBcyrFgI</a></p>
+
+</div>
+
+<h3 class="question" id="q2">Q2: Towers of Hanoi</h3>
+
+<p>A classic puzzle called the Towers of Hanoi is a game that consists of three
+rods, and a number of disks of different sizes which can slide onto any rod.
+The puzzle starts with <code>n</code> disks in a neat stack in ascending order of size on
+a <code>start</code> rod, the smallest at the top, forming a conical shape.</p>
+
+<p><img class="img-responsive center-block" src="https://upload.wikimedia.org/wikipedia/commons/0/07/Tower_of_Hanoi.jpeg" alt="Towers of Hanoi"></p>
+
+<p>The objective of the puzzle is to move the entire stack to an <code>end</code> rod,
+obeying the following rules:</p>
+
+<ul>
+  <li>Only one disk may be moved at a time.</li>
+  <li>Each move consists of taking the top (smallest) disk from one of the rods and
+  sliding it onto another rod, on top of the other disks that may already be
+  present on that rod.</li>
+  <li>No disk may be placed on top of a smaller disk.</li>
+</ul>
+
+<p>Complete the definition of <code>move_stack</code>, which prints out the steps required to
+move <code>n</code> disks from the <code>start</code> rod to the <code>end</code> rod without violating the
+rules.</p>
+
+<solution>
+
+<pre><code>def print_move(origin, destination):
+    &quot;&quot;&quot;Print instructions to move a disk.&quot;&quot;&quot;
+    print(&quot;Move the top disk from rod&quot;, origin, &quot;to rod&quot;, destination)
+
+def move_stack(n, start, end):
+    &quot;&quot;&quot;Print the moves required to move n disks on the start pole to the end
+    pole without violating the rules of Towers of Hanoi.
+
+    n &#x2d;&#x2d; number of disks
+    start &#x2d;&#x2d; a pole position, either 1, 2, or 3
+    end &#x2d;&#x2d; a pole position, either 1, 2, or 3
+
+    There are exactly three poles, and start and end must be different. Assume
+    that the start pole has at least n disks of increasing size, and the end
+    pole is either empty or has a top disk larger than the top n start disks.
+
+    &gt;&gt;&gt; move_stack(1, 1, 3)
+    Move the top disk from rod 1 to rod 3
+    &gt;&gt;&gt; move_stack(2, 1, 3)
+    Move the top disk from rod 1 to rod 2
+    Move the top disk from rod 1 to rod 3
+    Move the top disk from rod 2 to rod 3
+    &gt;&gt;&gt; move_stack(3, 1, 3)
+    Move the top disk from rod 1 to rod 3
+    Move the top disk from rod 1 to rod 2
+    Move the top disk from rod 3 to rod 2
+    Move the top disk from rod 1 to rod 3
+    Move the top disk from rod 2 to rod 1
+    Move the top disk from rod 2 to rod 3
+    Move the top disk from rod 1 to rod 3
+    &quot;&quot;&quot;
+    assert 1 &lt;= start &lt;= 3 and 1 &lt;= end &lt;= 3 and start != end, &quot;Bad start/end&quot;
+<div class="sol-highlight">    if n == 1:
+        print_move(start, end)
+    else:
+        other = 6 &#x2d; start &#x2d; end
+        move_stack(n&#x2d;1, start, other)
+        print_move(start, end)
+        move_stack(n&#x2d;1, other, end)</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q move_stack</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/VwynGQiCTFM">https://youtu.be/VwynGQiCTFM</a></p>
+
+</div>
+
+
+<h2 id="interval">Interval</h2>
+
+
+<p><strong>Acknowledgements.</strong> This interval arithmetic example is based on
+a classic problem from Structure and Interpretation of Computer Programs,
+<a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.4">Section 2.1.4</a>.</p>
+
+<p><strong>Introduction.</strong> Alyssa P. Hacker is designing a system to help people
+solve engineering problems. One feature she wants to provide in her
+system is the ability to manipulate inexact quantities (such as
+measured parameters of physical devices) with known precision, so that
+when computations are done with such approximate quantities the results
+will be numbers of known precision.</p>
+
+<p>Alyssa's idea is to implement interval arithmetic as a set of
+arithmetic operations for combining "intervals" (objects that represent
+the range of possible values of an inexact quantity). The result of
+adding, subracting, multiplying, or dividing two intervals is itself an
+interval, representing the range of the result.</p>
+
+<p>Alyssa postulates the existence of an abstract object called an
+"interval" that has two endpoints: a lower bound and an upper bound.
+She also presumes that, given the endpoints of an interval, she can
+construct the interval using the data constructor interval.   Using the
+constructor and selectors, she defines the following operations:</p>
+
+<pre><code>def str_interval(x):
+    &quot;&quot;&quot;Return a string representation of interval x.&quot;&quot;&quot;
+    return &#x27;{0} to {1}&#x27;.format(lower_bound(x), upper_bound(x))
+
+def add_interval(x, y):
+    &quot;&quot;&quot;Return an interval that contains the sum of any value in interval x and
+    any value in interval y.&quot;&quot;&quot;
+    lower = lower_bound(x) + lower_bound(y)
+    upper = upper_bound(x) + upper_bound(y)
+    return interval(lower, upper)</code></pre>
+
+<h3 class="question" id="q3">Q3: Interval Abstraction</h3>
+
+<p>Alyssa's program is incomplete because she has not specified the implementation
+of the interval abstraction. She has implemented the constructor for you; fill
+in the implementation of the selectors.</p>
+
+<pre><code>def interval(a, b):
+    &quot;&quot;&quot;Construct an interval from a to b.&quot;&quot;&quot;
+<div class="sol-highlight">    assert a &lt;= b, &#x27;Lower bound cannot be greater than upper bound&#x27;</div>    return [a, b]
+
+def lower_bound(x):
+    &quot;&quot;&quot;Return the lower bound of interval x.&quot;&quot;&quot;
+<div class="sol-highlight">    return x[0]</div>
+def upper_bound(x):
+    &quot;&quot;&quot;Return the upper bound of interval x.&quot;&quot;&quot;
+<div class="sol-highlight">    return x[1]</div></code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q interval -u
+python3 ok -q interval</code></pre>
+
+<p>Louis Reasoner has also provided an implementation of interval
+multiplication. Beware: there are some data abstraction violations, so help him
+fix his code before someone <a href="https://youtu.be/QwoghxwETng">sets it on fire</a>.</p>
+
+<pre><code>def mul_interval(x, y):
+    &quot;&quot;&quot;Return the interval that contains the product of any value in x and any
+    value in y.&quot;&quot;&quot;
+    p1 = x[0] * y[0]
+    p2 = x[0] * y[1]
+    p3 = x[1] * y[0]
+    p4 = x[1] * y[1]
+    return [min(p1, p2, p3, p4), max(p1, p2, p3, p4)]</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q mul_interval -u
+python3 ok -q mul_interval</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/RiLrqgBm4Dk">https://youtu.be/RiLrqgBm4Dk</a></p>
+
+</div>
+
+<h3 class="question" id="q4">Q4: Sub Interval</h3>
+
+<p>Using reasoning analogous to Alyssa's, define a subtraction function for
+intervals. Try to reuse functions that have already been implemented.</p>
+
+<pre><code>def sub_interval(x, y):
+    &quot;&quot;&quot;Return the interval that contains the difference between any value in x
+    and any value in y.&quot;&quot;&quot;
+<div class="sol-highlight">    negative_y = interval(&#x2d;upper_bound(y), &#x2d;lower_bound(y))
+    return add_interval(x, negative_y)</div></code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q sub_interval -u
+python3 ok -q sub_interval</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/s37VvawB0vE">https://youtu.be/s37VvawB0vE</a></p>
+
+</div>
+
+<h3 class="question" id="q5">Q5: Div Interval</h3>
+
+<p>Alyssa implements division below by multiplying by the reciprocal of
+<code>y</code>. Ben Bitdiddle, an expert systems programmer, looks over Alyssa's
+shoulder and comments that it is not clear what it means to divide by
+an interval that spans zero. Add an <code>assert</code> statement to Alyssa's code
+to ensure that no such interval is used as a divisor:</p>
+
+<pre><code>def div_interval(x, y):
+    &quot;&quot;&quot;Return the interval that contains the quotient of any value in x divided by
+    any value in y. Division is implemented as the multiplication of x by the
+    reciprocal of y.&quot;&quot;&quot;
+<div class="sol-highlight">    assert not (lower_bound(y) &lt;= 0 &lt;= upper_bound(y)), &#x27;Divide by zero&#x27;</div>    reciprocal_y = interval(1/upper_bound(y), 1/lower_bound(y))
+    return mul_interval(x, reciprocal_y)</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q div_interval -u
+python3 ok -q div_interval</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/jNR7tmV1lMk">https://youtu.be/jNR7tmV1lMk</a></p>
+
+</div>
+
+<h3 class="question" id="q6">Q6: Par Diff</h3>
+
+<p>After considerable work, Alyssa P. Hacker delivers her finished system.  Several
+years later, after she has forgotten all about it, she gets a frenzied call from
+an irate user, Lem E. Tweakit. It seems that Lem has noticed that the
+<a href="https://en.wikipedia.org/wiki/Series_and_parallel_circuits#Resistors_2">formula for parallel resistors</a>
+can be written in two algebraically equivalent ways:</p>
+
+<pre><code>par1(r1, r2) = (r1 * r2) / (r1 + r2)</code></pre>
+
+<p>or</p>
+
+<pre><code>par2(r1, r2) = 1 / (1/r1 + 1/r2)</code></pre>
+
+<p>He has written the following two programs, each of which computes the
+<code>parallel_resistors</code> formula differently::</p>
+
+<pre><code>def par1(r1, r2):
+    return div_interval(mul_interval(r1, r2), add_interval(r1, r2))
+
+def par2(r1, r2):
+    one = interval(1, 1)
+    rep_r1 = div_interval(one, r1)
+    rep_r2 = div_interval(one, r2)
+    return div_interval(one, add_interval(rep_r1, rep_r2))</code></pre>
+
+<p>Lem complains that Alyssa's program gives different answers for the two
+ways of computing. This is a serious complaint.</p>
+
+<p>Demonstrate that Lem is right. Investigate the behavior of the system
+on a variety of arithmetic expressions. Make some intervals <code>r1</code> and
+<code>r2</code>, and show that <code>par1</code> and <code>par2</code> can give different results.</p>
+
+<pre><code>def check_par():
+    &quot;&quot;&quot;Return two intervals that give different results for parallel resistors.
+
+    &gt;&gt;&gt; r1, r2 = check_par()
+    &gt;&gt;&gt; x = par1(r1, r2)
+    &gt;&gt;&gt; y = par2(r1, r2)
+    &gt;&gt;&gt; lower_bound(x) != lower_bound(y) or upper_bound(x) != upper_bound(y)
+    True
+    &quot;&quot;&quot;
+<div class="sol-highlight">    r1 = interval(1, 2)</div><div class="sol-highlight">    r2 = interval(3, 4)</div>    return r1, r2</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q check_par</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/H8slb5KCbU4">https://youtu.be/H8slb5KCbU4</a></p>
+
+</div>
+
+<h3 class="question" id="q7">Q7: Multiple References</h3>
+
+<p>Eva Lu Ator, another user, has also noticed the different intervals
+computed by different but algebraically equivalent expressions. She
+says that the problem is multiple references to the same interval.</p>
+
+<p>The Multiple References Problem: a formula to compute with intervals
+using Alyssa's system will produce tighter error bounds if it can be
+written in such a form that no variable that represents an uncertain
+number is repeated.</p>
+
+<p>Thus, she says, <code>par2</code> is a better program for parallel resistances
+than <code>par1</code>. Is she right? Why? Write a function that returns a string
+containing a written explanation of your answer:</p>
+
+<pre><code>def multiple_references_explanation():
+<div class="sol-highlight">    return &quot;&quot;&quot;The multiple reference problem exists.  The true value
+    within a particular interval is fixed (though unknown).  Nested
+    combinations that refer to the same interval twice may assume two different
+    true values for the same interval, which is an error that results in
+    intervals that are larger than they should be.
+
+    Consider the case of i * i, where i is an interval from &#x2d;1 to 1.  No value
+    within this interval, when squared, will give a negative result.  However,
+    our mul_interval function will allow us to choose 1 from the first
+    reference to i and &#x2d;1 from the second, giving an erroneous lower bound of
+    &#x2d;1.
+
+    Hence, a program like par2 is better than par1 because it never combines
+    the same interval more than once.
+    &quot;&quot;&quot;</div></code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/H8slb5KCbU4">https://youtu.be/H8slb5KCbU4</a></p>
+
+</div>
+
+<h3 class="question" id="q8">Q8: Quadratic</h3>
+
+<p>Write a function <code>quadratic</code> that returns the interval of all values
+<code>f(t)</code> such that <code>t</code> is in the argument interval <code>x</code> and <code>f(t)</code> is a
+<a href="http://en.wikipedia.org/wiki/Quadratic_function">quadratic function</a>:</p>
+
+<pre><code>f(t) = a*t*t + b*t + c</code></pre>
+
+<p>Make sure that your implementation returns the smallest such interval,
+one that does not suffer from the multiple references problem.</p>
+
+<p><em>Hint</em>: the derivative <code>f&#x27;(t) = 2*a*t + b</code>, and so the extreme
+point of the quadratic is <code>&#x2d;b/(2*a)</code>:</p>
+
+<pre><code>def quadratic(x, a, b, c):
+    &quot;&quot;&quot;Return the interval that is the range of the quadratic defined by
+    coefficients a, b, and c, for domain interval x.
+
+    &gt;&gt;&gt; str_interval(quadratic(interval(0, 2), &#x2d;2, 3, &#x2d;1))
+    &#x27;&#x2d;3 to 0.125&#x27;
+    &gt;&gt;&gt; str_interval(quadratic(interval(1, 3), 2, &#x2d;3, 1))
+    &#x27;0 to 10&#x27;
+    &quot;&quot;&quot;
+<div class="sol-highlight">    extremum = &#x2d;b / (2*a)
+    f = lambda x: a * x * x + b * x + c
+    l, u, e = map(f, (lower_bound(x), upper_bound(x), extremum))
+    if extremum &gt;= lower_bound(x) and extremum &lt;= upper_bound(x):
+        return interval(min(l, u, e), max(l, u, e))
+    else:
+        return interval(min(l, u), max(l, u))</div></code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q quadratic</code></pre>
+
+<div class="sol-highlight">
+
+<p>Video walkthrough: <a href="https://youtu.be/qgSn_RNBs4A">https://youtu.be/qgSn_RNBs4A</a></p>
+
+</div>
+
+
+<h1 id="extra-questions">Extra Questions</h1>
+
+
+<blockquote><p>Extra questions are not worth extra credit and are entirely optional. They are
+designed to challenge you to think creatively!</p></blockquote>
+
+<h3 class="question" id="q9">Q9: Polynomial</h3>
+
+<p>Write a function <code>polynomial</code> that takes an interval <code>x</code> and a list of
+coefficients <code>c</code>, and returns the interval containing all values of <code>f(t)</code> for
+<code>t</code> in interval <code>x</code>, where:</p>
+
+<pre><code>f(t) = c[k&#x2d;1] * pow(t, k&#x2d;1) + c[k&#x2d;2] * pow(t, k&#x2d;2) + ... + c[0] * 1</code></pre>
+
+<p>Like <code>quadratic</code>, your <code>polynomial</code> function should return the smallest such
+interval, one that does not suffer from the multiple references problem.</p>
+
+<p><em>Hint</em>: You can approximate this result. Try using <a href="http://www.composingprograms.com/pages/16-higher-order-functions.html#example-newton-s-method">Newton's
+method</a>.</p>
+
+<pre><code>def polynomial(x, c):
+    &quot;&quot;&quot;Return the interval that is the range of the polynomial defined by
+    coefficients c, for domain interval x.
+
+    &gt;&gt;&gt; str_interval(polynomial(interval(0, 2), [&#x2d;1, 3, &#x2d;2]))
+    &#x27;&#x2d;3 to 0.125&#x27;
+    &gt;&gt;&gt; str_interval(polynomial(interval(1, 3), [1, &#x2d;3, 2]))
+    &#x27;0 to 10&#x27;
+    &gt;&gt;&gt; str_interval(polynomial(interval(0.5, 2.25), [10, 24, &#x2d;6, &#x2d;8, 3]))
+    &#x27;18.0 to 23.0&#x27;
+    &quot;&quot;&quot;
+<div class="sol-highlight">    def add_fn(coeff, k, f):
+        return lambda x: coeff * pow(x, k) + f(x)
+
+    def add_dfn(coeff, k, df):
+        return lambda x: k * coeff * pow(x, k&#x2d;1) + df(x)
+
+    def add_ddfn(coeff, k, ddf):
+        return lambda x: k * (k&#x2d;1) * coeff * pow(x, k&#x2d;2) + ddf(x)
+
+    # Define the polynomial and its first and second derivatives.
+    f = lambda x: 0
+    df = lambda x: 0
+    ddf = lambda x: 0
+    for k, coeff in enumerate(c):
+        f = add_fn(coeff, k, f)
+        if k &gt; 0:
+            df = add_dfn(coeff, k, df)
+        if k &gt; 1:
+            ddf = add_ddfn(coeff, k, ddf)
+
+    # Find as many extreme points as we can using Newton&#x27;s method
+    lower, upper = lower_bound(x), upper_bound(x)
+    num_steps = 20
+    step = (upper &#x2d; lower) / num_steps
+    starts = [lower + k * step for k in range(num_steps)]
+    extremums = [find_zero(df, ddf, n) for n in starts]
+
+    # Filter for the interval x and return
+    ns = [n for n in extremums if n &gt; lower and n &lt; upper] + [lower, upper]
+    values = [f(n) for n in ns]
+    return interval(min(values), max(values))</div>
+<div class="sol-highlight"># Newton&#x27;s method from lecture
+
+def improve(update, close, guess=1, max_updates=100):
+    &quot;&quot;&quot;Iteratively improve guess with update until close(guess) is true or
+    max_updates have been applied.&quot;&quot;&quot;
+    k = 0
+    while not close(guess) and k &lt; max_updates:
+        guess = update(guess)
+        k = k + 1
+    return guess
+
+def approx_eq(x, y, tolerance=1e&#x2d;15):
+    return abs(x &#x2d; y) &lt; tolerance
+
+def find_zero(f, df, guess=1):
+    &quot;&quot;&quot;Return a zero of the function f with derivative df.&quot;&quot;&quot;
+    def near_zero(x):
+        return approx_eq(f(x), 0)
+    return improve(newton_update(f, df), near_zero, guess)
+
+def newton_update(f, df):
+    &quot;&quot;&quot;Return an update function for f with derivative df,
+    using Newton&#x27;s method.&quot;&quot;&quot;
+    def update(x):
+        return x &#x2d; f(x) / df(x)
+    return update</div></code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q polynomial</code></pre>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#required-questions">Required Questions</a></li>
+  <ul>
+    <li><a href="#q1">Q1: Replace Leaf</a></li>
+    <li><a href="#q2">Q2: Towers of Hanoi</a></li>
+  </ul>
+  <ul>
+    <li><a href="#interval">Interval</a></li>
+    <ul>
+      <li><a href="#q3">Q3: Interval Abstraction</a></li>
+      <li><a href="#q4">Q4: Sub Interval</a></li>
+      <li><a href="#q5">Q5: Div Interval</a></li>
+      <li><a href="#q6">Q6: Par Diff</a></li>
+      <li><a href="#q7">Q7: Multiple References</a></li>
+      <li><a href="#q8">Q8: Quadratic</a></li>
+    </ul>
+  </ul>
+  <li><a href="#extra-questions">Extra Questions</a></li>
+  <ul>
+    <li><a href="#q9">Q9: Polynomial</a></li>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero, Paul Hilfinger" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="/assets/css/hw.css">
+
+
+    <title>
+Homework 1 Solutions | CS 61A Fall 2017
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Homework 1 Solutions
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="hw01.zip" class="label label-outline">hw01.zip</a></li>
+        </ul>
+        
+      </h1>
+    </header>
+    
+<h2>Solution Files</h2>
+<p>You can find the solutions in <a href="hw01.py">hw01.py</a>.</p>
+
+    
+<h2 id="homework-questions">Homework Questions</h2>
+
+
+<h3 class="question" id="q1">Q1: A Plus Abs B</h3>
+
+<p>Fill in the blanks in the following function definition for adding <code>a</code> to the
+absolute value of <code>b</code>, without calling <code>abs</code>.</p>
+
+<pre><code>from operator import add, sub
+
+def a_plus_abs_b(a, b):
+    &quot;&quot;&quot;Return a+abs(b), but without calling abs.
+
+    &gt;&gt;&gt; a_plus_abs_b(2, 3)
+    5
+    &gt;&gt;&gt; a_plus_abs_b(2, &#x2d;3)
+    5
+    &quot;&quot;&quot;
+    if b &lt; 0:
+<div class="sol-highlight">        f = sub</div>    else:
+<div class="sol-highlight">        f = add</div>    return f(a, b)</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q a_plus_abs_b</code></pre>
+
+<div class="sol-highlight">
+
+<p>We choose the operator <code>add</code> or <code>sub</code> based on the sign of <code>b</code>.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/o9eUNrWTr3I">https://youtu.be/o9eUNrWTr3I</a></p>
+
+</div>
+<h3 class="question" id="q2">Q2: Two of Three</h3>
+
+<p>Write a function that takes three <em>positive</em> numbers and returns the
+sum of the squares of the two largest numbers.  <strong>Use only a single
+line for the body of the function.</strong></p>
+
+<pre><code>def two_of_three(a, b, c):
+    &quot;&quot;&quot;Return x*x + y*y, where x and y are the two largest members of the
+    positive numbers a, b, and c.
+
+    &gt;&gt;&gt; two_of_three(1, 2, 3)
+    13
+    &gt;&gt;&gt; two_of_three(5, 3, 1)
+    34
+    &gt;&gt;&gt; two_of_three(10, 2, 8)
+    164
+    &gt;&gt;&gt; two_of_three(5, 5, 5)
+    50
+    &quot;&quot;&quot;
+<div class="sol-highlight">    return max(a*a+b*b, a*a+c*c, b*b+c*c)
+    return a**2 + b**2 + c**2 &#x2d; min(a, b, c)**2</div></code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q two_of_three</code></pre>
+
+<div class="sol-highlight">
+
+<p>We use the fact that if <code>a&gt;b</code> and <code>b&gt;0</code>, then <code>square(a)&gt;square(b)</code>.
+So, we can take the <code>max</code> of the sum of squares of all pairs.  The
+<code>max</code> function can take an arbitrary number of arguments.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/oPN3OCGGb4M">https://youtu.be/oPN3OCGGb4M</a></p>
+
+</div>
+<h3 class="question" id="q3">Q3: Largest Factor</h3>
+
+<p>Write a function that takes an integer <code>n</code> that is <strong>greater than 1</strong> and
+returns the largest integer that is smaller than <code>n</code> and evenly divides <code>n</code>.</p>
+
+<pre><code>def largest_factor(n):
+    &quot;&quot;&quot;Return the largest factor of n that is smaller than n.
+
+    &gt;&gt;&gt; largest_factor(15) # factors are 1, 3, 5
+    5
+    &gt;&gt;&gt; largest_factor(80) # factors are 1, 2, 4, 5, 8, 10, 16, 20, 40
+    40
+    &gt;&gt;&gt; largest_factor(13) # factor is 1 since 13 is prime
+    1
+    &quot;&quot;&quot;
+<div class="sol-highlight">    factor = n &#x2d; 1
+    while factor &gt; 0:
+        if n % factor == 0:
+            return factor
+        factor &#x2d;= 1</div></code></pre>
+
+<blockquote><p><strong>Hint:</strong> To check if <code>b</code> evenly divides <code>a</code>,
+you can use the expression <code>a % b == 0</code>, which can be read as,
+"the remainder of dividing <code>a</code> by <code>b</code> is 0."</p></blockquote>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q largest_factor</code></pre>
+
+<div class="sol-highlight">
+
+<p>Iterating from <code>n&#x2d;1</code> to 1, we return the first integer that evenly divides <code>n</code>.
+This is guaranteed to be the largest factor of <code>n</code>.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/pVgxbeL4DHQ">https://youtu.be/pVgxbeL4DHQ</a></p>
+
+</div>
+<h3 class="question" id="q4">Q4: If Function vs Statement</h3>
+
+<p>Let's write a function that does the same thing as an <code>if</code>
+statement.</p>
+
+<pre><code>def if_function(condition, true_result, false_result):
+    &quot;&quot;&quot;Return true_result if condition is a true value, and
+    false_result otherwise.
+
+    &gt;&gt;&gt; if_function(True, 2, 3)
+    2
+    &gt;&gt;&gt; if_function(False, 2, 3)
+    3
+    &gt;&gt;&gt; if_function(3==2, 3+2, 3&#x2d;2)
+    1
+    &gt;&gt;&gt; if_function(3&gt;2, 3+2, 3&#x2d;2)
+    5
+    &quot;&quot;&quot;
+    if condition:
+        return true_result
+    else:
+        return false_result</code></pre>
+
+<p>Despite the doctests above, this function actually does <em>not</em> do the
+same thing as an <code>if</code> statement in all cases.  To prove this fact,
+write functions <code>c</code>, <code>t</code>, and <code>f</code> such that <code>with_if_statement</code>
+returns the number <code>1</code>, but <code>with_if_function</code> does not (it can do
+<em>anything</em> else):</p>
+
+<pre><code>def with_if_statement():
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; with_if_statement()
+    1
+    &quot;&quot;&quot;
+    if c():
+        return t()
+    else:
+        return f()
+
+def with_if_function():
+    return if_function(c(), t(), f())
+
+def c():
+<div class="sol-highlight">    return False</div>
+def t():
+<div class="sol-highlight">    1/0</div>
+def f():
+<div class="sol-highlight">    return 1</div></code></pre>
+
+<p>To test your solution, open an interactive interpreter</p>
+
+<pre><code>python3 &#x2d;i hw01.py</code></pre>
+
+<p>and try calling <code>with_if_function</code> and <code>with_if_statement</code> to check that one
+returns 1 and the other doesn't.</p>
+
+<blockquote><p><strong>Hint</strong>: If you are having a hard time identifying how the if statement and
+if function differ, first try to get them to <code>print</code> out different values.</p></blockquote>
+
+<div class="sol-highlight">
+
+<p>The function <code>with_if_function</code> uses a call expression, which
+guarantees that all of its operand subexpressions will be evaluated
+before <code>if_function</code> is applied to the resulting arguments.  Therefore,
+even if <code>c</code> returns <code>False</code>, the function <code>t</code> will be called.  By
+contrast, <code>with_if_statement</code> will never call <code>t</code> if <code>c</code> returns
+<code>False</code>.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/rhR2RO5yn5U">https://youtu.be/rhR2RO5yn5U</a></p>
+
+</div>
+<h3 class="question" id="q5">Q5: Hailstone</h3>
+
+<p>Douglas Hofstadter's Pulitzer-prize-winning book, <em>Gödel, Escher,
+Bach</em>, poses the following mathematical puzzle.</p>
+
+<ol>
+  <li>Pick a positive integer <code>n</code> as the start.</li>
+  <li>If <code>n</code> is even, divide it by 2.</li>
+  <li>If <code>n</code> is odd, multiply it by 3 and add 1.</li>
+  <li>Continue this process until <code>n</code> is 1.</li>
+</ol>
+
+<p>The number <code>n</code> will travel up and down but eventually end at 1 (at
+least for all numbers that have ever been tried -- nobody has ever
+proved that the sequence will terminate). Analogously, a hailstone
+travels up and down in the atmosphere before eventually landing on
+earth.</p>
+
+<p>This sequence of values of <code>n</code> is often called a Hailstone sequence,
+Write a function that takes a single argument with formal parameter
+name <code>n</code>, prints out the hailstone sequence starting at <code>n</code>, and
+returns the number of steps in the sequence:</p>
+
+<pre><code>def hailstone(n):
+    &quot;&quot;&quot;Print the hailstone sequence starting at n and return its
+    length.
+
+    &gt;&gt;&gt; a = hailstone(10)
+    10
+    5
+    16
+    8
+    4
+    2
+    1
+    &gt;&gt;&gt; a
+    7
+    &quot;&quot;&quot;
+<div class="sol-highlight">    length = 1
+    while n != 1:
+        print(n)
+        if n % 2 == 0:
+            n = n // 2      # Integer division prevents &quot;1.0&quot; output
+        else:
+            n = 3 * n + 1
+        length = length + 1
+    print(n)                # n is now 1
+    return length</div></code></pre>
+
+<p>Hailstone sequences can get quite long! Try 27. What's the longest
+you can find?</p>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q hailstone</code></pre>
+
+<explanation>
+
+<p>Video walkthrough: <a href="https://youtu.be/lZZQ0BpsXIc">https://youtu.be/lZZQ0BpsXIc</a></p>
+
+<p></explanation</p>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#homework-questions">Homework Questions</a></li>
+  <ul>
+    <li><a href="#q1">Q1: A Plus Abs B</a></li>
+    <li><a href="#q2">Q2: Two of Three</a></li>
+    <li><a href="#q3">Q3: Largest Factor</a></li>
+    <li><a href="#q4">Q4: If Function vs Statement</a></li>
+    <li><a href="#q5">Q5: Hailstone</a></li>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>

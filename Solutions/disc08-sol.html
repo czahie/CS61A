@@ -1,0 +1,429 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}pre { word-wrap:break-word; }pre { white-space:pre-wrap; }</style><div id="google-cache-hdr"  dir=ltr><div>这是 <a href="https://cs61a.org/disc/disc08_sol.pdf" dir="ltr">https://cs61a.org/disc/disc08_sol.pdf</a> 的 HTML 档。<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> 在网路漫游时会自动将档案转换成 HTML 网页来储存。</div></div><div style="position:relative;margin:8px;">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX-1.40.18">
+<meta name="CreationDate" content="D:20171219170042Z">
+<meta name="ModDate" content="D:20171219170042Z">
+<meta name="Fullbanner" content="This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) kpathsea version 6.2.3">
+<title>CS 61A Interpreters and Tail Calls Fall 2017 1 Calculator</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:258;left:81"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:258;left:321"><nobr>Interpreters and Tail Calls</nobr></div>
+<div style="position:absolute;top:299;left:81"><nobr>Fall 2017</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:306;left:371"><nobr>Discussion 8: November 1, 2017 <font color="#ff0000" style="font-size:19px">Solutions</font></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:368;left:81"><nobr>1 Calculator</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:412;left:636"><nobr>calc&gt; (+ 2 2)</nobr></div>
+<div style="position:absolute;top:433;left:636"><nobr>4</nobr></div>
+<div style="position:absolute;top:476;left:636"><nobr>calc&gt; (- 5)</nobr></div>
+<div style="position:absolute;top:498;left:636"><nobr>-5</nobr></div>
+<div style="position:absolute;top:541;left:636"><nobr>calc&gt; (* (+ 1 2) (+ 2 3))</nobr></div>
+<div style="position:absolute;top:562;left:636"><nobr>15</nobr></div>
+<div style="position:absolute;top:422;left:81"><nobr>We are beginning to dive into the realm of interpreting computer programs – that</nobr></div>
+<div style="position:absolute;top:443;left:81"><nobr>is, writing programs that understand other programs. In order to do so, we’ll have</nobr></div>
+<div style="position:absolute;top:465;left:81"><nobr>to examine programming languages in-depth. The Calculator language, a subset of</nobr></div>
+<div style="position:absolute;top:486;left:81"><nobr>Scheme, was the first of these examples.</nobr></div>
+<div style="position:absolute;top:517;left:81"><nobr>The Calculator language is a Scheme-syntax language that currently includes only</nobr></div>
+<div style="position:absolute;top:538;left:81"><nobr>the four basic arithmetic operations: +, −, ∗, and /. These operations can be</nobr></div>
+<div style="position:absolute;top:560;left:81"><nobr>nested and can take varying numbers of arguments. A few examples of calculator</nobr></div>
+<div style="position:absolute;top:581;left:81"><nobr>in action are given on the right. A Calculator expression is just like a Scheme list.</nobr></div>
+<div style="position:absolute;top:603;left:81"><nobr>To represent Scheme lists in Python, we use Pair objects.</nobr></div>
+<div style="position:absolute;top:633;left:81"><nobr>For example, the list (+ 1 2) is represented as Pair(’+’, Pair(1, Pair(2, nil))).</nobr></div>
+<div style="position:absolute;top:664;left:81"><nobr>The Pair class is the same as the Scheme procedure cons, which would represent</nobr></div>
+<div style="position:absolute;top:685;left:81"><nobr>the same list as (cons ’+ (cons 1 (cons 2 nil))).</nobr></div>
+<div style="position:absolute;top:712;left:81"><nobr>Pair is very similar to Link, the class we developed for representing linked lists,</nobr></div>
+<div style="position:absolute;top:737;left:81"><nobr>except that the second attribute doesn’t have to be a linked list. In addition to</nobr></div>
+<div style="position:absolute;top:755;left:81"><nobr>Pair objects, we include a nil object to represent the empty list. Pair instances</nobr></div>
+<div style="position:absolute;top:781;left:81"><nobr>have methods:</nobr></div>
+<div style="position:absolute;top:811;left:99"><nobr>1. __len__, which returns the length of the list.</nobr></div>
+<div style="position:absolute;top:834;left:99"><nobr>2. __getitem__, which allows indexing into the pair.</nobr></div>
+<div style="position:absolute;top:857;left:99"><nobr>3. map, which applies a function, fn, to all of the elements in the list.</nobr></div>
+<div style="position:absolute;top:884;left:81"><nobr>nil has the methods __len__, __getitem__, and map.</nobr></div>
+<div style="position:absolute;top:918;left:81"><nobr>Here’s an implementation of what we described:</nobr></div>
+<div style="position:absolute;top:949;left:81"><nobr><b>class </b>nil:</nobr></div>
+<div style="position:absolute;top:966;left:133"><nobr>Represents the special empty pair nil in Scheme.</nobr></div>
+<div style="position:absolute;top:992;left:111"><nobr><b>def </b>__repr__(self):</nobr></div>
+<div style="position:absolute;top:1013;left:141"><nobr><b>return </b>nil</nobr></div>
+<div style="position:absolute;top:1035;left:111"><nobr><b>def </b>__len__(self):</nobr></div>
+<div style="position:absolute;top:1056;left:141"><nobr><b>return </b>0</nobr></div>
+<div style="position:absolute;top:1078;left:111"><nobr><b>def </b>__getitem__(self, i):</nobr></div>
+<div style="position:absolute;top:1099;left:141"><nobr><b>raise </b>IndexError(Index out of range)</nobr></div>
+<div style="position:absolute;top:1121;left:111"><nobr><b>def map</b>(self, fn):</nobr></div>
+<div style="position:absolute;top:1143;left:141"><nobr><b>return </b>nil</nobr></div>
+<div style="position:absolute;top:1181;left:81"><nobr>nil = nil() # this hides the nil class *forever*</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1363;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1400;left:81"><nobr>2 Interpreters and Tail Calls</nobr></div>
+<div style="position:absolute;top:1446;left:81"><nobr><b>class </b>Pair:</nobr></div>
+<div style="position:absolute;top:1463;left:133"><nobr>Represents the built-in pair data structure in Scheme.</nobr></div>
+<div style="position:absolute;top:1489;left:111"><nobr><b>def </b>__init__(self, first, second):</nobr></div>
+<div style="position:absolute;top:1506;left:141"><nobr>self.first = first</nobr></div>
+<div style="position:absolute;top:1528;left:141"><nobr>self.second = second</nobr></div>
+<div style="position:absolute;top:1554;left:111"><nobr><b>def </b>__repr__(self):</nobr></div>
+<div style="position:absolute;top:1575;left:141"><nobr><b>return </b>Pair({}, {}).<b>format</b>(self.first, self.second)</nobr></div>
+<div style="position:absolute;top:1597;left:111"><nobr><b>def </b>__len__(self):</nobr></div>
+<div style="position:absolute;top:1618;left:141"><nobr><b>return </b>1 + <b>len</b>(self.second)</nobr></div>
+<div style="position:absolute;top:1640;left:111"><nobr><b>def </b>__getitem__(self, i):</nobr></div>
+<div style="position:absolute;top:1661;left:141"><nobr><b>if </b>i == 0:</nobr></div>
+<div style="position:absolute;top:1683;left:171"><nobr><b>return </b>self.first</nobr></div>
+<div style="position:absolute;top:1704;left:141"><nobr><b>return </b>self.second[i-1]</nobr></div>
+<div style="position:absolute;top:1726;left:111"><nobr><b>def map</b>(self, fn):</nobr></div>
+<div style="position:absolute;top:1747;left:141"><nobr><b>return </b>Pair(fn(self.first), self.second.<b>map</b>(fn))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:1794;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:1844;left:52"><nobr>1.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1841;left:81"><nobr>Translate the following Calculator expressions into calls to the Pair constructor.</nobr></div>
+<div style="position:absolute;top:1871;left:81"><nobr>Hint: in the example from earlier, the list (+ 1 2) is represented as Pair(’+’,</nobr></div>
+<div style="position:absolute;top:1889;left:81"><nobr>Pair(1, Pair(2, nil))).</nobr></div>
+<div style="position:absolute;top:1920;left:81"><nobr>&gt; (+ 1 2 (- 3 4))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1974;left:81"><nobr>&gt;&gt;&gt; Pair(+, Pair(1, Pair(2, Pair(</nobr></div>
+<div style="position:absolute;top:1996;left:148"><nobr>Pair(-, Pair(3, Pair(4, nil))), nil))))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2041;left:81"><nobr>&gt; (+ 1 (* 2 3) 4)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2096;left:81"><nobr>&gt;&gt;&gt; Pair(+, Pair(1, Pair(Pair( *, Pair(2, Pair(3, nil))),</nobr></div>
+<div style="position:absolute;top:2117;left:148"><nobr>Pair(4,nil))))</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:2170;left:52"><nobr>1.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2167;left:81"><nobr>Translate the following Python representations of Calculator expressions into the</nobr></div>
+<div style="position:absolute;top:2189;left:81"><nobr>proper Scheme syntax:</nobr></div>
+<div style="position:absolute;top:2215;left:81"><nobr>&gt;&gt;&gt; Pair(+, Pair(1, Pair(2, Pair(3, Pair(4, nil)))))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2270;left:81"><nobr>&gt; (+ 1 2 3 4)</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2316;left:81"><nobr>&gt;&gt;&gt; Pair(+, Pair(1, Pair(Pair(*, Pair(2, Pair(3, nil))), nil)))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2361;left:81"><nobr>&gt; (+ 1 (* 2 3))</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2551;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2588;left:413"><nobr>Interpreters and Tail Calls</nobr></div>
+<div style="position:absolute;top:2588;left:609"><nobr>3</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:2620;left:81"><nobr>2 Evaluation</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2674;left:81"><nobr>Evaluation discovers the form of an expression and executes a corresponding eval-</nobr></div>
+<div style="position:absolute;top:2695;left:81"><nobr>uation rule.</nobr></div>
+<div style="position:absolute;top:2726;left:81"><nobr>We’ll go over two such expressions now:</nobr></div>
+<div style="position:absolute;top:2756;left:81"><nobr>1. Primitive expressions are evaluated directly. For example, the numbers 3.14</nobr></div>
+<div style="position:absolute;top:2778;left:100"><nobr>and 165 just evaluate to themselves, and the string “+” evaluates to the calc add</nobr></div>
+<div style="position:absolute;top:2799;left:100"><nobr>function.</nobr></div>
+<div style="position:absolute;top:2830;left:81"><nobr>2. Call expressions are evaluated in the same way you’ve been doing them all</nobr></div>
+<div style="position:absolute;top:2851;left:100"><nobr>semester:</nobr></div>
+<div style="position:absolute;top:2882;left:100"><nobr>(1) Evaluate the operator.</nobr></div>
+<div style="position:absolute;top:2912;left:100"><nobr>(2) Evaluate the operands from left to right.</nobr></div>
+<div style="position:absolute;top:2943;left:100"><nobr>(3) Apply the operator to the operands.</nobr></div>
+<div style="position:absolute;top:2967;left:81"><nobr>Here’s calc_eval:</nobr></div>
+<div style="position:absolute;top:2998;left:81"><nobr><b>def </b>calc_eval(exp):</nobr></div>
+<div style="position:absolute;top:3015;left:133"><nobr>Evaluates a Calculator expression represented as a Pair.</nobr></div>
+<div style="position:absolute;top:3041;left:111"><nobr><b>if isinstance</b>(exp, Pair):</nobr></div>
+<div style="position:absolute;top:3062;left:141"><nobr><b>return </b>calc_apply(calc_eval(exp.first),</nobr></div>
+<div style="position:absolute;top:3084;left:275"><nobr><b>list</b>(exp.second.<b>map</b>(calc_eval)))</nobr></div>
+<div style="position:absolute;top:3106;left:111"><nobr><b>elif </b>exp <b>in </b>OPERATORS:</nobr></div>
+<div style="position:absolute;top:3127;left:141"><nobr><b>return </b>OPERATORS[exp]</nobr></div>
+<div style="position:absolute;top:3149;left:111"><nobr><b>else</b>: # Atomic expressions</nobr></div>
+<div style="position:absolute;top:3170;left:141"><nobr><b>return </b>exp</nobr></div>
+<div style="position:absolute;top:3206;left:81"><nobr>And here’s calc_apply:</nobr></div>
+<div style="position:absolute;top:3236;left:81"><nobr><b>def </b>calc_apply(op, args):</nobr></div>
+<div style="position:absolute;top:3253;left:133"><nobr>Applies an operator to a Pair of arguments.</nobr></div>
+<div style="position:absolute;top:3279;left:111"><nobr><b>return </b>op(*args)</nobr></div>
+<div style="position:absolute;top:3317;left:81"><nobr>The *args syntax expands a list of arguments. For example:</nobr></div>
+<div style="position:absolute;top:3343;left:81"><nobr>&gt;&gt;&gt; calc_apply(<b>print</b>, [1, 2, 3]) # Becomes print(1, 2, 3), not print([1, 2, 3])</nobr></div>
+<div style="position:absolute;top:3364;left:81"><nobr>1 2 3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:3413;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:3463;left:52"><nobr>2.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3460;left:81"><nobr>Suppose we typed each of the following expressions into the Calculator interpreter.</nobr></div>
+<div style="position:absolute;top:3482;left:81"><nobr>How many calls to calc_eval would they each generate? How many calls to</nobr></div>
+<div style="position:absolute;top:3499;left:81"><nobr>calc_apply?</nobr></div>
+<div style="position:absolute;top:3529;left:81"><nobr>&gt; (+ 2 4 6 8)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3573;left:81"><nobr>6 calls to eval: 1 for the entire expression, and then 1 for each operator and operand.</nobr></div>
+<div style="position:absolute;top:3603;left:81"><nobr>1 call to apply the addition operator.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3632;left:81"><nobr>&gt; (+ 2 (* 4 (- 6 8)))</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3739;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3776;left:81"><nobr>4 Interpreters and Tail Calls</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3814;left:81"><nobr>10 calls to eval: 1 for the whole expression, then 1 for each of the operators and</nobr></div>
+<div style="position:absolute;top:3835;left:81"><nobr>operands. When we encounter another call expression, we have to evaluate the</nobr></div>
+<div style="position:absolute;top:3857;left:81"><nobr>operators and operands inside as well.</nobr></div>
+<div style="position:absolute;top:3887;left:81"><nobr>3 calls to apply each of the operators.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:3924;left:52"><nobr>2.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3921;left:81"><nobr>Alyssa P. Hacker and Ben Bitdiddle are also tasked with implementing the and</nobr></div>
+<div style="position:absolute;top:3942;left:81"><nobr>operator, as in (and (= 1 2) (&lt; 3 4)). Ben says this is easy: they just have to</nobr></div>
+<div style="position:absolute;top:3964;left:81"><nobr>follow the same process as in implementing * and /. Alyssa is not so sure. Who’s</nobr></div>
+<div style="position:absolute;top:3985;left:81"><nobr>right?</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4017;left:81"><nobr>Alyssa. We can’t handle and in the apply step since and is a special form: it is</nobr></div>
+<div style="position:absolute;top:4039;left:81"><nobr>short-circuited. We need to create a special case for it in calc eval.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:4066;left:52"><nobr>2.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4063;left:81"><nobr>Now that you’ve had a chance to think about it, you decide to try implementing</nobr></div>
+<div style="position:absolute;top:4080;left:81"><nobr>and yourself. You may assume the conditional operators (e.g. &lt;, &gt;, =, etc) have</nobr></div>
+<div style="position:absolute;top:4106;left:81"><nobr>already been implemented for you.</nobr></div>
+<div style="position:absolute;top:4136;left:81"><nobr><b>def </b>calc_eval(exp):</nobr></div>
+<div style="position:absolute;top:4158;left:111"><nobr><b>if isinstance</b>(exp, Pair):</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4203;left:141"><nobr><b>if </b>exp.first == and:</nobr></div>
+<div style="position:absolute;top:4225;left:171"><nobr><b>return </b>eval_and(exp.second)</nobr></div>
+<div style="position:absolute;top:4247;left:141"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:4268;left:171"><nobr><b>return </b>calc_apply(calc_eval(exp.first), <b>list</b>(exp.second.<b>map</b>(calc_eval)))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4314;left:111"><nobr><b>elif </b>exp <b>in </b>OPERATORS:</nobr></div>
+<div style="position:absolute;top:4335;left:141"><nobr><b>return </b>OPERATORS[exp]</nobr></div>
+<div style="position:absolute;top:4357;left:111"><nobr><b>else</b>: # Atomic expression</nobr></div>
+<div style="position:absolute;top:4379;left:141"><nobr><b>return </b>exp</nobr></div>
+<div style="position:absolute;top:4418;left:81"><nobr><b>def </b>eval_and(operands):</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4459;left:111"><nobr>curr = operands</nobr></div>
+<div style="position:absolute;top:4481;left:111"><nobr>last = True</nobr></div>
+<div style="position:absolute;top:4507;left:111"><nobr><b>while </b>curr <b>is not </b>nil:</nobr></div>
+<div style="position:absolute;top:4524;left:141"><nobr>last = calc_eval(curr.first)</nobr></div>
+<div style="position:absolute;top:4550;left:141"><nobr><b>if </b>last <b>is </b>False:</nobr></div>
+<div style="position:absolute;top:4571;left:171"><nobr><b>return </b>False</nobr></div>
+<div style="position:absolute;top:4588;left:141"><nobr>curr = curr.second</nobr></div>
+<div style="position:absolute;top:4614;left:111"><nobr><b>return </b>last</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:4927;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4964;left:413"><nobr>Interpreters and Tail Calls</nobr></div>
+<div style="position:absolute;top:4964;left:609"><nobr>5</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:4996;left:81"><nobr>3 Tail-Call Optimization</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5050;left:81"><nobr>Scheme implements tail-call optimization, which allows programmers to write re-</nobr></div>
+<div style="position:absolute;top:5071;left:81"><nobr>cursive functions that use a constant amount of space. A tail call occurs when a</nobr></div>
+<div style="position:absolute;top:5093;left:81"><nobr>function calls another function as its last action of the current frame. In this</nobr></div>
+<div style="position:absolute;top:5114;left:81"><nobr>case, the frame is no longer needed, and we can remove it from memory. In other</nobr></div>
+<div style="position:absolute;top:5136;left:81"><nobr>words, if this is the last thing you are going to do in a function call, we can reuse</nobr></div>
+<div style="position:absolute;top:5157;left:81"><nobr>the current frame instead of making a new frame.</nobr></div>
+<div style="position:absolute;top:5188;left:81"><nobr>Consider this version of factorial that does not use tail calls:</nobr></div>
+<div style="position:absolute;top:5214;left:81"><nobr>(<b>define </b>(fact n)</nobr></div>
+<div style="position:absolute;top:5236;left:96"><nobr>(<b>if </b>(= n 0)</nobr></div>
+<div style="position:absolute;top:5257;left:126"><nobr>1</nobr></div>
+<div style="position:absolute;top:5279;left:126"><nobr>(* n (fact (- n 1)))))</nobr></div>
+<div style="position:absolute;top:5322;left:81"><nobr>The recursive call occurs in the last line, but it is not the last expression evaluated.</nobr></div>
+<div style="position:absolute;top:5344;left:81"><nobr>After calling (fact (- n 1)), the function still needs to multiply that result with</nobr></div>
+<div style="position:absolute;top:5361;left:81"><nobr>n. The final expression that is evaluated is a call to the multiplication function, not</nobr></div>
+<div style="position:absolute;top:5383;left:81"><nobr>fact itself. Therefore, the recursive call is not a tail call.</nobr></div>
+<div style="position:absolute;top:5417;left:81"><nobr>We can rewrite this function using a helper function that remembers the temporary</nobr></div>
+<div style="position:absolute;top:5439;left:81"><nobr>product that we have calculated so far in each recursive step.</nobr></div>
+<div style="position:absolute;top:5465;left:81"><nobr>(<b>define </b>(fact n)</nobr></div>
+<div style="position:absolute;top:5487;left:96"><nobr>(<b>define </b>(fact-tail n result)</nobr></div>
+<div style="position:absolute;top:5508;left:111"><nobr>(<b>if </b>(= n 0)</nobr></div>
+<div style="position:absolute;top:5530;left:141"><nobr>result</nobr></div>
+<div style="position:absolute;top:5551;left:141"><nobr>(fact-tail (- n 1) (* n result))))</nobr></div>
+<div style="position:absolute;top:5573;left:96"><nobr>(fact-tail n 1))</nobr></div>
+<div style="position:absolute;top:5612;left:81"><nobr>fact-tail makes a single recursive call to fact-tail that is the last expression to be</nobr></div>
+<div style="position:absolute;top:5638;left:81"><nobr>evaluated, so it is a tail call. Therefore, fact-tail is a tail recursive process. Tail</nobr></div>
+<div style="position:absolute;top:5659;left:81"><nobr>recursive processes can use a constant amount of memory because each recursive</nobr></div>
+<div style="position:absolute;top:5681;left:81"><nobr>call frame does not need to be saved.</nobr></div>
+<div style="position:absolute;top:5711;left:81"><nobr>Our original implementation of fact required the program to keep each frame open</nobr></div>
+<div style="position:absolute;top:5733;left:81"><nobr>because the last expression multiplies the recursive result with n. Therefore, at each</nobr></div>
+<div style="position:absolute;top:5754;left:81"><nobr>frame, we need to remember the current value of n.</nobr></div>
+<div style="position:absolute;top:5785;left:81"><nobr>In contrast, the tail recursive fact-tail does not require the interpreter to remem-</nobr></div>
+<div style="position:absolute;top:5806;left:81"><nobr>ber the values for n or result in each frame. Instead, we can just update the value</nobr></div>
+<div style="position:absolute;top:5828;left:81"><nobr>of n and result of the current frame! Therefore, we can keep reusing a single frame</nobr></div>
+<div style="position:absolute;top:5849;left:81"><nobr>to complete this calculation.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:6115;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=6><b>Page 6</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6152;left:81"><nobr>6 Interpreters and Tail Calls</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:6193;left:81"><nobr>3.1 Identifying tail calls</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6240;left:81"><nobr>A function call is a tail call if it is in a tail context. However, it might not be a</nobr></div>
+<div style="position:absolute;top:6261;left:81"><nobr>recursive tail call, as we saw earlier in fact which did multiplication instead. Tail</nobr></div>
+<div style="position:absolute;top:6283;left:81"><nobr>context simply means the expression is the last to be evaluated in that form.</nobr></div>
+<div style="position:absolute;top:6313;left:81"><nobr>For example, we consider the following to be tail contexts:</nobr></div>
+<div style="position:absolute;top:6340;left:103"><nobr>• the last sub-expression in a lambda’s body</nobr></div>
+<div style="position:absolute;top:6370;left:103"><nobr>• the second or third sub-expression in an if form</nobr></div>
+<div style="position:absolute;top:6401;left:103"><nobr>• any of the non-predicate sub-expressions in a cond form</nobr></div>
+<div style="position:absolute;top:6431;left:103"><nobr>• the last sub-expression in an and or an or form</nobr></div>
+<div style="position:absolute;top:6462;left:103"><nobr>• the last sub-expression in a begin’s body</nobr></div>
+<div style="position:absolute;top:6496;left:81"><nobr>These make sense intuitively; for if, consider that the last expression to be evaluated</nobr></div>
+<div style="position:absolute;top:6518;left:81"><nobr>in an if form is not the condition, but rather either the second or third sub-</nobr></div>
+<div style="position:absolute;top:6539;left:81"><nobr>expressions which are evaluated depending on if the condition is True or False. You</nobr></div>
+<div style="position:absolute;top:6561;left:81"><nobr>should be able to provide a similar reasoning for the other tail contexts listed above.</nobr></div>
+<div style="position:absolute;top:6591;left:81"><nobr>Before we jump into questions, a quick tip for defining tail recursive functions is</nobr></div>
+<div style="position:absolute;top:6613;left:81"><nobr>to use helper functions. A helper function should have all the arguments from the</nobr></div>
+<div style="position:absolute;top:6634;left:81"><nobr>parent function, plus additional arguments like total or counter or result.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:6669;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:6719;left:52"><nobr>3.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6716;left:81"><nobr>For each of the following functions, identify whether it contains a recursive call in</nobr></div>
+<div style="position:absolute;top:6737;left:81"><nobr>a tail context. Also indicate if it uses a constant number of frames.</nobr></div>
+<div style="position:absolute;top:6768;left:81"><nobr>(<b>define </b>(question-a x)</nobr></div>
+<div style="position:absolute;top:6789;left:96"><nobr>(<b>if </b>(= x 0)</nobr></div>
+<div style="position:absolute;top:6811;left:126"><nobr>0</nobr></div>
+<div style="position:absolute;top:6832;left:126"><nobr>(+ x (question-a (- x 1)))))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:6885;left:81"><nobr>In the recursive case, the last expression that is evaluated is a call to +. Therefore,</nobr></div>
+<div style="position:absolute;top:6907;left:81"><nobr>the recursive call is not in a tail context, and each of the frames remain active. This</nobr></div>
+<div style="position:absolute;top:6928;left:81"><nobr>function uses Θ(n) frames.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6963;left:81"><nobr>(<b>define </b>(question-b x y)</nobr></div>
+<div style="position:absolute;top:6984;left:96"><nobr>(<b>if </b>(= x 0)</nobr></div>
+<div style="position:absolute;top:7006;left:126"><nobr>y</nobr></div>
+<div style="position:absolute;top:7027;left:126"><nobr>(question-b (- x 1) (+ y x))))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7080;left:81"><nobr>The if form is in a tail context, and the recursive call is the third subexpression, so</nobr></div>
+<div style="position:absolute;top:7101;left:81"><nobr>it is also in a tail context. Therefore, the last evaluated expression is the recursive</nobr></div>
+<div style="position:absolute;top:7123;left:81"><nobr>function call. This function therefore uses Θ(1) frames.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:7303;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=7><b>Page 7</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7340;left:413"><nobr>Interpreters and Tail Calls</nobr></div>
+<div style="position:absolute;top:7340;left:609"><nobr>7</nobr></div>
+<div style="position:absolute;top:7382;left:81"><nobr>(<b>define </b>(question-c x y)</nobr></div>
+<div style="position:absolute;top:7403;left:96"><nobr>(<b>if </b>(&gt; x y)</nobr></div>
+<div style="position:absolute;top:7425;left:126"><nobr>(question-c (- y 1) x)</nobr></div>
+<div style="position:absolute;top:7446;left:126"><nobr>(question-c (+ x 10) y)))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7499;left:81"><nobr>The recursive calls are the second and third sub-expressions of the if form. There-</nobr></div>
+<div style="position:absolute;top:7520;left:81"><nobr>fore, only one of the calls is actually evaluated, and it is the last expression evaluated</nobr></div>
+<div style="position:absolute;top:7542;left:81"><nobr>in each recursive call. This function therefore uses Θ(1) frames.</nobr></div>
+<div style="position:absolute;top:7572;left:81"><nobr>Note that if you actually try and evaluate this function, it will never terminate.</nobr></div>
+<div style="position:absolute;top:7594;left:81"><nobr>But at least it won’t crash from hitting max recursion depth!</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7628;left:81"><nobr>(<b>define </b>(question-d n)</nobr></div>
+<div style="position:absolute;top:7649;left:96"><nobr>(<b>if </b>(question-d n)</nobr></div>
+<div style="position:absolute;top:7671;left:126"><nobr>(question-d (- n 1))</nobr></div>
+<div style="position:absolute;top:7692;left:126"><nobr>(question-d (+ n 10))))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7745;left:81"><nobr>Both of the recursive calls are in a tail context, so they are both tail calls. However,</nobr></div>
+<div style="position:absolute;top:7766;left:81"><nobr>the if predicate, (question-d n), is another recursive call. This recursive call is not</nobr></div>
+<div style="position:absolute;top:7788;left:81"><nobr>in a tail context, so this function does not use a constant number of frames.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:7824;left:52"><nobr>3.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7821;left:81"><nobr>Write a tail recursive function that returns the nth fibonacci number. We define</nobr></div>
+<div style="position:absolute;top:7843;left:81"><nobr>fib(0) = 0 and fib(1) = 1.</nobr></div>
+<div style="position:absolute;top:7868;left:81"><nobr>(<b>define </b>(fib n)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7922;left:81"><nobr>(<b>define </b>(fib n)</nobr></div>
+<div style="position:absolute;top:7943;left:96"><nobr>(<b>define </b>(fib-sofar i prev curr)</nobr></div>
+<div style="position:absolute;top:7965;left:111"><nobr>(<b>if </b>(= i n)</nobr></div>
+<div style="position:absolute;top:7986;left:141"><nobr>prev</nobr></div>
+<div style="position:absolute;top:8008;left:141"><nobr>(fib-sofar (+ i 1) curr (+ prev curr)))</nobr></div>
+<div style="position:absolute;top:8029;left:96"><nobr>(fib-sofar 0 0 1)</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:8082;left:52"><nobr>3.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8079;left:81"><nobr>Write a tail recursive function, sum, that takes in a Scheme list and returns the</nobr></div>
+<div style="position:absolute;top:8100;left:81"><nobr>numerical sum of all values in the list.</nobr></div>
+<div style="position:absolute;top:8126;left:81"><nobr>(<b>define </b>(sum lst)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8179;left:81"><nobr>(<b>define </b>(sum lst)</nobr></div>
+<div style="position:absolute;top:8201;left:96"><nobr>(<b>define </b>(sum-sofar lst current-sum)</nobr></div>
+<div style="position:absolute;top:8222;left:111"><nobr>(<b>if </b>(null? lst)</nobr></div>
+<div style="position:absolute;top:8244;left:141"><nobr>current-sum</nobr></div>
+<div style="position:absolute;top:8265;left:141"><nobr>(sum-sofar (cdr lst) (+ (car lst) current-sum))))</nobr></div>
+<div style="position:absolute;top:8287;left:96"><nobr>(sum-sofar lst 0))</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:8340;left:52"><nobr>3.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8337;left:81"><nobr>Write a tail recursive function, insert, that takes in a number and a sorted list.</nobr></div>
+<div style="position:absolute;top:8358;left:81"><nobr>The function returns a sorted copy with the number inserted in the correct position.</nobr></div>
+<div style="position:absolute;top:8384;left:81"><nobr>(<b>define </b>(insert n lst)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:8491;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=8><b>Page 8</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8528;left:81"><nobr>8 Interpreters and Tail Calls</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8576;left:81"><nobr>(<b>define </b>(insert n lst)</nobr></div>
+<div style="position:absolute;top:8597;left:88"><nobr>(<b>define </b>(rev-insert lst rev-lst)</nobr></div>
+<div style="position:absolute;top:8619;left:103"><nobr>(<b>cond </b>((null? lst) (cons n rev-lst))</nobr></div>
+<div style="position:absolute;top:8640;left:148"><nobr>((&gt; (car lst) n) (append (reverse lst)</nobr></div>
+<div style="position:absolute;top:8662;left:335"><nobr>(cons n rev-lst)))</nobr></div>
+<div style="position:absolute;top:8683;left:148"><nobr>(<b>else </b>(rev-insert (cdr lst)</nobr></div>
+<div style="position:absolute;top:8705;left:283"><nobr>(cons (car lst) rev-lst)))))</nobr></div>
+<div style="position:absolute;top:8726;left:88"><nobr>(reverse (rev-insert lst nil)))</nobr></div>
+<div style="position:absolute;top:8769;left:81"><nobr>(<b>define </b>(append a b)</nobr></div>
+<div style="position:absolute;top:8791;left:111"><nobr>(<b>define </b>(rev-append-tail a b)</nobr></div>
+<div style="position:absolute;top:8812;left:141"><nobr>(<b>if </b>(null? a)</nobr></div>
+<div style="position:absolute;top:8834;left:171"><nobr>b</nobr></div>
+<div style="position:absolute;top:8856;left:171"><nobr>(rev-append-tail (cdr a) (cons (car a) b))))</nobr></div>
+<div style="position:absolute;top:8877;left:111"><nobr>(rev-append-tail (reverse a) b))</nobr></div>
+<div style="position:absolute;top:8920;left:81"><nobr>(<b>define </b>(reverse lst)</nobr></div>
+<div style="position:absolute;top:8942;left:96"><nobr>(<b>define </b>(reverse-sofar lst lst-sofar)</nobr></div>
+<div style="position:absolute;top:8963;left:111"><nobr>(<b>if </b>(null? lst)</nobr></div>
+<div style="position:absolute;top:8985;left:141"><nobr>lst-sofar</nobr></div>
+<div style="position:absolute;top:9006;left:141"><nobr>(reverse-sofar (cdr lst) (cons (car lst) lst-sofar))))</nobr></div>
+<div style="position:absolute;top:9028;left:96"><nobr>(reverse-sofar lst nil))</nobr></div>
+</span></font>
+</body>
+</html>
