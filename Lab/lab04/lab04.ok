@@ -1,0 +1,47 @@
+{
+    "name": "Lab 4",
+    "endpoint": "cal/cs61a/fa17/lab04",
+    "src": [
+        "lab04.py",
+        "lab04_extra.py"
+    ],
+    "tests": {
+        "tests/lists.py": "ok_test",
+        "tests/indexing.py": "ok_test",
+        "lab04.py:if_this_not_that": "doctest",
+        "lab04.py:distance": "doctest",
+        "lab04.py:closer_city": "doctest",
+        "lab04.py:create_row": "doctest",
+        "lab04.py:create_board": "doctest",
+        "lab04.py:replace_elem": "doctest",
+        "lab04.py:get_piece": "doctest",
+        "lab04.py:put_piece": "doctest",
+        "lab04.py:make_move": "doctest",
+        "lab04.py:print_board": "doctest",
+        "lab04.py:check_win_row": "doctest",
+        "lab04.py:check_win_column": "doctest",
+        "lab04.py:check_win": "doctest",
+        "lab04_extra.py": "doctest"
+    },
+    "default_tests": [
+        "lists",
+        "indexing",
+        "if_this_not_that",
+        "distance",
+        "closer_city",
+        "create_row",
+        "create_board",
+        "replace_elem",
+        "get_piece",
+        "put_piece",
+        "make_move"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
