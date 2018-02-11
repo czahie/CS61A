@@ -1,0 +1,7 @@
+'taxicab-correct', (0, 70)
+'squares-correct', (512, 70)
+'g-correct', (1024, 70)
+'g_iter-correct', (1536, 70)
+'pingpong-correct', (2048, 70)
+'count_change-correct', (2560, 70)
+'make_anonymous_factorial-correct', (3072, 70)

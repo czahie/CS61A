@@ -1,0 +1,25 @@
+{
+    "name": "Homework 4",
+    "endpoint": "cal/cs61a/fa17/hw04",
+    "src": [
+        "hw04.py"
+    ],
+    "tests": {
+        "hw04.py": "doctest"
+    },
+    "default_tests": [
+        "taxicab",
+        "squares",
+        "g",
+        "g_iter",
+        "pingpong",
+        "count_change"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}

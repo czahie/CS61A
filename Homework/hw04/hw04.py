@@ -41,12 +41,17 @@ def squares(s):
     []
     """
     "*** YOUR CODE HERE ***"
+
+#  My solution
     from math import sqrt
     square_roots = []
     for integer in s:
         if int(sqrt(integer)) == sqrt(integer):
             square_roots = square_roots + [int(sqrt(integer))]
     return square_roots
+
+# Official solution
+    return [round(n ** 0.5) for n in s if round(n ** 0.5) ** 2 == n]
 
 def g(n):
     """Return the value of G(n), computed recursively.
@@ -133,14 +138,15 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
-    def contain(x):
+# My solution
+    def contain(x):  # Equals to func have_seven
         """if number x contains digit 7, return True, else return False"""
         if x < 10:
             return x == 7
         else:
             return contain(x // 10) or contain(x % 10)
 
-    def count(x = 1, element = 1, switch = 0):
+    def count(x=1, element=1, switch=0):
         """return the xth element of the ping-pong sequence
         element represents the xth element, switch records the times of the sequence changing direction"""
         if x == n:
@@ -157,6 +163,22 @@ def pingpong(n):
                 return count(x + 1, element - 1, switch)
     return count()
 
+# Official solution
+    def pingpong_next(k, p, up):
+        if k == n:
+            return p
+        if up:
+            return pingpong_switch(k + 1, p + 1, up)
+        else:
+            return pingpong_switch(k + 1, p - 1, up)
+
+    def pingpong_switch(k, p, up):
+        if k % 7 == 0 or has_seven(k):
+            return pingpong_next(k, p, not up)
+        else:
+            return pingpong_next(k, p, up)
+
+    return pingpong_next(1, 1, True)
 
 
 
@@ -196,6 +218,7 @@ def count_change(amount):
     9828
     """
     "*** YOUR CODE HERE ***"
+# My solution
     from math import pow
 
     def partitions(n, m):
@@ -220,6 +243,21 @@ def count_change(amount):
 
     return partitions(amount, find_largest_pow_2(amount))
 
+# Official solution (which is apparently better)
+    return count_using(1, amount)
+
+def count_using(min_coin, amount):
+    if amount < 0:
+        return 0
+    elif amount == 0:
+        return 1
+    elif min_coin > amount:
+        return 0
+    else:
+        with_min = count_using(min_coin, amount - min_coin)
+        without_min = count_using(2*min_coin, amount)
+        return with_min + without_min
+
 
 ###################
 # Extra Questions #
@@ -236,4 +274,4 @@ def make_anonymous_factorial():
     >>> check(HW_SOURCE_FILE, 'make_anonymous_factorial', ['Assign', 'AugAssign', 'FunctionDef', 'Recursion'])
     True
     """
-    return 'YOUR_EXPRESSION_HERE'
+    return (lambda f: lambda k: f(f, k))(lambda f, k: k if k == 1 else mul(k, f(f, sub(k, 1))))  # Too hard
