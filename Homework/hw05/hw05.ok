@@ -1,0 +1,35 @@
+{
+    "name": "Homework 5",
+    "endpoint": "cal/cs61a/fa17/hw05",
+    "src": [
+        "hw05.py"
+    ],
+    "tests": {
+        "hw05.py": "doctest",
+        "tests/interval.py": "ok_test",
+        "tests/mul_interval.py": "ok_test",
+        "tests/sub_interval.py": "ok_test",
+        "tests/div_interval.py": "ok_test",
+        "tests/check_par.py": "ok_test",
+        "tests/quadratic.py": "ok_test",
+        "tests/polynomial.py": "ok_test"
+    },
+    "default_tests": [
+        "replace_leaf",
+        "move_stack",
+        "interval",
+        "mul_interval",
+        "sub_interval",
+        "div_interval",
+        "check_par",
+        "quadratic"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
