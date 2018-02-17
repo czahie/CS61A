@@ -1,0 +1,33 @@
+{
+    "name": "Lab 5",
+    "endpoint": "cal/cs61a/fa17/lab05",
+    "src": [
+        "lab05.py",
+        "lab05_extra.py"
+    ],
+    "tests": {
+        "tests/dicts.py": "ok_test",
+        "tests/structure.py": "ok_test",
+        "tests/height_depth.py": "ok_test",
+        "lab05.py": "doctest",
+        "lab05_extra.py": "doctest"
+    },
+    "default_tests": [
+        "dicts",
+        "structure",
+        "height_depth",
+        "map",
+        "filter",
+        "reduce",
+        "make_pytunes",
+        "num_songs"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}

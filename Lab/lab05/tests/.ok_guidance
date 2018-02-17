@@ -1,0 +1,3267 @@
+{
+  "checksum": "d7d7a158ac3d89e4306950a62410b053",
+  "db": {
+    "dictAssessId2Info": {
+      ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\nLOCKED_ANSWER\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nLOCKED_ANSWER\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\nLOCKED_ANSWER\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\nLOCKED_ANSWER\n>>> sorted(a & b)\nLOCKED_ANSWER\n>>> sorted(a.union(b))\nLOCKED_ANSWER\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n": {
+        "assessNum": "7",
+        "dictWA2DictInfo": {
+          "['1 2 3']": {
+            "dictTag2ConceptMsg": {
+              "lstdsntneedbrackets-pythonlistsyntax": "6",
+              "lstdsntneedcommas-pythonlistsyntax": "6"
+            },
+            "dictTag2KIMsg": {
+              "lstdsntneedbrackets": "27",
+              "lstdsntneedcommas": "27"
+            },
+            "lstMisU": [
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax",
+              "lstdsntneedcommas",
+              "lstdsntneedcommas-pythonlistsyntax"
+            ]
+          },
+          "['1, 2, 3']": {
+            "dictTag2ConceptMsg": {
+              "lstdsntneedbrackets-pythonlistsyntax": "6"
+            },
+            "dictTag2KIMsg": {
+              "lstdsntneedbrackets": "27"
+            },
+            "lstMisU": [
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax"
+            ]
+          },
+          "['False']": {
+            "dictTag2ConceptMsg": {
+              "sortedevalsbool-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedevalsbool": "28"
+            },
+            "lstMisU": [
+              "sortedevalsbool",
+              "sortedevalsbool-sortedfn"
+            ]
+          },
+          "['True']": {
+            "dictTag2ConceptMsg": {
+              "sortedevalsbool-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedevalsbool": "28"
+            },
+            "lstMisU": [
+              "sortedevalsbool",
+              "sortedevalsbool-sortedfn"
+            ]
+          },
+          "['[1, 1, 2, 2, 3, 3]']": {
+            "dictTag2ConceptMsg": {
+              "setcanhavedups-sets": "16"
+            },
+            "dictTag2KIMsg": {
+              "setcanhavedups": "35"
+            },
+            "lstMisU": [
+              "setcanhavedups",
+              "setcanhavedups-sets"
+            ]
+          },
+          "['[1,1,2,2,3,3]']": {
+            "dictTag2ConceptMsg": {
+              "setcanhavedups-sets": "16"
+            },
+            "dictTag2KIMsg": {
+              "setcanhavedups": "35"
+            },
+            "lstMisU": [
+              "setcanhavedups",
+              "setcanhavedups-sets"
+            ]
+          },
+          "['a']": {
+            "dictTag2ConceptMsg": {
+              "bindvartovarname-assignment": "0",
+              "bindvartovarname-evalvar": "2"
+            },
+            "dictTag2KIMsg": {
+              "bindvartovarname": "20"
+            },
+            "lstMisU": [
+              "bindvartovarname",
+              "bindvartovarname-assignment",
+              "bindvartovarname-evalvar"
+            ]
+          },
+          "['{1, 1, 2, 2, 3, 3}']": {
+            "dictTag2ConceptMsg": {
+              "setcanhavedups-sets": "16",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "setcanhavedups": "35",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "setcanhavedups",
+              "setcanhavedups-sets",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['{1, 2, 3}']": {
+            "dictTag2ConceptMsg": {
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['{1,2,3}']": {
+            "dictTag2ConceptMsg": {
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['{3, 2, 1}']": {
+            "dictTag2ConceptMsg": {
+              "sloppysort-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppysort": "29"
+            },
+            "lstMisU": [
+              "sloppysort",
+              "sloppysort-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['0']": [
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['4']"
+            ]
+          ],
+          "['4']": [
+            [
+              "8",
+              "['0']"
+            ]
+          ],
+          "['[1,1,2,2,3,3]']": [
+            [
+              "10",
+              "['[1,2,4]']"
+            ]
+          ],
+          "['{1,2,3}']": [
+            [
+              "7",
+              "['{3,2,1}']"
+            ]
+          ],
+          "['{2, 1, 3}']": [
+            [
+              "7",
+              "['{3, 2, 1}']"
+            ]
+          ],
+          "['{3, 1, 2}']": [
+            [
+              "7",
+              "['{3, 2, 1}']"
+            ]
+          ],
+          "['{3, 2, 1}']": [
+            [
+              "7",
+              "['{2, 1, 3}']"
+            ],
+            [
+              "7",
+              "['{3, 1, 2}']"
+            ]
+          ],
+          "['{3,2,1}']": [
+            [
+              "7",
+              "['{1,2,3}']"
+            ]
+          ]
+        }
+      },
+      ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\n[1, 2, 3]\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nFalse\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\n1017\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\nLOCKED_ANSWER\n>>> sorted(a & b)\nLOCKED_ANSWER\n>>> sorted(a.union(b))\nLOCKED_ANSWER\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n": {
+        "assessNum": "9",
+        "dictWA2DictInfo": {
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "sloppyintersect-intersect": "14",
+              "sloppyintersect-sloppy": "3",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sloppyintersect": "37",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "sloppyintersect",
+              "sloppyintersect-intersect",
+              "sloppyintersect-sloppy",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['4']": {
+            "dictTag2ConceptMsg": {
+              "sloppyintersect-intersect": "14",
+              "sloppyintersect-sloppy": "3",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sloppyintersect": "37",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "sloppyintersect",
+              "sloppyintersect-intersect",
+              "sloppyintersect-sloppy",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['False']": {
+            "dictTag2ConceptMsg": {
+              "sortedevalsbool-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedevalsbool": "28"
+            },
+            "lstMisU": [
+              "sortedevalsbool",
+              "sortedevalsbool-sortedfn"
+            ]
+          },
+          "['True']": {
+            "dictTag2ConceptMsg": {
+              "sortedevalsbool-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedevalsbool": "28"
+            },
+            "lstMisU": [
+              "sortedevalsbool",
+              "sortedevalsbool-sortedfn"
+            ]
+          },
+          "['[1, 2, 3, 4]']": {
+            "dictTag2ConceptMsg": {
+              "sloppyvareval-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppyvareval": "39"
+            },
+            "lstMisU": [
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['[1, 2, 4, 12, 1000]']": {
+            "dictTag2ConceptMsg": {
+              "intersectisunion-intersect": "14"
+            },
+            "dictTag2KIMsg": {
+              "intersectisunion": "38"
+            },
+            "lstMisU": [
+              "intersectisunion",
+              "intersectisunion-intersect"
+            ]
+          },
+          "['[1, 2, 4]']": {
+            "dictTag2ConceptMsg": {
+              "sloppyintersect-intersect": "14",
+              "sloppyintersect-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppyintersect": "37"
+            },
+            "lstMisU": [
+              "sloppyintersect",
+              "sloppyintersect-intersect",
+              "sloppyintersect-sloppy"
+            ]
+          },
+          "['[1, 2]']": {
+            "dictTag2ConceptMsg": {
+              "sloppyintersect-intersect": "14",
+              "sloppyintersect-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppyintersect": "37"
+            },
+            "lstMisU": [
+              "sloppyintersect",
+              "sloppyintersect-intersect",
+              "sloppyintersect-sloppy"
+            ]
+          },
+          "['[1,2,3,4]']": {
+            "dictTag2ConceptMsg": {
+              "sloppyvareval-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppyvareval": "39"
+            },
+            "lstMisU": [
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['[1,2,4,12,1000]']": {
+            "dictTag2ConceptMsg": {
+              "intersectisunion-intersect": "14"
+            },
+            "dictTag2KIMsg": {
+              "intersectisunion": "38"
+            },
+            "lstMisU": [
+              "intersectisunion",
+              "intersectisunion-intersect"
+            ]
+          },
+          "['[1,2,4]']": {
+            "dictTag2ConceptMsg": {
+              "sloppyintersect-intersect": "14",
+              "sloppyintersect-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppyintersect": "37"
+            },
+            "lstMisU": [
+              "sloppyintersect",
+              "sloppyintersect-intersect",
+              "sloppyintersect-sloppy"
+            ]
+          },
+          "['[1,2]']": {
+            "dictTag2ConceptMsg": {
+              "sloppyintersect-intersect": "14",
+              "sloppyintersect-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppyintersect": "37"
+            },
+            "lstMisU": [
+              "sloppyintersect",
+              "sloppyintersect-intersect",
+              "sloppyintersect-sloppy"
+            ]
+          },
+          "['[1]']": {
+            "dictTag2ConceptMsg": {
+              "sloppyintersect-intersect": "14",
+              "sloppyintersect-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppyintersect": "37"
+            },
+            "lstMisU": [
+              "sloppyintersect",
+              "sloppyintersect-intersect",
+              "sloppyintersect-sloppy"
+            ]
+          },
+          "['[4]']": {
+            "dictTag2ConceptMsg": {
+              "sloppyintersect-intersect": "14",
+              "sloppyintersect-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppyintersect": "37"
+            },
+            "lstMisU": [
+              "sloppyintersect",
+              "sloppyintersect-intersect",
+              "sloppyintersect-sloppy"
+            ]
+          },
+          "['{1, 2, 4, 12, 1000}']": {
+            "dictTag2ConceptMsg": {
+              "intersectisunion-intersect": "14",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "intersectisunion": "38",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "intersectisunion",
+              "intersectisunion-intersect",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['{1, 2, 4}']": {
+            "dictTag2ConceptMsg": {
+              "sloppyintersect-intersect": "14",
+              "sloppyintersect-sloppy": "3",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sloppyintersect": "37",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "sloppyintersect",
+              "sloppyintersect-intersect",
+              "sloppyintersect-sloppy",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['{1, 2}']": {
+            "dictTag2ConceptMsg": {
+              "sloppyintersect-intersect": "14",
+              "sloppyintersect-sloppy": "3",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sloppyintersect": "37",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "sloppyintersect",
+              "sloppyintersect-intersect",
+              "sloppyintersect-sloppy",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['{1, 4}']": {
+            "dictTag2ConceptMsg": {
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['{1,2}']": {
+            "dictTag2ConceptMsg": {
+              "sloppyintersect-intersect": "14",
+              "sloppyintersect-sloppy": "3",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sloppyintersect": "37",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "sloppyintersect",
+              "sloppyintersect-intersect",
+              "sloppyintersect-sloppy",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['{1,4}']": {
+            "dictTag2ConceptMsg": {
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['{1}']": {
+            "dictTag2ConceptMsg": {
+              "sloppyintersect-intersect": "14",
+              "sloppyintersect-sloppy": "3",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sloppyintersect": "37",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "sloppyintersect",
+              "sloppyintersect-intersect",
+              "sloppyintersect-sloppy",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['0']": [
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['4']"
+            ]
+          ],
+          "['1']": [
+            [
+              "7",
+              "['0']"
+            ],
+            [
+              "9",
+              "['0']"
+            ],
+            [
+              "9",
+              "['3']"
+            ],
+            [
+              "9",
+              "['5']"
+            ]
+          ],
+          "['1, 2']": [
+            [
+              "9",
+              "['[1, 2]']"
+            ],
+            [
+              "9",
+              "['{1, 2}']"
+            ]
+          ],
+          "['1,2']": [
+            [
+              "10",
+              "['{1,2,4,12,1000}']"
+            ],
+            [
+              "9",
+              "['[1,2]']"
+            ],
+            [
+              "9",
+              "['{1,2}']"
+            ]
+          ],
+          "['1,4']": [
+            [
+              "12",
+              "['[1,4]']"
+            ]
+          ],
+          "['3']": [
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['4']"
+            ],
+            [
+              "9",
+              "['False']"
+            ],
+            [
+              "9",
+              "['True']"
+            ]
+          ],
+          "['4']": [
+            [
+              "7",
+              "['0']"
+            ],
+            [
+              "9",
+              "['0']"
+            ],
+            [
+              "9",
+              "['3']"
+            ],
+            [
+              "9",
+              "['5']"
+            ],
+            [
+              "9",
+              "['{4}']"
+            ]
+          ],
+          "['5']": [
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['4']"
+            ]
+          ],
+          "['False']": [
+            [
+              "9",
+              "['3']"
+            ],
+            [
+              "9",
+              "['None']"
+            ],
+            [
+              "9",
+              "['[]']"
+            ]
+          ],
+          "['None']": [
+            [
+              "9",
+              "['False']"
+            ],
+            [
+              "9",
+              "['True']"
+            ],
+            [
+              "9",
+              "['{1, 2, 4}']"
+            ]
+          ],
+          "['True']": [
+            [
+              "9",
+              "['3']"
+            ],
+            [
+              "9",
+              "['None']"
+            ],
+            [
+              "9",
+              "['[1, 1, 2, 2]']"
+            ]
+          ],
+          "['[1, 1, 2, 2, 3, 4]']": [
+            [
+              "9",
+              "['[1, 2, 3, 4]']"
+            ]
+          ],
+          "['[1, 1, 2, 2]']": [
+            [
+              "9",
+              "['True']"
+            ],
+            [
+              "9",
+              "['{1, 2}']"
+            ]
+          ],
+          "['[1, 2, 3, 4]']": [
+            [
+              "9",
+              "['[1, 1, 2, 2, 3, 4]']"
+            ],
+            [
+              "9",
+              "['[3, 4]']"
+            ],
+            [
+              "9",
+              "['{1, 2, 3, 4}']"
+            ]
+          ],
+          "['[1, 2, 3]']": [
+            [
+              "9",
+              "['[1, 2, 4]']"
+            ],
+            [
+              "9",
+              "['[1, 2]']"
+            ],
+            [
+              "9",
+              "['[1]']"
+            ],
+            [
+              "9",
+              "['{1, 2, 4}']"
+            ]
+          ],
+          "['[1, 2, 4]']": [
+            [
+              "9",
+              "['[1, 2, 3]']"
+            ]
+          ],
+          "['[1, 2]']": [
+            [
+              "9",
+              "['1, 2']"
+            ],
+            [
+              "9",
+              "['[1, 2, 3]']"
+            ]
+          ],
+          "['[1,2,3,4]']": [
+            [
+              "9",
+              "['{1,2,3,4}']"
+            ],
+            [
+              "9",
+              "['{1,2,4}']"
+            ]
+          ],
+          "['[1,2,3]']": [
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "9",
+              "['[1,2,4]']"
+            ]
+          ],
+          "['[1,2,4,12,1000]']": [
+            [
+              "9",
+              "['{1,2,4,12,1000}']"
+            ]
+          ],
+          "['[1,2,4]']": [
+            [
+              "10",
+              "['[1,4,12,1000,1,2,4]']"
+            ],
+            [
+              "9",
+              "['[1,2,3]']"
+            ],
+            [
+              "9",
+              "['{1,2,4}']"
+            ]
+          ],
+          "['[1,2]']": [
+            [
+              "9",
+              "['1,2']"
+            ],
+            [
+              "9",
+              "['{1,2,3,4}']"
+            ]
+          ],
+          "['[1]']": [
+            [
+              "9",
+              "['[1, 2, 3]']"
+            ],
+            [
+              "9",
+              "['[2]']"
+            ]
+          ],
+          "['[2, 1]']": [
+            [
+              "9",
+              "['{1, 2}']"
+            ]
+          ],
+          "['[2]']": [
+            [
+              "9",
+              "['[1]']"
+            ],
+            [
+              "9",
+              "['{1, 2}']"
+            ]
+          ],
+          "['[3, 4]']": [
+            [
+              "9",
+              "['[1, 2, 3, 4]']"
+            ]
+          ],
+          "['[4]']": [
+            [
+              "9",
+              "['{4}']"
+            ]
+          ],
+          "['[]']": [
+            [
+              "9",
+              "['False']"
+            ]
+          ],
+          "['{1, 2, 3, 4}']": [
+            [
+              "9",
+              "['[1, 2, 3, 4]']"
+            ],
+            [
+              "9",
+              "['{1, 2, 4, 12, 1000}']"
+            ],
+            [
+              "9",
+              "['{1, 2, 4}']"
+            ]
+          ],
+          "['{1, 2, 4, 12, 1000}']": [
+            [
+              "9",
+              "['{1, 2, 3, 4}']"
+            ]
+          ],
+          "['{1, 2, 4}']": [
+            [
+              "13",
+              "['[0, 2, 8, 1000]']"
+            ],
+            [
+              "9",
+              "['None']"
+            ],
+            [
+              "9",
+              "['[1, 2, 3]']"
+            ],
+            [
+              "9",
+              "['{1, 2, 3, 4}']"
+            ]
+          ],
+          "['{1, 2}']": [
+            [
+              "9",
+              "['1, 2']"
+            ],
+            [
+              "9",
+              "['[1, 1, 2, 2]']"
+            ],
+            [
+              "9",
+              "['[2, 1]']"
+            ],
+            [
+              "9",
+              "['[2]']"
+            ]
+          ],
+          "['{1, 4}']": [
+            [
+              "9",
+              "['{4}']"
+            ]
+          ],
+          "['{1,2,3,4}']": [
+            [
+              "9",
+              "['[1,2,3,4]']"
+            ],
+            [
+              "9",
+              "['[1,2]']"
+            ],
+            [
+              "9",
+              "['{1,2}']"
+            ]
+          ],
+          "['{1,2,4,12,1000}']": [
+            [
+              "9",
+              "['[1,2,4,12,1000]']"
+            ]
+          ],
+          "['{1,2,4}']": [
+            [
+              "9",
+              "['[1,2,3,4]']"
+            ],
+            [
+              "9",
+              "['[1,2,4]']"
+            ],
+            [
+              "9",
+              "['{1,2}']"
+            ],
+            [
+              "9",
+              "['{1,4}']"
+            ]
+          ],
+          "['{1,2}']": [
+            [
+              "9",
+              "['1,2']"
+            ],
+            [
+              "9",
+              "['{1,2,3,4}']"
+            ],
+            [
+              "9",
+              "['{1,2,4}']"
+            ]
+          ],
+          "['{1,4}']": [
+            [
+              "11",
+              "['{1,2,4,12,1000}']"
+            ],
+            [
+              "9",
+              "['{1,2,4}']"
+            ]
+          ],
+          "['{1}']": [
+            [
+              "9",
+              "['{2}']"
+            ],
+            [
+              "9",
+              "['{}']"
+            ]
+          ],
+          "['{2}']": [
+            [
+              "9",
+              "['{1}']"
+            ]
+          ],
+          "['{4}']": [
+            [
+              "9",
+              "['4']"
+            ],
+            [
+              "9",
+              "['[4]']"
+            ],
+            [
+              "9",
+              "['{1, 4}']"
+            ]
+          ],
+          "['{}']": [
+            [
+              "9",
+              "['{1}']"
+            ]
+          ]
+        }
+      },
+      ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\n[1, 2, 3]\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nFalse\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\n1017\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\n[1, 4]\n>>> sorted(a & b)\nLOCKED_ANSWER\n>>> sorted(a.union(b))\nLOCKED_ANSWER\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n": {
+        "assessNum": "10",
+        "dictWA2DictInfo": {
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "ampnotvalid-intersect": "14"
+            },
+            "dictTag2KIMsg": {
+              "ampnotvalid": "40"
+            },
+            "lstMisU": [
+              "ampnotvalid",
+              "ampnotvalid-intersect"
+            ]
+          },
+          "['False']": {
+            "dictTag2ConceptMsg": {
+              "sortedevalsbool-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedevalsbool": "28"
+            },
+            "lstMisU": [
+              "sortedevalsbool",
+              "sortedevalsbool-sortedfn"
+            ]
+          },
+          "['True']": {
+            "dictTag2ConceptMsg": {
+              "sortedevalsbool-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedevalsbool": "28"
+            },
+            "lstMisU": [
+              "sortedevalsbool",
+              "sortedevalsbool-sortedfn"
+            ]
+          },
+          "['[1, 1, 2, 4, 4, 12, 1000]']": {
+            "dictTag2ConceptMsg": {
+              "intersectisunion-intersect": "14",
+              "setcanhavedups-sets": "16"
+            },
+            "dictTag2KIMsg": {
+              "intersectisunion": "38",
+              "setcanhavedups": "35"
+            },
+            "lstMisU": [
+              "intersectisunion",
+              "intersectisunion-intersect",
+              "setcanhavedups",
+              "setcanhavedups-sets"
+            ]
+          },
+          "['[1, 2, 4, 12, 1000]']": {
+            "dictTag2ConceptMsg": {
+              "intersectisunion-intersect": "14"
+            },
+            "dictTag2KIMsg": {
+              "intersectisunion": "38"
+            },
+            "lstMisU": [
+              "intersectisunion",
+              "intersectisunion-intersect"
+            ]
+          },
+          "['[1, 2, 4, 4, 12, 1000]']": {
+            "dictTag2ConceptMsg": {
+              "intersectisunion-intersect": "14",
+              "setcanhavedups-sets": "16"
+            },
+            "dictTag2KIMsg": {
+              "intersectisunion": "38",
+              "setcanhavedups": "35"
+            },
+            "lstMisU": [
+              "intersectisunion",
+              "intersectisunion-intersect",
+              "setcanhavedups",
+              "setcanhavedups-sets"
+            ]
+          },
+          "['[1,1,2,4,4,12,1000]']": {
+            "dictTag2ConceptMsg": {
+              "intersectisunion-intersect": "14",
+              "setcanhavedups-sets": "16"
+            },
+            "dictTag2KIMsg": {
+              "intersectisunion": "38",
+              "setcanhavedups": "35"
+            },
+            "lstMisU": [
+              "intersectisunion",
+              "intersectisunion-intersect",
+              "setcanhavedups",
+              "setcanhavedups-sets"
+            ]
+          },
+          "['[1,2,4,12,1000]']": {
+            "dictTag2ConceptMsg": {
+              "intersectisunion-intersect": "14"
+            },
+            "dictTag2KIMsg": {
+              "intersectisunion": "38"
+            },
+            "lstMisU": [
+              "intersectisunion",
+              "intersectisunion-intersect"
+            ]
+          },
+          "['{1, 2, 4, 12, 1000}']": {
+            "dictTag2ConceptMsg": {
+              "intersectisunion-intersect": "14",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "intersectisunion": "38",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "intersectisunion",
+              "intersectisunion-intersect",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['{1,2,4,12,1000}']": {
+            "dictTag2ConceptMsg": {
+              "intersectisunion-intersect": "14",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "intersectisunion": "38",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "intersectisunion",
+              "intersectisunion-intersect",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['1']": [
+            [
+              "10",
+              "['True']"
+            ]
+          ],
+          "['Error']": [
+            [
+              "10",
+              "['Function']"
+            ],
+            [
+              "10",
+              "['None']"
+            ]
+          ],
+          "['False']": [
+            [
+              "10",
+              "['None']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "10",
+              "['Error']"
+            ],
+            [
+              "10",
+              "['True']"
+            ]
+          ],
+          "['None']": [
+            [
+              "10",
+              "['Error']"
+            ],
+            [
+              "10",
+              "['False']"
+            ]
+          ],
+          "['True']": [
+            [
+              "10",
+              "['1']"
+            ],
+            [
+              "10",
+              "['Function']"
+            ],
+            [
+              "10",
+              "['[]']"
+            ]
+          ],
+          "['[1, 1, 2, 4, 4, 12, 1000]']": [
+            [
+              "10",
+              "['{1, 1, 2, 4, 4, 12, 1000}']"
+            ],
+            [
+              "11",
+              "['[1, 1, 2, 4, 4, 12, 1000]']"
+            ],
+            [
+              "12",
+              "['[1, 1, 2, 4, 4, 12, 1000]']"
+            ]
+          ],
+          "['[1, 2, 4, 4, 12, 1000]']": [
+            [
+              "10",
+              "['{1, 2, 4, 4, 12, 1000}']"
+            ]
+          ],
+          "['[1,1,2,4,4,12,1000]']": [
+            [
+              "10",
+              "['{1,1,2,4,4,12,1000}']"
+            ]
+          ],
+          "['[1,2,4,12,1000]']": [
+            [
+              "10",
+              "['[1,2,4,4,12,1000]']"
+            ]
+          ],
+          "['[1,2,4,4,12,1000]']": [
+            [
+              "10",
+              "['[1,2,4,12,1000]']"
+            ]
+          ],
+          "['[1,2,4]']": [
+            [
+              "7",
+              "['[1,1,2,2,3,3]']"
+            ]
+          ],
+          "['[1,4,12,1000,1,2,4]']": [
+            [
+              "9",
+              "['[1,2,4]']"
+            ]
+          ],
+          "['[]']": [
+            [
+              "10",
+              "['True']"
+            ]
+          ],
+          "['{1, 1, 2, 4, 4, 12, 1000}']": [
+            [
+              "10",
+              "['[1, 1, 2, 4, 4, 12, 1000]']"
+            ],
+            [
+              "10",
+              "['{1, 2, 4, 12, 1000}']"
+            ]
+          ],
+          "['{1, 2, 4, 12, 1000}']": [
+            [
+              "10",
+              "['{1, 1, 2, 4, 4, 12, 1000}']"
+            ],
+            [
+              "10",
+              "['{1, 2, 4, 4, 12, 1000}']"
+            ],
+            [
+              "10",
+              "['{1, 4}']"
+            ]
+          ],
+          "['{1, 2, 4, 4, 12, 1000}']": [
+            [
+              "10",
+              "['[1, 2, 4, 4, 12, 1000]']"
+            ],
+            [
+              "10",
+              "['{1, 2, 4, 12, 1000}']"
+            ]
+          ],
+          "['{1, 4}']": [
+            [
+              "10",
+              "['{1, 2, 4, 12, 1000}']"
+            ]
+          ],
+          "['{1,1,2,4,4,12,1000}']": [
+            [
+              "10",
+              "['[1,1,2,4,4,12,1000]']"
+            ],
+            [
+              "10",
+              "['{1,2,4,12,1000}']"
+            ]
+          ],
+          "['{1,2,4,12,1000}']": [
+            [
+              "10",
+              "['{1,1,2,4,4,12,1000}']"
+            ],
+            [
+              "9",
+              "['1,2']"
+            ]
+          ]
+        }
+      },
+      ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\n[1, 2, 3]\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nFalse\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\n1017\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\n[1, 4]\n>>> sorted(a & b)\n[1, 4]\n>>> sorted(a.union(b))\nLOCKED_ANSWER\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n": {
+        "assessNum": "11",
+        "dictWA2DictInfo": {
+          "['[1, 4]']": {
+            "dictTag2ConceptMsg": {
+              "unionisintersect-union": "18"
+            },
+            "dictTag2KIMsg": {
+              "unionisintersect": "38"
+            },
+            "lstMisU": [
+              "unionisintersect",
+              "unionisintersect-union"
+            ]
+          },
+          "['[1,4]']": {
+            "dictTag2ConceptMsg": {
+              "unionisintersect-union": "18"
+            },
+            "dictTag2KIMsg": {
+              "unionisintersect": "38"
+            },
+            "lstMisU": [
+              "unionisintersect",
+              "unionisintersect-union"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['[1, 1, 2, 4, 4, 12, 1000]']": [
+            [
+              "10",
+              "['[1, 1, 2, 4, 4, 12, 1000]']"
+            ]
+          ],
+          "['[1, 2, 4]']": [
+            [
+              "11",
+              "['[1, 4]']"
+            ]
+          ],
+          "['[1, 4]']": [
+            [
+              "11",
+              "['[1, 2, 4]']"
+            ],
+            [
+              "11",
+              "['{1, 4}']"
+            ]
+          ],
+          "['[1,2,3,4]']": [
+            [
+              "11",
+              "['[1,4]']"
+            ]
+          ],
+          "['[1,4]']": [
+            [
+              "11",
+              "['[1,2,3,4]']"
+            ],
+            [
+              "13",
+              "['[1,2,4,12,1000]']"
+            ]
+          ],
+          "['{1, 4}']": [
+            [
+              "11",
+              "['[1, 4]']"
+            ]
+          ],
+          "['{1,2,4,12,1000}']": [
+            [
+              "9",
+              "['{1,4}']"
+            ]
+          ]
+        }
+      },
+      ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\n[1, 2, 3]\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nFalse\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\n1017\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\n[1, 4]\n>>> sorted(a & b)\n[1, 4]\n>>> sorted(a.union(b))\n[1, 2, 4, 12, 1000]\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n": {
+        "assessNum": "12",
+        "dictWA2DictInfo": {
+          "['[1, 4]']": {
+            "dictTag2ConceptMsg": {
+              "unionisintersect-union": "18"
+            },
+            "dictTag2KIMsg": {
+              "unionisintersect": "38"
+            },
+            "lstMisU": [
+              "unionisintersect",
+              "unionisintersect-union"
+            ]
+          },
+          "['[1,4]']": {
+            "dictTag2ConceptMsg": {
+              "unionisintersect-union": "18"
+            },
+            "dictTag2KIMsg": {
+              "unionisintersect": "38"
+            },
+            "lstMisU": [
+              "unionisintersect",
+              "unionisintersect-union"
+            ]
+          },
+          "['[12, 1000]']": {
+            "dictTag2ConceptMsg": {
+              "barisdiff-intersect": "14"
+            },
+            "dictTag2KIMsg": {
+              "barisdiff": "41"
+            },
+            "lstMisU": [
+              "barisdiff",
+              "barisdiff-intersect"
+            ]
+          },
+          "['[2, 12, 1000]']": {
+            "dictTag2ConceptMsg": {
+              "barisxor-intersect": "14"
+            },
+            "dictTag2KIMsg": {
+              "barisxor": "41"
+            },
+            "lstMisU": [
+              "barisxor",
+              "barisxor-intersect"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['[1, 1, 2, 4, 4, 12, 1000]']": [
+            [
+              "10",
+              "['[1, 1, 2, 4, 4, 12, 1000]']"
+            ]
+          ],
+          "['[1, 4, 12, 1000]']": [
+            [
+              "12",
+              "['[1, 4]']"
+            ]
+          ],
+          "['[1, 4]']": [
+            [
+              "12",
+              "['[1, 4, 12, 1000]']"
+            ]
+          ],
+          "['[1,2,4]']": [
+            [
+              "12",
+              "['[1,4]']"
+            ]
+          ],
+          "['[1,4]']": [
+            [
+              "12",
+              "['[1,2,4]']"
+            ],
+            [
+              "12",
+              "['[1]']"
+            ],
+            [
+              "12",
+              "['[2,12,1000]']"
+            ],
+            [
+              "12",
+              "['[4]']"
+            ],
+            [
+              "9",
+              "['1,4']"
+            ]
+          ],
+          "['[12, 1000]']": [
+            [
+              "12",
+              "['[2]']"
+            ]
+          ],
+          "['[1]']": [
+            [
+              "12",
+              "['[1,4]']"
+            ]
+          ],
+          "['[2, 12, 1000]']": [
+            [
+              "12",
+              "['[2]']"
+            ],
+            [
+              "12",
+              "['[]']"
+            ]
+          ],
+          "['[2,12,1000]']": [
+            [
+              "12",
+              "['[1,4]']"
+            ]
+          ],
+          "['[2]']": [
+            [
+              "12",
+              "['[12, 1000]']"
+            ],
+            [
+              "12",
+              "['[2, 12, 1000]']"
+            ]
+          ],
+          "['[4]']": [
+            [
+              "12",
+              "['[1,4]']"
+            ]
+          ],
+          "['[]']": [
+            [
+              "12",
+              "['[2, 12, 1000]']"
+            ]
+          ]
+        }
+      },
+      ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\n[1, 2, 3]\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nFalse\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\n1017\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\n[1, 4]\n>>> sorted(a & b)\n[1, 4]\n>>> sorted(a.union(b))\n[1, 2, 4, 12, 1000]\n>>> sorted(a | b)\n[1, 2, 4, 12, 1000]\n>>> sorted(a - b)\nLOCKED_ANSWER\n": {
+        "assessNum": "13",
+        "dictWA2DictInfo": {
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "setdiffisnotitself-setdiff": "15"
+            },
+            "dictTag2KIMsg": {
+              "setdiffisnotitself": "38"
+            },
+            "lstMisU": [
+              "setdiffisnotitself",
+              "setdiffisnotitself-setdiff"
+            ]
+          },
+          "['[1, 2, 4, 12, 1000]']": {
+            "dictTag2ConceptMsg": {
+              "setdiffisnotitself-setdiff": "15"
+            },
+            "dictTag2KIMsg": {
+              "setdiffisnotitself": "38"
+            },
+            "lstMisU": [
+              "setdiffisnotitself",
+              "setdiffisnotitself-setdiff"
+            ]
+          },
+          "['[1, 4]']": {
+            "dictTag2ConceptMsg": {
+              "setdiffisnotitself-setdiff": "15"
+            },
+            "dictTag2KIMsg": {
+              "setdiffisnotitself": "38"
+            },
+            "lstMisU": [
+              "setdiffisnotitself",
+              "setdiffisnotitself-setdiff"
+            ]
+          },
+          "['[2, 12, 1000]']": {
+            "dictTag2ConceptMsg": {
+              "setdiffisnotitself-setdiff": "15"
+            },
+            "dictTag2KIMsg": {
+              "setdiffisnotitself": "38"
+            },
+            "lstMisU": [
+              "setdiffisnotitself",
+              "setdiffisnotitself-setdiff"
+            ]
+          },
+          "['[2,12,1000]']": {
+            "dictTag2ConceptMsg": {
+              "setdiffisnotitself-setdiff": "15"
+            },
+            "dictTag2KIMsg": {
+              "setdiffisnotitself": "38"
+            },
+            "lstMisU": [
+              "setdiffisnotitself",
+              "setdiffisnotitself-setdiff"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['Error']": [
+            [
+              "13",
+              "['None']"
+            ],
+            [
+              "13",
+              "['[2, 8, 1000]']"
+            ]
+          ],
+          "['False']": [
+            [
+              "13",
+              "['[1, 2, 4, 12, 1000]']"
+            ]
+          ],
+          "['None']": [
+            [
+              "13",
+              "['Error']"
+            ],
+            [
+              "13",
+              "['[1, 2, 4, 12, 1000]']"
+            ]
+          ],
+          "['[0, 2, 8, 1000]']": [
+            [
+              "13",
+              "['[1, 2, 4, 12, 1000]']"
+            ],
+            [
+              "9",
+              "['{1, 2, 4}']"
+            ]
+          ],
+          "['[1, 2, 4, 12, 1000]']": [
+            [
+              "13",
+              "['False']"
+            ],
+            [
+              "13",
+              "['None']"
+            ],
+            [
+              "13",
+              "['[0, 2, 8, 1000]']"
+            ]
+          ],
+          "['[1, 4]']": [
+            [
+              "13",
+              "['[]']"
+            ]
+          ],
+          "['[1,2,4,12,1000]']": [
+            [
+              "11",
+              "['[1,4]']"
+            ],
+            [
+              "13",
+              "['[2,12,1000]']"
+            ]
+          ],
+          "['[2, 8, 1000]']": [
+            [
+              "13",
+              "['Error']"
+            ]
+          ],
+          "['[2,12,1000]']": [
+            [
+              "13",
+              "['[1,2,4,12,1000]']"
+            ]
+          ],
+          "['[]']": [
+            [
+              "13",
+              "['[1, 4]']"
+            ]
+          ]
+        }
+      },
+      ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\n[1, 2, 3]\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nLOCKED_ANSWER\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\nLOCKED_ANSWER\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\nLOCKED_ANSWER\n>>> sorted(a & b)\nLOCKED_ANSWER\n>>> sorted(a.union(b))\nLOCKED_ANSWER\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n": {
+        "assessNum": "8",
+        "dictWA2DictInfo": {
+          "['0']": {
+            "dictTag2ConceptMsg": {
+              "boolisbinary-booleanrepresentation": "1",
+              "inrtnvalisnotbool-inoperator": "13"
+            },
+            "dictTag2KIMsg": {
+              "boolisbinary": "32",
+              "inrtnvalisnotbool": "36"
+            },
+            "lstMisU": [
+              "boolisbinary",
+              "boolisbinary-booleanrepresentation",
+              "inrtnvalisnotbool",
+              "inrtnvalisnotbool-inoperator"
+            ]
+          },
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "boolisbinary-booleanrepresentation": "1",
+              "inrtnvalisnotbool-inoperator": "13",
+              "setcanhavedups-sets": "16"
+            },
+            "dictTag2KIMsg": {
+              "boolisbinary": "32",
+              "inrtnvalisnotbool": "36",
+              "setcanhavedups": "35"
+            },
+            "lstMisU": [
+              "boolisbinary",
+              "boolisbinary-booleanrepresentation",
+              "inrtnvalisnotbool",
+              "inrtnvalisnotbool-inoperator",
+              "setcanhavedups",
+              "setcanhavedups-sets"
+            ]
+          },
+          "['4']": {
+            "dictTag2ConceptMsg": {
+              "inrtnvalisnotbool-inoperator": "13"
+            },
+            "dictTag2KIMsg": {
+              "inrtnvalisnotbool": "36"
+            },
+            "lstMisU": [
+              "inrtnvalisnotbool",
+              "inrtnvalisnotbool-inoperator"
+            ]
+          },
+          "['True']": {
+            "dictTag2ConceptMsg": {
+              "setcanhavedups-sets": "16"
+            },
+            "dictTag2KIMsg": {
+              "setcanhavedups": "35"
+            },
+            "lstMisU": [
+              "setcanhavedups",
+              "setcanhavedups-sets"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['0']": [
+            [
+              "6",
+              "['None']"
+            ],
+            [
+              "7",
+              "['4']"
+            ],
+            [
+              "8",
+              "['2']"
+            ],
+            [
+              "8",
+              "['3']"
+            ],
+            [
+              "8",
+              "['Error']"
+            ],
+            [
+              "8",
+              "['None']"
+            ],
+            [
+              "8",
+              "['[1, 2, 3, 4]']"
+            ],
+            [
+              "9",
+              "['3']"
+            ],
+            [
+              "9",
+              "['[1,2,3]']"
+            ]
+          ],
+          "['1']": [
+            [
+              "8",
+              "['2']"
+            ],
+            [
+              "8",
+              "['3']"
+            ],
+            [
+              "8",
+              "['[1, 2, 3, 4]']"
+            ]
+          ],
+          "['2']": [
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "8",
+              "['1']"
+            ],
+            [
+              "8",
+              "['4']"
+            ]
+          ],
+          "['3']": [
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "8",
+              "['1']"
+            ],
+            [
+              "8",
+              "['4']"
+            ]
+          ],
+          "['4']": [
+            [
+              "8",
+              "['2']"
+            ],
+            [
+              "8",
+              "['3']"
+            ],
+            [
+              "8",
+              "['Error']"
+            ],
+            [
+              "8",
+              "['None']"
+            ],
+            [
+              "8",
+              "['[1, 2, 3, 4]']"
+            ],
+            [
+              "8",
+              "['[4]']"
+            ]
+          ],
+          "['Error']": [
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "8",
+              "['4']"
+            ]
+          ],
+          "['None']": [
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "8",
+              "['4']"
+            ]
+          ],
+          "['[1, 2, 3, 4]']": [
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "8",
+              "['1']"
+            ],
+            [
+              "8",
+              "['4']"
+            ]
+          ],
+          "['[4]']": [
+            [
+              "8",
+              "['4']"
+            ]
+          ]
+        }
+      },
+      ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\nLOCKED_ANSWER\n>>> sorted(a)\nLOCKED_ANSWER\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nLOCKED_ANSWER\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\nLOCKED_ANSWER\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\nLOCKED_ANSWER\n>>> sorted(a & b)\nLOCKED_ANSWER\n>>> sorted(a.union(b))\nLOCKED_ANSWER\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n": {
+        "assessNum": "6",
+        "dictWA2DictInfo": {
+          "['6']": {
+            "dictTag2ConceptMsg": {
+              "setcanhavedups-sets": "16"
+            },
+            "dictTag2KIMsg": {
+              "setcanhavedups": "35"
+            },
+            "lstMisU": [
+              "setcanhavedups",
+              "setcanhavedups-sets"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['6']": [
+            [
+              "6",
+              "['7']"
+            ],
+            [
+              "6",
+              "['Error']"
+            ]
+          ],
+          "['7']": [
+            [
+              "6",
+              "['6']"
+            ]
+          ],
+          "['Error']": [
+            [
+              "6",
+              "['6']"
+            ]
+          ],
+          "['None']": [
+            [
+              "8",
+              "['0']"
+            ]
+          ]
+        }
+      },
+      ">>> pokemon = {'pikachu': 25, 'dragonair': 148, 'mew': 151}\n>>> pokemon['pikachu']\n25\n>>> len(pokemon)\n3\n>>> pokemon['jolteon'] = 135\n>>> pokemon['ditto'] = 25\n>>> len(pokemon)\n5\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> 'mewtwo' in pokemon\nLOCKED_ANSWER\n>>> pokemon['ditto'] = pokemon['jolteon']\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> pokemon['ditto']\nLOCKED_ANSWER\n": {
+        "assessNum": "2",
+        "dictWA2DictInfo": {
+          "[\"'ditto' 'dragonair' 'jolteon' 'mew' 'pikachu'\"]": {
+            "dictTag2ConceptMsg": {
+              "lstdsntneedbrackets-pythonlistsyntax": "6",
+              "lstdsntneedcommas-pythonlistsyntax": "6"
+            },
+            "dictTag2KIMsg": {
+              "lstdsntneedbrackets": "27",
+              "lstdsntneedcommas": "27"
+            },
+            "lstMisU": [
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax",
+              "lstdsntneedcommas",
+              "lstdsntneedcommas-pythonlistsyntax"
+            ]
+          },
+          "[\"'ditto'\"]": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtnfirstkey-dictkeys": "10"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtnfirstkey": "26"
+            },
+            "lstMisU": [
+              "dictkeysrtnfirstkey",
+              "dictkeysrtnfirstkey-dictkeys"
+            ]
+          },
+          "[\"'ditto', 'dragonair', 'jolteon', 'mew', 'pikachu'\"]": {
+            "dictTag2ConceptMsg": {
+              "lstdsntneedbrackets-pythonlistsyntax": "6"
+            },
+            "dictTag2KIMsg": {
+              "lstdsntneedbrackets": "27"
+            },
+            "lstMisU": [
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax"
+            ]
+          },
+          "[\"'dragonair'\"]": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "dictkeysrtnfirstkey-dictkeys": "10",
+              "sloppyskipline-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "dictkeysrtnfirstkey": "26",
+              "sloppyskipline": "24"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "dictkeysrtnfirstkey",
+              "dictkeysrtnfirstkey-dictkeys",
+              "sloppyskipline",
+              "sloppyskipline-sloppy"
+            ]
+          },
+          "[\"'dragonair', 'mew', 'pikachu'\"]": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "lstdsntneedbrackets-pythonlistsyntax": "6",
+              "sloppyskipline-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "lstdsntneedbrackets": "27",
+              "sloppyskipline": "24"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax",
+              "sloppyskipline",
+              "sloppyskipline-sloppy"
+            ]
+          },
+          "[\"['ditto', 'dragonair', 'jolteon', 'mew', 'pickachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "correct": "19"
+            },
+            "dictTag2KIMsg": {
+              "correct": "19"
+            },
+            "lstMisU": [
+              "correct"
+            ]
+          },
+          "[\"['ditto', 'dragonair', 'jolteon', 'pikachu', 'mew']\"]": {
+            "dictTag2ConceptMsg": {
+              "sloppysort-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppysort": "29"
+            },
+            "lstMisU": [
+              "sloppysort",
+              "sloppysort-sloppy"
+            ]
+          },
+          "[\"['ditto','dragonair','jolteon','pikachu','mew']\"]": {
+            "dictTag2ConceptMsg": {
+              "sloppysort-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppysort": "29"
+            },
+            "lstMisU": [
+              "sloppysort",
+              "sloppysort-sloppy"
+            ]
+          },
+          "[\"['ditto': 25, 'dragonair': 148, 'jolteon': 135, 'mew': 151, 'pikachu': 25]\"]": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtndict-dictkeys": "10",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtndict": "26",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "dictkeysrtndict",
+              "dictkeysrtndict-dictkeys",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "[\"['dragonair', 'ditto', 'jolteon', 'mew', 'pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "sloppysort-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppysort": "29"
+            },
+            "lstMisU": [
+              "sloppysort",
+              "sloppysort-sloppy"
+            ]
+          },
+          "[\"['dragonair', 'mew', 'pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "sloppyskipline-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "sloppyskipline": "24"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "sloppyskipline",
+              "sloppyskipline-sloppy"
+            ]
+          },
+          "[\"['dragonair', 'pikachu', 'mew']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "sloppyskipline-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "sloppyskipline": "24"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "sloppyskipline",
+              "sloppyskipline-sloppy"
+            ]
+          },
+          "[\"['dragonair','mew','pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "sloppyskipline-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "sloppyskipline": "24"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "sloppyskipline",
+              "sloppyskipline-sloppy"
+            ]
+          },
+          "[\"\\x1b[A\\x1b[B['ditto', 'dragonair', 'jolteon', 'mew', 'pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "correct": "19"
+            },
+            "dictTag2KIMsg": {
+              "correct": "19"
+            },
+            "lstMisU": [
+              "correct"
+            ]
+          },
+          "[\"{'ditto', 'dragonair', 'jolteon', 'mew', 'pikachu'}\"]": {
+            "dictTag2ConceptMsg": {
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "[\"{'ditto': 25, 'dragonair': 148, 'jolteon': 135, 'mew': 151, 'pikachu': 25}\"]": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtndict-dictkeys": "10",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtndict": "26",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "dictkeysrtndict",
+              "dictkeysrtndict-dictkeys",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "[\"{'ditto':25,'dragonair':148,'jolteon':135,'mew':151,'pikachu':25}\"]": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "sloppyskipline-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "sloppyskipline": "24"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "sloppyskipline",
+              "sloppyskipline-sloppy"
+            ]
+          },
+          "[\"{'dragonair', 'mew', 'pikachu'}\"]": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "sloppyskipline-sloppy": "3",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "sloppyskipline": "24",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "sloppyskipline",
+              "sloppyskipline-sloppy",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "[\"{'dragonair': 148, 'mew': 151, 'pikachu': 25}\"]": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "dictkeysrtndict-dictkeys": "10",
+              "sloppyskipline-sloppy": "3",
+              "sortedrtnbadformatlst-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "dictkeysrtndict": "26",
+              "sloppyskipline": "24",
+              "sortedrtnbadformatlst": "28"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "dictkeysrtndict",
+              "dictkeysrtndict-dictkeys",
+              "sloppyskipline",
+              "sloppyskipline-sloppy",
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn"
+            ]
+          },
+          "['(ditto, dragonair, jolteon, mew, pikachu)']": {
+            "dictTag2ConceptMsg": {
+              "sortedrtnbadformatlst-sortedfn": "17",
+              "strdsntneedquotes-stringsyntax": "4"
+            },
+            "dictTag2KIMsg": {
+              "sortedrtnbadformatlst": "28",
+              "strdsntneedquotes": "25"
+            },
+            "lstMisU": [
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn",
+              "strdsntneedquotes",
+              "strdsntneedquotes-stringsyntax"
+            ]
+          },
+          "['148']": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "dictkeysrtnfirstkey-dictkeys": "10",
+              "dictkeysrtnvalues-dictkeys": "10",
+              "sloppyskipline-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "dictkeysrtnfirstkey": "26",
+              "dictkeysrtnvalues": "26",
+              "sloppyskipline": "24"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "dictkeysrtnfirstkey",
+              "dictkeysrtnfirstkey-dictkeys",
+              "dictkeysrtnvalues",
+              "dictkeysrtnvalues-dictkeys",
+              "sloppyskipline",
+              "sloppyskipline-sloppy"
+            ]
+          },
+          "['25 148 135 151 25']": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtnvalues-dictkeys": "10",
+              "lstdsntneedbrackets-pythonlistsyntax": "6",
+              "lstdsntneedcommas-pythonlistsyntax": "6"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtnvalues": "26",
+              "lstdsntneedbrackets": "27",
+              "lstdsntneedcommas": "27"
+            },
+            "lstMisU": [
+              "dictkeysrtnvalues",
+              "dictkeysrtnvalues-dictkeys",
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax",
+              "lstdsntneedcommas",
+              "lstdsntneedcommas-pythonlistsyntax"
+            ]
+          },
+          "['25']": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtnfirstkey-dictkeys": "10",
+              "dictkeysrtnvalues-dictkeys": "10"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtnfirstkey": "26",
+              "dictkeysrtnvalues": "26"
+            },
+            "lstMisU": [
+              "dictkeysrtnfirstkey",
+              "dictkeysrtnfirstkey-dictkeys",
+              "dictkeysrtnvalues",
+              "dictkeysrtnvalues-dictkeys"
+            ]
+          },
+          "['25, 148, 135, 151, 25']": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtnvalues-dictkeys": "10",
+              "lstdsntneedbrackets-pythonlistsyntax": "6"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtnvalues": "26",
+              "lstdsntneedbrackets": "27"
+            },
+            "lstMisU": [
+              "dictkeysrtnvalues",
+              "dictkeysrtnvalues-dictkeys",
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax"
+            ]
+          },
+          "['25, 25, 135, 148, 151']": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtnvalues-dictkeys": "10",
+              "lstdsntneedbrackets-pythonlistsyntax": "6"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtnvalues": "26",
+              "lstdsntneedbrackets": "27"
+            },
+            "lstMisU": [
+              "dictkeysrtnvalues",
+              "dictkeysrtnvalues-dictkeys",
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax"
+            ]
+          },
+          "['False']": {
+            "dictTag2ConceptMsg": {
+              "sortedevalsbool-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedevalsbool": "28"
+            },
+            "lstMisU": [
+              "sortedevalsbool",
+              "sortedevalsbool-sortedfn"
+            ]
+          },
+          "['Nothing']": {
+            "dictTag2ConceptMsg": {
+              "rtnvalnotdisp-pyinterpreterdisplaynothing": "5"
+            },
+            "dictTag2KIMsg": {
+              "rtnvalnotdisp": "30"
+            },
+            "lstMisU": [
+              "rtnvalnotdisp",
+              "rtnvalnotdisp-pyinterpreterdisplaynothing"
+            ]
+          },
+          "['True']": {
+            "dictTag2ConceptMsg": {
+              "sortedevalsbool-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedevalsbool": "28"
+            },
+            "lstMisU": [
+              "sortedevalsbool",
+              "sortedevalsbool-sortedfn"
+            ]
+          },
+          "['[148, 151, 25]']": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "dictkeysrtnvalues-dictkeys": "10",
+              "sloppyskipline-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "dictkeysrtnvalues": "26",
+              "sloppyskipline": "24"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "dictkeysrtnvalues",
+              "dictkeysrtnvalues-dictkeys",
+              "sloppyskipline",
+              "sloppyskipline-sloppy"
+            ]
+          },
+          "['[148,151,25]']": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "dictkeysrtnvalues-dictkeys": "10",
+              "sloppyskipline-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "dictkeysrtnvalues": "26",
+              "sloppyskipline": "24"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "dictkeysrtnvalues",
+              "dictkeysrtnvalues-dictkeys",
+              "sloppyskipline",
+              "sloppyskipline-sloppy"
+            ]
+          },
+          "['[25, 148, 135, 151, 25]']": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtnvalues-dictkeys": "10"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtnvalues": "26"
+            },
+            "lstMisU": [
+              "dictkeysrtnvalues",
+              "dictkeysrtnvalues-dictkeys"
+            ]
+          },
+          "['[25, 25, 135, 148, 151]']": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtnvalues-dictkeys": "10"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtnvalues": "26"
+            },
+            "lstMisU": [
+              "dictkeysrtnvalues",
+              "dictkeysrtnvalues-dictkeys"
+            ]
+          },
+          "['[25,148,135,151,25]']": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtnvalues-dictkeys": "10"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtnvalues": "26"
+            },
+            "lstMisU": [
+              "dictkeysrtnvalues",
+              "dictkeysrtnvalues-dictkeys"
+            ]
+          },
+          "['[25,25,135,148,151]']": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtnvalues-dictkeys": "10"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtnvalues": "26"
+            },
+            "lstMisU": [
+              "dictkeysrtnvalues",
+              "dictkeysrtnvalues-dictkeys"
+            ]
+          },
+          "['[ditto, dragonair, jolteon, mew, pikachu]']": {
+            "dictTag2ConceptMsg": {
+              "strdsntneedquotes-stringsyntax": "4"
+            },
+            "dictTag2KIMsg": {
+              "strdsntneedquotes": "25"
+            },
+            "lstMisU": [
+              "strdsntneedquotes",
+              "strdsntneedquotes-stringsyntax"
+            ]
+          },
+          "['[ditto, dragonair, jolteon, pikachu, mew]']": {
+            "dictTag2ConceptMsg": {
+              "sloppysort-sloppy": "3",
+              "strdsntneedquotes-stringsyntax": "4"
+            },
+            "dictTag2KIMsg": {
+              "sloppysort": "29",
+              "strdsntneedquotes": "25"
+            },
+            "lstMisU": [
+              "sloppysort",
+              "sloppysort-sloppy",
+              "strdsntneedquotes",
+              "strdsntneedquotes-stringsyntax"
+            ]
+          },
+          "['[ditto,dragonair,jolteon,mew,pikachu]']": {
+            "dictTag2ConceptMsg": {
+              "strdsntneedquotes-stringsyntax": "4"
+            },
+            "dictTag2KIMsg": {
+              "strdsntneedquotes": "25"
+            },
+            "lstMisU": [
+              "strdsntneedquotes",
+              "strdsntneedquotes-stringsyntax"
+            ]
+          },
+          "['[dragonair, ditto, jolteon, mew, pikachu]']": {
+            "dictTag2ConceptMsg": {
+              "sloppysort-sloppy": "3",
+              "strdsntneedquotes-stringsyntax": "4"
+            },
+            "dictTag2KIMsg": {
+              "sloppysort": "29",
+              "strdsntneedquotes": "25"
+            },
+            "lstMisU": [
+              "sloppysort",
+              "sloppysort-sloppy",
+              "strdsntneedquotes",
+              "strdsntneedquotes-stringsyntax"
+            ]
+          },
+          "['[dragonair, mew, pikachu]']": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "sloppyskipline-sloppy": "3",
+              "strdsntneedquotes-stringsyntax": "4"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "sloppyskipline": "24",
+              "strdsntneedquotes": "25"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "sloppyskipline",
+              "sloppyskipline-sloppy",
+              "strdsntneedquotes",
+              "strdsntneedquotes-stringsyntax"
+            ]
+          },
+          "['ditto dragonair jolteon mew pikachu']": {
+            "dictTag2ConceptMsg": {
+              "lstdsntneedbrackets-pythonlistsyntax": "6",
+              "lstdsntneedcommas-pythonlistsyntax": "6",
+              "strdsntneedquotes-stringsyntax": "4"
+            },
+            "dictTag2KIMsg": {
+              "lstdsntneedbrackets": "27",
+              "lstdsntneedcommas": "27",
+              "strdsntneedquotes": "25"
+            },
+            "lstMisU": [
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax",
+              "lstdsntneedcommas",
+              "lstdsntneedcommas-pythonlistsyntax",
+              "strdsntneedquotes",
+              "strdsntneedquotes-stringsyntax"
+            ]
+          },
+          "['ditto']": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtnfirstkey-dictkeys": "10"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtnfirstkey": "26"
+            },
+            "lstMisU": [
+              "dictkeysrtnfirstkey",
+              "dictkeysrtnfirstkey-dictkeys"
+            ]
+          },
+          "['ditto, dragonair, jolteon, mew, pikachu']": {
+            "dictTag2ConceptMsg": {
+              "lstdsntneedbrackets-pythonlistsyntax": "6",
+              "strdsntneedquotes-stringsyntax": "4"
+            },
+            "dictTag2KIMsg": {
+              "lstdsntneedbrackets": "27",
+              "strdsntneedquotes": "25"
+            },
+            "lstMisU": [
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax",
+              "strdsntneedquotes",
+              "strdsntneedquotes-stringsyntax"
+            ]
+          },
+          "['ditto, dragonair, jolteon, pikachu, mew']": {
+            "dictTag2ConceptMsg": {
+              "lstdsntneedbrackets-pythonlistsyntax": "6",
+              "sloppysort-sloppy": "3",
+              "strdsntneedquotes-stringsyntax": "4"
+            },
+            "dictTag2KIMsg": {
+              "lstdsntneedbrackets": "27",
+              "sloppysort": "29",
+              "strdsntneedquotes": "25"
+            },
+            "lstMisU": [
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax",
+              "sloppysort",
+              "sloppysort-sloppy",
+              "strdsntneedquotes",
+              "strdsntneedquotes-stringsyntax"
+            ]
+          },
+          "['dragonair']": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "dictkeysrtnfirstkey-dictkeys": "10",
+              "sloppyskipline-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "dictkeysrtnfirstkey": "26",
+              "sloppyskipline": "24"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "dictkeysrtnfirstkey",
+              "dictkeysrtnfirstkey-dictkeys",
+              "sloppyskipline",
+              "sloppyskipline-sloppy"
+            ]
+          },
+          "['dragonair, mew, pikachu']": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "lstdsntneedbrackets-pythonlistsyntax": "6",
+              "sloppyskipline-sloppy": "3",
+              "strdsntneedquotes-stringsyntax": "4"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "lstdsntneedbrackets": "27",
+              "sloppyskipline": "24",
+              "strdsntneedquotes": "25"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax",
+              "sloppyskipline",
+              "sloppyskipline-sloppy",
+              "strdsntneedquotes",
+              "strdsntneedquotes-stringsyntax"
+            ]
+          },
+          "['pikachu']": {
+            "dictTag2ConceptMsg": {
+              "dictkeysrtnlastkey-dictkeys": "10"
+            },
+            "dictTag2KIMsg": {
+              "dictkeysrtnlastkey": "26"
+            },
+            "lstMisU": [
+              "dictkeysrtnlastkey",
+              "dictkeysrtnlastkey-dictkeys"
+            ]
+          },
+          "['{ditto, dragonair, jolteon, mew, pikachu}']": {
+            "dictTag2ConceptMsg": {
+              "sortedrtnbadformatlst-sortedfn": "17",
+              "strdsntneedquotes-stringsyntax": "4"
+            },
+            "dictTag2KIMsg": {
+              "sortedrtnbadformatlst": "28",
+              "strdsntneedquotes": "25"
+            },
+            "lstMisU": [
+              "sortedrtnbadformatlst",
+              "sortedrtnbadformatlst-sortedfn",
+              "strdsntneedquotes",
+              "strdsntneedquotes-stringsyntax"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['pikachu']": [
+            [
+              "5",
+              "['jolteon']"
+            ]
+          ]
+        }
+      },
+      ">>> pokemon = {'pikachu': 25, 'dragonair': 148, 'mew': 151}\n>>> pokemon['pikachu']\n25\n>>> len(pokemon)\n3\n>>> pokemon['jolteon'] = 135\n>>> pokemon['ditto'] = 25\n>>> len(pokemon)\n5\n>>> sorted(list(pokemon.keys()))\n['ditto', 'dragonair', 'jolteon', 'mew', 'pikachu']\n>>> 'mewtwo' in pokemon\nFalse\n>>> pokemon['ditto'] = pokemon['jolteon']\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> pokemon['ditto']\nLOCKED_ANSWER\n": {
+        "assessNum": "4",
+        "dictWA2DictInfo": {
+          "[\"['ditto', 'ditto', 'dragonair', 'mew', 'pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictcanhavedupkeys-dictionary": "9",
+              "dictcanhavedupkeys-dictsetter": "12",
+              "dictsetkeytokey-dictgetter": "7",
+              "dictsetkeytokey-dictsetter": "12"
+            },
+            "dictTag2KIMsg": {
+              "dictcanhavedupkeys": "34",
+              "dictsetkeytokey": "33"
+            },
+            "lstMisU": [
+              "dictcanhavedupkeys",
+              "dictcanhavedupkeys-dictionary",
+              "dictcanhavedupkeys-dictsetter",
+              "dictsetkeytokey",
+              "dictsetkeytokey-dictgetter",
+              "dictsetkeytokey-dictsetter"
+            ]
+          },
+          "[\"['ditto', 'dragonair', 'ditto', 'mew', 'pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictcanhavedupkeys-dictionary": "9",
+              "dictcanhavedupkeys-dictsetter": "12",
+              "dictsetkeytokey-dictgetter": "7",
+              "dictsetkeytokey-dictsetter": "12",
+              "sloppysort-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictcanhavedupkeys": "34",
+              "dictsetkeytokey": "33",
+              "sloppysort": "29"
+            },
+            "lstMisU": [
+              "dictcanhavedupkeys",
+              "dictcanhavedupkeys-dictionary",
+              "dictcanhavedupkeys-dictsetter",
+              "dictsetkeytokey",
+              "dictsetkeytokey-dictgetter",
+              "dictsetkeytokey-dictsetter",
+              "sloppysort",
+              "sloppysort-sloppy"
+            ]
+          },
+          "[\"['ditto', 'dragonair', 'jolteon', 'mew', 'pikachu'\"]": {
+            "dictTag2ConceptMsg": {
+              "correct": "19"
+            },
+            "dictTag2KIMsg": {
+              "correct": "19"
+            },
+            "lstMisU": [
+              "correct"
+            ]
+          },
+          "[\"['ditto', 'dragonair', 'mew', 'pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictsetkeytokey-dictgetter": "7",
+              "dictsetkeytokey-dictsetter": "12"
+            },
+            "dictTag2KIMsg": {
+              "dictsetkeytokey": "33"
+            },
+            "lstMisU": [
+              "dictsetkeytokey",
+              "dictsetkeytokey-dictgetter",
+              "dictsetkeytokey-dictsetter"
+            ]
+          },
+          "[\"['dragonair', 'jolteon', 'jolteon', 'mew', 'pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictcanhavedupkeys-dictionary": "9",
+              "dictcanhavedupkeys-dictsetter": "12",
+              "dictsetkeytokey-dictgetter": "7",
+              "dictsetkeytokey-dictsetter": "12"
+            },
+            "dictTag2KIMsg": {
+              "dictcanhavedupkeys": "34",
+              "dictsetkeytokey": "33"
+            },
+            "lstMisU": [
+              "dictcanhavedupkeys",
+              "dictcanhavedupkeys-dictionary",
+              "dictcanhavedupkeys-dictsetter",
+              "dictsetkeytokey",
+              "dictsetkeytokey-dictgetter",
+              "dictsetkeytokey-dictsetter"
+            ]
+          },
+          "[\"['dragonair', 'jolteon', 'mew', 'pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictsetkeytokey-dictgetter": "7",
+              "dictsetkeytokey-dictsetter": "12"
+            },
+            "dictTag2KIMsg": {
+              "dictsetkeytokey": "33"
+            },
+            "lstMisU": [
+              "dictsetkeytokey",
+              "dictsetkeytokey-dictgetter",
+              "dictsetkeytokey-dictsetter"
+            ]
+          },
+          "[\"['dragonair', 'jolteon','jolteon', 'mew', 'pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictcanhavedupkeys-dictionary": "9",
+              "dictcanhavedupkeys-dictsetter": "12",
+              "dictsetkeytokey-dictgetter": "7",
+              "dictsetkeytokey-dictsetter": "12"
+            },
+            "dictTag2KIMsg": {
+              "dictcanhavedupkeys": "34",
+              "dictsetkeytokey": "33"
+            },
+            "lstMisU": [
+              "dictcanhavedupkeys",
+              "dictcanhavedupkeys-dictionary",
+              "dictcanhavedupkeys-dictsetter",
+              "dictsetkeytokey",
+              "dictsetkeytokey-dictgetter",
+              "dictsetkeytokey-dictsetter"
+            ]
+          },
+          "[\"['dragonair','jolteon','jolteon','mew','pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictcanhavedupkeys-dictionary": "9",
+              "dictcanhavedupkeys-dictsetter": "12",
+              "dictsetkeytokey-dictgetter": "7",
+              "dictsetkeytokey-dictsetter": "12"
+            },
+            "dictTag2KIMsg": {
+              "dictcanhavedupkeys": "34",
+              "dictsetkeytokey": "33"
+            },
+            "lstMisU": [
+              "dictcanhavedupkeys",
+              "dictcanhavedupkeys-dictionary",
+              "dictcanhavedupkeys-dictsetter",
+              "dictsetkeytokey",
+              "dictsetkeytokey-dictgetter",
+              "dictsetkeytokey-dictsetter"
+            ]
+          },
+          "[\"['dragonair','jolteon','mew','pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictsetkeytokey-dictgetter": "7",
+              "dictsetkeytokey-dictsetter": "12"
+            },
+            "dictTag2KIMsg": {
+              "dictsetkeytokey": "33"
+            },
+            "lstMisU": [
+              "dictsetkeytokey",
+              "dictsetkeytokey-dictgetter",
+              "dictsetkeytokey-dictsetter"
+            ]
+          },
+          "[\"['jolteon', 'dragonair', 'jolteon', 'mew', 'pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictcanhavedupkeys-dictionary": "9",
+              "dictcanhavedupkeys-dictsetter": "12",
+              "dictsetkeytokey-dictgetter": "7",
+              "dictsetkeytokey-dictsetter": "12",
+              "sloppysort-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictcanhavedupkeys": "34",
+              "dictsetkeytokey": "33",
+              "sloppysort": "29"
+            },
+            "lstMisU": [
+              "dictcanhavedupkeys",
+              "dictcanhavedupkeys-dictionary",
+              "dictcanhavedupkeys-dictsetter",
+              "dictsetkeytokey",
+              "dictsetkeytokey-dictgetter",
+              "dictsetkeytokey-dictsetter",
+              "sloppysort",
+              "sloppysort-sloppy"
+            ]
+          },
+          "[\"['jolteon','dragonair','jolteon','mew','pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "dictcanhavedupkeys-dictionary": "9",
+              "dictcanhavedupkeys-dictsetter": "12",
+              "dictsetkeytokey-dictgetter": "7",
+              "dictsetkeytokey-dictsetter": "12",
+              "sloppysort-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictcanhavedupkeys": "34",
+              "dictsetkeytokey": "33",
+              "sloppysort": "29"
+            },
+            "lstMisU": [
+              "dictcanhavedupkeys",
+              "dictcanhavedupkeys-dictionary",
+              "dictcanhavedupkeys-dictsetter",
+              "dictsetkeytokey",
+              "dictsetkeytokey-dictgetter",
+              "dictsetkeytokey-dictsetter",
+              "sloppysort",
+              "sloppysort-sloppy"
+            ]
+          },
+          "[\"\\x1b[A\\x1b[B['ditto', 'dragonair', 'jolteon', 'mew', 'pikachu']\"]": {
+            "dictTag2ConceptMsg": {
+              "correct": "19"
+            },
+            "dictTag2KIMsg": {
+              "correct": "19"
+            },
+            "lstMisU": [
+              "correct"
+            ]
+          },
+          "['False']": {
+            "dictTag2ConceptMsg": {
+              "sortedevalsbool-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedevalsbool": "28"
+            },
+            "lstMisU": [
+              "sortedevalsbool",
+              "sortedevalsbool-sortedfn"
+            ]
+          },
+          "['True']": {
+            "dictTag2ConceptMsg": {
+              "sortedevalsbool-sortedfn": "17"
+            },
+            "dictTag2KIMsg": {
+              "sortedevalsbool": "28"
+            },
+            "lstMisU": [
+              "sortedevalsbool",
+              "sortedevalsbool-sortedfn"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {}
+      },
+      ">>> pokemon = {'pikachu': 25, 'dragonair': 148, 'mew': 151}\n>>> pokemon['pikachu']\n25\n>>> len(pokemon)\n3\n>>> pokemon['jolteon'] = 135\n>>> pokemon['ditto'] = 25\n>>> len(pokemon)\n5\n>>> sorted(list(pokemon.keys()))\n['ditto', 'dragonair', 'jolteon', 'mew', 'pikachu']\n>>> 'mewtwo' in pokemon\nFalse\n>>> pokemon['ditto'] = pokemon['jolteon']\n>>> sorted(list(pokemon.keys()))\n['ditto', 'dragonair', 'jolteon', 'mew', 'pikachu']\n>>> pokemon['ditto']\nLOCKED_ANSWER\n": {
+        "assessNum": "5",
+        "dictWA2DictInfo": {
+          "['25']": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "sloppyskipline-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "sloppyskipline": "24"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "sloppyskipline",
+              "sloppyskipline-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['jolteon']": [
+            [
+              "2",
+              "['pikachu']"
+            ]
+          ]
+        }
+      },
+      ">>> pokemon = {'pikachu': 25, 'dragonair': 148, 'mew': 151}\n>>> pokemon['pikachu']\n25\n>>> len(pokemon)\n3\n>>> pokemon['jolteon'] = 135\n>>> pokemon['ditto'] = 25\n>>> len(pokemon)\n5\n>>> sorted(list(pokemon.keys()))\n['ditto', 'dragonair', 'jolteon', 'mew', 'pikachu']\n>>> 'mewtwo' in pokemon\nLOCKED_ANSWER\n>>> pokemon['ditto'] = pokemon['jolteon']\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> pokemon['ditto']\nLOCKED_ANSWER\n": {
+        "assessNum": "3",
+        "dictWA2DictInfo": {
+          "['0']": {
+            "dictTag2ConceptMsg": {
+              "boolisbinary-booleanrepresentation": "1",
+              "dictinisweird-dictin": "8"
+            },
+            "dictTag2KIMsg": {
+              "boolisbinary": "32",
+              "dictinisweird": "31"
+            },
+            "lstMisU": [
+              "boolisbinary",
+              "boolisbinary-booleanrepresentation",
+              "dictinisweird",
+              "dictinisweird-dictin"
+            ]
+          },
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "dictinisweird-dictin": "8"
+            },
+            "dictTag2KIMsg": {
+              "dictinisweird": "31"
+            },
+            "lstMisU": [
+              "dictinisweird",
+              "dictinisweird-dictin"
+            ]
+          },
+          "['Flase']": {
+            "dictTag2ConceptMsg": {
+              "correct": "19"
+            },
+            "dictTag2KIMsg": {
+              "correct": "19"
+            },
+            "lstMisU": [
+              "correct"
+            ]
+          },
+          "['None']": {
+            "dictTag2ConceptMsg": {
+              "dictinisweird-dictin": "8"
+            },
+            "dictTag2KIMsg": {
+              "dictinisweird": "31"
+            },
+            "lstMisU": [
+              "dictinisweird",
+              "dictinisweird-dictin"
+            ]
+          },
+          "['error']": {
+            "dictTag2ConceptMsg": {
+              "dictinisweird-dictin": "8"
+            },
+            "dictTag2KIMsg": {
+              "dictinisweird": "31"
+            },
+            "lstMisU": [
+              "dictinisweird",
+              "dictinisweird-dictin"
+            ]
+          },
+          "['false']": {
+            "dictTag2ConceptMsg": {
+              "correct": "19"
+            },
+            "dictTag2KIMsg": {
+              "correct": "19"
+            },
+            "lstMisU": [
+              "correct"
+            ]
+          },
+          "['none']": {
+            "dictTag2ConceptMsg": {
+              "dictinisweird-dictin": "8"
+            },
+            "dictTag2KIMsg": {
+              "dictinisweird": "31"
+            },
+            "lstMisU": [
+              "dictinisweird",
+              "dictinisweird-dictin"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {}
+      },
+      ">>> pokemon = {'pikachu': 25, 'dragonair': 148, 'mew': 151}\n>>> pokemon['pikachu']\n25\n>>> len(pokemon)\n3\n>>> pokemon['jolteon'] = 135\n>>> pokemon['ditto'] = 25\n>>> len(pokemon)\nLOCKED_ANSWER\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> 'mewtwo' in pokemon\nLOCKED_ANSWER\n>>> pokemon['ditto'] = pokemon['jolteon']\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> pokemon['ditto']\nLOCKED_ANSWER\n": {
+        "assessNum": "1",
+        "dictWA2DictInfo": {
+          "['135']": {
+            "dictTag2ConceptMsg": {
+              "dictlenisweird-dictlen": "11"
+            },
+            "dictTag2KIMsg": {
+              "dictlenisweird": "21"
+            },
+            "lstMisU": [
+              "dictlenisweird",
+              "dictlenisweird-dictlen"
+            ]
+          },
+          "['2']": {
+            "dictTag2ConceptMsg": {
+              "sloppycasedep-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "sloppycasedep": "22"
+            },
+            "lstMisU": [
+              "sloppycasedep",
+              "sloppycasedep-sloppy"
+            ]
+          },
+          "['25']": {
+            "dictTag2ConceptMsg": {
+              "dictlenisweird-dictlen": "11"
+            },
+            "dictTag2KIMsg": {
+              "dictlenisweird": "21"
+            },
+            "lstMisU": [
+              "dictlenisweird",
+              "dictlenisweird-dictlen"
+            ]
+          },
+          "['3']": {
+            "dictTag2ConceptMsg": {
+              "dictisinitdict-dictsetter": "12",
+              "sloppyskipline-sloppy": "3"
+            },
+            "dictTag2KIMsg": {
+              "dictisinitdict": "23",
+              "sloppyskipline": "24"
+            },
+            "lstMisU": [
+              "dictisinitdict",
+              "dictisinitdict-dictsetter",
+              "sloppyskipline",
+              "sloppyskipline-sloppy"
+            ]
+          },
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "dictlenisweird-dictlen": "11"
+            },
+            "dictTag2KIMsg": {
+              "dictlenisweird": "21"
+            },
+            "lstMisU": [
+              "dictlenisweird",
+              "dictlenisweird-dictlen"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {}
+      },
+      ">>> pokemon = {'pikachu': 25, 'dragonair': 148, 'mew': 151}\n>>> pokemon['pikachu']\n25\n>>> len(pokemon)\nLOCKED_ANSWER\n>>> pokemon['jolteon'] = 135\n>>> pokemon['ditto'] = 25\n>>> len(pokemon)\nLOCKED_ANSWER\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> 'mewtwo' in pokemon\nLOCKED_ANSWER\n>>> pokemon['ditto'] = pokemon['jolteon']\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> pokemon['ditto']\nLOCKED_ANSWER\n": {
+        "assessNum": "0",
+        "dictWA2DictInfo": {
+          "['25']": {
+            "dictTag2ConceptMsg": {
+              "dictlenisweird-dictlen": "11"
+            },
+            "dictTag2KIMsg": {
+              "dictlenisweird": "21"
+            },
+            "lstMisU": [
+              "dictlenisweird",
+              "dictlenisweird-dictlen"
+            ]
+          },
+          "['6']": {
+            "dictTag2ConceptMsg": {
+              "dictlenisweird-dictlen": "11"
+            },
+            "dictTag2KIMsg": {
+              "dictlenisweird": "21"
+            },
+            "lstMisU": [
+              "dictlenisweird",
+              "dictlenisweird-dictlen"
+            ]
+          },
+          "['7']": {
+            "dictTag2ConceptMsg": {
+              "bindvartovarname-assignment": "0",
+              "bindvartovarname-evalvar": "2"
+            },
+            "dictTag2KIMsg": {
+              "bindvartovarname": "20"
+            },
+            "lstMisU": [
+              "bindvartovarname",
+              "bindvartovarname-assignment",
+              "bindvartovarname-evalvar"
+            ]
+          },
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "dictlenisweird-dictlen": "11"
+            },
+            "dictTag2KIMsg": {
+              "dictlenisweird": "21"
+            },
+            "lstMisU": [
+              "dictlenisweird",
+              "dictlenisweird-dictlen"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {}
+      }
+    },
+    "dictAssessNum2AssessId": {
+      "0": ">>> pokemon = {'pikachu': 25, 'dragonair': 148, 'mew': 151}\n>>> pokemon['pikachu']\n25\n>>> len(pokemon)\nLOCKED_ANSWER\n>>> pokemon['jolteon'] = 135\n>>> pokemon['ditto'] = 25\n>>> len(pokemon)\nLOCKED_ANSWER\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> 'mewtwo' in pokemon\nLOCKED_ANSWER\n>>> pokemon['ditto'] = pokemon['jolteon']\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> pokemon['ditto']\nLOCKED_ANSWER\n",
+      "1": ">>> pokemon = {'pikachu': 25, 'dragonair': 148, 'mew': 151}\n>>> pokemon['pikachu']\n25\n>>> len(pokemon)\n3\n>>> pokemon['jolteon'] = 135\n>>> pokemon['ditto'] = 25\n>>> len(pokemon)\nLOCKED_ANSWER\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> 'mewtwo' in pokemon\nLOCKED_ANSWER\n>>> pokemon['ditto'] = pokemon['jolteon']\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> pokemon['ditto']\nLOCKED_ANSWER\n",
+      "10": ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\n[1, 2, 3]\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nFalse\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\n1017\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\n[1, 4]\n>>> sorted(a & b)\nLOCKED_ANSWER\n>>> sorted(a.union(b))\nLOCKED_ANSWER\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n",
+      "11": ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\n[1, 2, 3]\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nFalse\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\n1017\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\n[1, 4]\n>>> sorted(a & b)\n[1, 4]\n>>> sorted(a.union(b))\nLOCKED_ANSWER\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n",
+      "12": ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\n[1, 2, 3]\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nFalse\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\n1017\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\n[1, 4]\n>>> sorted(a & b)\n[1, 4]\n>>> sorted(a.union(b))\n[1, 2, 4, 12, 1000]\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n",
+      "13": ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\n[1, 2, 3]\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nFalse\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\n1017\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\n[1, 4]\n>>> sorted(a & b)\n[1, 4]\n>>> sorted(a.union(b))\n[1, 2, 4, 12, 1000]\n>>> sorted(a | b)\n[1, 2, 4, 12, 1000]\n>>> sorted(a - b)\nLOCKED_ANSWER\n",
+      "2": ">>> pokemon = {'pikachu': 25, 'dragonair': 148, 'mew': 151}\n>>> pokemon['pikachu']\n25\n>>> len(pokemon)\n3\n>>> pokemon['jolteon'] = 135\n>>> pokemon['ditto'] = 25\n>>> len(pokemon)\n5\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> 'mewtwo' in pokemon\nLOCKED_ANSWER\n>>> pokemon['ditto'] = pokemon['jolteon']\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> pokemon['ditto']\nLOCKED_ANSWER\n",
+      "3": ">>> pokemon = {'pikachu': 25, 'dragonair': 148, 'mew': 151}\n>>> pokemon['pikachu']\n25\n>>> len(pokemon)\n3\n>>> pokemon['jolteon'] = 135\n>>> pokemon['ditto'] = 25\n>>> len(pokemon)\n5\n>>> sorted(list(pokemon.keys()))\n['ditto', 'dragonair', 'jolteon', 'mew', 'pikachu']\n>>> 'mewtwo' in pokemon\nLOCKED_ANSWER\n>>> pokemon['ditto'] = pokemon['jolteon']\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> pokemon['ditto']\nLOCKED_ANSWER\n",
+      "4": ">>> pokemon = {'pikachu': 25, 'dragonair': 148, 'mew': 151}\n>>> pokemon['pikachu']\n25\n>>> len(pokemon)\n3\n>>> pokemon['jolteon'] = 135\n>>> pokemon['ditto'] = 25\n>>> len(pokemon)\n5\n>>> sorted(list(pokemon.keys()))\n['ditto', 'dragonair', 'jolteon', 'mew', 'pikachu']\n>>> 'mewtwo' in pokemon\nFalse\n>>> pokemon['ditto'] = pokemon['jolteon']\n>>> sorted(list(pokemon.keys()))\nLOCKED_ANSWER\n>>> pokemon['ditto']\nLOCKED_ANSWER\n",
+      "5": ">>> pokemon = {'pikachu': 25, 'dragonair': 148, 'mew': 151}\n>>> pokemon['pikachu']\n25\n>>> len(pokemon)\n3\n>>> pokemon['jolteon'] = 135\n>>> pokemon['ditto'] = 25\n>>> len(pokemon)\n5\n>>> sorted(list(pokemon.keys()))\n['ditto', 'dragonair', 'jolteon', 'mew', 'pikachu']\n>>> 'mewtwo' in pokemon\nFalse\n>>> pokemon['ditto'] = pokemon['jolteon']\n>>> sorted(list(pokemon.keys()))\n['ditto', 'dragonair', 'jolteon', 'mew', 'pikachu']\n>>> pokemon['ditto']\nLOCKED_ANSWER\n",
+      "6": ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\nLOCKED_ANSWER\n>>> sorted(a)\nLOCKED_ANSWER\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nLOCKED_ANSWER\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\nLOCKED_ANSWER\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\nLOCKED_ANSWER\n>>> sorted(a & b)\nLOCKED_ANSWER\n>>> sorted(a.union(b))\nLOCKED_ANSWER\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n",
+      "7": ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\nLOCKED_ANSWER\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nLOCKED_ANSWER\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\nLOCKED_ANSWER\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\nLOCKED_ANSWER\n>>> sorted(a & b)\nLOCKED_ANSWER\n>>> sorted(a.union(b))\nLOCKED_ANSWER\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n",
+      "8": ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\n[1, 2, 3]\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nLOCKED_ANSWER\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\nLOCKED_ANSWER\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\nLOCKED_ANSWER\n>>> sorted(a & b)\nLOCKED_ANSWER\n>>> sorted(a.union(b))\nLOCKED_ANSWER\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n",
+      "9": ">>> a = [1, 1, 2, 2, 3, 3]\n>>> a = set(a)\n>>> len(a)\n3\n>>> sorted(a)\n[1, 2, 3]\n>>> a.add(4)\n>>> a.add(4)\n>>> a.remove(4)\n>>> 4 in a\nFalse\n>>> a = {1, 4, 12, 1000}\n>>> sum(a)\n1017\n>>> b = {1, 2, 4}\n>>> sorted(a.intersection(b))\nLOCKED_ANSWER\n>>> sorted(a & b)\nLOCKED_ANSWER\n>>> sorted(a.union(b))\nLOCKED_ANSWER\n>>> sorted(a | b)\nLOCKED_ANSWER\n>>> sorted(a - b)\nLOCKED_ANSWER\n"
+    },
+    "dictId2Msg": {
+      "0": "An assignment statement first evaluates the expression on the right side of the\n|=| operator to get a value. This value is then bound to the name on the left\nside of the |=| in the first frame in the current environment. For example,\nwhile |a = 0| displays nothing, |a == 0| displays |True|. Notice that Python\ndistinguishes assignment |=| from equality comparison |==|.",
+      "1": "In Python there are boolean primitives |True| and |False| as opposed to prior\nlanguages that use |1| and |0|.",
+      "10": "The |keys()| function returns a sequence of a dictionary's keys. The call\n|sorted(list(DICTIONARY.keys()))| first creates a list from the sequence of keys\nand then sorts it. For example, with |d = {'c': 1, 'a': 2, 'b': 3}|, \n|sorted(list(d.keys()))| returns |['a','b','c']|.",
+      "11": "The length of a dictionary is the number of entries in that dictionary. For\nexample, |{'one': 1, 2: two, 'three': '[1, 2]'}| has a length of 3.",
+      "12": "A dictionary maps keys to values. So if a key is not in the dictionary, a new\nentry is created for that key-value pair. If a key is present, its value is\nupdated. For example, with |d = {'John': 'Google'}|, when |d['foo'] = 'bar'| and \n|d['John'] = 'UCB'| are executed, |d|'s value is |{'foo': 'bar', 'John': UCB'}|.",
+      "13": "A usage of the |in| keyword in Python is to check for item membership in a \ncollection. This always returns a boolean value. For example, |4 in {2, 3, 4}|\nwill return |True| and |'hello' in [4, 'hi']| will return |False|.",
+      "14": "The intersection operator (shorthand |&|) is used to determine the common\nelements in 2 or more sets. For example, where |s = {1, 3, 5}|, |t = {1, 4, 9}|,\nand |u = {1, 2}|, |s.intersection(t, u)| will return |{1}|.",
+      "15": "The difference operation (shorthand |-|) is used to determine elements that are\nin the first set but not in the other set. For example, where |s = {1, 3, 5}|\nand |t = {1, 2}|, |s.difference(t)| will return |{3, 5}|.",
+      "16": "A set is a collection of elements that are enclosed by curly braces |{}| and\nadhere to certain properties: elements cannot have duplicates and elements are \nunordered. For example, |{1, 2, 1, 'hello', 4}| results in |{4, 1, 'hello', 2}|.",
+      "17": "The |sorted()| function takes in a collection (e.g. list, set, dictionary) and\nreturns a list of those items in alphanumeric order. For example,\n|sorted({3, 9, 55, 28, -19})| returns the list |[-19, 3, 9, 28, 55]|.",
+      "18": "The union operation (shorthand |||) is used to create a set of all the elements\npresent in 2 or more sets. For example, where |s = {1, 3, 5}|, |t = {1, 4, 9}|,\nand |u = {1, 2}|, |s.union(t, u)| will return {1, 2, 3, 4, 5, 9}.",
+      "19": "Typo?",
+      "2": "A variable is evaluated to the value it was assigned. If it was not assigned\nprior to being evaluated a NameError is raised.",
+      "20": "Hmm... What is the variable bound to?",
+      "21": "Remember what |len| does with a dictionary.",
+      "22": "Remember that prior questions may affect this one.",
+      "23": "Can dictionaries be updated?",
+      "24": "Hmm... Did you miss a line of code?",
+      "25": "How does Python know whether a value is an integer, variable, or string?",
+      "26": "Remember what |keys()| returns?",
+      "27": "Is that a list? Python can't tell that it is.",
+      "28": "What does |sorted()| return?",
+      "29": "Hmm... is that completely sorted alphanumerically?",
+      "3": "Try:\n1) Reading the code or instructions more carefully,\n2) Writing out the variable's values, or\n3) Drawing an environment diagram.",
+      "30": "What about displaying the return value?",
+      "31": "How does |in| work with dictionaries?",
+      "32": "How are boolean values represented in Python?",
+      "33": "Remember the steps to evaluate an assignment. What is the difference between\ndictionary lookup and adding/updating a key-value pair?",
+      "34": "Can dictionaries have duplicate keys. If so, how would you access the values?",
+      "35": "Can a set have duplicates?",
+      "36": "What does |in| do? What type would it return?",
+      "37": "Double check the set intersection?",
+      "38": "Remember the difference between intersect, union, and difference.",
+      "39": "Double check the variable's value?",
+      "4": "In Python, a string is a series of characters. We declare something as a string\nby surrounding it with either single |''| or double quotes |\"\"|. We can\nrecognize strings in the Python interpreter by these quotes. For example: 'This\nis a string' and \"This string's contents has an apostrophe\".",
+      "40": "Double check how |&| works with sets.",
+      "41": "Double check how ||| works with sets.",
+      "5": "The Python interpreter evaluates an expression and displays its output\nimmediately. Evaluations that results in |None| and variable assignments do not\nhave an output, and thus for these statements nothing is displayed in the\ninterpreter.",
+      "6": "A list in Python is contained within square brackets and separated by commas.\nThe elements in the list can be be of any type, including sub-lists. For\nexample: |[1, 2.0, [3, 4], '5', True]|.",
+      "7": "Python uses a key to get the value from a dictionary. For example, with\n|d = {'a': 1, 'b': 2, 'c': 3}|, in the call |d['b']|, the key |'b'| gets the\ncorresponding value |2|.",
+      "8": "Python uses |in| to check whether a dictionary has a key and returns a boolean\nvalue. For example, with |d = {'a': 1, 'b': 2, 'c': 3}|, the expression\n|'a' in d| returns |True|, while |'z' in d| returns |False|.",
+      "9": "Dictionaries are unordered sets of key-value pairs that map the key in the pair\nto its value. Since the only way to get a value is with its key, if there are\ntwo key-value pairs with the same key, it is not clear which value should be \nreturned. Therefore dictionary's keys must be unique."
+    },
+    "dictTg2Func": {
+      "0": "none",
+      "1": "tag2ConceptMsg",
+      "2": "tag2KIMsg"
+    },
+    "wrongAnsThresh": 2
+  }
+}
