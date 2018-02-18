@@ -1,0 +1,31 @@
+{
+  "name": "Project 2: Yelp Maps",
+  "endpoint": "cal/cs61a/fa17/proj02",
+  "src": [
+    "utils.py",
+    "abstractions.py",
+    "recommend.py"
+  ],
+  "tests": {
+      "tests/00.py": "ok_test",
+      "tests/01.py": "ok_test",
+      "tests/02.py": "ok_test",
+      "tests/03.py": "ok_test",
+      "tests/04.py": "ok_test",
+      "tests/05.py": "ok_test",
+      "tests/06.py": "ok_test",
+      "tests/07.py": "ok_test",
+      "tests/08.py": "ok_test",
+      "tests/09.py": "ok_test",
+      "tests/10.py": "ok_test"
+  },
+  "protocols": [
+      "restore",
+      "file_contents",
+      "unlock",
+      "grading",
+      "analytics",
+      "collaborate",
+      "backup"
+  ]
+}

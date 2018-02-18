@@ -1,0 +1,21 @@
+make_user(
+    'Juan Cluster',     # name
+    [                   # reviews
+        # Southside restaurants
+        make_review('Cafe 3', 2.0),
+        make_review('Pancho\'s', 3.0),
+        make_review('Peking Express', 3.5),
+        make_review('Sun Hong Kong Restaurant', 3.5),
+        make_review('Henry\'s', 3.0),
+        make_review('Durant Square - Asian Ghetto', 4.0),
+        make_review('Cheese \'N\' Stuff', 4.0),
+        make_review('Babette', 4.0),
+        make_review('Bear\'s Ramen House', 3.5),
+        make_review('Planet Kebob & Cafe', 4.5),
+        make_review('Satay House', 4.5),
+        make_review('KoKo Express', 2.5),
+        make_review('Sushi House', 2.5),
+        make_review('Quickly', 2.5),
+        make_review('Kimchi Garden', 2.5),
+    ]
+)

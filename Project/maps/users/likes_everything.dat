@@ -1,0 +1,33 @@
+make_user(
+    'Positive Patty',      # name
+    [                   # reviews
+        # Northside restaurants
+        make_review('Jasmine Thai', 4.0),
+        make_review('Gomnaru Restaurant', 4.5),
+        make_review('Top Dog 2', 5.0),
+        make_review('T C Garden Restaurant', 4.0),
+        make_review('The Pho Bar', 4.5),
+        make_review('Aki Japanese Restaurant', 5.0),
+        make_review('Zach\'s Snacks', 4.5),
+        make_review('Nefeli Caffe', 4.5),
+        # Westside restaurants
+        make_review('La Cascada Taqueria', 4.0),
+        make_review('Alborz', 5.0),
+        make_review('Cinnaholic', 4.5),
+        make_review('Saturn Cafe', 4.5),
+        make_review('Punjabi By Nature', 4.0),
+        make_review('Suya African Caribbean Grill', 4.5),
+        make_review('Cafe Rio', 4.5),
+        # Southside restaurants
+        make_review('Cafe 3', 4.0),
+        make_review('Pancho\'s', 4.0),
+        make_review('Peking Express', 4.5),
+        make_review('Sun Hong Kong Restaurant', 4.5),
+        make_review('Henry\'s', 5.0),
+        make_review('Durant Square - Asian Ghetto', 4.5),
+        make_review('Cheese \'N\' Stuff', 4.5),
+        make_review('Babette', 5.0),
+        make_review('Bear\'s Ramen House', 4.5),
+        make_review('Planet Kebob & Cafe', 4.5),
+    ]
+)

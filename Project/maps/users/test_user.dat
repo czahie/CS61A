@@ -1,0 +1,30 @@
+make_user(
+    'John DoeNero',     # name
+    [                   # reviews
+        # Northside restaurants
+        make_review('Jasmine Thai', 4.0),
+        make_review('Gomnaru Restaurant', 3.5),
+        make_review('Momo Masala', 4.5),
+        make_review('Top Dog 2', 1.0),
+        make_review('Camille', 3.5),
+        make_review('T C Garden Restaurant', 3.0),
+        make_review('Hummingbird Cafe', 4.0),
+        make_review('Celia\'s', 1.5),
+        make_review('Northside Cafe', 1.0),
+        make_review('La Val\'s Pizza', 4.0),
+        make_review('Urbann Turbann', 5.0),
+        make_review('Zach\'s Snacks', 1.5),
+        make_review('Nefeli Caffe', 4.5),
+        # Westside restaurants
+        make_review('La Cascada Taqueria', 3.0),
+        make_review('Alborz', 2.0),
+        make_review('Gather', 4.5),
+        make_review('C U Sushi', 3.5),
+        make_review('Cinnaholic', 5.0),
+        make_review('Saturn Cafe', 1.5),
+        make_review('Punjabi By Nature', 2.5),
+        make_review('Suya African Caribbean Grill', 4.0),
+        make_review('Cafe Rio', 4.0),
+        make_review('The Sunny Side Caf\u00e9', 1.5),
+    ]
+)

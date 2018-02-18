@@ -1,0 +1,31 @@
+make_user(
+    'Oliver Warbucks',  # name
+    [                   # reviews
+        # cheap restaurants
+        make_review('Jasmine Thai', 3.0),
+        make_review('Cafe 3', 1.0),
+        make_review('Momo Masala', 3.0),
+        make_review('Top Dog 2', 2.0),
+        make_review('Saigon Eats', 3.0),
+        make_review('Chinese Express', 1.5),
+        make_review('Bear\'s Ramen House', 3.0),
+        make_review('Cheese \'N\' Stuff', 1.5),
+        make_review('Pho K & K', 3.5),
+        make_review('Sun Hong Kong Restaurant', 3.0),
+        make_review('Northside Cafe', 3.0),
+        make_review('La Val\'s Pizza', 2.5),
+        make_review('I.B.\'s Hoagies', 2.0),
+        make_review('Zach\'s Snacks', 1.5),
+        make_review('Cupkates', 2.5),
+        # expensive restaurants
+        make_review('Fondue Fred', 4.0),
+        make_review('Alborz', 5.0),
+        make_review('Stella Nonna Milwaukee Fish Fry', 4.5),
+        make_review('Sushi House', 4.0),
+        make_review('Musical Offering', 4.5),
+        make_review('Golden Bear Cafe', 4.5),
+        make_review('Koryo Restaurant', 5.0),
+        make_review('Henry\'s', 4.5),
+        make_review('Babette', 5.0),
+    ]
+)
