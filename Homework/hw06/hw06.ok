@@ -1,0 +1,29 @@
+{
+    "name": "Homework 6",
+    "endpoint": "cal/cs61a/fa17/hw06",
+    "src": [
+        "hw06.py"
+    ],
+    "tests": {
+        "hw06.py": "doctest"
+    },
+    "default_tests": [
+        "Account",
+        "FreeChecking",
+        "total_weight",
+        "balanced",
+        "with_totals",
+        "make_counter",
+        "make_fib",
+        "make_withdraw",
+        "make_joint"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
