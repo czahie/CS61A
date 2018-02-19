@@ -5,18 +5,18 @@ test = {
     {
       'cases': [
         {
-          'answer': '85cc4d1eff44e1c6f45d86bf02942b8c',
+          'answer': 'restaurant names',
           'choices': [
             'restaurant names',
             'restaurants',
             'restaurant ratings'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': 'rate_all returns a dictionary. What are the keys of this dictionary?'
         },
         {
-          'answer': 'a9ca5d2f8f05a0b53223e921bc719c8d',
+          'answer': 'numbers - a mix of user ratings and predicted ratings',
           'choices': [
             'numbers - a mix of user ratings and predicted ratings',
             'numbers - user ratings only',
@@ -25,18 +25,18 @@ test = {
             'lists - list of all restaurant ratings'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': 'What are the values of the returned dictionary?'
         },
         {
-          'answer': '18f4b8f373a149983a060187fb945841',
+          'answer': 'a list of restaurants reviewed by the user',
           'choices': [
             'a list of restaurants reviewed by the user',
             'a list of all possible restaurants',
             'a list of ratings for restaurants reviewed by the user'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': 'In rate_all, what does the variable reviewed represent?'
         }
       ],

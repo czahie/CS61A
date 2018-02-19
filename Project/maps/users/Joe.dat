@@ -1,0 +1,10 @@
+make_user(
+    'Joe',      # name
+    [                   # reviews
+        # Northside restaurants
+        make_review('Peking Express', 5.0),
+        make_review('Sun Hong Kong Restaurant', 4.9),
+        make_review('Chinese Express', 4.8)
+
+    ]
+)

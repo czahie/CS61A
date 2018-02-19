@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': '19ac9560bbc6a517672a11b71162cf1b',
+          'answer': 'a list of strings (categories)',
           'choices': [
             'a list of strings (categories)',
             'a single string (category)',
@@ -13,14 +13,14 @@ test = {
             'a list of numbers (ratings)'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': r"""
           Given a restaurant, what does restaurant_categories in
           abstractions.py return?
           """
         },
         {
-          'answer': 'b602d98cdeeae35da8fefb2d6bc0f7bb',
+          'answer': "if the query string is one of the restaurant's categories",
           'choices': [
             "if the query string is a substring of the restaurant's name",
             "if the query string is mentioned in the restaurant's reviews",
@@ -28,11 +28,11 @@ test = {
             "if the query string is equal to the restaurant's categories"
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': 'When does a restaurant match a search query?'
         },
         {
-          'answer': '0c66e2394c4cd693834c62bfa1cc6511',
+          'answer': 'a list of restaurants',
           'choices': [
             'a list of restaurants',
             'a list of restaurant names (strings)',
@@ -40,7 +40,7 @@ test = {
             'a dictionary that maps restaurant categories (strings) to restaurants'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': 'What type of object does search return?'
         }
       ],
