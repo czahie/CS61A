@@ -259,6 +259,17 @@ def make_counter():
     5
     """
     "*** YOUR CODE HERE ***"
+    str_dict = {}
+
+    def counter(string):
+        nonlocal str_dict
+        if string in str_dict:
+            str_dict[string] += 1
+            return str_dict[string]
+        else:
+            str_dict.setdefault(string, 1)
+            return str_dict[string]
+    return counter
 
 def make_fib():
     """Returns a function that returns the next Fibonacci number
@@ -280,6 +291,24 @@ def make_fib():
     12
     """
     "*** YOUR CODE HERE ***"
+    prev = 0
+    curr = 1
+    count = 0
+
+    def next_fib():
+        nonlocal prev, curr, count
+        if count == 0:
+            count += 1
+            return prev
+        elif count == 1:
+            count += 1
+            return curr
+        else:
+            prev, curr = curr, prev + curr
+            return curr
+
+    return next_fib
+
 
 def make_withdraw(balance, password):
     """Return a password-protected withdraw function.
@@ -305,6 +334,25 @@ def make_withdraw(balance, password):
     "Your account is locked. Attempts: ['hwat', 'a', 'n00b']"
     """
     "*** YOUR CODE HERE ***"
+    remain_balance = balance
+    attempts = []
+
+    def withdraw(amount, string):
+        nonlocal remain_balance, attempts
+        if string == password and len(attempts) < 3:
+            if remain_balance >= amount:
+                remain_balance -= amount
+                return remain_balance
+            else:
+                return 'Insufficient funds'
+        elif len(attempts) == 3:
+            return "Your account is locked. Attempts: " + str(attempts)
+        else:
+            attempts.append(string)
+            return 'Incorrect password'
+
+    return withdraw
+
 
 def make_joint(withdraw, old_password, new_password):
     """Return a password-protected withdraw function that has joint access to
@@ -345,3 +393,16 @@ def make_joint(withdraw, old_password, new_password):
     "Your account is locked. Attempts: ['my', 'secret', 'password']"
     """
     "*** YOUR CODE HERE ***"
+# Cannot figure it out on my own
+
+    error = withdraw(0, old_password)
+    if type(error) == str:
+        return error
+
+    def joint_withdraw(amount, password):
+        if password == new_password:
+            return withdraw(amount, old_password)
+        else:
+            return withdraw(amount, password)
+
+    return joint_withdraw

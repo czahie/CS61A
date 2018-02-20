@@ -3,3 +3,7 @@
 'total_weight-correct', (1024, 70)
 'balanced-correct', (1536, 70)
 'with_totals-correct', (2048, 70)
+'make_counter-correct', (2560, 70)
+'make_fib-correct', (3072, 70)
+'make_withdraw-correct', (3584, 70)
+'make_joint-correct', (4096, 70)
