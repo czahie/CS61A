@@ -267,6 +267,7 @@ def make_counter():
     5
     """
     "*** YOUR CODE HERE ***"
+# My solution
     str_dict = {}
 
     def counter(string):
@@ -278,6 +279,15 @@ def make_counter():
             str_dict.setdefault(string, 1)
             return str_dict[string]
     return counter
+
+# Official solution
+
+    totals = {}
+    def counter(key):
+        totals[key] = totals.get(key, 0) + 1
+        return totals[key]
+    return counter
+
 
 def make_fib():
     """Returns a function that returns the next Fibonacci number
@@ -299,6 +309,8 @@ def make_fib():
     12
     """
     "*** YOUR CODE HERE ***"
+# My solution
+
     prev = 0
     curr = 1
     count = 0
@@ -316,6 +328,15 @@ def make_fib():
             return curr
 
     return next_fib
+
+# Official solution
+    cur, next = 0, 1
+    def fib():
+        nonlocal cur, next
+        result = cur
+        cur, next = next, cur + next
+        return result
+    return fib
 
 
 def make_withdraw(balance, password):
