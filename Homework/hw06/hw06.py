@@ -229,10 +229,18 @@ def with_totals(m):
     [None, None]
     """
     "*** YOUR CODE HERE ***"
+# My solution
     if is_weight(m):
         return m
     else:
-        return tree(total_weight(m), [tree(label(s), [with_totals(end(s))]) for s in sides(m)])
+        return tree(total_weight(m), [tree(length(s), [with_totals(end(s))]) for s in sides(m)])
+
+# Official solution
+    if is_weight(m):
+        return m
+    ends = [with_totals(end(s)) for s in sides(m)]
+    total = sum([label(s) for s in ends])
+    return tree(total, [side(length(s), t) for s, t in zip(sides(m), ends)])
 
 ############
 # Mutation #
