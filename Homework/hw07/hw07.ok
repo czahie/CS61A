@@ -1,0 +1,24 @@
+{
+    "name": "Homework 7",
+    "endpoint": "cal/cs61a/fa17/hw07",
+    "src": [
+        "hw07.py"
+    ],
+    "tests": {
+        "hw07.py": "doctest"
+    },
+    "default_tests": [
+        "digits",
+        "Fib",
+        "VendingMachine",
+        "MissManners"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
