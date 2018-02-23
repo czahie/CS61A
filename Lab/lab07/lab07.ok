@@ -1,0 +1,36 @@
+{
+    "name": "Lab 7",
+    "endpoint": "cal/cs61a/fa17/lab07",
+    "src": [
+        "lab07.py",
+        "lab07_extra.py"
+    ],
+    "tests": {
+        "tests/link.py": "ok_test",
+        "lab07.py:list_to_link": "doctest",
+        "lab07.py:link_to_list": "doctest",
+        "lab07.py:remove_all": "doctest",
+        "lab07.py:Link": "doctest",
+        "tests/trees.py": "ok_test",
+        "lab07_extra.py:reverse_other": "doctest",
+        "lab07_extra.py:cumulative_sum": "doctest",
+        "lab07_extra.py:deep_map_mut": "doctest",
+        "lab07_extra.py:has_cycle": "doctest",
+        "lab07_extra.py:has_cycle_constant": "doctest"
+    },
+    "default_tests": [
+        "link",
+        "list_to_link",
+        "link_to_list",
+        "remove_all",
+        "trees"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}

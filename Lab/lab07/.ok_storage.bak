@@ -1,0 +1,8 @@
+'list_to_link-correct', (0, 70)
+'link_to_list-correct', (512, 70)
+'remove_all-correct', (1024, 70)
+'cumulative_sum-correct', (1536, 70)
+'reverse_other-correct', (2048, 70)
+'deep_map_mut-correct', (2560, 70)
+'has_cycle-correct', (3072, 70)
+'has_cycle_constant-correct', (3584, 70)
