@@ -9,14 +9,12 @@ test = {
           >>> # Testing HungryAnt parameters
           >>> hungry = HungryAnt()
           >>> HungryAnt.food_cost
-          c9452203eb0b0f0bd2454586a6c2fc5c
-          # locked
+          4
           >>> hungry.armor
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -28,21 +26,18 @@ test = {
           >>> place.add_insect(super_bee)
           >>> hungry.action(colony)         # super_bee is no match for HungryAnt!
           >>> super_bee.armor
-          73b94a1326ae2e803c3421016112207b
-          # locked
+          0
           >>> place.add_insect(wimpy_bee)
           >>> for _ in range(3):
           ...     hungry.action(colony)     # digesting...not eating
           >>> wimpy_bee.armor
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           >>> hungry.action(colony)         # back to eating!
           >>> wimpy_bee.armor
-          73b94a1326ae2e803c3421016112207b
-          # locked
+          0
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""

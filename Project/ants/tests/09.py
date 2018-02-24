@@ -9,14 +9,12 @@ test = {
           >>> # Testing ScubaThrower parameters
           >>> scuba = ScubaThrower()
           >>> ScubaThrower.food_cost
-          50ae32be3e31df6c59633df7fdfb3a72
-          # locked
+          6
           >>> scuba.armor
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': False,
@@ -38,14 +36,12 @@ test = {
           >>> ant = ScubaThrower()
           >>> water.add_insect(ant)
           >>> ant.place is water
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
+          True
           >>> ant.armor
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -58,11 +54,10 @@ test = {
           >>> place2.add_insect(bee)
           >>> ant.action(colony)
           >>> bee.armor  # ScubaThrower can throw on land
-          20d533d3e06345c8bd7072212867f2d1
-          # locked
+          2
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -76,11 +71,10 @@ test = {
           >>> target.add_insect(bee)
           >>> ant.action(colony)
           >>> bee.armor  # ScubaThrower can throw in water
-          20d533d3e06345c8bd7072212867f2d1
-          # locked
+          2
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,

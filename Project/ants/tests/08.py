@@ -9,14 +9,12 @@ test = {
           >>> # Testing NinjaAnt parameters
           >>> ninja = NinjaAnt()
           >>> ninja.armor
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           >>> NinjaAnt.food_cost
-          62674984f877ec783f37e8b8b9c264d0
-          # locked
+          5
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -28,11 +26,10 @@ test = {
           >>> p1.add_insect(NinjaAnt())
           >>> bee.action(colony)  # shouldn't attack ant, move past it
           >>> bee.place is p0
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
+          True
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -44,11 +41,10 @@ test = {
           >>> test_place.add_insect(ninja)
           >>> ninja.action(colony)   # should strike all bees in place
           >>> [bee.armor for bee in test_place.bees]
-          7ba130373ce1098e546d938c59eedd24
-          # locked
+          [1, 1, 1]
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
