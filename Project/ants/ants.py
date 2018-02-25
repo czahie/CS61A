@@ -68,7 +68,9 @@ class Place(object):
         """
         if insect.is_ant:
             # Phase 6: Special Handling for BodyguardAnt and QueenAnt
-            if self.ant is insect:
+            if isinstance(insect, QueenAnt) and not insect.imposter:
+                return
+            elif self.ant is insect:
                 if hasattr(self.ant, 'container') and self.ant.container:
                     self.ant = self.ant.ant
                 else:
@@ -432,28 +434,43 @@ class TankAnt(BodyguardAnt):
     """TankAnt provides both offensive and defensive capabilities."""
     name = 'Tank'
     damage = 1
+    food_cost = 6
     # BEGIN Problem 12
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
     # END Problem 12
 
     def action(self, colony):
         # BEGIN Problem 12
         "*** YOUR CODE HERE ***"
+        if self.place.bees:
+            bees_copy = list(self.place.bees)
+            for bee in bees_copy:
+                bee.reduce_armor(self.damage)
+        if self.ant:
+            self.ant.action(colony)
         # END Problem 12
 
+
 # BEGIN Problem 13
-class QueenAnt(Ant):  # You should change this line
+class QueenAnt(ScubaThrower):  # You should change this line
 # END Problem 13
     """The Queen of the colony. The game is over if a bee enters her place."""
 
     name = 'Queen'
+    food_cost = 7
+    imposter = False
+
     # BEGIN Problem 13
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
     # END Problem 13
 
     def __init__(self):
         # BEGIN Problem 13
         "*** YOUR CODE HERE ***"
+        super().__init__()  # Try to use super(), which equals to ScubaThrower.__init__(self) in this case
+        self.imposter = QueenAnt.imposter
+        self.ants_have_been_doubled = []
+        QueenAnt.imposter = True
         # END Problem 13
 
     def action(self, colony):
@@ -464,6 +481,21 @@ class QueenAnt(Ant):  # You should change this line
         """
         # BEGIN Problem 13
         "*** YOUR CODE HERE ***"
+        if self.imposter:
+            self.reduce_armor(self.armor)
+        else:
+            ScubaThrower.action(self, colony)
+            curr_place = self.place
+            while curr_place.exit:
+                ant = curr_place.exit.ant
+                if ant and ant not in self.ants_have_been_doubled:
+                    ant.damage = 2 * ant.damage
+                    self.ants_have_been_doubled.append(ant)
+                #  Cases that the ant is BodyguardAnt, though the ant may be added in the list, the guarded ant may not
+                if isinstance(ant, BodyguardAnt) and ant.ant and ant.ant not in self.ants_have_been_doubled:
+                    ant.ant.damage = 2 * ant.ant.damage
+                    self.ants_have_been_doubled.append(ant.ant)
+                curr_place = curr_place.exit
         # END Problem 13
 
     def reduce_armor(self, amount):
@@ -472,6 +504,12 @@ class QueenAnt(Ant):  # You should change this line
         """
         # BEGIN Problem 13
         "*** YOUR CODE HERE ***"
+        self.armor -= amount
+        if self.armor <= 0:
+            if not self.imposter:
+                bees_win()
+            else:
+                self.place.remove_insect(self)
         # END Problem 13
 
 class AntRemover(Ant):
@@ -495,6 +533,10 @@ def make_slow(action):
     """
     # BEGIN Problem EC
     "*** YOUR CODE HERE ***"
+    def new_action(colony):
+        if colony.time % 2 == 0:
+            action(colony)
+    return new_action
     # END Problem EC
 
 def make_stun(action):
@@ -504,12 +546,27 @@ def make_stun(action):
     """
     # BEGIN Problem EC
     "*** YOUR CODE HERE ***"
+    def new_action(colony):
+        return
+    return new_action
     # END Problem EC
 
 def apply_effect(effect, bee, duration):
     """Apply a status effect to a BEE that lasts for DURATION turns."""
     # BEGIN Problem EC
     "*** YOUR CODE HERE ***"
+    origin_action = bee.action
+    new_action = effect(bee.action)
+
+    def action(colony):
+        nonlocal duration
+        if duration == 0:
+            return origin_action(colony)
+        else:
+            duration -= 1
+            return new_action(colony)
+
+    bee.action = action
     # END Problem EC
 
 
@@ -517,8 +574,9 @@ class SlowThrower(ThrowerAnt):
     """ThrowerAnt that causes Slow on Bees."""
 
     name = 'Slow'
+    food_cost = 4
     # BEGIN Problem EC
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
     # END Problem EC
 
     def throw_at(self, target):
@@ -530,8 +588,9 @@ class StunThrower(ThrowerAnt):
     """ThrowerAnt that causes Stun on Bees."""
 
     name = 'Stun'
+    food_cost = 6
     # BEGIN Problem EC
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
     # END Problem EC
 
     def throw_at(self, target):

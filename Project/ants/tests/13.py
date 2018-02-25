@@ -8,11 +8,10 @@ test = {
           'code': r"""
           >>> # Testing QueenAnt parameters
           >>> ants.QueenAnt.food_cost
-          7cd035adf49fc93a635b4e8bb2e28bd4
-          # locked
+          7
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -27,31 +26,24 @@ test = {
           >>> tunnel[4].add_insect(impostor)
           >>> impostor.action(colony)
           >>> impostor.armor            # Impostors must die!
-          73b94a1326ae2e803c3421016112207b
-          # locked
+          0
           >>> tunnel[4].ant is None
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
+          True
           >>> back_ant.damage           # Ants should not be buffed
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           >>> front_ant.damage
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           >>> tunnel[4].add_insect(queen)
           >>> queen.action(colony)
           >>> queen.armor               # Long live the Queen!
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           >>> back_ant.damage           # Ants behind queen should be buffed
-          20d533d3e06345c8bd7072212867f2d1
-          # locked
+          2
           >>> front_ant.damage
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -62,16 +54,14 @@ test = {
           >>> place.add_insect(impostor)
           >>> place.remove_insect(impostor)
           >>> place.ant is None         # Impostors can be removed
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
+          True
           >>> place.add_insect(queen)
           >>> place.remove_insect(queen)
           >>> place.ant is queen        # True queen cannot be removed
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
+          True
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -80,11 +70,10 @@ test = {
           >>> water = ants.Water('Water')
           >>> water.add_insect(queen)
           >>> queen.armor
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -109,27 +98,22 @@ test = {
           >>> side_tunnel[4].add_insect(side_bee)
           >>> queen.action(colony)
           >>> bee.armor
-          8b5f7651e8464d241749041812e40bfa
-          # locked
+          9
           >>> back.action(colony)
           >>> bee.armor
-          7cd035adf49fc93a635b4e8bb2e28bd4
-          # locked
+          7
           >>> front.action(colony)
           >>> bee.armor
-          50ae32be3e31df6c59633df7fdfb3a72
-          # locked
+          6
           >>> guard.action(colony)
           >>> bee.armor
-          c9452203eb0b0f0bd2454586a6c2fc5c
-          # locked
+          4
           >>> side.action(colony)
           >>> side_bee.armor
-          8b5f7651e8464d241749041812e40bfa
-          # locked
+          9
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,

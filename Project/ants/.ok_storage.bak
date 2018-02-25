@@ -9,3 +9,6 @@
 'Problem 9-correct', (4096, 70)
 'Problem 10-correct', (4608, 70)
 'Problem 11-correct', (5120, 70)
+'Problem 12-correct', (5632, 70)
+'Problem 13-correct', (6144, 70)
+'Problem EC-correct', (6656, 70)

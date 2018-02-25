@@ -10,20 +10,16 @@ test = {
           >>> slow = SlowThrower()
           >>> stun = StunThrower()
           >>> SlowThrower.food_cost
-          c9452203eb0b0f0bd2454586a6c2fc5c
-          # locked
+          4
           >>> StunThrower.food_cost
-          50ae32be3e31df6c59633df7fdfb3a72
-          # locked
+          6
           >>> slow.armor
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           >>> stun.armor
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -88,11 +84,10 @@ test = {
           ...        passed = False
           
           >>> passed
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
+          True
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -113,24 +108,20 @@ test = {
           >>> bee2.action(colony)
           
           >>> bee1.place.name
-          7f44338412808161209e944b1ee0f78c
-          # locked
+          'tunnel_0_1'
           >>> bee2.place.name
-          8344c19df8015306b462119efc8419cb
-          # locked
+          'tunnel_0_3'
           
           >>> bee1.action(colony)
           >>> bee2.action(colony)
           
           >>> bee1.place.name
-          3790e10c482a73d13ef2418977d50780
-          # locked
+          'tunnel_0_0'
           >>> bee2.place.name
-          ba5c35f55ba3229d1eb021382d9d19c5
-          # locked
+          'tunnel_0_2'
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -149,53 +140,45 @@ test = {
           >>> colony.time = 0
           >>> bee.action(colony) # stunned
           >>> bee.place.name
-          040b6ad98a7360eba8d493c250a9b82e
-          # locked
+          'tunnel_0_4'
           
           >>> colony.time = 1
           >>> bee.action(colony) # slowed thrice
           >>> bee.place.name
-          040b6ad98a7360eba8d493c250a9b82e
-          # locked
+          'tunnel_0_4'
           
           >>> colony.time = 2
           >>> bee.action(colony) # slowed thrice
           >>> bee.place.name
-          8344c19df8015306b462119efc8419cb
-          # locked
+          'tunnel_0_3'
           
           >>> colony.time = 3
           >>> bee.action(colony) # slowed twice
           >>> bee.place.name
-          8344c19df8015306b462119efc8419cb
-          # locked
+          'tunnel_0_3'
           
           >>> colony.time = 4
           >>> bee.action(colony) # slowed twice
           >>> bee.place.name
-          ba5c35f55ba3229d1eb021382d9d19c5
-          # locked
+          'tunnel_0_2'
           
           >>> colony.time = 5
           >>> bee.action(colony) # slowed once
           >>> bee.place.name
-          ba5c35f55ba3229d1eb021382d9d19c5
-          # locked
+          'tunnel_0_2'
           
           >>> colony.time = 6
           >>> bee.action(colony) # slowed once
           >>> bee.place.name
-          7f44338412808161209e944b1ee0f78c
-          # locked
+          'tunnel_0_1'
           
           >>> colony.time = 7
           >>> bee.action(colony) # status effects have worn off
           >>> slow.armor
-          73b94a1326ae2e803c3421016112207b
-          # locked
+          0
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,

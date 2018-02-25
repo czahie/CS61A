@@ -8,21 +8,17 @@ test = {
           'code': r"""
           >>> # Testing TankAnt parameters
           >>> TankAnt.food_cost
-          50ae32be3e31df6c59633df7fdfb3a72
-          # locked
+          6
           >>> TankAnt.damage
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           >>> TankAnt.container
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
+          True
           >>> tank = TankAnt()
           >>> tank.armor
-          20d533d3e06345c8bd7072212867f2d1
-          # locked
+          2
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -34,11 +30,10 @@ test = {
           ...     place.add_insect(Bee(3))
           >>> tank.action(colony)
           >>> [bee.armor for bee in place.bees]
-          1e9fbe7eba1518501fb016aa5a4a1650
-          # locked
+          [2, 2, 2]
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -49,17 +44,15 @@ test = {
           >>> place.add_insect(thrower)
           >>> place.add_insect(tank)
           >>> place.ant is tank
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
+          True
           >>> bee = Bee(3)
           >>> place.add_insect(bee)
           >>> tank.action(colony)   # Both ants attack bee
           >>> bee.armor
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
+          1
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,
@@ -84,11 +77,10 @@ test = {
           ...     place.add_insect(Bee(1))
           >>> tank.action(colony)
           >>> len(place.bees)
-          73b94a1326ae2e803c3421016112207b
-          # locked
+          0
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
