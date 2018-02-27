@@ -11,4 +11,5 @@ This project uses concepts from Sections [2.1](http://composingprograms.com/page
 
 ![*Let's go out to eat!
 Show me places I would like
-By learning my tastes.*](http://inst.eecs.berkeley.edu/~cs61a/fa17/proj/maps/visualize/voronoi.png)
+By learning my tastes.*][1]
+[1]:http://inst.eecs.berkeley.edu/~cs61a/fa17/proj/maps/visualize/voronoi.png
