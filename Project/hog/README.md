@@ -1,6 +1,6 @@
 Hog
 ===================
-CS61A project1
+CS61A project 1
 -------------------
 # Introduction
 In this project, you will develop a simulator and multiple strategies for the dice game Hog. You will need to use control statements and higher-order functions together, as described in Sections 1.2 through 1.6 of [Composing Programs](http://composingprograms.com).
