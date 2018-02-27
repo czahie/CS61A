@@ -1,0 +1,7 @@
+'deep_len-correct', (0, 70)
+'make_to_string-correct', (512, 70)
+'tree_map-correct', (1024, 70)
+'add_trees-correct', (1536, 70)
+'Keyboard-correct', (2048, 70)
+'make_advanced_counter_maker-correct', (2560, 70)
+'trade-correct', (3072, 70)

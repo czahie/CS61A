@@ -1,0 +1,30 @@
+{
+    "name": "Lab 8",
+    "endpoint": "cal/cs61a/fa17/lab08",
+    "src": [
+        "lab08.py"
+    ],
+    "tests": {
+        "tests/foobar.py": "ok_test",
+        "tests/attributes.py": "ok_test",
+        "lab08.py:deep_len": "doctest",
+        "lab08.py:make_to_string": "doctest",
+        "lab08.py:tree_map": "doctest",
+        "lab08.py:add_trees": "doctest",
+        "lab08_extra.py": "doctest"
+    },
+    "default_tests": [
+        "deep_len",
+        "make_to_string",
+        "tree_map",
+        "add_trees"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
