@@ -1,0 +1,3678 @@
+{
+  "checksum": "36781dfb5f99bbf5ae76510b8432b444",
+  "db": {
+    "dictAssessId2Info": {
+      ">>> class EvenNaturalsIterator():\n...     def __init__(self):\n...         self.current = 0\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return EvenNaturalsIterator()\n>>> evens = EvenNaturalsIterator()\n>>> even_iter1 = iter(evens)\n>>> even_iter2 = iter(evens)\n>>> next(even_iter1)\n0\n>>> next(even_iter1)\n2\n>>> next(even_iter1)\n4\n>>> next(even_iter2)\n0\n>>> next(even_iter2)\nLOCKED_ANSWER\n": {
+        "assessNum": "20",
+        "dictWA2DictInfo": {
+          "['0']": {
+            "dictTag2ConceptMsg": {
+              "nxtrtnsfirstval-iteratornext": "13"
+            },
+            "dictTag2KIMsg": {
+              "nxtrtnsfirstval": "31"
+            },
+            "lstMisU": [
+              "nxtrtnsfirstval",
+              "nxtrtnsfirstval-iteratornext"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['0']": [
+            [
+              "13",
+              "['2']"
+            ],
+            [
+              "15",
+              "['5']"
+            ],
+            [
+              "15",
+              "['8']"
+            ],
+            [
+              "17",
+              "['6']"
+            ],
+            [
+              "19",
+              "['3']"
+            ],
+            [
+              "20",
+              "['1']"
+            ],
+            [
+              "9",
+              "['12']"
+            ],
+            [
+              "9",
+              "['13']"
+            ]
+          ],
+          "['1']": [
+            [
+              "13",
+              "['4']"
+            ],
+            [
+              "14",
+              "['6']"
+            ],
+            [
+              "17",
+              "['1']"
+            ],
+            [
+              "20",
+              "['0']"
+            ]
+          ]
+        }
+      },
+      ">>> class EvenNaturalsIterator():\n...     def __init__(self):\n...         self.current = 0\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return EvenNaturalsIterator()\n>>> evens = EvenNaturalsIterator()\n>>> even_iter1 = iter(evens)\n>>> even_iter2 = iter(evens)\n>>> next(even_iter1)\n0\n>>> next(even_iter1)\n2\n>>> next(even_iter1)\n4\n>>> next(even_iter2)\nLOCKED_ANSWER\n>>> next(even_iter2)\nLOCKED_ANSWER\n": {
+        "assessNum": "19",
+        "dictWA2DictInfo": {
+          "['2']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy"
+            ]
+          },
+          "['6']": {
+            "dictTag2ConceptMsg": {
+              "itermustrtnself-iteratoriter": "11",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "itermustrtnself": "32",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "itermustrtnself",
+              "itermustrtnself-iteratoriter",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['3']": [
+            [
+              "20",
+              "['0']"
+            ]
+          ]
+        }
+      },
+      ">>> class EvenNaturalsIterator():\n...     def __init__(self):\n...         self.current = 0\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return EvenNaturalsIterator()\n>>> evens = EvenNaturalsIterator()\n>>> even_iter1 = iter(evens)\n>>> even_iter2 = iter(evens)\n>>> next(even_iter1)\n0\n>>> next(even_iter1)\nLOCKED_ANSWER\n>>> next(even_iter1)\nLOCKED_ANSWER\n>>> next(even_iter2)\nLOCKED_ANSWER\n>>> next(even_iter2)\nLOCKED_ANSWER\n": {
+        "assessNum": "18",
+        "dictWA2DictInfo": {
+          "['0']": {
+            "dictTag2ConceptMsg": {
+              "nxtrtnsfirstval-iteratornext": "13",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "nxtrtnsfirstval": "31",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "nxtrtnsfirstval",
+              "nxtrtnsfirstval-iteratornext",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['1']": [
+            [
+              "13",
+              "['4']"
+            ]
+          ]
+        }
+      },
+      ">>> class EvenNaturalsIterator():\n...     def __init__(self):\n...         self.current = 0\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return EvenNaturalsIterator()\n>>> evens = EvenNaturalsIterator()\n>>> even_iter1 = iter(evens)\n>>> even_iter2 = iter(evens)\n>>> next(even_iter1)\nLOCKED_ANSWER\n>>> next(even_iter1)\nLOCKED_ANSWER\n>>> next(even_iter1)\nLOCKED_ANSWER\n>>> next(even_iter2)\nLOCKED_ANSWER\n>>> next(even_iter2)\nLOCKED_ANSWER\n": {
+        "assessNum": "17",
+        "dictWA2DictInfo": {
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1",
+              "sloppyinc-sloppy": "1",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23",
+              "sloppyinc": "30",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy",
+              "sloppyinc",
+              "sloppyinc-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['2']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['1']": [
+            [
+              "15",
+              "['8']"
+            ],
+            [
+              "17",
+              "['12']"
+            ],
+            [
+              "17",
+              "['3']"
+            ],
+            [
+              "17",
+              "['5']"
+            ],
+            [
+              "17",
+              "['6']"
+            ],
+            [
+              "20",
+              "['1']"
+            ]
+          ],
+          "['12']": [
+            [
+              "14",
+              "['4']"
+            ],
+            [
+              "17",
+              "['1']"
+            ]
+          ],
+          "['3']": [
+            [
+              "17",
+              "['1']"
+            ]
+          ],
+          "['5']": [
+            [
+              "13",
+              "['4']"
+            ],
+            [
+              "17",
+              "['1']"
+            ]
+          ],
+          "['6']": [
+            [
+              "13",
+              "['4']"
+            ],
+            [
+              "14",
+              "['4']"
+            ],
+            [
+              "14",
+              "['6']"
+            ],
+            [
+              "17",
+              "['1']"
+            ],
+            [
+              "20",
+              "['0']"
+            ]
+          ]
+        }
+      },
+      ">>> class IteratorA:\n...    def __init__(self):\n...        self.start = 10\n...    def __next__(self):\n...        if self.start > 100:\n...            raise StopIteration\n...        self.start += 20\n...        return self.start\n...    def __iter__(self):\n...        return self\n>>> iterator = IteratorA()\n>>> [num for num in iterator]\nLOCKED_ANSWER\n>>> [num for num in iterator]\nLOCKED_ANSWER\n": {
+        "assessNum": "9",
+        "dictWA2DictInfo": {
+          "['0']": {
+            "dictTag2ConceptMsg": {
+              "lstcompnotrtnlst-listcomp": "2"
+            },
+            "dictTag2KIMsg": {
+              "lstcompnotrtnlst": "26"
+            },
+            "lstMisU": [
+              "lstcompnotrtnlst",
+              "lstcompnotrtnlst-listcomp"
+            ]
+          },
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "lstcompnotrtnlst-listcomp": "2"
+            },
+            "dictTag2KIMsg": {
+              "lstcompnotrtnlst": "26"
+            },
+            "lstMisU": [
+              "lstcompnotrtnlst",
+              "lstcompnotrtnlst-listcomp"
+            ]
+          },
+          "['10 30 50 70 90']": {
+            "dictTag2ConceptMsg": {
+              "lstdsntneedbrackets-pythonlistsyntax": "3",
+              "lstdsntneedcommas-pythonlistsyntax": "3",
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1",
+              "outoforderstopitervsinc-iteratornext": "13",
+              "outoforderstopitervsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "lstdsntneedbrackets": "28",
+              "lstdsntneedcommas": "28",
+              "outoforderrtnvsinc": "23",
+              "outoforderstopitervsinc": "24"
+            },
+            "lstMisU": [
+              "lstdsntneedbrackets",
+              "lstdsntneedbrackets-pythonlistsyntax",
+              "lstdsntneedcommas",
+              "lstdsntneedcommas-pythonlistsyntax",
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy",
+              "outoforderstopitervsinc",
+              "outoforderstopitervsinc-iteratornext",
+              "outoforderstopitervsinc-sloppy"
+            ]
+          },
+          "['10']": {
+            "dictTag2ConceptMsg": {
+              "lstcompnotrtnlst-listcomp": "2",
+              "lstcomprtnfirstval-listcomp": "2",
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "lstcompnotrtnlst": "26",
+              "lstcomprtnfirstval": "27",
+              "outoforderrtnvsinc": "23"
+            },
+            "lstMisU": [
+              "lstcompnotrtnlst",
+              "lstcompnotrtnlst-listcomp",
+              "lstcomprtnfirstval",
+              "lstcomprtnfirstval-listcomp",
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy"
+            ]
+          },
+          "['110']": {
+            "dictTag2ConceptMsg": {
+              "lstcompnotrtnlst-listcomp": "2",
+              "lstcomprtnlastval-listcomp": "2"
+            },
+            "dictTag2KIMsg": {
+              "lstcompnotrtnlst": "26",
+              "lstcomprtnlastval": "27"
+            },
+            "lstMisU": [
+              "lstcompnotrtnlst",
+              "lstcompnotrtnlst-listcomp",
+              "lstcomprtnlastval",
+              "lstcomprtnlastval-listcomp"
+            ]
+          },
+          "['2']": {
+            "dictTag2ConceptMsg": {
+              "lstcompnotrtnlst-listcomp": "2"
+            },
+            "dictTag2KIMsg": {
+              "lstcompnotrtnlst": "26"
+            },
+            "lstMisU": [
+              "lstcompnotrtnlst",
+              "lstcompnotrtnlst-listcomp"
+            ]
+          },
+          "['20']": {
+            "dictTag2ConceptMsg": {
+              "lstcompnotrtnlst-listcomp": "2",
+              "sloppyinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "lstcompnotrtnlst": "26",
+              "sloppyinc": "30"
+            },
+            "lstMisU": [
+              "lstcompnotrtnlst",
+              "lstcompnotrtnlst-listcomp",
+              "sloppyinc",
+              "sloppyinc-sloppy"
+            ]
+          },
+          "['30']": {
+            "dictTag2ConceptMsg": {
+              "lstcompnotrtnlst-listcomp": "2",
+              "lstcomprtnfirstval-listcomp": "2"
+            },
+            "dictTag2KIMsg": {
+              "lstcompnotrtnlst": "26",
+              "lstcomprtnfirstval": "27"
+            },
+            "lstMisU": [
+              "lstcompnotrtnlst",
+              "lstcompnotrtnlst-listcomp",
+              "lstcomprtnfirstval",
+              "lstcomprtnfirstval-listcomp"
+            ]
+          },
+          "['50']": {
+            "dictTag2ConceptMsg": {
+              "lstcompnotrtnlst-listcomp": "2"
+            },
+            "dictTag2KIMsg": {
+              "lstcompnotrtnlst": "26"
+            },
+            "lstMisU": [
+              "lstcompnotrtnlst",
+              "lstcompnotrtnlst-listcomp"
+            ]
+          },
+          "['90']": {
+            "dictTag2ConceptMsg": {
+              "lstcompnotrtnlst-listcomp": "2",
+              "lstcomprtnlastval-listcomp": "2",
+              "outoforderstopitervsinc-iteratornext": "13",
+              "outoforderstopitervsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "lstcompnotrtnlst": "26",
+              "lstcomprtnlastval": "27",
+              "outoforderstopitervsinc": "24"
+            },
+            "lstMisU": [
+              "lstcompnotrtnlst",
+              "lstcompnotrtnlst-listcomp",
+              "lstcomprtnlastval",
+              "lstcomprtnlastval-listcomp",
+              "outoforderstopitervsinc",
+              "outoforderstopitervsinc-iteratornext",
+              "outoforderstopitervsinc-sloppy"
+            ]
+          },
+          "['StopIteration']": {
+            "dictTag2ConceptMsg": {
+              "forloopdsntcatchstopitrerr-stopiterationerror": "14"
+            },
+            "dictTag2KIMsg": {
+              "forloopdsntcatchstopitrerr": "29"
+            },
+            "lstMisU": [
+              "forloopdsntcatchstopitrerr",
+              "forloopdsntcatchstopitrerr-stopiterationerror"
+            ]
+          },
+          "['[10 30 50 70 90 110]']": {
+            "dictTag2ConceptMsg": {
+              "lstdsntneedcommas-pythonlistsyntax": "3",
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "lstdsntneedcommas": "28",
+              "outoforderrtnvsinc": "23"
+            },
+            "lstMisU": [
+              "lstdsntneedcommas",
+              "lstdsntneedcommas-pythonlistsyntax",
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy"
+            ]
+          },
+          "['[10 30 50 70 90]']": {
+            "dictTag2ConceptMsg": {
+              "lstdsntneedcommas-pythonlistsyntax": "3",
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1",
+              "outoforderstopitervsinc-iteratornext": "13",
+              "outoforderstopitervsinc-sloppy": "1",
+              "sloppyifcondition-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "lstdsntneedcommas": "28",
+              "outoforderrtnvsinc": "23",
+              "outoforderstopitervsinc": "24",
+              "sloppyifcondition": "25"
+            },
+            "lstMisU": [
+              "lstdsntneedcommas",
+              "lstdsntneedcommas-pythonlistsyntax",
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy",
+              "outoforderstopitervsinc",
+              "outoforderstopitervsinc-iteratornext",
+              "outoforderstopitervsinc-sloppy",
+              "sloppyifcondition",
+              "sloppyifcondition-sloppy"
+            ]
+          },
+          "['[10, 30, 50, 70, 90, 110]']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy"
+            ]
+          },
+          "['[10, 30, 50, 70, 90]']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1",
+              "outoforderstopitervsinc-iteratornext": "13",
+              "outoforderstopitervsinc-sloppy": "1",
+              "sloppyifcondition-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23",
+              "outoforderstopitervsinc": "24",
+              "sloppyifcondition": "25"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy",
+              "outoforderstopitervsinc",
+              "outoforderstopitervsinc-iteratornext",
+              "outoforderstopitervsinc-sloppy",
+              "sloppyifcondition",
+              "sloppyifcondition-sloppy"
+            ]
+          },
+          "['[10,30,50,70,90,110]']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy"
+            ]
+          },
+          "['[10,30,50,70,90]']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1",
+              "outoforderstopitervsinc-iteratornext": "13",
+              "outoforderstopitervsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23",
+              "outoforderstopitervsinc": "24"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy",
+              "outoforderstopitervsinc",
+              "outoforderstopitervsinc-iteratornext",
+              "outoforderstopitervsinc-sloppy"
+            ]
+          },
+          "['[10]']": {
+            "dictTag2ConceptMsg": {
+              "lstcomprtnfirstval-listcomp": "2",
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "lstcomprtnfirstval": "27",
+              "outoforderrtnvsinc": "23"
+            },
+            "lstMisU": [
+              "lstcomprtnfirstval",
+              "lstcomprtnfirstval-listcomp",
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy"
+            ]
+          },
+          "['[110]']": {
+            "dictTag2ConceptMsg": {
+              "lstcomprtnlastval-listcomp": "2"
+            },
+            "dictTag2KIMsg": {
+              "lstcomprtnlastval": "27"
+            },
+            "lstMisU": [
+              "lstcomprtnlastval",
+              "lstcomprtnlastval-listcomp"
+            ]
+          },
+          "['[30 50 70 90 110]']": {
+            "dictTag2ConceptMsg": {
+              "lstdsntneedcommas-pythonlistsyntax": "3"
+            },
+            "dictTag2KIMsg": {
+              "lstdsntneedcommas": "28"
+            },
+            "lstMisU": [
+              "lstdsntneedcommas",
+              "lstdsntneedcommas-pythonlistsyntax"
+            ]
+          },
+          "['[30 50 70 90]']": {
+            "dictTag2ConceptMsg": {
+              "lstdsntneedcommas-pythonlistsyntax": "3",
+              "outoforderstopitervsinc-iteratornext": "13",
+              "outoforderstopitervsinc-sloppy": "1",
+              "sloppyifcondition-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "lstdsntneedcommas": "28",
+              "outoforderstopitervsinc": "24",
+              "sloppyifcondition": "25"
+            },
+            "lstMisU": [
+              "lstdsntneedcommas",
+              "lstdsntneedcommas-pythonlistsyntax",
+              "outoforderstopitervsinc",
+              "outoforderstopitervsinc-iteratornext",
+              "outoforderstopitervsinc-sloppy",
+              "sloppyifcondition",
+              "sloppyifcondition-sloppy"
+            ]
+          },
+          "['[30, 50, 70, 90]']": {
+            "dictTag2ConceptMsg": {
+              "outoforderstopitervsinc-iteratornext": "13",
+              "outoforderstopitervsinc-sloppy": "1",
+              "sloppyifcondition-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderstopitervsinc": "24",
+              "sloppyifcondition": "25"
+            },
+            "lstMisU": [
+              "outoforderstopitervsinc",
+              "outoforderstopitervsinc-iteratornext",
+              "outoforderstopitervsinc-sloppy",
+              "sloppyifcondition",
+              "sloppyifcondition-sloppy"
+            ]
+          },
+          "['[30,50,70,90]']": {
+            "dictTag2ConceptMsg": {
+              "outoforderstopitervsinc-iteratornext": "13",
+              "outoforderstopitervsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderstopitervsinc": "24"
+            },
+            "lstMisU": [
+              "outoforderstopitervsinc",
+              "outoforderstopitervsinc-iteratornext",
+              "outoforderstopitervsinc-sloppy"
+            ]
+          },
+          "['[30]']": {
+            "dictTag2ConceptMsg": {
+              "lstcomprtnfirstval-listcomp": "2"
+            },
+            "dictTag2KIMsg": {
+              "lstcomprtnfirstval": "27"
+            },
+            "lstMisU": [
+              "lstcomprtnfirstval",
+              "lstcomprtnfirstval-listcomp"
+            ]
+          },
+          "['[90]']": {
+            "dictTag2ConceptMsg": {
+              "lstcomprtnlastval-listcomp": "2",
+              "outoforderstopitervsinc-iteratornext": "13",
+              "outoforderstopitervsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "lstcomprtnlastval": "27",
+              "outoforderstopitervsinc": "24"
+            },
+            "lstMisU": [
+              "lstcomprtnlastval",
+              "lstcomprtnlastval-listcomp",
+              "outoforderstopitervsinc",
+              "outoforderstopitervsinc-iteratornext",
+              "outoforderstopitervsinc-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['0']": [
+            [
+              "9",
+              "['13']"
+            ],
+            [
+              "9",
+              "['3']"
+            ],
+            [
+              "9",
+              "['4']"
+            ],
+            [
+              "9",
+              "['5']"
+            ],
+            [
+              "9",
+              "['6']"
+            ],
+            [
+              "9",
+              "['7']"
+            ],
+            [
+              "9",
+              "['70']"
+            ],
+            [
+              "9",
+              "['8']"
+            ],
+            [
+              "9",
+              "['9']"
+            ]
+          ],
+          "['1']": [
+            [
+              "9",
+              "['11']"
+            ],
+            [
+              "9",
+              "['13']"
+            ],
+            [
+              "9",
+              "['3']"
+            ],
+            [
+              "9",
+              "['4']"
+            ],
+            [
+              "9",
+              "['5']"
+            ],
+            [
+              "9",
+              "['6']"
+            ],
+            [
+              "9",
+              "['7']"
+            ],
+            [
+              "9",
+              "['8']"
+            ],
+            [
+              "9",
+              "['9']"
+            ]
+          ],
+          "['10 30 50 70 90']": [
+            [
+              "9",
+              "['30 50 70 90']"
+            ]
+          ],
+          "['100']": [
+            [
+              "9",
+              "['90']"
+            ]
+          ],
+          "['11']": [
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['2']"
+            ]
+          ],
+          "['110']": [
+            [
+              "9",
+              "['70']"
+            ]
+          ],
+          "['12']": [
+            [
+              "20",
+              "['0']"
+            ]
+          ],
+          "['13']": [
+            [
+              "20",
+              "['0']"
+            ],
+            [
+              "9",
+              "['0']"
+            ],
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['20']"
+            ]
+          ],
+          "['2']": [
+            [
+              "9",
+              "['11']"
+            ],
+            [
+              "9",
+              "['3']"
+            ],
+            [
+              "9",
+              "['4']"
+            ],
+            [
+              "9",
+              "['5']"
+            ],
+            [
+              "9",
+              "['6']"
+            ],
+            [
+              "9",
+              "['7']"
+            ],
+            [
+              "9",
+              "['8']"
+            ],
+            [
+              "9",
+              "['9']"
+            ],
+            [
+              "9",
+              "['num']"
+            ]
+          ],
+          "['20']": [
+            [
+              "9",
+              "['13']"
+            ],
+            [
+              "9",
+              "['3']"
+            ],
+            [
+              "9",
+              "['4']"
+            ],
+            [
+              "9",
+              "['40']"
+            ],
+            [
+              "9",
+              "['5']"
+            ],
+            [
+              "9",
+              "['6']"
+            ],
+            [
+              "9",
+              "['7']"
+            ],
+            [
+              "9",
+              "['8']"
+            ],
+            [
+              "9",
+              "['9']"
+            ]
+          ],
+          "['3']": [
+            [
+              "9",
+              "['0']"
+            ],
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['2']"
+            ],
+            [
+              "9",
+              "['20']"
+            ]
+          ],
+          "['30 50 70 90']": [
+            [
+              "9",
+              "['10 30 50 70 90']"
+            ]
+          ],
+          "['30']": [
+            [
+              "9",
+              "['70']"
+            ]
+          ],
+          "['4']": [
+            [
+              "9",
+              "['0']"
+            ],
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['2']"
+            ],
+            [
+              "9",
+              "['20']"
+            ]
+          ],
+          "['40']": [
+            [
+              "9",
+              "['20']"
+            ]
+          ],
+          "['5']": [
+            [
+              "9",
+              "['0']"
+            ],
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['2']"
+            ],
+            [
+              "9",
+              "['20']"
+            ]
+          ],
+          "['50']": [
+            [
+              "9",
+              "['70']"
+            ]
+          ],
+          "['6']": [
+            [
+              "9",
+              "['0']"
+            ],
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['2']"
+            ],
+            [
+              "9",
+              "['20']"
+            ]
+          ],
+          "['7']": [
+            [
+              "9",
+              "['0']"
+            ],
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['2']"
+            ],
+            [
+              "9",
+              "['20']"
+            ]
+          ],
+          "['70']": [
+            [
+              "9",
+              "['0']"
+            ],
+            [
+              "9",
+              "['110']"
+            ],
+            [
+              "9",
+              "['30']"
+            ],
+            [
+              "9",
+              "['50']"
+            ],
+            [
+              "9",
+              "['90']"
+            ]
+          ],
+          "['8']": [
+            [
+              "9",
+              "['0']"
+            ],
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['2']"
+            ],
+            [
+              "9",
+              "['20']"
+            ]
+          ],
+          "['9']": [
+            [
+              "9",
+              "['0']"
+            ],
+            [
+              "9",
+              "['1']"
+            ],
+            [
+              "9",
+              "['2']"
+            ],
+            [
+              "9",
+              "['20']"
+            ]
+          ],
+          "['90']": [
+            [
+              "9",
+              "['100']"
+            ],
+            [
+              "9",
+              "['70']"
+            ]
+          ],
+          "['num']": [
+            [
+              "9",
+              "['2']"
+            ]
+          ]
+        }
+      },
+      ">>> class IteratorA:\n...    def __init__(self):\n...        self.start = 10\n...    def __next__(self):\n...        if self.start > 100:\n...            raise StopIteration\n...        self.start += 20\n...        return self.start\n...    def __iter__(self):\n...        return self\n>>> iterator = IteratorA()\n>>> [num for num in iterator]\n[30, 50, 70, 90, 110]\n>>> [num for num in iterator]\nLOCKED_ANSWER\n": {
+        "assessNum": "10",
+        "dictWA2DictInfo": {
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "forloopdsntcatchstopitrerr-stopiterationerror": "14"
+            },
+            "dictTag2KIMsg": {
+              "forloopdsntcatchstopitrerr": "29"
+            },
+            "lstMisU": [
+              "forloopdsntcatchstopitrerr",
+              "forloopdsntcatchstopitrerr-stopiterationerror"
+            ]
+          },
+          "['None']": {
+            "dictTag2ConceptMsg": {
+              "lstcompnotrtnlst-listcomp": "2"
+            },
+            "dictTag2KIMsg": {
+              "lstcompnotrtnlst": "26"
+            },
+            "lstMisU": [
+              "lstcompnotrtnlst",
+              "lstcompnotrtnlst-listcomp"
+            ]
+          },
+          "['StopIteration']": {
+            "dictTag2ConceptMsg": {
+              "forloopdsntcatchstopitrerr-stopiterationerror": "14"
+            },
+            "dictTag2KIMsg": {
+              "forloopdsntcatchstopitrerr": "29"
+            },
+            "lstMisU": [
+              "forloopdsntcatchstopitrerr",
+              "forloopdsntcatchstopitrerr-stopiterationerror"
+            ]
+          },
+          "['[110]']": {
+            "dictTag2ConceptMsg": {
+              "stopiterrtnrecentval-iteratornext": "13"
+            },
+            "dictTag2KIMsg": {
+              "stopiterrtnrecentval": "31"
+            },
+            "lstMisU": [
+              "stopiterrtnrecentval",
+              "stopiterrtnrecentval-iteratornext"
+            ]
+          },
+          "['[30, 50, 70, 90, 110]']": {
+            "dictTag2ConceptMsg": {
+              "startsoverafterstopiter-iteratornextstop": "12"
+            },
+            "dictTag2KIMsg": {
+              "startsoverafterstopiter": "31"
+            },
+            "lstMisU": [
+              "startsoverafterstopiter",
+              "startsoverafterstopiter-iteratornextstop"
+            ]
+          },
+          "['[30,50,70,90,110]']": {
+            "dictTag2ConceptMsg": {
+              "startsoverafterstopiter-iteratornextstop": "12"
+            },
+            "dictTag2KIMsg": {
+              "startsoverafterstopiter": "31"
+            },
+            "lstMisU": [
+              "startsoverafterstopiter",
+              "startsoverafterstopiter-iteratornextstop"
+            ]
+          },
+          "['[50, 70, 90, 110]']": {
+            "dictTag2ConceptMsg": {
+              "startsoverafterstopiter-iteratornextstop": "12"
+            },
+            "dictTag2KIMsg": {
+              "startsoverafterstopiter": "31"
+            },
+            "lstMisU": [
+              "startsoverafterstopiter",
+              "startsoverafterstopiter-iteratornextstop"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['110']": [
+            [
+              "10",
+              "['[110]']"
+            ]
+          ],
+          "['30']": [
+            [
+              "10",
+              "['[50, 70, 90, 110]']"
+            ]
+          ],
+          "['[110]']": [
+            [
+              "10",
+              "['110']"
+            ],
+            [
+              "10",
+              "['[130]']"
+            ]
+          ],
+          "['[130]']": [
+            [
+              "10",
+              "['[110]']"
+            ]
+          ],
+          "['[50, 70, 90, 110]']": [
+            [
+              "10",
+              "['30']"
+            ]
+          ]
+        }
+      },
+      ">>> class OddNaturalsIterator():\n...     def __init__(self):\n...         self.current = 1\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return self\n>>> odds = OddNaturalsIterator()\n>>> odd_iter1 = iter(odds)\n>>> odd_iter2 = iter(odds)\n>>> next(odd_iter1)\n1\n>>> next(odd_iter1)\n3\n>>> next(odd_iter1)\n5\n>>> next(odd_iter2)\n7\n>>> next(odd_iter1)\n9\n>>> next(odd_iter2)\nLOCKED_ANSWER\n": {
+        "assessNum": "16",
+        "dictWA2DictInfo": {
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "itermustrtnnewinst-iteratoriter": "11",
+              "nxtrtnsfirstval-iteratornext": "13",
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "itermustrtnnewinst": "32",
+              "nxtrtnsfirstval": "31",
+              "outoforderrtnvsinc": "23"
+            },
+            "lstMisU": [
+              "itermustrtnnewinst",
+              "itermustrtnnewinst-iteratoriter",
+              "nxtrtnsfirstval",
+              "nxtrtnsfirstval-iteratornext",
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['0']": [
+            [
+              "14",
+              "['6']"
+            ]
+          ],
+          "['1']": [
+            [
+              "15",
+              "['3']"
+            ],
+            [
+              "16",
+              "['5']"
+            ],
+            [
+              "16",
+              "['7']"
+            ],
+            [
+              "16",
+              "['9']"
+            ]
+          ],
+          "['2']": [
+            [
+              "13",
+              "['4']"
+            ],
+            [
+              "14",
+              "['6']"
+            ]
+          ],
+          "['5']": [
+            [
+              "13",
+              "['4']"
+            ],
+            [
+              "14",
+              "['6']"
+            ],
+            [
+              "15",
+              "['1']"
+            ],
+            [
+              "15",
+              "['7']"
+            ],
+            [
+              "16",
+              "['1']"
+            ]
+          ],
+          "['7']": [
+            [
+              "13",
+              "['4']"
+            ],
+            [
+              "14",
+              "['6']"
+            ],
+            [
+              "15",
+              "['1']"
+            ],
+            [
+              "15",
+              "['7']"
+            ],
+            [
+              "16",
+              "['1']"
+            ]
+          ],
+          "['9']": [
+            [
+              "15",
+              "['1']"
+            ],
+            [
+              "16",
+              "['1']"
+            ]
+          ]
+        }
+      },
+      ">>> class OddNaturalsIterator():\n...     def __init__(self):\n...         self.current = 1\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return self\n>>> odds = OddNaturalsIterator()\n>>> odd_iter1 = iter(odds)\n>>> odd_iter2 = iter(odds)\n>>> next(odd_iter1)\n1\n>>> next(odd_iter1)\n3\n>>> next(odd_iter1)\n5\n>>> next(odd_iter2)\n7\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n": {
+        "assessNum": "15",
+        "dictWA2DictInfo": {
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "nxtrtnsfirstval-iteratornext": "13"
+            },
+            "dictTag2KIMsg": {
+              "nxtrtnsfirstval": "31"
+            },
+            "lstMisU": [
+              "nxtrtnsfirstval",
+              "nxtrtnsfirstval-iteratornext"
+            ]
+          },
+          "['7']": {
+            "dictTag2ConceptMsg": {
+              "itermustrtnnewinst-iteratoriter": "11",
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "itermustrtnnewinst": "32",
+              "outoforderrtnvsinc": "23",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "itermustrtnnewinst",
+              "itermustrtnnewinst-iteratoriter",
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['1']": [
+            [
+              "15",
+              "['3']"
+            ],
+            [
+              "15",
+              "['5']"
+            ],
+            [
+              "16",
+              "['5']"
+            ],
+            [
+              "16",
+              "['7']"
+            ],
+            [
+              "16",
+              "['9']"
+            ]
+          ],
+          "['3']": [
+            [
+              "13",
+              "['4']"
+            ],
+            [
+              "15",
+              "['1']"
+            ],
+            [
+              "15",
+              "['7']"
+            ],
+            [
+              "16",
+              "['1']"
+            ]
+          ],
+          "['5']": [
+            [
+              "13",
+              "['4']"
+            ],
+            [
+              "15",
+              "['1']"
+            ],
+            [
+              "15",
+              "['7']"
+            ],
+            [
+              "20",
+              "['0']"
+            ]
+          ],
+          "['7']": [
+            [
+              "15",
+              "['3']"
+            ],
+            [
+              "15",
+              "['5']"
+            ],
+            [
+              "16",
+              "['5']"
+            ],
+            [
+              "16",
+              "['7']"
+            ]
+          ],
+          "['8']": [
+            [
+              "12",
+              "['2']"
+            ],
+            [
+              "13",
+              "['1']"
+            ],
+            [
+              "13",
+              "['4']"
+            ],
+            [
+              "14",
+              "['6']"
+            ],
+            [
+              "17",
+              "['1']"
+            ],
+            [
+              "20",
+              "['0']"
+            ]
+          ]
+        }
+      },
+      ">>> class OddNaturalsIterator():\n...     def __init__(self):\n...         self.current = 1\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return self\n>>> odds = OddNaturalsIterator()\n>>> odd_iter1 = iter(odds)\n>>> odd_iter2 = iter(odds)\n>>> next(odd_iter1)\n1\n>>> next(odd_iter1)\n3\n>>> next(odd_iter1)\n5\n>>> next(odd_iter2)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n": {
+        "assessNum": "14",
+        "dictWA2DictInfo": {
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "itermustrtnnewinst-iteratoriter": "11",
+              "nxtrtnsfirstval-iteratornext": "13"
+            },
+            "dictTag2KIMsg": {
+              "itermustrtnnewinst": "32",
+              "nxtrtnsfirstval": "31"
+            },
+            "lstMisU": [
+              "itermustrtnnewinst",
+              "itermustrtnnewinst-iteratoriter",
+              "nxtrtnsfirstval",
+              "nxtrtnsfirstval-iteratornext"
+            ]
+          },
+          "['2']": {
+            "dictTag2ConceptMsg": {
+              "sloppyinc-sloppy": "1",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "sloppyinc": "30",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "sloppyinc",
+              "sloppyinc-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['3']": {
+            "dictTag2ConceptMsg": {
+              "itermustrtnnewinst-iteratoriter": "11",
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "itermustrtnnewinst": "32",
+              "outoforderrtnvsinc": "23",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "itermustrtnnewinst",
+              "itermustrtnnewinst-iteratoriter",
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['4']": {
+            "dictTag2ConceptMsg": {
+              "sloppyinc-sloppy": "1",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "sloppyinc": "30",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "sloppyinc",
+              "sloppyinc-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['5']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['6']": {
+            "dictTag2ConceptMsg": {
+              "sloppyinc-sloppy": "1",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "sloppyinc": "30",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "sloppyinc",
+              "sloppyinc-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['0']": [
+            [
+              "14",
+              "['2']"
+            ]
+          ],
+          "['2']": [
+            [
+              "14",
+              "['0']"
+            ]
+          ],
+          "['4']": [
+            [
+              "17",
+              "['12']"
+            ],
+            [
+              "17",
+              "['6']"
+            ]
+          ],
+          "['6']": [
+            [
+              "13",
+              "['2']"
+            ],
+            [
+              "15",
+              "['8']"
+            ],
+            [
+              "16",
+              "['0']"
+            ],
+            [
+              "16",
+              "['2']"
+            ],
+            [
+              "16",
+              "['5']"
+            ],
+            [
+              "16",
+              "['7']"
+            ],
+            [
+              "17",
+              "['6']"
+            ],
+            [
+              "20",
+              "['1']"
+            ]
+          ]
+        }
+      },
+      ">>> class OddNaturalsIterator():\n...     def __init__(self):\n...         self.current = 1\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return self\n>>> odds = OddNaturalsIterator()\n>>> odd_iter1 = iter(odds)\n>>> odd_iter2 = iter(odds)\n>>> next(odd_iter1)\n1\n>>> next(odd_iter1)\n3\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n": {
+        "assessNum": "13",
+        "dictWA2DictInfo": {
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "nxtrtnsfirstval-iteratornext": "13"
+            },
+            "dictTag2KIMsg": {
+              "nxtrtnsfirstval": "31"
+            },
+            "lstMisU": [
+              "nxtrtnsfirstval",
+              "nxtrtnsfirstval-iteratornext"
+            ]
+          },
+          "['4']": {
+            "dictTag2ConceptMsg": {
+              "sloppyinc-sloppy": "1",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "sloppyinc": "30",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "sloppyinc",
+              "sloppyinc-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['1']": [
+            [
+              "13",
+              "['2']"
+            ],
+            [
+              "13",
+              "['3']"
+            ],
+            [
+              "15",
+              "['8']"
+            ]
+          ],
+          "['2']": [
+            [
+              "12",
+              "['2']"
+            ],
+            [
+              "13",
+              "['1']"
+            ],
+            [
+              "13",
+              "['4']"
+            ],
+            [
+              "14",
+              "['6']"
+            ],
+            [
+              "20",
+              "['0']"
+            ]
+          ],
+          "['3']": [
+            [
+              "13",
+              "['1']"
+            ],
+            [
+              "13",
+              "['4']"
+            ]
+          ],
+          "['4']": [
+            [
+              "12",
+              "['0']"
+            ],
+            [
+              "13",
+              "['2']"
+            ],
+            [
+              "13",
+              "['3']"
+            ],
+            [
+              "15",
+              "['3']"
+            ],
+            [
+              "15",
+              "['5']"
+            ],
+            [
+              "15",
+              "['8']"
+            ],
+            [
+              "16",
+              "['2']"
+            ],
+            [
+              "16",
+              "['5']"
+            ],
+            [
+              "16",
+              "['7']"
+            ],
+            [
+              "17",
+              "['5']"
+            ],
+            [
+              "17",
+              "['6']"
+            ],
+            [
+              "18",
+              "['1']"
+            ],
+            [
+              "20",
+              "['1']"
+            ]
+          ]
+        }
+      },
+      ">>> class OddNaturalsIterator():\n...     def __init__(self):\n...         self.current = 1\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return self\n>>> odds = OddNaturalsIterator()\n>>> odd_iter1 = iter(odds)\n>>> odd_iter2 = iter(odds)\n>>> next(odd_iter1)\n1\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n": {
+        "assessNum": "12",
+        "dictWA2DictInfo": {
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "nxtrtnsfirstval-iteratornext": "13"
+            },
+            "dictTag2KIMsg": {
+              "nxtrtnsfirstval": "31"
+            },
+            "lstMisU": [
+              "nxtrtnsfirstval",
+              "nxtrtnsfirstval-iteratornext"
+            ]
+          },
+          "['2']": {
+            "dictTag2ConceptMsg": {
+              "sloppyinc-sloppy": "1",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "sloppyinc": "30",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "sloppyinc",
+              "sloppyinc-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['0']": [
+            [
+              "12",
+              "['1']"
+            ],
+            [
+              "12",
+              "['2']"
+            ],
+            [
+              "13",
+              "['4']"
+            ]
+          ],
+          "['1']": [
+            [
+              "12",
+              "['0']"
+            ]
+          ],
+          "['2']": [
+            [
+              "12",
+              "['0']"
+            ],
+            [
+              "13",
+              "['2']"
+            ],
+            [
+              "15",
+              "['8']"
+            ]
+          ]
+        }
+      },
+      ">>> class OddNaturalsIterator():\n...     def __init__(self):\n...         self.current = 1\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return self\n>>> odds = OddNaturalsIterator()\n>>> odd_iter1 = iter(odds)\n>>> odd_iter2 = iter(odds)\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n": {
+        "assessNum": "11",
+        "dictWA2DictInfo": {
+          "['2']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['3']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy"
+            ]
+          },
+          "['5']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['7']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['[3]']": {
+            "dictTag2ConceptMsg": {
+              "outoforderrtnvsinc-iteratornext": "13",
+              "outoforderrtnvsinc-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "outoforderrtnvsinc": "23"
+            },
+            "lstMisU": [
+              "outoforderrtnvsinc",
+              "outoforderrtnvsinc-iteratornext",
+              "outoforderrtnvsinc-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['2']": [
+            [
+              "11",
+              "['4']"
+            ]
+          ],
+          "['4']": [
+            [
+              "11",
+              "['2']"
+            ]
+          ],
+          "['5']": [
+            [
+              "11",
+              "['9']"
+            ]
+          ],
+          "['7']": [
+            [
+              "11",
+              "['9']"
+            ]
+          ],
+          "['9']": [
+            [
+              "11",
+              "['5']"
+            ],
+            [
+              "11",
+              "['7']"
+            ]
+          ],
+          "['[1, 3]']": [
+            [
+              "11",
+              "['[3]']"
+            ]
+          ],
+          "['[3]']": [
+            [
+              "11",
+              "['[1, 3]']"
+            ]
+          ]
+        }
+      },
+      ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nLOCKED_ANSWER\n>>> link.first = 9001\n>>> link.first\nLOCKED_ANSWER\n>>> link.rest = link.rest.rest\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\nLOCKED_ANSWER\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n": {
+        "assessNum": "2",
+        "dictWA2DictInfo": {
+          "[\"'This linked list is empty!'\"]": {
+            "dictTag2ConceptMsg": {
+              "isrtnvalisnotbool-isoperator": "5"
+            },
+            "dictTag2KIMsg": {
+              "isrtnvalisnotbool": "16"
+            },
+            "lstMisU": [
+              "isrtnvalisnotbool",
+              "isrtnvalisnotbool-isoperator"
+            ]
+          },
+          "['()']": {
+            "dictTag2ConceptMsg": {
+              "isrtnvalisnotbool-isoperator": "5"
+            },
+            "dictTag2KIMsg": {
+              "isrtnvalisnotbool": "16"
+            },
+            "lstMisU": [
+              "isrtnvalisnotbool",
+              "isrtnvalisnotbool-isoperator"
+            ]
+          },
+          "['0']": {
+            "dictTag2ConceptMsg": {
+              "isrtnvalisnotbool-isoperator": "5"
+            },
+            "dictTag2KIMsg": {
+              "isrtnvalisnotbool": "16"
+            },
+            "lstMisU": [
+              "isrtnvalisnotbool",
+              "isrtnvalisnotbool-isoperator"
+            ]
+          },
+          "['3']": {
+            "dictTag2ConceptMsg": {
+              "isrtnvalisnotbool-isoperator": "5"
+            },
+            "dictTag2KIMsg": {
+              "isrtnvalisnotbool": "16"
+            },
+            "lstMisU": [
+              "isrtnvalisnotbool",
+              "isrtnvalisnotbool-isoperator"
+            ]
+          },
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "isrtnvalisnotbool-isoperator": "5"
+            },
+            "dictTag2KIMsg": {
+              "isrtnvalisnotbool": "16"
+            },
+            "lstMisU": [
+              "isrtnvalisnotbool",
+              "isrtnvalisnotbool-isoperator"
+            ]
+          },
+          "['This linked list is empty!']": {
+            "dictTag2ConceptMsg": {
+              "isrtnvalisnotbool-isoperator": "5"
+            },
+            "dictTag2KIMsg": {
+              "isrtnvalisnotbool": "16"
+            },
+            "lstMisU": [
+              "isrtnvalisnotbool",
+              "isrtnvalisnotbool-isoperator"
+            ]
+          },
+          "['This linked list is not empty!']": {
+            "dictTag2ConceptMsg": {
+              "isrtnvalisnotbool-isoperator": "5"
+            },
+            "dictTag2KIMsg": {
+              "isrtnvalisnotbool": "16"
+            },
+            "lstMisU": [
+              "isrtnvalisnotbool",
+              "isrtnvalisnotbool-isoperator"
+            ]
+          },
+          "['empty']": {
+            "dictTag2ConceptMsg": {
+              "isrtnvalisnotbool-isoperator": "5"
+            },
+            "dictTag2KIMsg": {
+              "isrtnvalisnotbool": "16"
+            },
+            "lstMisU": [
+              "isrtnvalisnotbool",
+              "isrtnvalisnotbool-isoperator"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "[\"'This linked list is empty!'\"]": [
+            [
+              "2",
+              "['Link.empty']"
+            ],
+            [
+              "2",
+              "['[]']"
+            ]
+          ],
+          "[\"'This linked list is not empty!'\"]": [
+            [
+              "2",
+              "['This linked list is empty!']"
+            ],
+            [
+              "2",
+              "['This linked list is not empty!']"
+            ],
+            [
+              "2",
+              "['empty']"
+            ]
+          ],
+          "['']": [
+            [
+              "2",
+              "['0']"
+            ],
+            [
+              "2",
+              "['empty']"
+            ]
+          ],
+          "['()']": [
+            [
+              "1",
+              "['Error']"
+            ],
+            [
+              "2",
+              "['Empty']"
+            ],
+            [
+              "2",
+              "['Link.empty']"
+            ],
+            [
+              "2",
+              "['None']"
+            ],
+            [
+              "2",
+              "['[]']"
+            ]
+          ],
+          "['0']": [
+            [
+              "2",
+              "['']"
+            ],
+            [
+              "2",
+              "['1']"
+            ],
+            [
+              "2",
+              "['Empty']"
+            ],
+            [
+              "2",
+              "['Link.empty']"
+            ],
+            [
+              "2",
+              "['None']"
+            ],
+            [
+              "2",
+              "['[]']"
+            ],
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "8",
+              "['1 2 3']"
+            ],
+            [
+              "8",
+              "['4']"
+            ],
+            [
+              "8",
+              "['5']"
+            ],
+            [
+              "8",
+              "['link2']"
+            ]
+          ],
+          "['1']": [
+            [
+              "2",
+              "['0']"
+            ],
+            [
+              "2",
+              "['3']"
+            ],
+            [
+              "2",
+              "['empty']"
+            ]
+          ],
+          "['2']": [
+            [
+              "2",
+              "['empty']"
+            ],
+            [
+              "6",
+              "['2']"
+            ]
+          ],
+          "['3']": [
+            [
+              "2",
+              "['1']"
+            ],
+            [
+              "2",
+              "['Link.empty']"
+            ],
+            [
+              "2",
+              "['None']"
+            ],
+            [
+              "2",
+              "['[]']"
+            ],
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "8",
+              "['1 2 3']"
+            ],
+            [
+              "8",
+              "['link2']"
+            ]
+          ],
+          "['Empty']": [
+            [
+              "2",
+              "['()']"
+            ],
+            [
+              "2",
+              "['0']"
+            ],
+            [
+              "2",
+              "['Error']"
+            ],
+            [
+              "2",
+              "['This linked list is empty!']"
+            ],
+            [
+              "2",
+              "['empty']"
+            ]
+          ],
+          "['Error']": [
+            [
+              "2",
+              "['Empty']"
+            ],
+            [
+              "2",
+              "['Link.empty']"
+            ],
+            [
+              "2",
+              "['None']"
+            ]
+          ],
+          "['Link.empty']": [
+            [
+              "2",
+              "[\"'This linked list is empty!'\"]"
+            ],
+            [
+              "2",
+              "['()']"
+            ],
+            [
+              "2",
+              "['0']"
+            ],
+            [
+              "2",
+              "['3']"
+            ],
+            [
+              "2",
+              "['Error']"
+            ],
+            [
+              "2",
+              "['This linked list is empty!']"
+            ],
+            [
+              "2",
+              "['empty']"
+            ]
+          ],
+          "['None']": [
+            [
+              "2",
+              "['()']"
+            ],
+            [
+              "2",
+              "['0']"
+            ],
+            [
+              "2",
+              "['3']"
+            ],
+            [
+              "2",
+              "['Error']"
+            ],
+            [
+              "2",
+              "['empty']"
+            ]
+          ],
+          "['This linked list is empty!']": [
+            [
+              "2",
+              "[\"'This linked list is not empty!'\"]"
+            ],
+            [
+              "2",
+              "['Empty']"
+            ],
+            [
+              "2",
+              "['Link.empty']"
+            ]
+          ],
+          "['This linked list is not empty!']": [
+            [
+              "2",
+              "[\"'This linked list is not empty!'\"]"
+            ],
+            [
+              "8",
+              "['2 3 4']"
+            ]
+          ],
+          "['[]']": [
+            [
+              "2",
+              "[\"'This linked list is empty!'\"]"
+            ],
+            [
+              "2",
+              "['()']"
+            ],
+            [
+              "2",
+              "['0']"
+            ],
+            [
+              "2",
+              "['3']"
+            ],
+            [
+              "2",
+              "['empty']"
+            ]
+          ],
+          "['empty']": [
+            [
+              "1",
+              "['1']"
+            ],
+            [
+              "2",
+              "[\"'This linked list is not empty!'\"]"
+            ],
+            [
+              "2",
+              "['']"
+            ],
+            [
+              "2",
+              "['1']"
+            ],
+            [
+              "2",
+              "['2']"
+            ],
+            [
+              "2",
+              "['Empty']"
+            ],
+            [
+              "2",
+              "['Link.empty']"
+            ],
+            [
+              "2",
+              "['None']"
+            ],
+            [
+              "2",
+              "['[]']"
+            ],
+            [
+              "5",
+              "['True']"
+            ],
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "8",
+              "['2 3 4']"
+            ]
+          ]
+        }
+      },
+      ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nTrue\n>>> link.first = 9001\n>>> link.first\n9001\n>>> link.rest = link.rest.rest\n>>> link.rest.first\n3\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\n1\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\n1\n>>> link2.rest.first\n2\n>>> print_link(link2)\nLOCKED_ANSWER\n": {
+        "assessNum": "8",
+        "dictWA2DictInfo": {},
+        "dictWA2LstAssessNum_WA": {
+          "['0']": [
+            [
+              "2",
+              "['0']"
+            ],
+            [
+              "2",
+              "['3']"
+            ],
+            [
+              "2",
+              "['empty']"
+            ],
+            [
+              "4",
+              "['0']"
+            ],
+            [
+              "4",
+              "['1']"
+            ]
+          ],
+          "['1 2 3']": [
+            [
+              "2",
+              "['0']"
+            ],
+            [
+              "2",
+              "['3']"
+            ],
+            [
+              "7",
+              "['1']"
+            ]
+          ],
+          "['2 3 4']": [
+            [
+              "2",
+              "['This linked list is not empty!']"
+            ],
+            [
+              "2",
+              "['empty']"
+            ],
+            [
+              "5",
+              "['2']"
+            ],
+            [
+              "5",
+              "['3']"
+            ]
+          ],
+          "['4']": [
+            [
+              "2",
+              "['0']"
+            ],
+            [
+              "4",
+              "['1']"
+            ],
+            [
+              "6",
+              "['2']"
+            ]
+          ],
+          "['5']": [
+            [
+              "2",
+              "['0']"
+            ],
+            [
+              "4",
+              "['1']"
+            ],
+            [
+              "4",
+              "['2']"
+            ],
+            [
+              "6",
+              "['2']"
+            ]
+          ],
+          "['<1 2 <3> 4>']": [
+            [
+              "4",
+              "['link.rest.first']"
+            ]
+          ],
+          "['<1 2>']": [
+            [
+              "7",
+              "['Empty']"
+            ]
+          ],
+          "['<3>']": [
+            [
+              "7",
+              "['3']"
+            ]
+          ],
+          "['None']": [
+            [
+              "4",
+              "['0']"
+            ],
+            [
+              "4",
+              "['1']"
+            ]
+          ],
+          "['link2']": [
+            [
+              "2",
+              "['0']"
+            ],
+            [
+              "2",
+              "['3']"
+            ],
+            [
+              "4",
+              "['0']"
+            ]
+          ]
+        }
+      },
+      ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nTrue\n>>> link.first = 9001\n>>> link.first\n9001\n>>> link.rest = link.rest.rest\n>>> link.rest.first\n3\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\n1\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\n1\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n": {
+        "assessNum": "7",
+        "dictWA2DictInfo": {
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['3']": {
+            "dictTag2ConceptMsg": {
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['Empty']": {
+            "dictTag2ConceptMsg": {
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['empty']": {
+            "dictTag2ConceptMsg": {
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['link']": {
+            "dictTag2ConceptMsg": {
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter": "9"
+            },
+            "dictTag2KIMsg": {
+              "lnkattraccessrtnlnkaccesscode": "17"
+            },
+            "lstMisU": [
+              "lnkattraccessrtnlnkaccesscode",
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['()']": [
+            [
+              "7",
+              "['link']"
+            ]
+          ],
+          "['0']": [
+            [
+              "7",
+              "['Empty']"
+            ],
+            [
+              "7",
+              "['empty']"
+            ],
+            [
+              "7",
+              "['link']"
+            ]
+          ],
+          "['1']": [
+            [
+              "8",
+              "['1 2 3']"
+            ]
+          ],
+          "['3']": [
+            [
+              "7",
+              "['4']"
+            ],
+            [
+              "8",
+              "['<3>']"
+            ]
+          ],
+          "['4']": [
+            [
+              "7",
+              "['3']"
+            ]
+          ],
+          "['Empty']": [
+            [
+              "7",
+              "['0']"
+            ],
+            [
+              "7",
+              "['None']"
+            ],
+            [
+              "8",
+              "['<1 2>']"
+            ]
+          ],
+          "['Link(2, Link(3, Link(4)))']": [
+            [
+              "7",
+              "['link']"
+            ]
+          ],
+          "['Link.empty']": [
+            [
+              "7",
+              "['empty']"
+            ],
+            [
+              "7",
+              "['link']"
+            ]
+          ],
+          "['None']": [
+            [
+              "7",
+              "['Empty']"
+            ],
+            [
+              "7",
+              "['link']"
+            ]
+          ],
+          "['empty']": [
+            [
+              "7",
+              "['0']"
+            ],
+            [
+              "7",
+              "['Link.empty']"
+            ]
+          ],
+          "['link']": [
+            [
+              "7",
+              "['()']"
+            ],
+            [
+              "7",
+              "['0']"
+            ],
+            [
+              "7",
+              "['Link(2, Link(3, Link(4)))']"
+            ],
+            [
+              "7",
+              "['Link.empty']"
+            ],
+            [
+              "7",
+              "['None']"
+            ],
+            [
+              "7",
+              "['link.empty']"
+            ]
+          ],
+          "['link.empty']": [
+            [
+              "7",
+              "['link']"
+            ]
+          ]
+        }
+      },
+      ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nTrue\n>>> link.first = 9001\n>>> link.first\n9001\n>>> link.rest = link.rest.rest\n>>> link.rest.first\n3\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\n1\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n": {
+        "assessNum": "6",
+        "dictWA2DictInfo": {
+          "['2']": {
+            "dictTag2ConceptMsg": {
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['0']": [
+            [
+              "4",
+              "['0']"
+            ],
+            [
+              "4",
+              "['1']"
+            ]
+          ],
+          "['2']": [
+            [
+              "2",
+              "['2']"
+            ],
+            [
+              "6",
+              "['3']"
+            ],
+            [
+              "6",
+              "['4']"
+            ],
+            [
+              "8",
+              "['4']"
+            ],
+            [
+              "8",
+              "['5']"
+            ]
+          ],
+          "['3']": [
+            [
+              "6",
+              "['2']"
+            ]
+          ],
+          "['4']": [
+            [
+              "4",
+              "['1']"
+            ],
+            [
+              "6",
+              "['2']"
+            ]
+          ]
+        }
+      },
+      ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nTrue\n>>> link.first = 9001\n>>> link.first\n9001\n>>> link.rest = link.rest.rest\n>>> link.rest.first\n3\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\nLOCKED_ANSWER\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n": {
+        "assessNum": "5",
+        "dictWA2DictInfo": {
+          "['()']": {
+            "dictTag2ConceptMsg": {
+              "lnkemptyrestvalislnkempty-linkempty": "7",
+              "lnklstcantcycle-linkoopgetter": "9"
+            },
+            "dictTag2KIMsg": {
+              "lnkemptyrestvalislnkempty": "20",
+              "lnklstcantcycle": "19"
+            },
+            "lstMisU": [
+              "lnkemptyrestvalislnkempty",
+              "lnkemptyrestvalislnkempty-linkempty",
+              "lnklstcantcycle",
+              "lnklstcantcycle-linkoopgetter"
+            ]
+          },
+          "['2']": {
+            "dictTag2ConceptMsg": {
+              "lnkisinitlnk-linksetter": "10"
+            },
+            "dictTag2KIMsg": {
+              "lnkisinitlnk": "21"
+            },
+            "lstMisU": [
+              "lnkisinitlnk",
+              "lnkisinitlnk-linksetter"
+            ]
+          },
+          "['3']": {
+            "dictTag2ConceptMsg": {
+              "lnkisinitlnk-linksetter": "10",
+              "sloppyvareval-sloppy": "1"
+            },
+            "dictTag2KIMsg": {
+              "lnkisinitlnk": "21",
+              "sloppyvareval": "22"
+            },
+            "lstMisU": [
+              "lnkisinitlnk",
+              "lnkisinitlnk-linksetter",
+              "sloppyvareval",
+              "sloppyvareval-sloppy"
+            ]
+          },
+          "['Empty']": {
+            "dictTag2ConceptMsg": {
+              "lnkemptyrestvalislnkempty-linkempty": "7",
+              "lnklstcantcycle-linkoopgetter": "9"
+            },
+            "dictTag2KIMsg": {
+              "lnkemptyrestvalislnkempty": "20",
+              "lnklstcantcycle": "19"
+            },
+            "lstMisU": [
+              "lnkemptyrestvalislnkempty",
+              "lnkemptyrestvalislnkempty-linkempty",
+              "lnklstcantcycle",
+              "lnklstcantcycle-linkoopgetter"
+            ]
+          },
+          "['Error']": {
+            "dictTag2ConceptMsg": {
+              "lnklstcantcycle-linkoopgetter": "9"
+            },
+            "dictTag2KIMsg": {
+              "lnklstcantcycle": "19"
+            },
+            "lstMisU": [
+              "lnklstcantcycle",
+              "lnklstcantcycle-linkoopgetter"
+            ]
+          },
+          "['Link.empty']": {
+            "dictTag2ConceptMsg": {
+              "lnkemptyrestvalislnkempty-linkempty": "7",
+              "lnklstcantcycle-linkoopgetter": "9"
+            },
+            "dictTag2KIMsg": {
+              "lnkemptyrestvalislnkempty": "20",
+              "lnklstcantcycle": "19"
+            },
+            "lstMisU": [
+              "lnkemptyrestvalislnkempty",
+              "lnkemptyrestvalislnkempty-linkempty",
+              "lnklstcantcycle",
+              "lnklstcantcycle-linkoopgetter"
+            ]
+          },
+          "['empty']": {
+            "dictTag2ConceptMsg": {
+              "lnkemptyrestvalislnkempty-linkempty": "7",
+              "lnklstcantcycle-linkoopgetter": "9"
+            },
+            "dictTag2KIMsg": {
+              "lnkemptyrestvalislnkempty": "20",
+              "lnklstcantcycle": "19"
+            },
+            "lstMisU": [
+              "lnkemptyrestvalislnkempty",
+              "lnkemptyrestvalislnkempty-linkempty",
+              "lnklstcantcycle",
+              "lnklstcantcycle-linkoopgetter"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['2']": [
+            [
+              "5",
+              "['9001']"
+            ],
+            [
+              "8",
+              "['2 3 4']"
+            ]
+          ],
+          "['3']": [
+            [
+              "5",
+              "['9001']"
+            ],
+            [
+              "8",
+              "['2 3 4']"
+            ]
+          ],
+          "['4']": [
+            [
+              "4",
+              "['1']"
+            ]
+          ],
+          "['9001']": [
+            [
+              "5",
+              "['2']"
+            ],
+            [
+              "5",
+              "['3']"
+            ]
+          ],
+          "['True']": [
+            [
+              "2",
+              "['empty']"
+            ]
+          ]
+        }
+      },
+      ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nTrue\n>>> link.first = 9001\n>>> link.first\n9001\n>>> link.rest = link.rest.rest\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\nLOCKED_ANSWER\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n": {
+        "assessNum": "4",
+        "dictWA2DictInfo": {
+          "['()']": {
+            "dictTag2ConceptMsg": {
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['0']": {
+            "dictTag2ConceptMsg": {
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['1']": {
+            "dictTag2ConceptMsg": {
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['2']": {
+            "dictTag2ConceptMsg": {
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['9001']": {
+            "dictTag2ConceptMsg": {
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['Empty']": {
+            "dictTag2ConceptMsg": {
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['Link.empty']": {
+            "dictTag2ConceptMsg": {
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['empty']": {
+            "dictTag2ConceptMsg": {
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['link']": {
+            "dictTag2ConceptMsg": {
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter": "9"
+            },
+            "dictTag2KIMsg": {
+              "lnkattraccessrtnlnkaccesscode": "17"
+            },
+            "lstMisU": [
+              "lnkattraccessrtnlnkaccesscode",
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter"
+            ]
+          },
+          "['link.first']": {
+            "dictTag2ConceptMsg": {
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter": "9",
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "lnkattraccessrtnlnkaccesscode": "17",
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "lnkattraccessrtnlnkaccesscode",
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter",
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['link.rest']": {
+            "dictTag2ConceptMsg": {
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter": "9"
+            },
+            "dictTag2KIMsg": {
+              "lnkattraccessrtnlnkaccesscode": "17"
+            },
+            "lstMisU": [
+              "lnkattraccessrtnlnkaccesscode",
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter"
+            ]
+          },
+          "['link.rest.first']": {
+            "dictTag2ConceptMsg": {
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter": "9",
+              "noevalexpr-evalexpr": "0"
+            },
+            "dictTag2KIMsg": {
+              "lnkattraccessrtnlnkaccesscode": "17",
+              "noevalexpr": "18"
+            },
+            "lstMisU": [
+              "lnkattraccessrtnlnkaccesscode",
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter",
+              "noevalexpr",
+              "noevalexpr-evalexpr"
+            ]
+          },
+          "['link.rest.rest']": {
+            "dictTag2ConceptMsg": {
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter": "9",
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "lnkattraccessrtnlnkaccesscode": "17",
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "lnkattraccessrtnlnkaccesscode",
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter",
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          },
+          "['rest']": {
+            "dictTag2ConceptMsg": {
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter": "9",
+              "sloppylnkattreval-linkdefine": "6"
+            },
+            "dictTag2KIMsg": {
+              "lnkattraccessrtnlnkaccesscode": "17",
+              "sloppylnkattreval": "15"
+            },
+            "lstMisU": [
+              "lnkattraccessrtnlnkaccesscode",
+              "lnkattraccessrtnlnkaccesscode-linkoopgetter",
+              "sloppylnkattreval",
+              "sloppylnkattreval-linkdefine"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "[\"'This linked list is empty!'\"]": [
+            [
+              "4",
+              "['0']"
+            ],
+            [
+              "4",
+              "['Link.empty']"
+            ]
+          ],
+          "['()']": [
+            [
+              "4",
+              "['[]']"
+            ]
+          ],
+          "['0']": [
+            [
+              "1",
+              "['1']"
+            ],
+            [
+              "4",
+              "[\"'This linked list is empty!'\"]"
+            ],
+            [
+              "4",
+              "['90']"
+            ],
+            [
+              "4",
+              "['link.rest.rest.rest']"
+            ],
+            [
+              "6",
+              "['0']"
+            ],
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "8",
+              "['None']"
+            ],
+            [
+              "8",
+              "['link2']"
+            ]
+          ],
+          "['1']": [
+            [
+              "1",
+              "['1']"
+            ],
+            [
+              "1",
+              "['[2, 3]']"
+            ],
+            [
+              "4",
+              "['90']"
+            ],
+            [
+              "5",
+              "['4']"
+            ],
+            [
+              "6",
+              "['0']"
+            ],
+            [
+              "6",
+              "['4']"
+            ],
+            [
+              "8",
+              "['0']"
+            ],
+            [
+              "8",
+              "['4']"
+            ],
+            [
+              "8",
+              "['5']"
+            ],
+            [
+              "8",
+              "['None']"
+            ]
+          ],
+          "['2']": [
+            [
+              "8",
+              "['5']"
+            ]
+          ],
+          "['90']": [
+            [
+              "4",
+              "['0']"
+            ],
+            [
+              "4",
+              "['1']"
+            ],
+            [
+              "4",
+              "['empty']"
+            ],
+            [
+              "4",
+              "['link']"
+            ],
+            [
+              "4",
+              "['link.rest.first']"
+            ],
+            [
+              "4",
+              "['link.rest.rest']"
+            ]
+          ],
+          "['9001']": [
+            [
+              "4",
+              "['[]']"
+            ]
+          ],
+          "['Function']": [
+            [
+              "4",
+              "['link.first']"
+            ]
+          ],
+          "['Link.empty']": [
+            [
+              "4",
+              "[\"'This linked list is empty!'\"]"
+            ]
+          ],
+          "['Link.rest']": [
+            [
+              "4",
+              "['rest']"
+            ]
+          ],
+          "['[]']": [
+            [
+              "4",
+              "['()']"
+            ],
+            [
+              "4",
+              "['9001']"
+            ],
+            [
+              "4",
+              "['empty']"
+            ]
+          ],
+          "['empty']": [
+            [
+              "4",
+              "['90']"
+            ],
+            [
+              "4",
+              "['[]']"
+            ]
+          ],
+          "['error']": [
+            [
+              "4",
+              "['rest']"
+            ]
+          ],
+          "['first']": [
+            [
+              "4",
+              "['link']"
+            ],
+            [
+              "4",
+              "['link.rest']"
+            ],
+            [
+              "4",
+              "['link.rest.rest']"
+            ],
+            [
+              "4",
+              "['rest']"
+            ]
+          ],
+          "['link']": [
+            [
+              "1",
+              "['1']"
+            ],
+            [
+              "4",
+              "['90']"
+            ],
+            [
+              "4",
+              "['first']"
+            ],
+            [
+              "4",
+              "['link.first.rest']"
+            ]
+          ],
+          "['link.empty']": [
+            [
+              "4",
+              "['link.rest']"
+            ],
+            [
+              "4",
+              "['link.rest.first']"
+            ],
+            [
+              "4",
+              "['link.rest.rest']"
+            ]
+          ],
+          "['link.first']": [
+            [
+              "4",
+              "['Function']"
+            ],
+            [
+              "4",
+              "['link.rest.rest.first']"
+            ],
+            [
+              "4",
+              "['link.rest.rest.rest']"
+            ]
+          ],
+          "['link.first.rest']": [
+            [
+              "4",
+              "['link']"
+            ],
+            [
+              "4",
+              "['link.rest.first']"
+            ],
+            [
+              "4",
+              "['link.rest.rest']"
+            ],
+            [
+              "4",
+              "['rest']"
+            ]
+          ],
+          "['link.rest']": [
+            [
+              "4",
+              "['first']"
+            ],
+            [
+              "4",
+              "['link.empty']"
+            ]
+          ],
+          "['link.rest.first']": [
+            [
+              "4",
+              "['90']"
+            ],
+            [
+              "4",
+              "['link.empty']"
+            ],
+            [
+              "4",
+              "['link.first.rest']"
+            ],
+            [
+              "4",
+              "['link.rest.rest.first']"
+            ],
+            [
+              "4",
+              "['link.rest.rest.rest']"
+            ],
+            [
+              "8",
+              "['<1 2 <3> 4>']"
+            ]
+          ],
+          "['link.rest.rest']": [
+            [
+              "4",
+              "['90']"
+            ],
+            [
+              "4",
+              "['first']"
+            ],
+            [
+              "4",
+              "['link.empty']"
+            ],
+            [
+              "4",
+              "['link.first.rest']"
+            ],
+            [
+              "4",
+              "['link.rest.rest.first']"
+            ]
+          ],
+          "['link.rest.rest.first']": [
+            [
+              "4",
+              "['link.first']"
+            ],
+            [
+              "4",
+              "['link.rest.first']"
+            ],
+            [
+              "4",
+              "['link.rest.rest']"
+            ]
+          ],
+          "['link.rest.rest.rest']": [
+            [
+              "4",
+              "['0']"
+            ],
+            [
+              "4",
+              "['link.first']"
+            ],
+            [
+              "4",
+              "['link.rest.first']"
+            ]
+          ],
+          "['rest']": [
+            [
+              "1",
+              "['Link(2)']"
+            ],
+            [
+              "4",
+              "['Link.rest']"
+            ],
+            [
+              "4",
+              "['error']"
+            ],
+            [
+              "4",
+              "['first']"
+            ],
+            [
+              "4",
+              "['link.first.rest']"
+            ]
+          ]
+        }
+      },
+      ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nTrue\n>>> link.first = 9001\n>>> link.first\nLOCKED_ANSWER\n>>> link.rest = link.rest.rest\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\nLOCKED_ANSWER\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n": {
+        "assessNum": "3",
+        "dictWA2DictInfo": {},
+        "dictWA2LstAssessNum_WA": {}
+      },
+      ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link.rest.rest.rest is Link.empty\nLOCKED_ANSWER\n>>> link.first = 9001\n>>> link.first\nLOCKED_ANSWER\n>>> link.rest = link.rest.rest\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\nLOCKED_ANSWER\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n": {
+        "assessNum": "1",
+        "dictWA2DictInfo": {
+          "['Link(2, Link(3))']": {
+            "dictTag2ConceptMsg": {
+              "attrisobj-oopinstanceattr": "4",
+              "lnkfirstrtnaslnk-linkdefine": "6",
+              "lnkfirstrtnaslnk-oopinstanceattr": "4"
+            },
+            "dictTag2KIMsg": {
+              "attrisobj": "15",
+              "lnkfirstrtnaslnk": "15"
+            },
+            "lstMisU": [
+              "attrisobj",
+              "attrisobj-oopinstanceattr",
+              "lnkfirstrtnaslnk",
+              "lnkfirstrtnaslnk-linkdefine",
+              "lnkfirstrtnaslnk-oopinstanceattr"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {
+          "['1']": [
+            [
+              "2",
+              "['empty']"
+            ],
+            [
+              "4",
+              "['0']"
+            ],
+            [
+              "4",
+              "['1']"
+            ],
+            [
+              "4",
+              "['link']"
+            ]
+          ],
+          "['Error']": [
+            [
+              "2",
+              "['()']"
+            ]
+          ],
+          "['Link(2)']": [
+            [
+              "4",
+              "['rest']"
+            ]
+          ],
+          "['[2, 3]']": [
+            [
+              "4",
+              "['1']"
+            ]
+          ]
+        }
+      },
+      ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\nLOCKED_ANSWER\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link.rest.rest.rest is Link.empty\nLOCKED_ANSWER\n>>> link.first = 9001\n>>> link.first\nLOCKED_ANSWER\n>>> link.rest = link.rest.rest\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\nLOCKED_ANSWER\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n": {
+        "assessNum": "0",
+        "dictWA2DictInfo": {
+          "['Link(1)']": {
+            "dictTag2ConceptMsg": {
+              "lnkfirstrtnaslnk-linkdefine": "6",
+              "lnkfirstrtnaslnk-oopinstanceattr": "4"
+            },
+            "dictTag2KIMsg": {
+              "lnkfirstrtnaslnk": "15"
+            },
+            "lstMisU": [
+              "lnkfirstrtnaslnk",
+              "lnkfirstrtnaslnk-linkdefine",
+              "lnkfirstrtnaslnk-oopinstanceattr"
+            ]
+          }
+        },
+        "dictWA2LstAssessNum_WA": {}
+      }
+    },
+    "dictAssessNum2AssessId": {
+      "0": ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\nLOCKED_ANSWER\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link.rest.rest.rest is Link.empty\nLOCKED_ANSWER\n>>> link.first = 9001\n>>> link.first\nLOCKED_ANSWER\n>>> link.rest = link.rest.rest\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\nLOCKED_ANSWER\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n",
+      "1": ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link.rest.rest.rest is Link.empty\nLOCKED_ANSWER\n>>> link.first = 9001\n>>> link.first\nLOCKED_ANSWER\n>>> link.rest = link.rest.rest\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\nLOCKED_ANSWER\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n",
+      "10": ">>> class IteratorA:\n...    def __init__(self):\n...        self.start = 10\n...    def __next__(self):\n...        if self.start > 100:\n...            raise StopIteration\n...        self.start += 20\n...        return self.start\n...    def __iter__(self):\n...        return self\n>>> iterator = IteratorA()\n>>> [num for num in iterator]\n[30, 50, 70, 90, 110]\n>>> [num for num in iterator]\nLOCKED_ANSWER\n",
+      "11": ">>> class OddNaturalsIterator():\n...     def __init__(self):\n...         self.current = 1\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return self\n>>> odds = OddNaturalsIterator()\n>>> odd_iter1 = iter(odds)\n>>> odd_iter2 = iter(odds)\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n",
+      "12": ">>> class OddNaturalsIterator():\n...     def __init__(self):\n...         self.current = 1\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return self\n>>> odds = OddNaturalsIterator()\n>>> odd_iter1 = iter(odds)\n>>> odd_iter2 = iter(odds)\n>>> next(odd_iter1)\n1\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n",
+      "13": ">>> class OddNaturalsIterator():\n...     def __init__(self):\n...         self.current = 1\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return self\n>>> odds = OddNaturalsIterator()\n>>> odd_iter1 = iter(odds)\n>>> odd_iter2 = iter(odds)\n>>> next(odd_iter1)\n1\n>>> next(odd_iter1)\n3\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n",
+      "14": ">>> class OddNaturalsIterator():\n...     def __init__(self):\n...         self.current = 1\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return self\n>>> odds = OddNaturalsIterator()\n>>> odd_iter1 = iter(odds)\n>>> odd_iter2 = iter(odds)\n>>> next(odd_iter1)\n1\n>>> next(odd_iter1)\n3\n>>> next(odd_iter1)\n5\n>>> next(odd_iter2)\nLOCKED_ANSWER\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n",
+      "15": ">>> class OddNaturalsIterator():\n...     def __init__(self):\n...         self.current = 1\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return self\n>>> odds = OddNaturalsIterator()\n>>> odd_iter1 = iter(odds)\n>>> odd_iter2 = iter(odds)\n>>> next(odd_iter1)\n1\n>>> next(odd_iter1)\n3\n>>> next(odd_iter1)\n5\n>>> next(odd_iter2)\n7\n>>> next(odd_iter1)\nLOCKED_ANSWER\n>>> next(odd_iter2)\nLOCKED_ANSWER\n",
+      "16": ">>> class OddNaturalsIterator():\n...     def __init__(self):\n...         self.current = 1\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return self\n>>> odds = OddNaturalsIterator()\n>>> odd_iter1 = iter(odds)\n>>> odd_iter2 = iter(odds)\n>>> next(odd_iter1)\n1\n>>> next(odd_iter1)\n3\n>>> next(odd_iter1)\n5\n>>> next(odd_iter2)\n7\n>>> next(odd_iter1)\n9\n>>> next(odd_iter2)\nLOCKED_ANSWER\n",
+      "17": ">>> class EvenNaturalsIterator():\n...     def __init__(self):\n...         self.current = 0\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return EvenNaturalsIterator()\n>>> evens = EvenNaturalsIterator()\n>>> even_iter1 = iter(evens)\n>>> even_iter2 = iter(evens)\n>>> next(even_iter1)\nLOCKED_ANSWER\n>>> next(even_iter1)\nLOCKED_ANSWER\n>>> next(even_iter1)\nLOCKED_ANSWER\n>>> next(even_iter2)\nLOCKED_ANSWER\n>>> next(even_iter2)\nLOCKED_ANSWER\n",
+      "18": ">>> class EvenNaturalsIterator():\n...     def __init__(self):\n...         self.current = 0\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return EvenNaturalsIterator()\n>>> evens = EvenNaturalsIterator()\n>>> even_iter1 = iter(evens)\n>>> even_iter2 = iter(evens)\n>>> next(even_iter1)\n0\n>>> next(even_iter1)\nLOCKED_ANSWER\n>>> next(even_iter1)\nLOCKED_ANSWER\n>>> next(even_iter2)\nLOCKED_ANSWER\n>>> next(even_iter2)\nLOCKED_ANSWER\n",
+      "19": ">>> class EvenNaturalsIterator():\n...     def __init__(self):\n...         self.current = 0\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return EvenNaturalsIterator()\n>>> evens = EvenNaturalsIterator()\n>>> even_iter1 = iter(evens)\n>>> even_iter2 = iter(evens)\n>>> next(even_iter1)\n0\n>>> next(even_iter1)\n2\n>>> next(even_iter1)\n4\n>>> next(even_iter2)\nLOCKED_ANSWER\n>>> next(even_iter2)\nLOCKED_ANSWER\n",
+      "2": ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nLOCKED_ANSWER\n>>> link.first = 9001\n>>> link.first\nLOCKED_ANSWER\n>>> link.rest = link.rest.rest\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\nLOCKED_ANSWER\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n",
+      "20": ">>> class EvenNaturalsIterator():\n...     def __init__(self):\n...         self.current = 0\n...     def __next__(self):\n...         result = self.current\n...         self.current += 2\n...         return result\n...     def __iter__(self):\n...         return EvenNaturalsIterator()\n>>> evens = EvenNaturalsIterator()\n>>> even_iter1 = iter(evens)\n>>> even_iter2 = iter(evens)\n>>> next(even_iter1)\n0\n>>> next(even_iter1)\n2\n>>> next(even_iter1)\n4\n>>> next(even_iter2)\n0\n>>> next(even_iter2)\nLOCKED_ANSWER\n",
+      "3": ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nTrue\n>>> link.first = 9001\n>>> link.first\nLOCKED_ANSWER\n>>> link.rest = link.rest.rest\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\nLOCKED_ANSWER\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n",
+      "4": ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nTrue\n>>> link.first = 9001\n>>> link.first\n9001\n>>> link.rest = link.rest.rest\n>>> link.rest.first\nLOCKED_ANSWER\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\nLOCKED_ANSWER\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n",
+      "5": ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nTrue\n>>> link.first = 9001\n>>> link.first\n9001\n>>> link.rest = link.rest.rest\n>>> link.rest.first\n3\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\nLOCKED_ANSWER\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n",
+      "6": ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nTrue\n>>> link.first = 9001\n>>> link.first\n9001\n>>> link.rest = link.rest.rest\n>>> link.rest.first\n3\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\n1\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\nLOCKED_ANSWER\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n",
+      "7": ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nTrue\n>>> link.first = 9001\n>>> link.first\n9001\n>>> link.rest = link.rest.rest\n>>> link.rest.first\n3\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\n1\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\n1\n>>> link2.rest.first\nLOCKED_ANSWER\n>>> print_link(link2)\nLOCKED_ANSWER\n",
+      "8": ">>> from link import *\n>>> link = Link(1, Link(2, Link(3)))\n>>> link.first\n1\n>>> link.rest.first\n2\n>>> link.rest.rest.rest is Link.empty\nTrue\n>>> link.first = 9001\n>>> link.first\n9001\n>>> link.rest = link.rest.rest\n>>> link.rest.first\n3\n>>> link = Link(1)\n>>> link.rest = link\n>>> link.rest.rest.rest.rest.first\n1\n>>> link = Link(2, Link(3, Link(4)))\n>>> link2 = Link(1, link)\n>>> link2.first\n1\n>>> link2.rest.first\n2\n>>> print_link(link2)\nLOCKED_ANSWER\n",
+      "9": ">>> class IteratorA:\n...    def __init__(self):\n...        self.start = 10\n...    def __next__(self):\n...        if self.start > 100:\n...            raise StopIteration\n...        self.start += 20\n...        return self.start\n...    def __iter__(self):\n...        return self\n>>> iterator = IteratorA()\n>>> [num for num in iterator]\nLOCKED_ANSWER\n>>> [num for num in iterator]\nLOCKED_ANSWER\n"
+    },
+    "dictId2Msg": {
+      "0": "An expression is a combination of values, variables, operators, and functions\nthat a programming language interprets and evaluates to the simplest value.\nExpression are evaluated upon hitting \"Enter\" or \"Return\". Primitive values\n(e.g. |1| or |\"hello\"|) evaluate to themselves, while expressions are evaluated\nbased on the values, variables, operators, and functions it is made up of.",
+      "1": "Try:\n1) Reading the code or instructions more carefully,\n2) Writing out the variable's values, or\n3) Drawing an environment diagram.",
+      "10": "A Link object is mutable, therefore the instance attributes |first| and |rest|\ncan be modified. For example, if |l = Link(1)|, with |l.first = 9| and\n|l.rest = Link(3)|, |l| becomes |Link(9, Link(3))|.",
+      "11": "The Python iterator interface requires an |__iter__| method. This must return an\niterable object, usually the current object |self|. |__iter__| is special and is\ncalled with |iter(ITER)|.",
+      "12": "Once a StopIteration is raised, each subsequent call to the |__next__| method\nconventionally raises a StopIteration again (technically it depends on the code\nin the |__next__| method).",
+      "13": "The Python iterator interface requires a |__next__| method. It returns the\nsubsequent element of the sequence by executing the code in the method.\n|__next__| is special and is called with |next(ITER)|.",
+      "14": "The |StopIteration| error is raised when the iterator has no more return values.\nA Python |for| loop automatically catches this error. However, if a |for| loop\nis not used, an explicit |try...except| is needed.",
+      "15": "Double check the attribute's value?",
+      "16": "What does |is| do? What type would it return?",
+      "17": "That output looks like it can be executed to get a value. What about answering\nwith a value instead?",
+      "18": "Can't the expression be evaluated more?",
+      "19": "As the code executes, draw the box and pointer diagram and think about what are\nvalid |rest| values.",
+      "2": "The list comprehension format is |[EXPRESSION for ELEMENT in SEQUENCE if\nCONDITIONAL]|, where the |if CONDITIONAL| is optional. For every ELEMENT in\nSEQUENCE where CONDITIONAL is true, evaluate EXPRESSION with ELEMENT and append\nthe result to a list. Return the list when through with SEQUENCE.",
+      "20": "Double check |Link.empty|'s implementation, especially its attributes. Can it be\nused like a |Link| instance?",
+      "21": "Double check if the object has changed since it was initialized?",
+      "22": "Double check the variable's value?",
+      "23": "Look closely at when the code increments versus returns in the |__next__|\nfunction.",
+      "24": "Look closely at when the code increments versus raises the StopIteration error.",
+      "25": "Double check the if condition?",
+      "26": "Hmm...isn't this a list comprehension? What is the type of its return value?",
+      "27": "Is that the only value the list comprehension returns?",
+      "28": "Is that a list? Python can't tell that it is.",
+      "29": "How do |for| loops handle StopIteration errors?",
+      "3": "A list in Python is contained within square brackets and separated by commas.\nThe elements in the list can be be of any type, including sub-lists. For\nexample: |[1, 2.0, [3, 4], '5', True]|.",
+      "30": "Look more closely at the variable's initial value and how it is being changed.",
+      "31": "What is the state of the iterator at this point? Specifically, what are the\nvalues of its attributes when the |__next__| function is called?",
+      "32": "Read |__iter__| carefully. What is it returning?",
+      "4": "The value of an attribute is based on the current environment, first looking in\nthe instance, then the instance's class. To access an attribute, Python uses the\nnotation |OBJECT.ATTRIBUTE|.",
+      "5": "The |is| operator returns a boolean of whether two values are exactly the same\nobject instance. For example, if |a = [1, 2]|, |b = a|, and |c = [1, 2]|,\n|a is c| will return |False|, while |a is b| will return |True|.",
+      "6": "A linked list is made up of Link objects that each have two attributes, |first|\nand |rest|. |first| contains the element inside the Link, while |rest| refers to\nthe next Link object in the list.",
+      "7": "|Link.empty| represents an empty linked list and is used to mark the end a list.\nThus it does not have any attributes of a link object. For example, if\n|l = Link(1, Link(2))| then |l.rest.rest == Link.empty| is true.",
+      "8": "Typo?",
+      "9": "The |first| attribute of a |Link| object has the link's value, while the |rest|\nattribute is a pointer to the next link or |Link.empty|. Keep in mind the value\nof any attribute can be anything (even a pointer to itself)."
+    },
+    "dictTg2Func": {
+      "0": "none",
+      "1": "tag2ConceptMsg",
+      "2": "tag2KIMsg"
+    },
+    "wrongAnsThresh": 2
+  }
+}
