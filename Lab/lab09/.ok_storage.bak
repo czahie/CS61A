@@ -4,3 +4,7 @@
 'make-list-correct', (1536, 70)
 'composed-correct', (2048, 70)
 'remove-correct', (2560, 70)
+'gcd-correct', (3072, 70)
+'no-repeats-correct', (3584, 70)
+'substitute-correct', (4096, 70)
+'sub-all-correct', (4608, 70)
