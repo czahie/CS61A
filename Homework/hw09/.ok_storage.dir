@@ -1,0 +1,5 @@
+'cadr-caddr-correct', (0, 70)
+'sign-correct', (512, 70)
+'pow-correct', (1024, 70)
+'ordered?-correct', (1536, 70)
+'nodots-correct', (2048, 70)

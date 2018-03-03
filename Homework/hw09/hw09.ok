@@ -1,0 +1,29 @@
+{
+    "name": "Homework 9",
+    "endpoint": "cal/cs61a/fa17/hw09",
+    "src": [
+        "hw09.scm"
+    ],
+    "tests": {
+        "tests/cadr-caddr.py": "ok_test",
+        "tests/sign.py": "ok_test",
+        "tests/pow.py": "ok_test",
+        "tests/ordered.py": "ok_test",
+        "tests/nodots.py": "ok_test",
+        "tests/contains.py": "ok_test",
+        "tests/add.py": "ok_test",
+        "tests/intersect.py": "ok_test",
+        "tests/union.py": "ok_test",
+        "tests/in.py": "ok_test",
+        "tests/as-list.py": "ok_test",
+        "tests/survey.py": "ok_test"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "grading",
+        "analytics",
+        "unlock",
+        "backup"
+    ]
+}
