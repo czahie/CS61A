@@ -50,6 +50,31 @@
    ))
 )
 
+; Official solution
+(define (nodots s)
+  (define (dotted s) (and (pair? s)
+                          (not (or (pair? (cdr s))
+                                   (null? (cdr s))))))
+  (cond ((null? s) s)
+        ((dotted s) (list (nodots (car s)) (cdr s)))
+        ((pair? s) (cons (nodots (car s)) (nodots (cdr s))))
+        (else s))
+
+  ; Alternate solution
+  (define (dotted s) (and (pair? s)
+                          (not (or (pair? (cdr s))
+                                   (null? (cdr s))))))
+
+  (define (car-number s) (not (pair? (car s))))
+
+  (cond ((null? s) s)
+        ((and (dotted s) (car-number s)) (list (car s) (cdr s)))
+        ((dotted s) (list (nodots (car s)) (cdr s)))
+        ((and (pair? s) (car-number s) (cons (car s) (nodots (cdr s)))))
+        ((pair? s) (cons (nodots (car s)) (nodots (cdr s)))))
+)
+
+
 ; Sets as sorted lists
 
 (define (empty? s) (null? s))
