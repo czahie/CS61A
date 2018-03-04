@@ -40,16 +40,14 @@
 )
 
 (define (nodots s)
- (if (number? s)
-  (cons s nil)
   (if (or (null? s) (null? (cdr s)))
    s
-   (if (pair? (car s))
-    (cons (nodots (car s)) (nodots (cdr s)))
-    (if (pair? (cdr s))
-     (cons (car s) (nodots (cdr s)))
-     (list (car s) (cdr s))
-   ))))
+   (cond
+    ((and (pair? (car s)) (pair? (cdr s))) (cons (nodots (car s)) (nodots (cdr s))))
+    ((and (not (pair? (car s))) (pair? (cdr s))) (cons (car s) (nodots (cdr s))))
+    ((and (pair? (car s)) (not (pair? (cdr s)))) (cons (nodots (car s)) (cons (cdr s) nil)))
+    (else (list (car s) (cdr s)))
+   ))
 )
 
 ; Sets as sorted lists
@@ -58,8 +56,9 @@
 
 (define (contains? s v)
     (cond ((empty? s) #f)
-          'YOUR-CODE-HERE
-          (else nil) ; replace this line
+          ((< v (car s)) #f)
+          ((= v (car s)) #t)
+          (else (contains? (cdr s) v))
           ))
 
 ; Equivalent Python code, for your reference:
@@ -79,14 +78,18 @@
 
 (define (add s v)
     (cond ((empty? s) (list v))
-          'YOUR-CODE-HERE
-          (else nil) ; replace this line
+          ((= v (car s)) s)
+          ((< v (car s)) (cons v s))
+          ((and (> v (car s)) (empty? (cdr s))) (cons (car s) (cons v nil)))
+          ((and (> v (car s)) (< v (cadr s))) (cons (car s) (cons v (cdr s))))
+          (else (cons (car s) (add (cdr s) v)))
           ))
 
 (define (intersect s t)
     (cond ((or (empty? s) (empty? t)) nil)
-          'YOUR-CODE-HERE
-          (else nil) ; replace this line
+          ((= (car s) (car t)) (cons (car s) (intersect (cdr s) (cdr t))))
+          ((< (car s) (car t)) (intersect (cdr s) t))
+          (else (intersect s (cdr t)))
           ))
 
 ; Equivalent Python code, for your reference:
@@ -106,6 +109,7 @@
 (define (union s t)
     (cond ((empty? s) t)
           ((empty? t) s)
-          'YOUR-CODE-HERE
-          (else nil) ; replace this line
+          ((= (car s) (car t)) (cons (car s) (union (cdr s) (cdr t))))
+          ((< (car s) (car t)) (cons (car s) (union (cdr s) t)))
+          (else (cons (car t) (union s (cdr t))))
           ))
