@@ -1,0 +1,7 @@
+'how-many-dots-correct', (0, 70)
+'substitute-correct', (512, 70)
+'sub-all-correct', (1024, 70)
+'derive-sum-correct', (1536, 70)
+'derive-product-correct', (2048, 70)
+'make-exp-correct', (2560, 70)
+'derive-exp-correct', (3072, 70)

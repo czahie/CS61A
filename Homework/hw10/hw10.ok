@@ -1,0 +1,24 @@
+{
+    "name": "Homework 10",
+    "endpoint": "cal/cs61a/fa17/hw10",
+    "src": [
+        "hw10.scm"
+    ],
+    "tests": {
+        "tests/how-many-dots.py": "ok_test",
+        "tests/substitute.py": "ok_test",
+        "tests/sub-all.py": "ok_test",
+        "tests/derive-sum.py": "ok_test",
+        "tests/derive-product.py": "ok_test",
+        "tests/make-exp.py": "ok_test",
+        "tests/derive-exp.py": "ok_test"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
