@@ -8,30 +8,25 @@ test = {
           'code': r"""
           >>> frame = global_frame.make_child_frame(Pair('a', Pair('b', Pair('c', nil))), Pair(1, Pair(2, Pair(3, nil))))
           >>> global_frame.lookup('a') # Type SchemeError if you think this errors
-          87c30138f7979b4f5a454aacfb191b98
-          # locked
+          SchemeError
           >>> frame.lookup('a') # Type SchemeError if you think this errors
-          2894dd5fa65c8aa8f2b9d920d0e542e0
-          # locked
+          1
           >>> frame.lookup('b') # Type SchemeError if you think this errors
-          e56af2bab40778990634a527fe4407f8
-          # locked
+          2
           >>> frame.lookup('c') # Type SchemeError if you think this errors
-          a3d16f1c59cdc683d6ce640b10aa5c1d
-          # locked
+          3
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
           >>> frame = global_frame.make_child_frame(nil, nil)
           >>> frame.parent is global_frame
-          a87b4aa619df2eba30bc86785b816612
-          # locked
+          True
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""

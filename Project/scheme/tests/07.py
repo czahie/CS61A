@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': '4159ecb5a05978a5a32e7f6101e4ff64',
+          'answer': 'Pair(A, nil), where: A is the quoted expression',
           'choices': [
             r"""
             Pair('quote', Pair(A, nil)), where:
@@ -25,7 +25,7 @@ test = {
             """
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': 'What is the structure of the expressions argument to do_quote_form?'
         }
       ],
@@ -37,48 +37,32 @@ test = {
         {
           'code': r"""
           scm> (quote hello)
-          7adbbb2a725af942e401fe05085d85be
-          # locked
+          hello
           scm> 'hello
-          7adbbb2a725af942e401fe05085d85be
-          # locked
+          hello
           scm> ''hello
-          25378e4e94226b053c802e132f29644e
-          # locked
-          # choice: (quote hello)
-          # choice: hello
-          # choice: (hello)
-          # choice: (quote (quote (hello)))
+          (quote hello)
           scm> (quote (1 2))
-          747eb81d19eb64f3a2f6281c19ddd315
-          # locked
+          (1 2)
           scm> '(1 2)
-          747eb81d19eb64f3a2f6281c19ddd315
-          # locked
+          (1 2)
           scm> (quote (1 . 2))
-          a7eb3cfaed53e2fcfd256a02363b59f7
-          # locked
+          (1 . 2)
           scm> '(1 . (2))
-          747eb81d19eb64f3a2f6281c19ddd315
-          # locked
+          (1 2)
           scm> (car '(1 2 3))
-          2894dd5fa65c8aa8f2b9d920d0e542e0
-          # locked
+          1
           scm> (cdr '(1 2))
-          368db613e63e51770ae2ae1c7859dd4b
-          # locked
+          (2)
           scm> (car (car '((1))))
-          2894dd5fa65c8aa8f2b9d920d0e542e0
-          # locked
+          1
           scm> (quote 3)
-          a3d16f1c59cdc683d6ce640b10aa5c1d
-          # locked
+          3
           scm> (eval (cons 'car '('(4 2))))
-          8ad686581488b3cc40d870a8db32810e
-          # locked
+          4
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,
@@ -91,44 +75,18 @@ test = {
         {
           'code': r"""
           >>> read_line(" (quote x) ")
-          c45fd6efa08572418d68e7b8087d6602
-          # locked
-          # choice: Pair('x', nil)
-          # choice: 'x'
-          # choice: Pair('quote', 'x')
-          # choice: Pair('quote', Pair('x', nil))
+          Pair('quote', Pair('x', nil))
           >>> read_line(" 'x ")
-          c45fd6efa08572418d68e7b8087d6602
-          # locked
-          # choice: Pair('x', nil)
-          # choice: 'x'
-          # choice: Pair('quote', 'x')
-          # choice: Pair('quote', Pair('x', nil))
+          Pair('quote', Pair('x', nil))
           >>> read_line(" (a b) ")
-          6826a6bf9adff882c63a6e3b88e0785f
-          # locked
-          # choice: Pair('a', Pair('b', nil))
-          # choice: Pair('quote', Pair(Pair('a', Pair('b', nil)), nil))
-          # choice: Pair('quote', Pair('a', 'b'))
-          # choice: Pair('quote', Pair('a', Pair('b', nil)))
+          Pair('a', Pair('b', nil))
           >>> read_line(" '(a b) ")
-          05ab324acaaecfc3062ce99c0af5c9f4
-          # locked
-          # choice: Pair('a', Pair('b', nil))
-          # choice: Pair('quote', Pair(Pair('a', Pair('b', nil)), nil))
-          # choice: Pair('quote', Pair('a', 'b'))
-          # choice: Pair('quote', Pair('a', Pair('b', nil)))
+          Pair('quote', Pair(Pair('a', Pair('b', nil)), nil))
           >>> read_line(" '((a)) ")
-          efd3a2d51557ef1a98c5fb19abc779fc
-          # locked
-          # choice: Pair('quote', Pair(Pair('a', nil), nil))
-          # choice: Pair('quote', Pair(Pair('a', nil), nil), nil)
-          # choice: Pair('quote', Pair(Pair('a'), nil))
-          # choice: Pair('quote', Pair(Pair('a'), nil), nil)
-          # choice: Pair('quote', Pair(Pair(Pair('a', nil), nil), nil))
+          Pair('quote', Pair(Pair(Pair('a', nil), nil), nil))
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""

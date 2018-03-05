@@ -7,23 +7,13 @@ test = {
         {
           'code': r"""
           >>> eval_all(Pair(2, nil), env)
-          e56af2bab40778990634a527fe4407f8
-          # locked
-          # choice: 2
-          # choice: (2)
-          # choice: SchemeError
+          2
           >>> eval_all(Pair(4, Pair(5, nil)), env)
-          19a0c723c8c2fa9e2860916af61035e6
-          # locked
-          # choice: 4
-          # choice: (4)
-          # choice: 5
-          # choice: (5)
-          # choice: SchemeError
+          5
           >>> eval_all(nil, env) # return None (meaning undefined)
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -50,36 +40,26 @@ test = {
         {
           'code': r"""
           scm> (begin (+ 2 3) (+ 5 6))
-          bf10a0a8a47126dd73163da18664742b
-          # locked
+          11
           scm> (begin (define x 3) x)
-          a3d16f1c59cdc683d6ce640b10aa5c1d
-          # locked
+          3
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
           scm> (begin 30 '(+ 2 2))
-          2b86d433000557e5796794c8fecad294
-          # locked
-          # choice: (+ 2 2)
-          # choice: '(+ 2 2)
-          # choice: 4
-          # choice: 30
+          (+ 2 2)
           scm> (define x 0)
-          9d01e356a925e61e19645aef1b1fdd64
-          # locked
+          x
           scm> (begin 42 (define x (+ x 1)))
-          9d01e356a925e61e19645aef1b1fdd64
-          # locked
+          x
           scm> x
-          2894dd5fa65c8aa8f2b9d920d0e542e0
-          # locked
+          1
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""

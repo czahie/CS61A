@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': '997e92e3948dfad75ab88154c0243e1d',
+          'answer': 'Pair(A, Pair(B, nil)), where: A is the symbol being bound, B is an expression whose value should be bound to A',
           'choices': [
             r"""
             Pair(A, Pair(B, nil)), where:
@@ -34,11 +34,11 @@ test = {
             """
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': 'What is the structure of the expressions argument to do_define_form?'
         },
         {
-          'answer': '6ae5ed4a5d6e1f2d9db216f2088246e4',
+          'answer': 'define',
           'choices': [
             'make_child_frame',
             'define',
@@ -46,7 +46,7 @@ test = {
             'bindings'
           ],
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'question': r"""
           What method of a Frame instance will bind
           a value to a symbol in that frame?
@@ -61,35 +61,28 @@ test = {
         {
           'code': r"""
           scm> (define size 2)
-          4f36c9afc0fbd49387a65f0459ce7d70
-          # locked
+          size
           scm> size
-          e56af2bab40778990634a527fe4407f8
-          # locked
+          2
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
           scm> (define x (+ 2 3))
-          9d01e356a925e61e19645aef1b1fdd64
-          # locked
+          x
           scm> x
-          19a0c723c8c2fa9e2860916af61035e6
-          # locked
+          5
           scm> (define x (+ 2 7))
-          9d01e356a925e61e19645aef1b1fdd64
-          # locked
+          x
           scm> x
-          5fb541ba24eaf504edc7eae61bda4f97
-          # locked
+          9
           scm> (eval (define tau 6.28))
-          f2ac5b96766e55620d8e76ae5664f380
-          # locked
+          6.28
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
