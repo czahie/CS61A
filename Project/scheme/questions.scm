@@ -6,16 +6,23 @@
 ; Some utility functions that you may find useful to implement.
 
 (define (cons-all first rests)
-  'replace-this-line)
+ (define (f lst) (cons first lst))
+ (map f rests)
+ )
 
 (define (zip pairs)
-  'replace-this-line)
+ (list (map car pairs) (map cadr pairs))
+)
 
 ;; Problem 17
 ;; Returns a list of two-element lists
 (define (enumerate s)
   ; BEGIN PROBLEM 17
-  'replace-this-line
+ (define (enumerate_helper s n)
+  (if (null? s)
+   s
+   (cons (list n (car s)) (enumerate_helper (cdr s) (+ n 1)))))
+ (enumerate_helper s 0)
   )
   ; END PROBLEM 17
 
@@ -23,10 +30,18 @@
 ;; List all ways to make change for TOTAL with DENOMS
 (define (list-change total denoms)
   ; BEGIN PROBLEM 18
-  'replace-this-line
+ (cond
+  ((null? denoms) nil)
+  ((= total 0) (cons nil nil)) ; Return (())
+  ((> (car denoms) total) (list-change total (cdr denoms)))
+  (else
+   (define with_car (list-change (- total (car denoms)) denoms))
+   (define without_car (list-change total (cdr denoms)))
+   (append (cons-all (car denoms) with_car) without_car))
   )
   ; END PROBLEM 18
 
+)
 ;; Problem 19
 ;; Returns a function that checks if an expression is the special form FORM
 (define (check-special form)

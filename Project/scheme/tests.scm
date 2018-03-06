@@ -62,10 +62,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Move the following (exit) line to run additional tests. ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(exit)
+
 
 
 ;;; 1.1.2
+
+(define n 1)
+; expect n
+(define n (+ n 1))
+; expect n
+n
+; expect 2
 
 (define size 2)
 ; expect size
@@ -85,6 +92,11 @@ circumference
 ; expect 62.8318
 
 ;;; 1.1.4
+
+(define (cube x) (* x x x))
+; expect cube
+(cube 3)
+; expect 27
 
 (define (square x) (* x x))
 ; expect square

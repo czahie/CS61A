@@ -301,12 +301,30 @@ def do_and_form(expressions, env):
     """Evaluate a (short-circuited) and form."""
     # BEGIN PROBLEM 13
     "*** YOUR CODE HERE ***"
+    if expressions is nil:
+        return True
+    else:
+        first_expr = scheme_eval(expressions.first, env)
+        if expressions.second is nil:
+            return first_expr
+        elif scheme_falsep(first_expr):  # The first expression is False
+            return False
+        elif scheme_truep(first_expr):  # The first expression is True
+            return do_and_form(expressions.second, env)
     # END PROBLEM 13
 
 def do_or_form(expressions, env):
     """Evaluate a (short-circuited) or form."""
     # BEGIN PROBLEM 13
     "*** YOUR CODE HERE ***"
+    if expressions is nil:
+        return False
+    else:
+        first_expr = scheme_eval(expressions.first, env)
+        if scheme_falsep(first_expr):  # The first expression is False
+            return do_or_form(expressions.second, env)
+        else:  # The first expression is True
+            return first_expr
     # END PROBLEM 13
 
 def do_cond_form(expressions, env):
@@ -323,6 +341,10 @@ def do_cond_form(expressions, env):
         if scheme_truep(test):
             # BEGIN PROBLEM 14
             "*** YOUR CODE HERE ***"
+            if clause.second is nil:  # When the true predicate does not have a corresponding result sub-expression, return the predicate value
+                return test
+            else:  # When a result sub-expression of a cond case has multiple expressions, evaluate them all and return the value of the last expression
+                return eval_all(clause.second, env)
             # END PROBLEM 14
         expressions = expressions.second
 
@@ -341,6 +363,15 @@ def make_let_frame(bindings, env):
         raise SchemeError('bad bindings list in let form')
     # BEGIN PROBLEM 15
     "*** YOUR CODE HERE ***"
+    formals, vals = nil, nil
+    while bindings is not nil:
+        check_form(bindings.first, 2, 2)
+        val = scheme_eval(bindings.first.second.first, env)  # Evaluate expressions in this env first
+        formals = Pair(bindings.first.first, formals)
+        check_formals(formals)  # Check formals
+        vals = Pair(val, vals)
+        bindings = bindings.second
+    return env.make_child_frame(formals, vals)
     # END PROBLEM 15
 
 def do_define_macro(expressions, env):
@@ -429,6 +460,10 @@ class MuProcedure(UserDefinedProcedure):
 
     # BEGIN PROBLEM 16
     "*** YOUR CODE HERE ***"
+    def make_call_frame(self, args, env):
+        """Make a frame that binds my formal parameters to ARGS, a Scheme list
+        of values, for a dynamically-scoped call evaluated in environment ENV."""
+        return env.make_child_frame(self.formals, args)
     # END PROBLEM 16
 
     def __str__(self):
@@ -445,6 +480,8 @@ def do_mu_form(expressions, env):
     check_formals(formals)
     # BEGIN PROBLEM 16
     "*** YOUR CODE HERE ***"
+    body = expressions.second
+    return MuProcedure(formals, body)
     # END PROBLEM 16
 
 SPECIAL_FORMS['mu'] = do_mu_form

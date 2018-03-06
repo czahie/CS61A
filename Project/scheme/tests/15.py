@@ -7,31 +7,23 @@ test = {
         {
           'code': r"""
           scm> (define x 1)
-          9d01e356a925e61e19645aef1b1fdd64
-          # locked
+          x
           scm> (let ((x 5))
           ....    (+ x 3))
-          7160af5f6893bd49bb63dee6b8320930
-          # locked
+          8
           scm> x
-          2894dd5fa65c8aa8f2b9d920d0e542e0
-          # locked
+          1
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
           scm> (let ((a 1) (b a)) b)
-          87c30138f7979b4f5a454aacfb191b98
-          # locked
-          # choice: SchemeError
-          # choice: 1
-          # choice: x
-          # choice: y
+          SchemeError
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -39,11 +31,10 @@ test = {
           ....    (let ((x 2)
           ....          (y x))
           ....        (+ y (* x 2))))
-          5fb541ba24eaf504edc7eae61bda4f97
-          # locked
+          9
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""

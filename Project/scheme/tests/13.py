@@ -7,32 +7,20 @@ test = {
         {
           'code': r"""
           scm> (and)
-          a87b4aa619df2eba30bc86785b816612
-          # locked
-          # choice: True
-          # choice: False
-          # choice: SchemeError
+          True
           scm> (and 1 False)
-          55275a3300eb11ce47998c15403d99c6
-          # locked
-          # choice: 1
-          # choice: True
-          # choice: False
+          False
           scm> (and (+ 1 1) 1)
-          2894dd5fa65c8aa8f2b9d920d0e542e0
-          # locked
+          1
           scm> (and False 5)
-          55275a3300eb11ce47998c15403d99c6
-          # locked
+          False
           scm> (and 4 5 (+ 3 3))
-          7964a777121da6350b0e6ecd16129317
-          # locked
+          6
           scm> (and True False 42 (/ 1 0))
-          55275a3300eb11ce47998c15403d99c6
-          # locked
+          False
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -106,32 +94,24 @@ test = {
         {
           'code': r"""
           scm> (or)
-          55275a3300eb11ce47998c15403d99c6
-          # locked
+          False
           scm> (or (+ 1 1))
-          e56af2bab40778990634a527fe4407f8
-          # locked
+          2
           scm> (or False)
-          55275a3300eb11ce47998c15403d99c6
-          # locked
+          False
           scm> (define (t) True)
-          f16aec3dd21e3756aa445ca3e2d11a8d
-          # locked
+          t
           scm> (or (t) 3)
-          a87b4aa619df2eba30bc86785b816612
-          # locked
+          True
           scm> (or 5 2 1)
-          19a0c723c8c2fa9e2860916af61035e6
-          # locked
+          5
           scm> (or False (- 1 1) 1)
-          346bede49af9f8a0fafbc46acfa3395c
-          # locked
+          0
           scm> (or 4 True (/ 1 0))
-          8ad686581488b3cc40d870a8db32810e
-          # locked
+          4
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
