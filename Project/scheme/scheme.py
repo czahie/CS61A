@@ -53,8 +53,8 @@ def eval_all(expressions, env):
     # BEGIN PROBLEM 8
     if expressions is nil:
         return None
-    elif expressions.second is nil:
-        return scheme_eval(expressions.first, env)
+    elif expressions.second is nil:  # Tail context
+        return scheme_eval(expressions.first, env, True)
     else:
         scheme_eval(expressions.first, env)
         return eval_all(expressions.second, env)
@@ -222,6 +222,8 @@ class MacroProcedure(LambdaProcedure):
         resulting expanded expression is to be evaluated."""
         # BEGIN Problem 21
         "*** YOUR CODE HERE ***"
+        applied = scheme_apply(self, operands, env)
+        return scheme_eval(complete_eval(applied), env)
         # END Problem 21
 
 def add_primitives(frame, funcs_and_names):
@@ -293,9 +295,9 @@ def do_if_form(expressions, env):
     """Evaluate an if form."""
     check_form(expressions, 2, 3)
     if scheme_truep(scheme_eval(expressions.first, env)):
-        return scheme_eval(expressions.second.first, env)
+        return scheme_eval(expressions.second.first, env, True)  # Tail context
     elif len(expressions) == 3:
-        return scheme_eval(expressions.second.second.first, env)
+        return scheme_eval(expressions.second.second.first, env, True)  # Tail context
 
 def do_and_form(expressions, env):
     """Evaluate a (short-circuited) and form."""
@@ -303,11 +305,11 @@ def do_and_form(expressions, env):
     "*** YOUR CODE HERE ***"
     if expressions is nil:
         return True
+    elif expressions.second is nil:  # Tail context
+        return scheme_eval(expressions.first, env, True)
     else:
         first_expr = scheme_eval(expressions.first, env)
-        if expressions.second is nil:
-            return first_expr
-        elif scheme_falsep(first_expr):  # The first expression is False
+        if scheme_falsep(first_expr):  # The first expression is False
             return False
         elif scheme_truep(first_expr):  # The first expression is True
             return do_and_form(expressions.second, env)
@@ -319,6 +321,8 @@ def do_or_form(expressions, env):
     "*** YOUR CODE HERE ***"
     if expressions is nil:
         return False
+    elif expressions.second is nil:  # Tail context
+        return scheme_eval(expressions.first, env, True)
     else:
         first_expr = scheme_eval(expressions.first, env)
         if scheme_falsep(first_expr):  # The first expression is False
@@ -378,6 +382,17 @@ def do_define_macro(expressions, env):
     """Evaluate a define-macro form."""
     # BEGIN Problem 21
     "*** YOUR CODE HERE ***"
+    check_form(expressions, 2)
+    target = expressions.first
+    if isinstance(target, Pair) and scheme_symbolp(target.first):
+        formals = target.second
+        body = expressions.second
+        macro_procedure = MacroProcedure(formals, body, env)
+        env.define(target.first, macro_procedure)
+        return target.first
+    else:
+        bad_target = target.first if isinstance(target, Pair) else target
+        raise SchemeError('non-symbol: {0}'.format(bad_target))
     # END Problem 21
 
 
@@ -550,6 +565,7 @@ def scheme_optimized_eval(expr, env, tail=False):
     if tail:
         # BEGIN PROBLEM 20
         "*** YOUR CODE HERE ***"
+        return Thunk(expr, env)
         # END PROBLEM 20
     else:
         result = Thunk(expr, env)
@@ -565,13 +581,16 @@ def scheme_optimized_eval(expr, env, tail=False):
         else:
             # BEGIN PROBLEM 20
             "*** YOUR CODE HERE ***"
+            operator = scheme_optimized_eval(first, env)
+            check_procedure(operator)
+            result = operator.eval_call(rest, env)
             # END PROBLEM 20
     return result
 
 ################################################################
 # Uncomment the following line to apply tail call optimization #
 ################################################################
-# scheme_eval = scheme_optimized_eval
+scheme_eval = scheme_optimized_eval
 
 
 ####################

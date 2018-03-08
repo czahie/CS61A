@@ -56,12 +56,12 @@
 (define (let-to-lambda expr)
   (cond ((atom? expr)
          ; BEGIN PROBLEM 19
-         'replace-this-line
+         expr
          ; END PROBLEM 19
          )
         ((quoted? expr)
          ; BEGIN PROBLEM 19
-         'replace-this-line
+         expr
          ; END PROBLEM 19
          )
         ((or (lambda? expr)
@@ -70,18 +70,51 @@
                (params (cadr expr))
                (body   (cddr expr)))
            ; BEGIN PROBLEM 19
-           'replace-this-line
+          (cons form (cons params (map let-to-lambda body)))
            ; END PROBLEM 19
            ))
         ((let? expr)
          (let ((values (cadr expr))
                (body   (cddr expr)))
            ; BEGIN PROBLEM 19
-           'replace-this-line
+          (append (cons (cons 'lambda (cons (car (zip values)) (map let-to-lambda body))) nil) (map let-to-lambda (cadr (zip values))))
            ; END PROBLEM 19
            ))
         (else
          ; BEGIN PROBLEM 19
-         'replace-this-line
+         (cons (car expr) (map let-to-lambda (cdr expr)))
          ; END PROBLEM 19
          )))
+
+;; The let-to-lambda procedure
+(define (let-to-lambda expr)
+  ...)
+
+;; A list representing the let-to-lambda procedure
+(define let-to-lambda-code
+  '(define (let-to-lambda expr)
+     (cond ((atom? expr)
+         expr
+         )
+        ((quoted? expr)
+         expr
+         )
+        ((or (lambda? expr)
+             (define? expr))
+         (let ((form   (car expr))
+               (params (cadr expr))
+               (body   (cddr expr)))
+          (cons form (cons params (map let-to-lambda body)))
+           ))
+        ((let? expr)
+         (let ((values (cadr expr))
+               (body   (cddr expr)))
+          (append (cons (cons 'lambda (cons (car (zip values)) (map let-to-lambda body))) nil) (map let-to-lambda (cadr (zip values))))
+           ))
+        (else
+         (cons (car expr) (map let-to-lambda (cdr expr)))
+         ))))
+
+;; An let-to-lambda procedure that does not use 'let'!
+(define let-to-lambda-without-let
+  (let-to-lambda let-to-lambda-code))
