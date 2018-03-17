@@ -1,0 +1,27 @@
+{
+    "name": "Homework 11",
+    "endpoint": "cal/cs61a/fa17/hw11",
+    "src": [
+        "hw11.scm"
+    ],
+    "tests": {
+        "tests/find.py": "ok_test",
+        "tests/scale-stream.py": "ok_test",
+        "tests/has-cycle.py": "ok_test",
+        "tests/has-cycle-constant.py": "ok_test"
+    },
+    "default_tests": [
+        "find",
+        "scale-stream",
+        "has-cycle"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "collaborate",
+        "backup"
+    ]
+}

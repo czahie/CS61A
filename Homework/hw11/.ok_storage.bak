@@ -1,0 +1,4 @@
+'find-correct', (0, 70)
+'scale-stream-correct', (512, 70)
+'has-cycle-correct', (1024, 70)
+'has-cycle-constant-correct', (1536, 70)
