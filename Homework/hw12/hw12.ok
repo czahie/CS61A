@@ -1,0 +1,27 @@
+{
+    "name": "Homework 12",
+    "endpoint": "cal/cs61a/fa17/hw12",
+    "src": [
+        "hw12.sql"
+    ],
+    "tests": {
+        "tests/small.py": "ok_test",
+        "tests/parent-height.py": "ok_test",
+        "tests/size-siblings.py": "ok_test",
+        "tests/stack.py": "ok_test"
+    },
+    "default_tests": [
+        "small",
+        "parent-height",
+        "size-siblings",
+        "stack"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
