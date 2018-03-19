@@ -1,2 +1,4 @@
 'small-correct', (0, 70)
 'parent-correct', (512, 70)
+'size-correct', (1024, 70)
+'stack-correct', (1536, 70)
