@@ -1,0 +1,35 @@
+{
+    "name": "Homework 13",
+    "endpoint": "cal/cs61a/fa17/hw13",
+    "src": [
+        "hw13.sql"
+    ],
+    "tests": {
+        "tests/schedule.py": "ok_test",
+        "tests/meals-part1.py": "ok_test",
+        "tests/meals-part2.py": "ok_test",
+        "tests/meals-part3.py": "ok_test",
+        "tests/cyber-monday-part1.py": "ok_test",
+        "tests/cyber-monday-part2.py": "ok_test",
+        "tests/cyber-monday-part3.py": "ok_test",
+        "tests/cyber-monday-part4.py": "ok_test"
+    },
+    "default_tests": [
+        "schedule",
+        "meals-part1",
+        "meals-part2",
+        "meals-part3",
+        "cyber-monday-part1",
+        "cyber-monday-part2",
+        "cyber-monday-part3",
+        "cyber-monday-part4"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
