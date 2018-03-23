@@ -1,0 +1,32 @@
+{
+    "name": "Lab 13",
+    "endpoint": "cal/cs61a/fa17/lab13",
+    "src": [
+        "lab13.py",
+        "lab13.scm",
+        "lab13_extra.scm",
+        "lab13_extra.sql"
+    ],
+    "tests": {
+        "tests/compose-all.py": "ok_test",
+        "tests/deep-map.py": "ok_test",
+        "lab13.py": "doctest",
+        "tests/tally.py": "ok_test",
+        "tests/rle.py": "ok_test",
+        "tests/pairs.py": "ok_test"
+    },
+    "default_tests": [
+        "compose-all",
+        "deep-map",
+        "make_generators_generator",
+        "permutations"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}

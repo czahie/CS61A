@@ -1,0 +1,7 @@
+'compose-all-correct', (0, 70)
+'deep-map-correct', (512, 70)
+'make_generators_generator-correct', (1024, 70)
+'permutations-correct', (1536, 70)
+'tally-correct', (2048, 70)
+'rle-correct', (2560, 70)
+'pairs-correct', (3072, 70)
