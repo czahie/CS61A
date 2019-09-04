@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="/assets/css/hw.css">
+
+
+    <title>
+Homework 11 Solutions | CS 61A Spring 2018
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Homework 11 Solutions
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="hw11.zip" class="label label-outline">hw11.zip</a></li>
+        </ul>
+        
+      </h1>
+    </header>
+    
+<h2>Solution Files</h2>
+<p>You can find the solutions in the <a href="hw11.scm">hw11.scm</a></p>
+
+    
+<h3 class="question" id="q1">Q1: Find</h3>
+
+<p>Define a function <code>find</code> which takes in as input a stream and a predicate, and
+returns the first element in the stream satisfying the predicate. If the item is
+not found, return <code>#f</code> (assume that a predicate will never match <code>#f</code>).</p>
+
+<blockquote><p><em>Extra note</em>: Is it always possible to correctly return <code>#f</code>? Can you think of
+a possible input <code>s</code> where we might run into issues (we won't test you on this
+case)?</p></blockquote>
+
+<solution>
+
+<pre><code>(define (find s predicate)
+<div class="sol-highlight">  (cond ((null? s) #f)
+        ((predicate (car s)) (car s))
+        (else (find (cdr&#x2d;stream s) predicate)))</div>)</code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q find</code></pre>
+
+<div class="sol-highlight">
+
+<p>Solving this stream problem is very similar to solving a Scheme list problem.
+Don't believe us? Check it out:</p>
+
+<pre><code>(define (find&#x2d;lst s predicate)
+  (cond ((null? s) #f)
+        ((predicate (car s)) (car s))
+        (else (find&#x2d;lst (cdr s) predicate)))</code></pre>
+
+<p>The only real difference is that we use <code>cdr&#x2d;stream</code> instead of <code>cdr</code>! This
+happens to be a very common theme when working with streams.</p>
+
+<p>The solution for find is quite straightforward. There's a couple of cases:</p>
+
+<ul>
+  <li><strong>Empty stream</strong> - nothing to find, return <code>#f</code>.</li>
+  <li><strong>Predicate match for <code>(car s)</code></strong> - return <code>(car s)</code>, since it matches.</li>
+  <li><strong>No predicate match for <code>(car s)</code></strong> - it could still match in the rest of the
+  stream, so recurse.</li>
+</ul>
+
+<p><em>Extra note solution</em>: <code>#f</code> can only be returned if the input stream is of
+finite length. <code>find</code> will simply run forever on infinite streams which lack a
+suitable element!</p>
+
+</div>
+
+<h3 class="question" id="q2">Q2: Scale Stream</h3>
+
+<p>Implement the function <code>scale&#x2d;stream</code>, which takes a stream <code>s</code> and a number
+<code>k</code>, and returns a stream where each element is the corresponding element of <code>s</code>
+scaled by <code>k</code>. Your solution should work even if <code>s</code> has an infinite number of
+items.</p>
+
+<solution>
+
+<pre><code>(define (scale&#x2d;stream s k)
+<div class="sol-highlight">  (if (null? s)
+    nil
+    (cons&#x2d;stream (* k (car s)) (scale&#x2d;stream (cdr&#x2d;stream s) k)))</div>)</code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q scale-stream</code></pre>
+
+<div class="sol-highlight">
+
+<p>Solving this stream problem is very similar to solving a Scheme list problem.
+Don't believe us? Check it out:</p>
+
+<pre><code>(define (scale&#x2d;lst s predicate)
+  (if (null? s)
+    nil
+    (cons (* k (car s)) (scale&#x2d;lst (cdr s) k))))</code></pre>
+
+<p>The only real difference is that we use <code>cdr&#x2d;stream</code> instead of <code>cdr</code> and
+<code>cons&#x2d;stream</code> instead of <code>cons</code>! This happens to be a very common theme when
+working with streams.</p>
+
+<p>The solution for scale-stream is quite straightforward. There's a couple of
+cases:</p>
+
+<ul>
+  <li><strong>Empty stream</strong> - nothing to find, return <code>#f</code>.</li>
+  <li><strong>Otherwise</strong>, scale the first item, and then combine it with the rest of
+  stream scaled (recurse).</li>
+</ul>
+
+</div>
+
+<h3 class="question" id="q3">Q3: Cycles</h3>
+
+<p>In Scheme, it's possible to have a stream with cycles. That is, a stream may
+contain itself as part of the stream definition.</p>
+
+<pre><code>scm&gt; (define s (cons&#x2d;stream 1 (cons&#x2d;stream 2 s)))
+scm&gt; (car s)
+1
+scm&gt; (car (cdr&#x2d;stream (cdr&#x2d;stream s)))
+1</code></pre>
+
+<p>Implement <code>has&#x2d;cycle</code>, that returns whether a stream contains a cycle.</p>
+
+<blockquote><p><strong>Note:</strong> You may assume that the input is either a stream of some unknown
+finite length, or contains a cycle.</p></blockquote>
+
+<solution>
+
+<pre><code>(define (has&#x2d;cycle s)
+<div class="sol-highlight">  (define (cycle&#x2d;tracker so&#x2d;far cur)
+    (cond ((null? cur) #f)
+          ((contains so&#x2d;far cur) #t)
+          (else (cycle&#x2d;tracker (cons cur so&#x2d;far) (cdr&#x2d;stream cur)))
+    )
+  )
+  (cycle&#x2d;tracker nil s)</div>)
+<div class="sol-highlight">(define (contains lst s)
+  (cond ((null? lst) #f)
+        ((eq? s (car lst)) #t)
+        (else (contains (cdr lst) s))
+    )
+)</div></code></pre>
+
+</solution>
+
+<blockquote><p><strong>Hint:</strong> <code>eq?</code> may be used to check if two items are the same stream
+instance.</p>
+
+<pre><code>  scm&gt; (define s (cons&#x2d;stream 1 s))
+  scm&gt; (eq? s (cdr&#x2d;stream s))
+  True</code></pre>
+
+<p>It may be helpful to keep track of already seen stream instances.</p></blockquote>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q has-cycle</code></pre>
+
+<div class="sol-highlight">
+
+<p><strong>Main idea:</strong> we will go through each item in stream. If we ever encounter the
+same stream again, we know we've detected a cycle. Hitting the end of the stream
+without detecting any cycles means there's no cycles.</p>
+
+<p>As noted in the hint, we'll use <code>eq?</code> to detect if two streams are the same (the
+<code>contains?</code> function is just a simple helper that works for anything, not just
+streams!). We'll also keep track of the streams we've seen so far in a list (so
+a list of streams).</p>
+
+</div>
+
+<p><strong>Extra question</strong>: <em>This question is not worth extra credit and is entirely
+optional (i.e. there are no test cases that check if you use constant space). It
+is designed to challenge you to think creatively!</em></p>
+
+<p>Implement <code>has&#x2d;cycle&#x2d;constant</code> with only <a href="http://composingprograms.com/pages/28-efficiency.html#growth-categories">constant space</a>. The solution is
+short (fewer than 20 lines of code), but requires a clever idea. Try to discover
+the solution yourself before asking around:</p>
+
+<solution>
+
+<pre><code>(define (has&#x2d;cycle&#x2d;constant s)
+<div class="sol-highlight">  (let ((slow s)
+        (fast (cdr&#x2d;stream s)))
+       (cycle&#x2d;stepper slow fast)
+  )</div>)
+<div class="sol-highlight">(define (cycle&#x2d;stepper slow fast)
+  (cond ((or (null? fast) (null? (cdr&#x2d;stream fast))) #f)
+        ((eq? fast slow) #t)
+        (else (cycle&#x2d;stepper (cdr&#x2d;stream slow) (cdr&#x2d;stream (cdr&#x2d;stream fast))))
+  )
+)</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q has-cycle-constant</code></pre>
+
+<div class="sol-highlight">
+
+<p>First, let's discuss why the previous solution isn't constant space. For a
+stream that has no cycle, we'll end up storing every single point in the stream
+in the list of streams, so it'll end up using <strong>linear</strong> space. It should be
+clear that simply storing a bunch of streams isn't going to work if we want
+<strong>constant</strong> space.</p>
+
+<p><strong>Main idea:</strong> We'll track two positions in the stream, a tortoise (slow) and a
+hare (fast). The tortoise moves slowly (and steadily, and also doesn't win the
+race in our story), and the hare moves quickly.</p>
+
+<p>We start the tortoise right before the hare. The tortoise will advance one item
+at a time, while the hare will advance two at a time. If the hare hits the end
+of the stream, then there can be no cycle. Conversely, if the hare sees the
+tortoise, then there must have been a cycle, and both the tortoise and the hare
+are in that cycle.</p>
+
+<p>Obviously, there's no way for the tortoise to meet the hare if there's no cycle
+(the hare will hit the end of the stream first). The only thing left to prove
+is that the hare and the tortoise are guaranteed to see each other if there's a
+cycle (for a more formal proof, search "Floyd cycle detection algorithm" using
+your favorite search engine). An intuitive argument is that the distance between
+the hare and the tortoise in the cycle will decrease by one every time you
+advance both. Eventually, they're guaranteed to meet up.</p>
+
+</div>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#q1">Q1: Find</a></li>
+  <li><a href="#q2">Q2: Scale Stream</a></li>
+  <li><a href="#q3">Q3: Cycles</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>

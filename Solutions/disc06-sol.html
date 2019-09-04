@@ -1,0 +1,696 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}pre { word-wrap:break-word; }pre { white-space:pre-wrap; }</style><div id="google-cache-hdr"  dir=ltr><div>这是 <a href="https://cs61a.org/disc/disc06_sol.pdf" dir="ltr">https://cs61a.org/disc/disc06_sol.pdf</a> 的 HTML 档。<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> 在网路漫游时会自动将档案转换成 HTML 网页来储存。</div></div><div style="position:relative;margin:8px;">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX-1.40.18">
+<meta name="CreationDate" content="D:20171219170040Z">
+<meta name="ModDate" content="D:20171219170040Z">
+<meta name="Fullbanner" content="This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) kpathsea version 6.2.3">
+<title>CS 61A Linked Lists and Midterm Review Fall 2017 1 Linked Lists</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:258;left:81"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:258;left:235"><nobr>Linked Lists and Midterm Review</nobr></div>
+<div style="position:absolute;top:294;left:81"><nobr>Fall 2017</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:301;left:377"><nobr>Discussion 6: October 11, 2017 <font color="#ff0000" style="font-size:19px">Solutions</font></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:363;left:81"><nobr>1 Linked Lists</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:417;left:81"><nobr>There are many different implementations of sequences in Python. Today, we’ll</nobr></div>
+<div style="position:absolute;top:438;left:81"><nobr>explore the linked list implementation.</nobr></div>
+<div style="position:absolute;top:469;left:81"><nobr>A linked list is either an empty linked list, or a Link object containing a first value</nobr></div>
+<div style="position:absolute;top:490;left:81"><nobr>and the rest of the linked list.</nobr></div>
+<div style="position:absolute;top:521;left:81"><nobr>To check if a linked list is an empty linked list, compare it agains the class attribute</nobr></div>
+<div style="position:absolute;top:539;left:81"><nobr>Link.empty:</nobr></div>
+<div style="position:absolute;top:573;left:81"><nobr><b>if </b>link <b>is </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:595;left:111"><nobr><b>print</b>(This linked list is empty!)</nobr></div>
+<div style="position:absolute;top:616;left:81"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:638;left:111"><nobr><b>print</b>(This linked list is not empty!)</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:684;left:81"><nobr>Implementation</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:731;left:81"><nobr><b>class </b>Link:</nobr></div>
+<div style="position:absolute;top:748;left:111"><nobr>empty = ()</nobr></div>
+<div style="position:absolute;top:774;left:111"><nobr><b>def </b>__init__(self, first, rest=empty):</nobr></div>
+<div style="position:absolute;top:796;left:141"><nobr><b>assert </b>rest <b>is </b>Link.empty <b>or isinstance</b>(rest, Link)</nobr></div>
+<div style="position:absolute;top:813;left:141"><nobr>self.first = first</nobr></div>
+<div style="position:absolute;top:835;left:141"><nobr>self.rest = rest</nobr></div>
+<div style="position:absolute;top:860;left:111"><nobr><b>def </b>__getitem__(self, i):</nobr></div>
+<div style="position:absolute;top:882;left:141"><nobr><b>if </b>i == 0:</nobr></div>
+<div style="position:absolute;top:903;left:171"><nobr><b>return </b>self.first</nobr></div>
+<div style="position:absolute;top:925;left:141"><nobr><b>return </b>self.rest[i-1]</nobr></div>
+<div style="position:absolute;top:946;left:111"><nobr><b>def </b>__len__(self):</nobr></div>
+<div style="position:absolute;top:968;left:141"><nobr><b>return </b>1 + <b>len</b>(self.rest)</nobr></div>
+<div style="position:absolute;top:989;left:111"><nobr><b>def </b>__repr__(self):</nobr></div>
+<div style="position:absolute;top:1011;left:141"><nobr><b>if </b>self.rest <b>is </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:1032;left:171"><nobr><b>return </b>Link({}).<b>format</b>(self.first)</nobr></div>
+<div style="position:absolute;top:1054;left:141"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:1075;left:171"><nobr><b>return </b>Link({}, {}).<b>format</b>(self.first,</nobr></div>
+<div style="position:absolute;top:1097;left:387"><nobr><b>repr</b>(self.rest))</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1363;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1400;left:81"><nobr>2 Linked Lists and Midterm Review</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:1432;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:1482;left:52"><nobr>1.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1479;left:81"><nobr>Write a recursive function flip two that takes as input a linked list lnk and mutates</nobr></div>
+<div style="position:absolute;top:1496;left:81"><nobr>lnk so that every pair is flipped.</nobr></div>
+<div style="position:absolute;top:1531;left:81"><nobr><b>def </b>flip_two(lnk):</nobr></div>
+<div style="position:absolute;top:1570;left:111"><nobr>&gt;&gt;&gt; one_lnk = Link(1)</nobr></div>
+<div style="position:absolute;top:1591;left:111"><nobr>&gt;&gt;&gt; flip_two(one_lnk)</nobr></div>
+<div style="position:absolute;top:1613;left:111"><nobr>&gt;&gt;&gt; one_lnk</nobr></div>
+<div style="position:absolute;top:1634;left:111"><nobr>Link(1)</nobr></div>
+<div style="position:absolute;top:1656;left:111"><nobr>&gt;&gt;&gt; lnk = Link(1, Link(2, Link(3, Link(4, Link(5)))))</nobr></div>
+<div style="position:absolute;top:1677;left:111"><nobr>&gt;&gt;&gt; flip_two(lnk)</nobr></div>
+<div style="position:absolute;top:1699;left:111"><nobr>&gt;&gt;&gt; lnk</nobr></div>
+<div style="position:absolute;top:1720;left:111"><nobr>Link(2, Link(1, Link(4, Link(3, Link(5)))))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1787;left:81"><nobr>Recursive solution:</nobr></div>
+<div style="position:absolute;top:1817;left:111"><nobr><b>if </b>lnk <b>is </b>Link.empty <b>or </b>lnk.rest <b>is </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:1839;left:141"><nobr><b>return</b></nobr></div>
+<div style="position:absolute;top:1856;left:111"><nobr>lnk.first, lnk.rest.first = lnk.rest.first, lnk.first</nobr></div>
+<div style="position:absolute;top:1878;left:111"><nobr>flip_two(lnk.rest.rest)</nobr></div>
+<div style="position:absolute;top:1921;left:81"><nobr>If there’s only a single item (or no item) to flip, then we’re done.</nobr></div>
+<div style="position:absolute;top:1952;left:81"><nobr>Otherwise, we swap the contents of the first and second items in the list. Since</nobr></div>
+<div style="position:absolute;top:1973;left:81"><nobr>we’ve handled the first two items, we then need to recurse on</nobr></div>
+<div style="position:absolute;top:2004;left:81"><nobr>Although the question explicitly asks for a recursive solution, there is also a fairly</nobr></div>
+<div style="position:absolute;top:2025;left:81"><nobr>similar iterative solution:</nobr></div>
+<div style="position:absolute;top:2056;left:111"><nobr><b>while </b>lnk <b>is not </b>Link.empty <b>and </b>lnk.rest <b>is not </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:2073;left:141"><nobr>lnk.first, lnk.rest.first = lnk.rest.first, lnk.first</nobr></div>
+<div style="position:absolute;top:2095;left:141"><nobr>lnk = lnk.rest.rest</nobr></div>
+<div style="position:absolute;top:2138;left:81"><nobr>We will advance lnk until we see there are no more items or there is only one more</nobr></div>
+<div style="position:absolute;top:2160;left:81"><nobr>Link object to process. Processing each Link involves swapping the contents of the</nobr></div>
+<div style="position:absolute;top:2181;left:81"><nobr>first and second items in the list (same as the recursive solution).</nobr></div>
+<div style="position:absolute;top:2212;left:81"><nobr>Notice that the code is remarkably similar to the recursive implementation of</nobr></div>
+<div style="position:absolute;top:2229;left:81"><nobr>flip_two.</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:12px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:2255;left:81"><nobr><a href="https://www.youtube.com/watch?v=wPF9gOx15V0&index=2&list=PLx38hZJ5RLZdJgRCgpaTbmRXKAHOUmomO&t=9m54s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:2291;left:52"><nobr>1.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2288;left:81"><nobr>Write a function remove_duplicates that takes as input a sorted linked list of</nobr></div>
+<div style="position:absolute;top:2310;left:81"><nobr>integers, lnk, and mutates lnk so that all duplicates are removed.</nobr></div>
+<div style="position:absolute;top:2340;left:81"><nobr><b>def </b>remove_duplicates(lnk):</nobr></div>
+<div style="position:absolute;top:2379;left:111"><nobr>&gt;&gt;&gt; lnk = Link(1, Link(1, Link(1, Link(1, Link(5)))))</nobr></div>
+<div style="position:absolute;top:2401;left:111"><nobr>&gt;&gt;&gt; unique = remove_duplicates(lnk)</nobr></div>
+<div style="position:absolute;top:2422;left:111"><nobr>&gt;&gt;&gt; len(unique)</nobr></div>
+<div style="position:absolute;top:2444;left:111"><nobr>2</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2551;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2588;left:367"><nobr>Linked Lists and Midterm Review</nobr></div>
+<div style="position:absolute;top:2588;left:609"><nobr>3</nobr></div>
+<div style="position:absolute;top:2621;left:111"><nobr>&gt;&gt;&gt; len(lnk)</nobr></div>
+<div style="position:absolute;top:2642;left:111"><nobr>2</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2709;left:81"><nobr>Recursive solution:</nobr></div>
+<div style="position:absolute;top:2739;left:111"><nobr><b>if </b>lnk <b>is </b>Link.empty <b>or </b>lnk.rest <b>is </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:2761;left:141"><nobr><b>return </b>lnk</nobr></div>
+<div style="position:absolute;top:2782;left:111"><nobr><b>elif </b>lnk.first == lnk.rest.first:</nobr></div>
+<div style="position:absolute;top:2800;left:141"><nobr>lnk.rest = lnk.rest.rest</nobr></div>
+<div style="position:absolute;top:2821;left:141"><nobr>remove_duplicates(lnk)</nobr></div>
+<div style="position:absolute;top:2847;left:141"><nobr><b>return </b>lnk</nobr></div>
+<div style="position:absolute;top:2868;left:111"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:2886;left:141"><nobr>remove_duplicates(lnk.rest)</nobr></div>
+<div style="position:absolute;top:2912;left:141"><nobr><b>return </b>lnk</nobr></div>
+<div style="position:absolute;top:2951;left:81"><nobr>For a list of one or no items, there are no duplicates to remove.</nobr></div>
+<div style="position:absolute;top:2981;left:81"><nobr>Now consider two possible cases:</nobr></div>
+<div style="position:absolute;top:3008;left:103"><nobr>• If there is a duplicate of the first item, we will find that the first and second</nobr></div>
+<div style="position:absolute;top:3033;left:118"><nobr>items in the list will have the same values (that is, lnk.first == lnk.rest.first).</nobr></div>
+<div style="position:absolute;top:3055;left:118"><nobr>We can confidently state this because we were told that the input linked list</nobr></div>
+<div style="position:absolute;top:3076;left:118"><nobr>is in sorted order, so duplicates are adjacent to each other. We’ll remove the</nobr></div>
+<div style="position:absolute;top:3098;left:118"><nobr>second item from the list.</nobr></div>
+<div style="position:absolute;top:3128;left:118"><nobr>Finally, it’s tempting to recurse on the remainder of the list (lnk.rest), but</nobr></div>
+<div style="position:absolute;top:3150;left:118"><nobr>remember that there could still be more duplicates of the first item in the rest</nobr></div>
+<div style="position:absolute;top:3171;left:118"><nobr>of the list! So we have to recurse on lnk instead. Remember that we have</nobr></div>
+<div style="position:absolute;top:3193;left:118"><nobr>removed an item from the list, so the list is one element smaller than before.</nobr></div>
+<div style="position:absolute;top:3214;left:118"><nobr>Normally, recursing on the same list wouldn’t be a valid subproblem.</nobr></div>
+<div style="position:absolute;top:3241;left:103"><nobr>• Otherwise, there is no duplicate of the first item. We can safely recurse on</nobr></div>
+<div style="position:absolute;top:3266;left:118"><nobr>the remainder of the list.</nobr></div>
+<div style="position:absolute;top:3297;left:81"><nobr>Iterative solution:</nobr></div>
+<div style="position:absolute;top:3323;left:111"><nobr>cur = lnk</nobr></div>
+<div style="position:absolute;top:3349;left:111"><nobr><b>while </b>cur <b>is not </b>Link.empty <b>and </b>cur.rest <b>is not </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:3371;left:141"><nobr><b>if </b>cur.first == cur.rest.first:</nobr></div>
+<div style="position:absolute;top:3388;left:171"><nobr>cur.rest = cur.rest.rest</nobr></div>
+<div style="position:absolute;top:3414;left:141"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:3431;left:171"><nobr>cur = cur.rest</nobr></div>
+<div style="position:absolute;top:3457;left:111"><nobr><b>return </b>lnk</nobr></div>
+<div style="position:absolute;top:3496;left:81"><nobr>The loop condition guarantees that we have at least one item left to consider with</nobr></div>
+<div style="position:absolute;top:3513;left:81"><nobr>cur.</nobr></div>
+<div style="position:absolute;top:3548;left:81"><nobr>For each item in the linked list, we pause and remove all adjacent items that have</nobr></div>
+<div style="position:absolute;top:3569;left:81"><nobr>the same value. Once we see that cur.first != cur.rest.first, we can safely</nobr></div>
+<div style="position:absolute;top:3591;left:81"><nobr>advance to the next item. Once again, this takes advantage of the property that</nobr></div>
+<div style="position:absolute;top:3612;left:81"><nobr>our input linked list is sorted.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3739;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3776;left:81"><nobr>4 Linked Lists and Midterm Review</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:3816;left:52"><nobr>1.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3813;left:81"><nobr>Define reverse, which takes in a linked list and reverses the order of the links.</nobr></div>
+<div style="position:absolute;top:3834;left:81"><nobr>The function may not return a new list; it must mutate the original list. Return a</nobr></div>
+<div style="position:absolute;top:3856;left:81"><nobr>pointer to the head of the reversed list.</nobr></div>
+<div style="position:absolute;top:3884;left:81"><nobr><b>def </b>reverse(lnk):</nobr></div>
+<div style="position:absolute;top:3923;left:111"><nobr>&gt;&gt;&gt; a = Link(1, Link(2, Link(3)))</nobr></div>
+<div style="position:absolute;top:3944;left:111"><nobr>&gt;&gt;&gt; r = reverse(a)</nobr></div>
+<div style="position:absolute;top:3966;left:111"><nobr>&gt;&gt;&gt; r.first</nobr></div>
+<div style="position:absolute;top:3987;left:111"><nobr>3</nobr></div>
+<div style="position:absolute;top:4009;left:111"><nobr>&gt;&gt;&gt; r.rest.first</nobr></div>
+<div style="position:absolute;top:4030;left:111"><nobr>2</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:19px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4094;left:81"><nobr>Recursive solution:</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4129;left:111"><nobr><b>if </b>lnk <b>is </b>Link.empty <b>or </b>lnk.rest <b>is </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:4150;left:141"><nobr><b>return </b>lnk</nobr></div>
+<div style="position:absolute;top:4167;left:111"><nobr>rest_rev = reverse(lnk.rest)</nobr></div>
+<div style="position:absolute;top:4189;left:111"><nobr>lnk.rest.rest = lnk</nobr></div>
+<div style="position:absolute;top:4210;left:111"><nobr>lnk.rest = Link.empty</nobr></div>
+<div style="position:absolute;top:4236;left:111"><nobr><b>return </b>rest_rev</nobr></div>
+<div style="position:absolute;top:4274;left:81"><nobr>For the base case, a linked list with no items or a single item is trivial to reverse.</nobr></div>
+<div style="position:absolute;top:4305;left:81"><nobr>Let’s formally name our variables to make the explanation of the following process</nobr></div>
+<div style="position:absolute;top:4326;left:81"><nobr>a bit easier. The original list is lnk, we reverse lnk.rest recursively and get back</nobr></div>
+<div style="position:absolute;top:4348;left:81"><nobr>a pointer to the head of the reversed version of lnk.rest, which is rest_rev.</nobr></div>
+<div style="position:absolute;top:4378;left:81"><nobr>Notice that lnk.rest is the last item of the list referred to by rest_rev. All we</nobr></div>
+<div style="position:absolute;top:4400;left:81"><nobr>have to do is attach the first item of lnk to the end of the reversed rest, and then</nobr></div>
+<div style="position:absolute;top:4421;left:81"><nobr>make sure that lnk.rest is the empty list as it is now the last item in the reversed</nobr></div>
+<div style="position:absolute;top:4443;left:81"><nobr>list.</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:12px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:4464;left:81"><nobr><a href="https://www.youtube.com/watch?v=eEIMcIN9Teg&index=3&list=PLx38hZJ5RLZdJgRCgpaTbmRXKAHOUmomO">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:19px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4490;left:81"><nobr>Iterative solution (1):</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4524;left:111"><nobr><b>if </b>lnk <b>is </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:4546;left:141"><nobr><b>return </b>lnk</nobr></div>
+<div style="position:absolute;top:4563;left:111"><nobr>cur = lnk</nobr></div>
+<div style="position:absolute;top:4585;left:111"><nobr>nxt = lnk.rest</nobr></div>
+<div style="position:absolute;top:4606;left:111"><nobr>cur.rest = Link.empty</nobr></div>
+<div style="position:absolute;top:4654;left:111"><nobr><b>while </b>nxt <b>is not </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:4671;left:141"><nobr>after = nxt.rest</nobr></div>
+<div style="position:absolute;top:4692;left:141"><nobr>nxt.rest = cur</nobr></div>
+<div style="position:absolute;top:4714;left:141"><nobr>cur = nxt</nobr></div>
+<div style="position:absolute;top:4735;left:141"><nobr>nxt = after</nobr></div>
+<div style="position:absolute;top:4761;left:111"><nobr><b>return </b>cur</nobr></div>
+<div style="position:absolute;top:4799;left:81"><nobr>The iterative solution is quite different from the recursive solution. We go through</nobr></div>
+<div style="position:absolute;top:4821;left:81"><nobr>every item in our linked list, and reattach them in reverse order. That is, we attach</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:4927;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4964;left:367"><nobr>Linked Lists and Midterm Review</nobr></div>
+<div style="position:absolute;top:4964;left:609"><nobr>5</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5002;left:81"><nobr>the second item back to the first item, the third item back to the second item, and</nobr></div>
+<div style="position:absolute;top:5023;left:81"><nobr>so on.</nobr></div>
+<div style="position:absolute;top:5054;left:81"><nobr>The tricky part is figuring what information we need to keep track of in order to do</nobr></div>
+<div style="position:absolute;top:5076;left:81"><nobr>this. We use a two pointer method that tracks a current and a following position</nobr></div>
+<div style="position:absolute;top:5097;left:81"><nobr>in a linked list. The logic is not too complicated, but the best way to understand</nobr></div>
+<div style="position:absolute;top:5119;left:81"><nobr>it is to work through an example with a box and pointer diagram.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:19px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5145;left:81"><nobr>Iterative solution (2):</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5176;left:111"><nobr>new_lnk = Link.empty</nobr></div>
+<div style="position:absolute;top:5202;left:111"><nobr><b>while </b>lnk <b>is not </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:5219;left:141"><nobr>new_lnk, lnk.rest, lnk = lnk, new_lnk, lnk.rest</nobr></div>
+<div style="position:absolute;top:5245;left:111"><nobr><b>return </b>new_lnk</nobr></div>
+<div style="position:absolute;top:5284;left:81"><nobr>Here’s yet another iterative approach, different from both the previous iterative and</nobr></div>
+<div style="position:absolute;top:5306;left:81"><nobr>recursive approaches.</nobr></div>
+<div style="position:absolute;top:5336;left:81"><nobr>We begin by asking how we’d gather the values in a linked list into a list (not a</nobr></div>
+<div style="position:absolute;top:5358;left:81"><nobr>linked list, but a regular Python list) in reverse order.</nobr></div>
+<div style="position:absolute;top:5385;left:81"><nobr>&gt;&gt;&gt; xs = Link(1, Link(2, Link(3)))</nobr></div>
+<div style="position:absolute;top:5406;left:81"><nobr>&gt;&gt;&gt; xs</nobr></div>
+<div style="position:absolute;top:5428;left:81"><nobr>Link(1, Link(2, Link(3)))</nobr></div>
+<div style="position:absolute;top:5449;left:81"><nobr>&gt;&gt;&gt; reverse(xs)</nobr></div>
+<div style="position:absolute;top:5471;left:81"><nobr>[3, 2, 1]</nobr></div>
+<div style="position:absolute;top:5514;left:81"><nobr>We could do this by iterating through the linked list and inserting the values into</nobr></div>
+<div style="position:absolute;top:5536;left:81"><nobr>the front of the list:</nobr></div>
+<div style="position:absolute;top:5567;left:81"><nobr><b>def </b>reverse(lnk):</nobr></div>
+<div style="position:absolute;top:5584;left:111"><nobr>new_list = []</nobr></div>
+<div style="position:absolute;top:5610;left:111"><nobr><b>while </b>lnk <b>is not </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:5627;left:141"><nobr>new_list.insert(0, lnk.first) # Insert the link value before all existing elements of</nobr></div>
+<div style="position:absolute;top:5649;left:111"><nobr>new_list</nobr></div>
+<div style="position:absolute;top:5670;left:141"><nobr>lnk = lnk.rest</nobr></div>
+<div style="position:absolute;top:5696;left:111"><nobr><b>return </b>new_list</nobr></div>
+<div style="position:absolute;top:5735;left:81"><nobr>This works because if value A comes before value B in the original list, then B will</nobr></div>
+<div style="position:absolute;top:5757;left:81"><nobr>be inserted before value A in our new list.</nobr></div>
+<div style="position:absolute;top:5788;left:81"><nobr>We could keep this same approach, but have new_lnk be a linked list instead of an</nobr></div>
+<div style="position:absolute;top:5809;left:81"><nobr>ordinary list.</nobr></div>
+<div style="position:absolute;top:5840;left:81"><nobr><b>def </b>reverse(lnk):</nobr></div>
+<div style="position:absolute;top:5857;left:111"><nobr>new_lnk = Link.empty</nobr></div>
+<div style="position:absolute;top:5883;left:111"><nobr><b>while </b>lnk <b>is not </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:5901;left:141"><nobr>new_lnk = Link(lnk.first, new_lnk) # Create a new link and insert it before all existing</nobr></div>
+<div style="position:absolute;top:5922;left:111"><nobr>links in new_lnk</nobr></div>
+<div style="position:absolute;top:5944;left:141"><nobr>lnk = lnk.rest</nobr></div>
+<div style="position:absolute;top:5969;left:111"><nobr><b>return </b>new_lnk</nobr></div>
+<div style="position:absolute;top:6009;left:81"><nobr>This works, but we are not allowed to create new Link instances.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:6115;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=6><b>Page 6</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6152;left:81"><nobr>6 Linked Lists and Midterm Review</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:6190;left:81"><nobr>So, instead of copying lnk by constructing a new Link with the same first attribute</nobr></div>
+<div style="position:absolute;top:6211;left:81"><nobr>as lnk, we should just make lnk the new head of new_lnk. But that means we</nobr></div>
+<div style="position:absolute;top:6233;left:81"><nobr>simultaneously need to make three updates:</nobr></div>
+<div style="position:absolute;top:6260;left:103"><nobr>• new_lnk should point at what lnk was pointing at (because lnk is the new</nobr></div>
+<div style="position:absolute;top:6285;left:118"><nobr>head of new_lnk).</nobr></div>
+<div style="position:absolute;top:6312;left:103"><nobr>• lnk.rest should point at what new_lnk was pointing at (this makes lnk the</nobr></div>
+<div style="position:absolute;top:6337;left:118"><nobr>new head of new_lnk).</nobr></div>
+<div style="position:absolute;top:6364;left:103"><nobr>• lnk should point at what lnk.rest was pointing at (because we still need to</nobr></div>
+<div style="position:absolute;top:6389;left:118"><nobr>iterate through the original list).</nobr></div>
+<div style="position:absolute;top:6419;left:81"><nobr>This leads us the final solution presented earlier.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:6456;left:52"><nobr>1.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6453;left:81"><nobr>Write multiply lnks, which takes in a Python list of Link objects and multiplies</nobr></div>
+<div style="position:absolute;top:6474;left:81"><nobr>them element-wise. It should return a new linked list. If not all of the Link objects</nobr></div>
+<div style="position:absolute;top:6496;left:81"><nobr>are of equal length, return a linked list whose length is that of the shortest linked</nobr></div>
+<div style="position:absolute;top:6517;left:81"><nobr>list given. You may assume the Link objects are shallow linked lists, and that</nobr></div>
+<div style="position:absolute;top:6535;left:81"><nobr>lst of lnks contains at least one linked list.</nobr></div>
+<div style="position:absolute;top:6567;left:81"><nobr><b>def </b>multiply_lnks(lst_of_lnks):</nobr></div>
+<div style="position:absolute;top:6606;left:111"><nobr>&gt;&gt;&gt; a = Link(2, Link(3, Link(5)))</nobr></div>
+<div style="position:absolute;top:6628;left:111"><nobr>&gt;&gt;&gt; b = Link(6, Link(4, Link(2)))</nobr></div>
+<div style="position:absolute;top:6649;left:111"><nobr>&gt;&gt;&gt; c = Link(4, Link(1, Link(0, Link(2))))</nobr></div>
+<div style="position:absolute;top:6671;left:111"><nobr>&gt;&gt;&gt; p = multiply_lnks([a, b, c])</nobr></div>
+<div style="position:absolute;top:6692;left:111"><nobr>&gt;&gt;&gt; p.first</nobr></div>
+<div style="position:absolute;top:6714;left:111"><nobr>48</nobr></div>
+<div style="position:absolute;top:6735;left:111"><nobr>&gt;&gt;&gt; p.rest.first</nobr></div>
+<div style="position:absolute;top:6757;left:111"><nobr>12</nobr></div>
+<div style="position:absolute;top:6778;left:111"><nobr>&gt;&gt;&gt; p.rest.rest.rest</nobr></div>
+<div style="position:absolute;top:6800;left:111"><nobr>()</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:6864;left:81"><nobr>Recursive solution:</nobr></div>
+<div style="position:absolute;top:6890;left:111"><nobr>product = 1</nobr></div>
+<div style="position:absolute;top:6915;left:111"><nobr><b>for </b>lnk <b>in </b>lst_of_lnks:</nobr></div>
+<div style="position:absolute;top:6937;left:141"><nobr><b>if </b>lnk <b>is </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:6958;left:171"><nobr><b>return </b>Link.empty</nobr></div>
+<div style="position:absolute;top:6976;left:141"><nobr>product *= lnk.first</nobr></div>
+<div style="position:absolute;top:6997;left:111"><nobr>lst_of_lnks_rests = [lnk.rest <b>for </b>lnk <b>in </b>lst_of_lnks]</nobr></div>
+<div style="position:absolute;top:7023;left:111"><nobr><b>return </b>Link(product, multiply_lnks(lst_of_lnks_rests))</nobr></div>
+<div style="position:absolute;top:7061;left:81"><nobr>For our base case, if we detect that any of the lists in the list of Links is empty, we</nobr></div>
+<div style="position:absolute;top:7083;left:81"><nobr>can return the empty linked list as we’re not going to multiply anything.</nobr></div>
+<div style="position:absolute;top:7113;left:81"><nobr>Otherwise, we compute the product of all the firsts in our list of Links. Then,</nobr></div>
+<div style="position:absolute;top:7135;left:81"><nobr>the subproblem we use here is the rest of all the linked lists in our list of Links.</nobr></div>
+<div style="position:absolute;top:7157;left:81"><nobr>Remember that the result of calling multiply_lnks will be a linked list! We’ll use</nobr></div>
+<div style="position:absolute;top:7178;left:81"><nobr>the product we’ve built so far as the first item in the returned Link, and then the</nobr></div>
+<div style="position:absolute;top:7200;left:81"><nobr>result of the recursive call as the rest of that Link.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:7303;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=7><b>Page 7</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7340;left:367"><nobr>Linked Lists and Midterm Review</nobr></div>
+<div style="position:absolute;top:7340;left:609"><nobr>7</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7378;left:81"><nobr>Iterative solution:</nobr></div>
+<div style="position:absolute;top:7405;left:111"><nobr>head = Link.empty</nobr></div>
+<div style="position:absolute;top:7426;left:111"><nobr>tail = head</nobr></div>
+<div style="position:absolute;top:7452;left:111"><nobr><b>while </b>Link.empty <b>not in </b>lst_of_lnks:</nobr></div>
+<div style="position:absolute;top:7469;left:141"><nobr>all_prod = prod([l.first <b>for </b>l <b>in </b>lst_of_lnks])</nobr></div>
+<div style="position:absolute;top:7495;left:141"><nobr><b>if </b>head <b>is </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:7512;left:171"><nobr>head = Link(all_prod)</nobr></div>
+<div style="position:absolute;top:7534;left:171"><nobr>tail = head</nobr></div>
+<div style="position:absolute;top:7559;left:141"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:7577;left:171"><nobr>tail.rest = Link(all_prod)</nobr></div>
+<div style="position:absolute;top:7598;left:171"><nobr>tail = tail.rest</nobr></div>
+<div style="position:absolute;top:7620;left:141"><nobr>lst_of_lnks = [l.rest <b>for </b>l <b>in </b>lst_of_lnks]</nobr></div>
+<div style="position:absolute;top:7645;left:111"><nobr><b>return </b>head</nobr></div>
+<div style="position:absolute;top:7685;left:81"><nobr>The iterative solution is a bit more involved than the recursive solution. Instead</nobr></div>
+<div style="position:absolute;top:7706;left:81"><nobr>of building the list “backwards” as in the recursive solution (because of the order</nobr></div>
+<div style="position:absolute;top:7728;left:81"><nobr>that the recursive calls result in, the last item in our list will be finished first), we’ll</nobr></div>
+<div style="position:absolute;top:7749;left:81"><nobr>build the resulting linked list as we go along.</nobr></div>
+<div style="position:absolute;top:7780;left:81"><nobr>We use head and tail to track the front and end of the new linked list we’re creating.</nobr></div>
+<div style="position:absolute;top:7801;left:81"><nobr>Our stopping condition for the loop is if any of the Links in our list of Links runs</nobr></div>
+<div style="position:absolute;top:7823;left:81"><nobr>out of items.</nobr></div>
+<div style="position:absolute;top:7853;left:81"><nobr>Finally, there’s some special handling for the first item. We need to update both</nobr></div>
+<div style="position:absolute;top:7875;left:81"><nobr>head and tail in that case. Otherwise, we just append to the end of our list using</nobr></div>
+<div style="position:absolute;top:7896;left:81"><nobr>tail, and update tail.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:8491;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=8><b>Page 8</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8528;left:81"><nobr>8 Linked Lists and Midterm Review</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:8560;left:81"><nobr>2 Midterm Review</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:8617;left:52"><nobr>2.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8614;left:81"><nobr>Define a function even_weighted that takes in a list lst and returns a new list that</nobr></div>
+<div style="position:absolute;top:8635;left:81"><nobr>keeps only the even-indexed elements of lst and multiplies each of those elements</nobr></div>
+<div style="position:absolute;top:8657;left:81"><nobr>by the corresponding index.</nobr></div>
+<div style="position:absolute;top:8687;left:81"><nobr><b>def </b>even_weighted(lst):</nobr></div>
+<div style="position:absolute;top:8726;left:111"><nobr>&gt;&gt;&gt; x = [1, 2, 3, 4, 5, 6]</nobr></div>
+<div style="position:absolute;top:8748;left:111"><nobr>&gt;&gt;&gt; even_weighted(x)</nobr></div>
+<div style="position:absolute;top:8769;left:111"><nobr>[0, 6, 20]</nobr></div>
+<div style="position:absolute;top:8838;left:111"><nobr><b>return </b>[_________________________________________________]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8893;left:111"><nobr><b>return </b>[i * lst[i] <b>for </b>i <b>in range</b>(<b>len</b>(lst)) <b>if </b>i % 2 == 0]</nobr></div>
+<div style="position:absolute;top:8932;left:81"><nobr>Alternatively, we can take advantage of the step size for range to make sure we only</nobr></div>
+<div style="position:absolute;top:8953;left:81"><nobr>consider even numbered indices:</nobr></div>
+<div style="position:absolute;top:8984;left:111"><nobr><b>return </b>[i * lst[i] <b>for </b>i <b>in range</b>(0, <b>len</b>(lst), 2)]</nobr></div>
+<div style="position:absolute;top:9023;left:81"><nobr>The key point to note is that instead of iterating over each element in the list, we</nobr></div>
+<div style="position:absolute;top:9045;left:81"><nobr>must instead iterate over the indices of the list. Otherwise, there’s no way to tell if</nobr></div>
+<div style="position:absolute;top:9066;left:81"><nobr>we should keep a given element.</nobr></div>
+<div style="position:absolute;top:9097;left:81"><nobr>One way of solving these problems is to try and write your solution as a for loop</nobr></div>
+<div style="position:absolute;top:9118;left:81"><nobr>first, and then transform it into a list comprehension. The for loop solution might</nobr></div>
+<div style="position:absolute;top:9140;left:81"><nobr>look something like this:</nobr></div>
+<div style="position:absolute;top:9166;left:111"><nobr>result = []</nobr></div>
+<div style="position:absolute;top:9192;left:111"><nobr><b>for </b>i <b>in range</b>(<b>len</b>(lst)):</nobr></div>
+<div style="position:absolute;top:9214;left:141"><nobr><b>if </b>i % 2 == 0:</nobr></div>
+<div style="position:absolute;top:9231;left:171"><nobr>result.append(i * lst[i])</nobr></div>
+<div style="position:absolute;top:9257;left:111"><nobr><b>return </b>result</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:12px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:9296;left:81"><nobr><a href="https://www.youtube.com/watch?v=Am6m8YgAnYY&list=PLx38hZJ5RLZdJgRCgpaTbmRXKAHOUmomO&index=4">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:9332;left:52"><nobr>2.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9329;left:81"><nobr>The quicksort sorting algorithm is an efficient and commonly used algorithm to</nobr></div>
+<div style="position:absolute;top:9351;left:81"><nobr>order the elements of a list. We choose one element of the list to be the pivot</nobr></div>
+<div style="position:absolute;top:9372;left:81"><nobr>element and partition the remaining elements into two lists: one of elements less</nobr></div>
+<div style="position:absolute;top:9394;left:81"><nobr>than the pivot and one of elements greater than the pivot. We recursively sort the</nobr></div>
+<div style="position:absolute;top:9415;left:81"><nobr>two lists, which gives us a sorted list of all the elements less than the pivot and all</nobr></div>
+<div style="position:absolute;top:9437;left:81"><nobr>the elements greater than the pivot, which we can then combine with the pivot for</nobr></div>
+<div style="position:absolute;top:9458;left:81"><nobr>a completely sorted list.</nobr></div>
+<div style="position:absolute;top:9489;left:81"><nobr>First, implement the quicksort list function. Choose the first element of the list</nobr></div>
+<div style="position:absolute;top:9510;left:81"><nobr>as the pivot. You may assume that all elements are distinct.</nobr></div>
+<div style="position:absolute;top:9550;left:81"><nobr><b>def </b>quicksort_list(lst):</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:9679;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=9><b>Page 9</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9716;left:367"><nobr>Linked Lists and Midterm Review</nobr></div>
+<div style="position:absolute;top:9716;left:609"><nobr>9</nobr></div>
+<div style="position:absolute;top:9749;left:111"><nobr>&gt;&gt;&gt; quicksort_list([3, 1, 4])</nobr></div>
+<div style="position:absolute;top:9770;left:111"><nobr>[1, 3, 4]</nobr></div>
+<div style="position:absolute;top:9839;left:111"><nobr><b>if </b>_____________________________________________________:</nobr></div>
+<div style="position:absolute;top:9878;left:141"><nobr>_____________________________________________________</nobr></div>
+<div style="position:absolute;top:9921;left:111"><nobr>pivot = lst[0]</nobr></div>
+<div style="position:absolute;top:9964;left:111"><nobr>less = __________________________________________________</nobr></div>
+<div style="position:absolute;top:10007;left:111"><nobr>greater = _______________________________________________</nobr></div>
+<div style="position:absolute;top:10054;left:111"><nobr><b>return </b>__________________________________________________</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10109;left:81"><nobr><b>def </b>quicksort_list(lst):</nobr></div>
+<div style="position:absolute;top:10130;left:111"><nobr><b>if len</b>(lst) &lt;= 1:</nobr></div>
+<div style="position:absolute;top:10152;left:141"><nobr><b>return </b>lst</nobr></div>
+<div style="position:absolute;top:10169;left:111"><nobr>pivot = lst[0]</nobr></div>
+<div style="position:absolute;top:10191;left:111"><nobr>less = [e <b>for </b>e <b>in </b>lst[1:] <b>if </b>e &lt; pivot]</nobr></div>
+<div style="position:absolute;top:10212;left:111"><nobr>greater = [e <b>for </b>e <b>in </b>lst[1:] <b>if </b>e &gt; pivot]</nobr></div>
+<div style="position:absolute;top:10238;left:111"><nobr><b>return </b>list_quicksort(less) + [pivot] +</nobr></div>
+<div style="position:absolute;top:10255;left:163"><nobr>list_quicksort(greater)</nobr></div>
+<div style="position:absolute;top:10299;left:81"><nobr>A list with zero or no elements is already sorted. Otherwise, we follow the procedure</nobr></div>
+<div style="position:absolute;top:10320;left:81"><nobr>outline in the description.</nobr></div>
+<div style="position:absolute;top:10351;left:81"><nobr>We pick a “pivot” to remove from the list. Then, construct less and greater lists</nobr></div>
+<div style="position:absolute;top:10372;left:81"><nobr>that represent items less than and greater than the pivot. Notice that both of these</nobr></div>
+<div style="position:absolute;top:10394;left:81"><nobr>lists are guaranteed to be smaller than our original list, so we are guaranteed that</nobr></div>
+<div style="position:absolute;top:10415;left:81"><nobr>these are valid subproblems for our recursive call.</nobr></div>
+<div style="position:absolute;top:10446;left:81"><nobr>The sorted version of the items less than the pivot will all be less than the pivot,</nobr></div>
+<div style="position:absolute;top:10467;left:81"><nobr>so adding pivot to the end of that list maintains a sorted list over all the smaller</nobr></div>
+<div style="position:absolute;top:10489;left:81"><nobr>elements plus the pivot. Finally, the sorted version of the items greater than pivot</nobr></div>
+<div style="position:absolute;top:10510;left:81"><nobr>will be all be greater than the items less than the pivot plus the pivot, so adding</nobr></div>
+<div style="position:absolute;top:10532;left:81"><nobr>that to the end will ensure our list is still sorted. After concatenating all these lists</nobr></div>
+<div style="position:absolute;top:10553;left:81"><nobr>together, we have a sorted version of our original list.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:10867;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=10><b>Page 10</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10904;left:81"><nobr>10 Linked Lists and Midterm Review</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:10944;left:52"><nobr>2.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10941;left:81"><nobr>We can also use quicksort to sort linked lists! Implement the quicksort link func-</nobr></div>
+<div style="position:absolute;top:10962;left:81"><nobr>tion, without constructing additional Link instances.</nobr></div>
+<div style="position:absolute;top:10993;left:81"><nobr>You can assume that the extend_links function is already defined. It takes two</nobr></div>
+<div style="position:absolute;top:11014;left:81"><nobr>linked lists and mutates the first so that the ending node points to the second.</nobr></div>
+<div style="position:absolute;top:11032;left:81"><nobr>extend link returns the head of the first linked list.</nobr></div>
+<div style="position:absolute;top:11062;left:81"><nobr>&gt;&gt;&gt; l1, l2 = Link(1, Link(2)), Link(3, Link(4))</nobr></div>
+<div style="position:absolute;top:11084;left:81"><nobr>&gt;&gt;&gt; l3 = extend_links(l1, l2)</nobr></div>
+<div style="position:absolute;top:11105;left:81"><nobr>&gt;&gt;&gt; l3</nobr></div>
+<div style="position:absolute;top:11127;left:81"><nobr>Link(1, Link(2, Link(3, Link(4))))</nobr></div>
+<div style="position:absolute;top:11148;left:81"><nobr>&gt;&gt;&gt; l1 <b>is </b>l3</nobr></div>
+<div style="position:absolute;top:11170;left:81"><nobr>True</nobr></div>
+<div style="position:absolute;top:11213;left:81"><nobr><b>def </b>quicksort_link(link):</nobr></div>
+<div style="position:absolute;top:11252;left:111"><nobr>&gt;&gt;&gt; s = Link(3, Link(1, Link(4)))</nobr></div>
+<div style="position:absolute;top:11274;left:111"><nobr>&gt;&gt;&gt; quicksort_link(s)</nobr></div>
+<div style="position:absolute;top:11295;left:111"><nobr>Link(1, Link(3, Link(4)))</nobr></div>
+<div style="position:absolute;top:11343;left:111"><nobr><b>if </b>_____________________________________________________:</nobr></div>
+<div style="position:absolute;top:11386;left:141"><nobr><b>return </b>link</nobr></div>
+<div style="position:absolute;top:11424;left:111"><nobr>pivot, _______ = ________________________________________</nobr></div>
+<div style="position:absolute;top:11467;left:111"><nobr>less, greater = _________________________________________</nobr></div>
+<div style="position:absolute;top:11515;left:111"><nobr><b>while </b>link <b>is not </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:11554;left:141"><nobr>curr, rest = link, link.rest</nobr></div>
+<div style="position:absolute;top:11601;left:141"><nobr><b>if </b>_________________________________________________:</nobr></div>
+<div style="position:absolute;top:11640;left:171"><nobr>_________________________________________________</nobr></div>
+<div style="position:absolute;top:11687;left:141"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:11726;left:171"><nobr>_________________________________________________</nobr></div>
+<div style="position:absolute;top:11769;left:141"><nobr>link = ______________________________________________</nobr></div>
+<div style="position:absolute;top:11812;left:111"><nobr>less = __________________________________________________</nobr></div>
+<div style="position:absolute;top:11855;left:111"><nobr>greater = _______________________________________________</nobr></div>
+<div style="position:absolute;top:11898;left:111"><nobr>_________________________________________________________</nobr></div>
+<div style="position:absolute;top:11945;left:111"><nobr><b>return </b>__________________________________________________</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:12055;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=11><b>Page 11</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12092;left:359"><nobr>Linked Lists and Midterm Review</nobr></div>
+<div style="position:absolute;top:12092;left:601"><nobr>11</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:12144;left:81"><nobr><b>def </b>quicksort_link(link):</nobr></div>
+<div style="position:absolute;top:12165;left:111"><nobr><b>if </b>link <b>is </b>Link.empty <b>or </b>link.rest <b>is </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:12187;left:141"><nobr><b>return </b>link</nobr></div>
+<div style="position:absolute;top:12204;left:111"><nobr>pivot, link = link, link.rest</nobr></div>
+<div style="position:absolute;top:12226;left:111"><nobr>less, greater = Link.empty, Link.empty</nobr></div>
+<div style="position:absolute;top:12252;left:111"><nobr><b>while </b>link <b>is not </b>Link.empty:</nobr></div>
+<div style="position:absolute;top:12269;left:141"><nobr>curr, rest = link, link.rest</nobr></div>
+<div style="position:absolute;top:12295;left:141"><nobr><b>if </b>curr.first &lt; pivot.first:</nobr></div>
+<div style="position:absolute;top:12312;left:171"><nobr>less, curr.rest = curr, less</nobr></div>
+<div style="position:absolute;top:12338;left:141"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:12355;left:171"><nobr>greater, curr.rest = curr, greater</nobr></div>
+<div style="position:absolute;top:12376;left:141"><nobr>link = rest</nobr></div>
+<div style="position:absolute;top:12398;left:111"><nobr>less = quicksort_link(less)</nobr></div>
+<div style="position:absolute;top:12420;left:111"><nobr>greater = quicksort_link(greater)</nobr></div>
+<div style="position:absolute;top:12441;left:111"><nobr>pivot.rest = greater</nobr></div>
+<div style="position:absolute;top:12467;left:111"><nobr><b>return </b>extend_links(less, pivot)</nobr></div>
+<div style="position:absolute;top:12506;left:81"><nobr>While the solution may look very different, doing quicksort on a linked list is very</nobr></div>
+<div style="position:absolute;top:12527;left:81"><nobr>similar to doing quicksort on a Python list. The main difference is that we cannot</nobr></div>
+<div style="position:absolute;top:12549;left:81"><nobr>use list comprehensions to easily split off elements of our list into less and greater</nobr></div>
+<div style="position:absolute;top:12570;left:81"><nobr>sublists. At the end, we have to use extend_links to concatenate the linked lists.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:13243;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=12><b>Page 12</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:13280;left:81"><nobr>12 Linked Lists and Midterm Review</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:13320;left:52"><nobr>2.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:13317;left:81"><nobr>Implement the functions max product, which takes in a list and returns the max-</nobr></div>
+<div style="position:absolute;top:13338;left:81"><nobr>imum product that can be formed using nonconsecutive elements of the list. The</nobr></div>
+<div style="position:absolute;top:13360;left:81"><nobr>input list will contain only numbers greater than or equal to 1.</nobr></div>
+<div style="position:absolute;top:13390;left:81"><nobr><b>def </b>max_product(lst):</nobr></div>
+<div style="position:absolute;top:13407;left:133"><nobr>Return the maximum product that can be formed using lst</nobr></div>
+<div style="position:absolute;top:13428;left:111"><nobr>without using any consecutive numbers</nobr></div>
+<div style="position:absolute;top:13450;left:111"><nobr>&gt;&gt;&gt; max_product([10,3,1,9,2]) # 10 * 9</nobr></div>
+<div style="position:absolute;top:13471;left:111"><nobr>90</nobr></div>
+<div style="position:absolute;top:13493;left:111"><nobr>&gt;&gt;&gt; max_product([5,10,5,10,5]) # 5 * 5 * 5</nobr></div>
+<div style="position:absolute;top:13515;left:111"><nobr>125</nobr></div>
+<div style="position:absolute;top:13536;left:111"><nobr>&gt;&gt;&gt; max_product([])</nobr></div>
+<div style="position:absolute;top:13558;left:111"><nobr>1</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:13637;left:111"><nobr><b>if </b>lst == []:</nobr></div>
+<div style="position:absolute;top:13658;left:141"><nobr><b>return </b>1</nobr></div>
+<div style="position:absolute;top:13680;left:111"><nobr><b>elif len</b>(lst) == 1: # Base case optional</nobr></div>
+<div style="position:absolute;top:13701;left:141"><nobr><b>return </b>lst[0]</nobr></div>
+<div style="position:absolute;top:13723;left:111"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:13745;left:141"><nobr><b>return max</b>(max_product(lst[1:]), lst[0]*max_product(lst[2:]))</nobr></div>
+<div style="position:absolute;top:13784;left:81"><nobr>At each step, we choose if we want to include the current number in our product</nobr></div>
+<div style="position:absolute;top:13805;left:81"><nobr>or not:</nobr></div>
+<div style="position:absolute;top:13832;left:103"><nobr>• If we include the current number, we cannot use the adjacent number.</nobr></div>
+<div style="position:absolute;top:13862;left:103"><nobr>• If we don’t use the current number, we try the adjacent number (and obviously</nobr></div>
+<div style="position:absolute;top:13888;left:118"><nobr>ignore the current number).</nobr></div>
+<div style="position:absolute;top:13918;left:81"><nobr>The recursive calls represent these two alternate realities. Finally, we pick the one</nobr></div>
+<div style="position:absolute;top:13940;left:81"><nobr>that gives us the largest product.</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:12px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:13961;left:81"><nobr><a href="https://www.youtube.com/watch?v=Am6m8YgAnYY&list=PLx38hZJ5RLZdJgRCgpaTbmRXKAHOUmomO&index=4&t=3m0s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:13998;left:52"><nobr>2.5</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:13995;left:81"><nobr>An expression tree is a tree that contains a function for each non-leaf node,</nobr></div>
+<div style="position:absolute;top:14016;left:81"><nobr>which can be either ’+’ or ’*’. All leaves are numbers. Implement eval_tree,</nobr></div>
+<div style="position:absolute;top:14038;left:81"><nobr>which evaluates an expression tree to its value. You may want to use the functions</nobr></div>
+<div style="position:absolute;top:14055;left:81"><nobr>sum and prod, which take a list of numbers and compute the sum and product</nobr></div>
+<div style="position:absolute;top:14081;left:81"><nobr>respectively.</nobr></div>
+<div style="position:absolute;top:14111;left:81"><nobr><b>def </b>eval_tree(tree):</nobr></div>
+<div style="position:absolute;top:14128;left:133"><nobr>Evaluates an expression tree with functions the root.</nobr></div>
+<div style="position:absolute;top:14150;left:111"><nobr>&gt;&gt;&gt; eval_tree(tree(1))</nobr></div>
+<div style="position:absolute;top:14171;left:111"><nobr>1</nobr></div>
+<div style="position:absolute;top:14193;left:111"><nobr>&gt;&gt;&gt; expr = tree(*, [tree(2), tree(3)])</nobr></div>
+<div style="position:absolute;top:14214;left:111"><nobr>&gt;&gt;&gt; eval_tree(expr)</nobr></div>
+<div style="position:absolute;top:14236;left:111"><nobr>6</nobr></div>
+<div style="position:absolute;top:14257;left:111"><nobr>&gt;&gt;&gt; eval_tree(tree(+, [expr, tree(4), tree(5)]))</nobr></div>
+<div style="position:absolute;top:14279;left:111"><nobr>15</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:14431;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=13><b>Page 13</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:14468;left:359"><nobr>Linked Lists and Midterm Review</nobr></div>
+<div style="position:absolute;top:14468;left:601"><nobr>13</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:14520;left:111"><nobr><b>if </b>is_leaf(tree):</nobr></div>
+<div style="position:absolute;top:14541;left:141"><nobr><b>return </b>label(tree)</nobr></div>
+<div style="position:absolute;top:14559;left:111"><nobr>args = [eval_tree(branch) <b>for </b>branch <b>in </b>branches(tree)]</nobr></div>
+<div style="position:absolute;top:14584;left:111"><nobr><b>if </b>label(tree) == +:</nobr></div>
+<div style="position:absolute;top:14606;left:141"><nobr><b>return sum</b>(args)</nobr></div>
+<div style="position:absolute;top:14628;left:111"><nobr><b>else</b>: # label(tree) == *</nobr></div>
+<div style="position:absolute;top:14649;left:141"><nobr><b>return </b>prod(args)</nobr></div>
+<div style="position:absolute;top:14688;left:81"><nobr>Leaf values are guaranteed to be a number, so we can just return their label.</nobr></div>
+<div style="position:absolute;top:14719;left:81"><nobr>Otherwise, we have to evaulate each of the branches and then combine their result</nobr></div>
+<div style="position:absolute;top:14740;left:81"><nobr>using whichever operater we have in our current root.</nobr></div>
+<div style="position:absolute;top:14771;left:81"><nobr>If you want to try this out yourself, note that prod isn’t actually a built-in operator</nobr></div>
+<div style="position:absolute;top:14792;left:81"><nobr>in Python. You can write it yourself using something like the following:</nobr></div>
+<div style="position:absolute;top:14823;left:81"><nobr><b>def </b>prod(iterable):</nobr></div>
+<div style="position:absolute;top:14844;left:111"><nobr><b>from </b>functools <b>import reduce</b></nobr></div>
+<div style="position:absolute;top:14866;left:111"><nobr><b>from </b>operator <b>import </b>mul</nobr></div>
+<div style="position:absolute;top:14888;left:111"><nobr><b>return reduce</b>(mul, iterable, 1)</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:12px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:14927;left:81"><nobr><a href="https://www.youtube.com/watch?v=Am6m8YgAnYY&list=PLx38hZJ5RLZdJgRCgpaTbmRXKAHOUmomO&index=4&t=12m40s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:15619;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=14><b>Page 14</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:15656;left:81"><nobr>14 Linked Lists and Midterm Review</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:15696;left:52"><nobr>2.6</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:15693;left:81"><nobr>Implement widest level, which takes a Tree instance and returns the elements at</nobr></div>
+<div style="position:absolute;top:15714;left:81"><nobr>the depth with the most elements.</nobr></div>
+<div style="position:absolute;top:15745;left:81"><nobr>In this problem, you may find it helpful to use the second optional argument to sum,</nobr></div>
+<div style="position:absolute;top:15766;left:81"><nobr>which provides a starting value. All items in the sequence to be summed will be</nobr></div>
+<div style="position:absolute;top:15788;left:81"><nobr>concatenated to the starting value. By default, start will default to 0, which allows</nobr></div>
+<div style="position:absolute;top:15809;left:81"><nobr>you to sum a sequence of numbers. We provide an example of sum starting with a</nobr></div>
+<div style="position:absolute;top:15831;left:81"><nobr>list, which allows you to concatenate items in a list.</nobr></div>
+<div style="position:absolute;top:15861;left:81"><nobr><b>def </b>widest_level(t):</nobr></div>
+<div style="position:absolute;top:15900;left:111"><nobr>&gt;&gt;&gt; sum([[1], [2]], [])</nobr></div>
+<div style="position:absolute;top:15922;left:111"><nobr>[1, 2]</nobr></div>
+<div style="position:absolute;top:15943;left:111"><nobr>&gt;&gt;&gt; t = Tree(3, [Tree(1, [Tree(1), Tree(5)]),</nobr></div>
+<div style="position:absolute;top:15965;left:111"><nobr>...</nobr></div>
+<div style="position:absolute;top:15965;left:238"><nobr>Tree(4, [Tree(9, [Tree(2)])])])</nobr></div>
+<div style="position:absolute;top:15986;left:111"><nobr>&gt;&gt;&gt; widest_level(t)</nobr></div>
+<div style="position:absolute;top:16008;left:111"><nobr>[1, 5, 9]</nobr></div>
+<div style="position:absolute;top:16051;left:111"><nobr>levels = []</nobr></div>
+<div style="position:absolute;top:16072;left:111"><nobr>x = [t]</nobr></div>
+<div style="position:absolute;top:16120;left:111"><nobr><b>while </b>__________________________________________________:</nobr></div>
+<div style="position:absolute;top:16159;left:141"><nobr>_____________________________________________________</nobr></div>
+<div style="position:absolute;top:16202;left:141"><nobr>__________ = <b>sum</b>(_______________________________, [])</nobr></div>
+<div style="position:absolute;top:16249;left:111"><nobr><b>return max</b>(levels, key=_________________________________)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:16303;left:81"><nobr><b>def </b>widest_level(t):</nobr></div>
+<div style="position:absolute;top:16321;left:111"><nobr>levels = []</nobr></div>
+<div style="position:absolute;top:16342;left:111"><nobr>x = [t]</nobr></div>
+<div style="position:absolute;top:16368;left:111"><nobr><b>while </b>x:</nobr></div>
+<div style="position:absolute;top:16385;left:141"><nobr>levels.append([t.label <b>for </b>t <b>in </b>x])</nobr></div>
+<div style="position:absolute;top:16407;left:141"><nobr>x = <b>sum</b>([t.branches <b>for </b>t <b>in </b>x], [])</nobr></div>
+<div style="position:absolute;top:16432;left:111"><nobr><b>return max</b>(levels, key=<b>len</b>)</nobr></div>
+<div style="position:absolute;top:16472;left:81"><nobr>Main idea: we’ll traverse each level of the tree and keep track of the elements of</nobr></div>
+<div style="position:absolute;top:16493;left:81"><nobr>the levels. After we’re done, we return the level with the most items.</nobr></div>
+<div style="position:absolute;top:16524;left:81"><nobr>Here, x keeps track of the trees in the current level. To get the next level of trees,</nobr></div>
+<div style="position:absolute;top:16545;left:81"><nobr>we take all the branches from all the trees in the current level. The special sum call</nobr></div>
+<div style="position:absolute;top:16567;left:81"><nobr>is needed to make sure we get a list of trees, instead of a list of branches (since</nobr></div>
+<div style="position:absolute;top:16588;left:81"><nobr>branches are a list of trees themselves).</nobr></div>
+<div style="position:absolute;top:16619;left:81"><nobr>Finally, we use max with a key to select the list with the longest length from our list</nobr></div>
+<div style="position:absolute;top:16640;left:81"><nobr>of levels.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:16674;left:52"><nobr>2.7</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:16671;left:81"><nobr>Complete redundant map, which takes a tree t and a function f, and applies f to</nobr></div>
+<div style="position:absolute;top:16692;left:81"><nobr>the node (2<font style="font-size:8px">d</font>) times, where d is the depth of the node. The root has a depth of 0.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:16807;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=15><b>Page 15</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:16844;left:359"><nobr>Linked Lists and Midterm Review</nobr></div>
+<div style="position:absolute;top:16844;left:601"><nobr>15</nobr></div>
+<div style="position:absolute;top:16881;left:81"><nobr><b>def </b>redundant_map(t, f):</nobr></div>
+<div style="position:absolute;top:16920;left:96"><nobr>&gt;&gt;&gt; double = lambda x: x*2</nobr></div>
+<div style="position:absolute;top:16941;left:96"><nobr>&gt;&gt;&gt; tree = Tree(1, [Tree(1), Tree(2, [Tree(1, [Tree(1)])])])</nobr></div>
+<div style="position:absolute;top:16963;left:96"><nobr>&gt;&gt;&gt; print_levels(redundant_map(tree, double))</nobr></div>
+<div style="position:absolute;top:16984;left:96"><nobr>[2] # 1 * 2 ˆ (1) ; Apply double one time</nobr></div>
+<div style="position:absolute;top:17006;left:96"><nobr>[4, 8] # 1 * 2 ˆ (2), 2 * 2 ˆ (2) ; Apply double two times</nobr></div>
+<div style="position:absolute;top:17027;left:96"><nobr>[16] # 1 * 2 ˆ (2 ˆ 2) ; Apply double four times</nobr></div>
+<div style="position:absolute;top:17049;left:96"><nobr>[256] # 1 * 2 ˆ (2 ˆ 3) ; Apply double eight times</nobr></div>
+<div style="position:absolute;top:17092;left:96"><nobr>t.label = _______________________________</nobr></div>
+<div style="position:absolute;top:17135;left:96"><nobr>new_f = ______________________________________________</nobr></div>
+<div style="position:absolute;top:17178;left:96"><nobr>t.branches = ___________________________________________</nobr></div>
+<div style="position:absolute;top:17225;left:96"><nobr><b>return </b>t</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:17280;left:81"><nobr><b>def </b>redundant_map(t, f):</nobr></div>
+<div style="position:absolute;top:17319;left:96"><nobr>&gt;&gt;&gt; double = lambda x: x*2</nobr></div>
+<div style="position:absolute;top:17340;left:96"><nobr>&gt;&gt;&gt; tree = Tree(1, [Tree(1), Tree(2, [Tree(1, [Tree(1)])])])</nobr></div>
+<div style="position:absolute;top:17362;left:96"><nobr>&gt;&gt;&gt; print_levels(redundant_map(tree, double))</nobr></div>
+<div style="position:absolute;top:17383;left:96"><nobr>[2]</nobr></div>
+<div style="position:absolute;top:17405;left:96"><nobr>[4, 8]</nobr></div>
+<div style="position:absolute;top:17426;left:96"><nobr>[16]</nobr></div>
+<div style="position:absolute;top:17448;left:96"><nobr>[256]</nobr></div>
+<div style="position:absolute;top:17491;left:96"><nobr>t.label = f(t.label)</nobr></div>
+<div style="position:absolute;top:17512;left:96"><nobr>new_f = <b>lambda </b>x: f(f(x))</nobr></div>
+<div style="position:absolute;top:17534;left:96"><nobr>t.branches = [redundant_map(branch, new_f) <b>for </b>branch <b>in </b>t.branches]</nobr></div>
+<div style="position:absolute;top:17560;left:96"><nobr><b>return </b>t</nobr></div>
+<div style="position:absolute;top:17599;left:81"><nobr>Every time we recurse, we transform our map function into one that is one level</nobr></div>
+<div style="position:absolute;top:17620;left:81"><nobr>deeper in terms of calls to input function f. To see why this will achieve the result</nobr></div>
+<div style="position:absolute;top:17642;left:81"><nobr>we want, let’s look at what happens to some input function f.</nobr></div>
+<div style="position:absolute;top:17668;left:103"><nobr>• The first call to redundant_map will call f once.</nobr></div>
+<div style="position:absolute;top:17699;left:103"><nobr>• This means on the second call to redundant_map, we pass in a function g that</nobr></div>
+<div style="position:absolute;top:17724;left:118"><nobr>causes the original f to be called two times.</nobr></div>
+<div style="position:absolute;top:17751;left:103"><nobr>• On the third call to redundant_map, we pass in a function h that causes g to</nobr></div>
+<div style="position:absolute;top:17776;left:118"><nobr>be called two times. Remember that g calls original f twice, so h will end up</nobr></div>
+<div style="position:absolute;top:17798;left:118"><nobr>calling original f four times.</nobr></div>
+<div style="position:absolute;top:17828;left:81"><nobr>Therefore, each level will have double the calls to f as the previous level, which</nobr></div>
+<div style="position:absolute;top:17850;left:81"><nobr>matches the requirements.</nobr></div>
+</span></font>
+</body>
+</html>

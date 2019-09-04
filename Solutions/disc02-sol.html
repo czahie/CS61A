@@ -1,0 +1,400 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}pre { word-wrap:break-word; }pre { white-space:pre-wrap; }</style><div id="google-cache-hdr"  dir=ltr><div>这是 <a href="https://cs61a.org/disc/disc02_sol.pdf" dir="ltr">https://cs61a.org/disc/disc02_sol.pdf</a> 的 HTML 档。<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> 在网路漫游时会自动将档案转换成 HTML 网页来储存。</div></div><div style="position:relative;margin:8px;">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX-1.40.18">
+<meta name="CreationDate" content="D:20171219170037Z">
+<meta name="ModDate" content="D:20171219170037Z">
+<meta name="Fullbanner" content="This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) kpathsea version 6.2.3">
+<title>CS 61A Environment Diagrams and Recursion Fall 2017 1 More Environment Diagrams</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:261;left:81"><nobr>CS 61A Environment Diagrams and Recursion</nobr></div>
+<div style="position:absolute;top:303;left:81"><nobr>Fall 2017</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:311;left:367"><nobr>Discussion 2: September 6, 2017 <font color="#ff0000" style="font-size:19px">Solutions</font></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:376;left:81"><nobr>1 More Environment Diagrams</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:434;left:81"><nobr>Recall that an environment diagram keeps track of all the variables that</nobr></div>
+<div style="position:absolute;top:458;left:81"><nobr>have been defined and the values they are bound to. However, values are</nobr></div>
+<div style="position:absolute;top:483;left:81"><nobr>not necessarily only integers and strings. Environment diagrams can model</nobr></div>
+<div style="position:absolute;top:507;left:81"><nobr>more complex programs that utilize higher order functions.</nobr></div>
+<div style="position:absolute;top:603;left:81"><nobr><b>def </b>add_num(x):</nobr></div>
+<div style="position:absolute;top:627;left:114"><nobr><b>return lambda </b>y: x + y</nobr></div>
+<div style="position:absolute;top:676;left:81"><nobr>add_two = add_num(2)</nobr></div>
+<div style="position:absolute;top:701;left:81"><nobr>add_two(3)</nobr></div>
+<div style="position:absolute;top:784;left:81"><nobr>Lambdas are represented similiarly to functions in environment diagrams,</nobr></div>
+<div style="position:absolute;top:808;left:81"><nobr>but since they lack instrinsic names, the lambda symbol (λ) is used instead.</nobr></div>
+<div style="position:absolute;top:836;left:81"><nobr>The parent of any function (including lambdas) is always the frame in which</nobr></div>
+<div style="position:absolute;top:861;left:81"><nobr>the function is defined. It is useful to include the parent in environment</nobr></div>
+<div style="position:absolute;top:885;left:81"><nobr>diagrams in order to find variables that are not defined in the current frame.</nobr></div>
+<div style="position:absolute;top:910;left:81"><nobr>In the previous example, when we call add two (which is really the lambda</nobr></div>
+<div style="position:absolute;top:934;left:81"><nobr>function), we need to know what x is in order to compute x + y. Since x is</nobr></div>
+<div style="position:absolute;top:958;left:81"><nobr>not in the frame f2, we look at the frame’s parent, which is f1. There, we</nobr></div>
+<div style="position:absolute;top:983;left:81"><nobr>find x is bound to 2.</nobr></div>
+<div style="position:absolute;top:1017;left:81"><nobr>As illustrated above, higher order functions that return a function have their</nobr></div>
+<div style="position:absolute;top:1042;left:81"><nobr>return value represented with a pointer to the function object.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1363;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:1398;left:81"><nobr>2 Environment Diagrams and Recursion</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:1433;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:1487;left:51"><nobr>1.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:1484;left:81"><nobr>Draw the environment diagram for the following code.</nobr></div>
+<div style="position:absolute;top:1517;left:81"><nobr><b>from </b>operator <b>import </b>add</nobr></div>
+<div style="position:absolute;top:1566;left:81"><nobr>six = 1</nobr></div>
+<div style="position:absolute;top:1615;left:81"><nobr><b>def </b>ty(one, a):</nobr></div>
+<div style="position:absolute;top:1639;left:114"><nobr>fall = one(a, six)</nobr></div>
+<div style="position:absolute;top:1664;left:114"><nobr><b>return </b>fall</nobr></div>
+<div style="position:absolute;top:1713;left:81"><nobr>six = ty(add, 6)</nobr></div>
+<div style="position:absolute;top:1737;left:81"><nobr>fall = ty(add, 6)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2551;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2586;left:311"><nobr>Environment Diagrams and Recursion</nobr></div>
+<div style="position:absolute;top:2586;left:607"><nobr>3</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:2630;left:51"><nobr>1.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2626;left:81"><nobr>Draw the environment diagram for the following code.</nobr></div>
+<div style="position:absolute;top:2660;left:81"><nobr><b>def </b>curry2(h):</nobr></div>
+<div style="position:absolute;top:2685;left:114"><nobr><b>def </b>f(x):</nobr></div>
+<div style="position:absolute;top:2709;left:146"><nobr><b>def </b>g(y):</nobr></div>
+<div style="position:absolute;top:2733;left:179"><nobr><b>return </b>h(x, y)</nobr></div>
+<div style="position:absolute;top:2758;left:146"><nobr><b>return </b>g</nobr></div>
+<div style="position:absolute;top:2782;left:114"><nobr><b>return </b>f</nobr></div>
+<div style="position:absolute;top:2831;left:81"><nobr>make_adder = curry2(<b>lambda </b>x, y: x + y)</nobr></div>
+<div style="position:absolute;top:2855;left:81"><nobr>add_three = make_adder(3)</nobr></div>
+<div style="position:absolute;top:2880;left:81"><nobr>five = add_three(2)</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:3509;left:81"><nobr><a href="https://www.youtube.com/watch?v=VcZPTlE56G8&vq=hd1080&t=20m0s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3739;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3774;left:81"><nobr>4 Environment Diagrams and Recursion</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:3818;left:51"><nobr>1.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3814;left:81"><nobr>Draw the environment diagram for the following code.</nobr></div>
+<div style="position:absolute;top:3856;left:81"><nobr>n = 7</nobr></div>
+<div style="position:absolute;top:3904;left:81"><nobr><b>def </b>f(x):</nobr></div>
+<div style="position:absolute;top:3929;left:114"><nobr>n = 8</nobr></div>
+<div style="position:absolute;top:3953;left:114"><nobr><b>return </b>x + 1</nobr></div>
+<div style="position:absolute;top:4002;left:81"><nobr><b>def </b>g(x):</nobr></div>
+<div style="position:absolute;top:4027;left:114"><nobr>n = 9</nobr></div>
+<div style="position:absolute;top:4051;left:114"><nobr><b>def </b>h():</nobr></div>
+<div style="position:absolute;top:4075;left:146"><nobr><b>return </b>x + 1</nobr></div>
+<div style="position:absolute;top:4100;left:114"><nobr><b>return </b>h</nobr></div>
+<div style="position:absolute;top:4148;left:81"><nobr><b>def </b>f(f, x):</nobr></div>
+<div style="position:absolute;top:4173;left:114"><nobr><b>return </b>f(x + n)</nobr></div>
+<div style="position:absolute;top:4222;left:81"><nobr>f = f(g, n)</nobr></div>
+<div style="position:absolute;top:4246;left:81"><nobr>g = (<b>lambda </b>y: y())(f)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:4927;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:4962;left:311"><nobr>Environment Diagrams and Recursion</nobr></div>
+<div style="position:absolute;top:4962;left:607"><nobr>5</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:5006;left:51"><nobr>1.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:5002;left:81"><nobr>The following question is extremely difficult. Something like this would not</nobr></div>
+<div style="position:absolute;top:5027;left:81"><nobr>appear on the exam. Nonetheless, it’s a fun problem to try.</nobr></div>
+<div style="position:absolute;top:5061;left:81"><nobr>Draw the environment diagram for the following code. (Note that using the</nobr></div>
+<div style="position:absolute;top:5086;left:81"><nobr>+ operator with two strings results in the second string being appended to</nobr></div>
+<div style="position:absolute;top:5110;left:81"><nobr>the first. For example C + S concatenates the two strings into one string</nobr></div>
+<div style="position:absolute;top:5135;left:89"><nobr>CS)</nobr></div>
+<div style="position:absolute;top:5168;left:81"><nobr>y = y</nobr></div>
+<div style="position:absolute;top:5193;left:81"><nobr>h = y</nobr></div>
+<div style="position:absolute;top:5217;left:81"><nobr><b>def </b>y(y):</nobr></div>
+<div style="position:absolute;top:5242;left:114"><nobr>h = h</nobr></div>
+<div style="position:absolute;top:5266;left:114"><nobr><b>if </b>y == h:</nobr></div>
+<div style="position:absolute;top:5290;left:146"><nobr><b>return </b>y + i</nobr></div>
+<div style="position:absolute;top:5315;left:114"><nobr>y = <b>lambda </b>y: y(h)</nobr></div>
+<div style="position:absolute;top:5339;left:114"><nobr><b>return lambda </b>h: y(h)</nobr></div>
+<div style="position:absolute;top:5364;left:81"><nobr>y = y(y)(y)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:6115;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=6><b>Page 6</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:6150;left:81"><nobr>6 Environment Diagrams and Recursion</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:6185;left:81"><nobr>2 Recursion</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:6234;left:637"><nobr><b>def </b>factorial(n):</nobr></div>
+<div style="position:absolute;top:6259;left:670"><nobr><b>if </b>n == 0 <b>or </b>n == 1:</nobr></div>
+<div style="position:absolute;top:6283;left:703"><nobr><b>return </b>1</nobr></div>
+<div style="position:absolute;top:6308;left:670"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:6332;left:703"><nobr><b>return </b>n * factorial(n-1)</nobr></div>
+<div style="position:absolute;top:6243;left:81"><nobr>A recursive function is a function that calls itself. Although we haven’t</nobr></div>
+<div style="position:absolute;top:6267;left:81"><nobr>finished defining factorial, we are still able to call it since the function body</nobr></div>
+<div style="position:absolute;top:6291;left:81"><nobr>is not evaluated until the function is called. We do have one base case: when</nobr></div>
+<div style="position:absolute;top:6316;left:81"><nobr>n is 0 or 1. Now we can compute factorial(2) in terms of factorial(1),</nobr></div>
+<div style="position:absolute;top:6340;left:81"><nobr>and factorial(3) in terms of factorial(2), and factorial(4) – well, you</nobr></div>
+<div style="position:absolute;top:6364;left:81"><nobr>get the idea.</nobr></div>
+<div style="position:absolute;top:6399;left:81"><nobr>There are three common steps in a recursive definition:</nobr></div>
+<div style="position:absolute;top:6434;left:101"><nobr>1. Figure out your base case: What is the simplest argument we could</nobr></div>
+<div style="position:absolute;top:6458;left:122"><nobr>possibly get? For example, factorial(0) is 1 by definition.</nobr></div>
+<div style="position:absolute;top:6493;left:101"><nobr>2. Make a recursive call with a simpler argument: Simplify your</nobr></div>
+<div style="position:absolute;top:6517;left:122"><nobr>problem, and assume that a recursive call for this new problem will</nobr></div>
+<div style="position:absolute;top:6541;left:122"><nobr>simply work. This is called the “leap of faith”. For factorial, we</nobr></div>
+<div style="position:absolute;top:6566;left:122"><nobr>reduce the problem by calling factorial(n-1).</nobr></div>
+<div style="position:absolute;top:6600;left:101"><nobr>3. Use your recursive call to solve the full problem: Remember</nobr></div>
+<div style="position:absolute;top:6625;left:122"><nobr>that we are assuming the recursive call works. With the result of the</nobr></div>
+<div style="position:absolute;top:6649;left:122"><nobr>recursive call, how can you solve the original problem you were asked?</nobr></div>
+<div style="position:absolute;top:6673;left:122"><nobr>For factorial, we just multiply (n - 1)! by n.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:6712;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:6765;left:51"><nobr>2.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:6762;left:81"><nobr>Write a function multiply(m, n) that multiplies two numbers m and n.</nobr></div>
+<div style="position:absolute;top:6786;left:81"><nobr>Assume m and n are positive integers. Use recursion, not mul or *!</nobr></div>
+<div style="position:absolute;top:6821;left:81"><nobr>Hint: 5*3 = 5 + 5*2 = 5 + 5 + 5*1.</nobr></div>
+<div style="position:absolute;top:6855;left:81"><nobr>For the base case, what is the simplest possible input for multiply?</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:6892;left:81"><nobr>If one of the inputs is one, you simply return the other input.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:6930;left:81"><nobr>For the recursive case, what does calling multiply(m - 1, n) do? What</nobr></div>
+<div style="position:absolute;top:6955;left:81"><nobr>does calling multiply(m, n - 1) do? Do we prefer one over the other?</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:6991;left:81"><nobr>The first call will calculate a value that is m less than the total, while the</nobr></div>
+<div style="position:absolute;top:7016;left:81"><nobr>second will calculate a value that is n less.</nobr></div>
+<div style="position:absolute;top:7050;left:81"><nobr>Either recursive call will work, but only multiply(m, n - 1) is needed.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:7303;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=7><b>Page 7</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:7338;left:311"><nobr>Environment Diagrams and Recursion</nobr></div>
+<div style="position:absolute;top:7338;left:607"><nobr>7</nobr></div>
+<div style="position:absolute;top:7388;left:81"><nobr><b>def </b>multiply(m, n):</nobr></div>
+<div style="position:absolute;top:7437;left:114"><nobr>&gt;&gt;&gt; multiply(5, 3)</nobr></div>
+<div style="position:absolute;top:7462;left:114"><nobr>15</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7547;left:114"><nobr><b>if </b>n == 1:</nobr></div>
+<div style="position:absolute;top:7571;left:146"><nobr><b>return </b>m</nobr></div>
+<div style="position:absolute;top:7595;left:114"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:7620;left:146"><nobr><b>return </b>m + multiply(m, n - 1)</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:7663;left:81"><nobr><a href="https://www.youtube.com/watch?v=VcZPTlE56G8&vq=hd1080&t=41m20s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:7692;left:51"><nobr>2.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:7689;left:81"><nobr>Create a recursive countdown function that takes in an integer n and prints</nobr></div>
+<div style="position:absolute;top:7713;left:81"><nobr>out a countdown from n to 1.</nobr></div>
+<div style="position:absolute;top:7748;left:81"><nobr>First, think about a base case for the countdown function. What is the</nobr></div>
+<div style="position:absolute;top:7772;left:81"><nobr>simplest input the problem could be given?</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7809;left:81"><nobr>When n equals 0</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:7847;left:81"><nobr>After you’ve thought of a base case, think about a recursive call with a</nobr></div>
+<div style="position:absolute;top:7871;left:81"><nobr>smaller argument that approches the base case. What happens if you call</nobr></div>
+<div style="position:absolute;top:7896;left:81"><nobr>countdown(n - 1)?</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7933;left:81"><nobr>A countdown starting from n - 1 is printed.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:7959;left:81"><nobr>Then, put the base case and the recursive call together, and think about</nobr></div>
+<div style="position:absolute;top:7983;left:81"><nobr>where a print statement would be needed.</nobr></div>
+<div style="position:absolute;top:8017;left:81"><nobr><b>def </b>countdown(n):</nobr></div>
+<div style="position:absolute;top:8066;left:114"><nobr>&gt;&gt;&gt; countdown(3)</nobr></div>
+<div style="position:absolute;top:8090;left:114"><nobr>3</nobr></div>
+<div style="position:absolute;top:8115;left:114"><nobr>2</nobr></div>
+<div style="position:absolute;top:8139;left:114"><nobr>1</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8224;left:114"><nobr><b>if </b>n &lt;= 0:</nobr></div>
+<div style="position:absolute;top:8248;left:146"><nobr><b>return</b></nobr></div>
+<div style="position:absolute;top:8273;left:114"><nobr><b>print</b>(n)</nobr></div>
+<div style="position:absolute;top:8297;left:114"><nobr>countdown(n - 1)</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:8340;left:81"><nobr><a href="https://www.youtube.com/watch?v=VcZPTlE56G8&vq=hd1080&t=53m0s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:8370;left:51"><nobr>2.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:8367;left:81"><nobr>Is there an easy way to change countdown to count up instead?</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:8491;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=8><b>Page 8</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:8526;left:81"><nobr>8 Environment Diagrams and Recursion</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8569;left:81"><nobr>Move the print statement to after the recursive call. <font color="#ec008c"><a href="https://www.youtube.com/watch?v=VcZPTlE56G8&vq=hd1080&t=58m50s">Video walkthrough</a></font></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:8610;left:51"><nobr>2.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:8607;left:81"><nobr>Write a recursive function that sums the digits of a number n. Assume n is</nobr></div>
+<div style="position:absolute;top:8631;left:81"><nobr>positive. You might find the operators // and % useful.</nobr></div>
+<div style="position:absolute;top:8665;left:81"><nobr><b>def </b>sum_digits(n):</nobr></div>
+<div style="position:absolute;top:8714;left:114"><nobr>&gt;&gt;&gt; sum_digits(7)</nobr></div>
+<div style="position:absolute;top:8738;left:114"><nobr>7</nobr></div>
+<div style="position:absolute;top:8762;left:114"><nobr>&gt;&gt;&gt; sum_digits(30)</nobr></div>
+<div style="position:absolute;top:8787;left:114"><nobr>3</nobr></div>
+<div style="position:absolute;top:8811;left:114"><nobr>&gt;&gt;&gt; sum_digits(228)</nobr></div>
+<div style="position:absolute;top:8836;left:114"><nobr>12</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8920;left:114"><nobr><b>if </b>n &lt; 10:</nobr></div>
+<div style="position:absolute;top:8945;left:146"><nobr><b>return </b>n</nobr></div>
+<div style="position:absolute;top:8969;left:114"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:8994;left:146"><nobr><b>return </b>n % 10 + sum_digits(n // 10)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:9679;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=9><b>Page 9</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:9714;left:311"><nobr>Environment Diagrams and Recursion</nobr></div>
+<div style="position:absolute;top:9714;left:607"><nobr>9</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:9749;left:81"><nobr>3 Tree Recursion</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:9807;left:81"><nobr>Consider a function that requires more than one recursive call. A simple</nobr></div>
+<div style="position:absolute;top:9831;left:81"><nobr>example is the recursive fibonacci function:</nobr></div>
+<div style="position:absolute;top:9865;left:81"><nobr><b>def </b>fib(n):</nobr></div>
+<div style="position:absolute;top:9889;left:114"><nobr><b>if </b>n == 0:</nobr></div>
+<div style="position:absolute;top:9913;left:146"><nobr><b>return </b>0</nobr></div>
+<div style="position:absolute;top:9938;left:114"><nobr><b>elif </b>n == 1:</nobr></div>
+<div style="position:absolute;top:9962;left:146"><nobr><b>return </b>1</nobr></div>
+<div style="position:absolute;top:9987;left:114"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:10011;left:146"><nobr><b>return </b>fib(n - 1) + fib(n - 2)</nobr></div>
+<div style="position:absolute;top:10054;left:81"><nobr>This type of recursion is called tree recursion, because it makes more than</nobr></div>
+<div style="position:absolute;top:10079;left:81"><nobr>one recursive call in its recursive case. If we draw out the recursive calls, we</nobr></div>
+<div style="position:absolute;top:10103;left:81"><nobr>see the recursive calls in the shape of an upside-down tree:</nobr></div>
+<div style="position:absolute;top:10130;left:326"><nobr>fib(4)</nobr></div>
+<div style="position:absolute;top:10184;left:392"><nobr>fib(2)</nobr></div>
+<div style="position:absolute;top:10238;left:425"><nobr>fib(0)</nobr></div>
+<div style="position:absolute;top:10238;left:359"><nobr>fib(1)</nobr></div>
+<div style="position:absolute;top:10184;left:261"><nobr>fib(3)</nobr></div>
+<div style="position:absolute;top:10238;left:294"><nobr>fib(1)</nobr></div>
+<div style="position:absolute;top:10238;left:228"><nobr>fib(2)</nobr></div>
+<div style="position:absolute;top:10275;left:81"><nobr>We could, in theory, use loops to write the same procedure. However, prob-</nobr></div>
+<div style="position:absolute;top:10299;left:81"><nobr>lems that are naturally solved using tree recursive procedures are generally</nobr></div>
+<div style="position:absolute;top:10324;left:81"><nobr>difficult to write iteratively. As a general rule of thumb, whenever you need</nobr></div>
+<div style="position:absolute;top:10348;left:81"><nobr>to try multiple possibilities at the same time, you should consider using tree</nobr></div>
+<div style="position:absolute;top:10373;left:81"><nobr>recursion.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:10409;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:10462;left:51"><nobr>3.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:10459;left:81"><nobr>I want to go up a flight of stairs that has n steps. I can either take 1 or 2</nobr></div>
+<div style="position:absolute;top:10484;left:81"><nobr>steps each time. How many different ways can I go up this flight of stairs?</nobr></div>
+<div style="position:absolute;top:10508;left:81"><nobr>Write a function count_stair_ways that solves this problem for me. Assume</nobr></div>
+<div style="position:absolute;top:10533;left:81"><nobr>n is positive.</nobr></div>
+<div style="position:absolute;top:10567;left:81"><nobr>Before we start, what’s the base case for this question? What is the simplest</nobr></div>
+<div style="position:absolute;top:10591;left:81"><nobr>input?</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10628;left:81"><nobr>When there is only 1 step, there is only one way to go up the stair. When</nobr></div>
+<div style="position:absolute;top:10653;left:81"><nobr>there are two steps, we can go up in two ways: take a two-step, or take 2</nobr></div>
+<div style="position:absolute;top:10677;left:81"><nobr>one-steps.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:10715;left:81"><nobr>What do count_stair_ways(n - 1) and count_stair_ways(n - 2) repre-</nobr></div>
+<div style="position:absolute;top:10739;left:81"><nobr>sent?</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:10867;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=10><b>Page 10</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:10902;left:81"><nobr>10 Environment Diagrams and Recursion</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10945;left:81"><nobr>count_stair_ways(n - 1) represents the number of different ways to go up</nobr></div>
+<div style="position:absolute;top:10969;left:81"><nobr>the last n - 1 stairs. count_stair_ways(n - 2) represents the number of</nobr></div>
+<div style="position:absolute;top:10994;left:81"><nobr>different ways to go up the last n-2 stairs. Our base cases will take care of</nobr></div>
+<div style="position:absolute;top:11018;left:81"><nobr>the remaining 1 or 2 steps.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:11044;left:81"><nobr>Use those two recursive calls to write the recursive case:</nobr></div>
+<div style="position:absolute;top:11078;left:81"><nobr><b>def </b>count_stair_ways(n):</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11139;left:114"><nobr><b>if </b>n == 1:</nobr></div>
+<div style="position:absolute;top:11163;left:146"><nobr><b>return </b>1</nobr></div>
+<div style="position:absolute;top:11187;left:114"><nobr><b>elif </b>n == 2:</nobr></div>
+<div style="position:absolute;top:11212;left:146"><nobr><b>return </b>2</nobr></div>
+<div style="position:absolute;top:11236;left:114"><nobr><b>return </b>count_stair_ways(n-1) + count_stair_ways(n-2)</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:11279;left:81"><nobr><a href="https://www.youtube.com/watch?v=VcZPTlE56G8&vq=hd1080&t=67m07s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:11308;left:51"><nobr>3.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:11305;left:81"><nobr>Consider a special version of the count_stairways problem, where instead</nobr></div>
+<div style="position:absolute;top:11330;left:81"><nobr>of taking 1 or 2 steps, we are able to take up to and including k steps at</nobr></div>
+<div style="position:absolute;top:11354;left:81"><nobr>a time.</nobr></div>
+<div style="position:absolute;top:11389;left:81"><nobr>Write a function count_k that figures out the number of paths for this sce-</nobr></div>
+<div style="position:absolute;top:11413;left:81"><nobr>nario.</nobr></div>
+<div style="position:absolute;top:11446;left:81"><nobr><b>def </b>count_k(n, k):</nobr></div>
+<div style="position:absolute;top:11495;left:114"><nobr>&gt;&gt;&gt; count_k(3, 3) # 3, 2 + 1, 1 + 2, 1 + 1 + 1</nobr></div>
+<div style="position:absolute;top:11520;left:114"><nobr>4</nobr></div>
+<div style="position:absolute;top:11544;left:114"><nobr>&gt;&gt;&gt; count_k(4, 4)</nobr></div>
+<div style="position:absolute;top:11568;left:114"><nobr>8</nobr></div>
+<div style="position:absolute;top:11593;left:114"><nobr>&gt;&gt;&gt; count_k(10, 3)</nobr></div>
+<div style="position:absolute;top:11617;left:114"><nobr>274</nobr></div>
+<div style="position:absolute;top:11641;left:114"><nobr>&gt;&gt;&gt; count_k(300, 1) # Only one step at a time</nobr></div>
+<div style="position:absolute;top:11666;left:114"><nobr>1</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11750;left:114"><nobr><b>if </b>n == 0:</nobr></div>
+<div style="position:absolute;top:11774;left:146"><nobr><b>return </b>1</nobr></div>
+<div style="position:absolute;top:11799;left:114"><nobr><b>elif </b>n &lt; 0:</nobr></div>
+<div style="position:absolute;top:11823;left:146"><nobr><b>return </b>0</nobr></div>
+<div style="position:absolute;top:11847;left:114"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:11872;left:146"><nobr>total = 0</nobr></div>
+<div style="position:absolute;top:11896;left:146"><nobr>i = 1</nobr></div>
+<div style="position:absolute;top:11921;left:146"><nobr><b>while </b>i &lt;= k:</nobr></div>
+<div style="position:absolute;top:11945;left:179"><nobr>total += count_k(n - i, k)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:12055;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=11><b>Page 11</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:12090;left:303"><nobr>Environment Diagrams and Recursion</nobr></div>
+<div style="position:absolute;top:12090;left:599"><nobr>11</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:12139;left:179"><nobr>i += 1</nobr></div>
+<div style="position:absolute;top:12163;left:146"><nobr><b>return </b>total</nobr></div>
+</span></font>
+<!-- t6608r3a3c6608e4889n1716u3l0m0k0 -->
+</body>
+</html>

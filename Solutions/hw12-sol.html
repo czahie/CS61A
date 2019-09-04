@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero, Paul Hilfinger" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="/assets/css/hw.css">
+
+
+    <title>
+Homework 12 Solutions | CS 61A Fall 2017
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Homework 12 Solutions
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="hw12.zip" class="label label-outline">hw12.zip</a></li>
+        </ul>
+        
+      </h1>
+    </header>
+    
+<h2>Solution Files</h2>
+<p>You can find the solutions in the <a href="hw12.sql">hw12.sql</a> file.</p>
+
+    
+<p>To complete this homework assignment, you will need to use SQLite version
+3.8.3 or greater. See <a href="/lab/lab12">Lab 12</a> for setup and usage instructions.</p>
+
+<p>To check your progress, you can run <code>sqlite3</code> directly by running:</p>
+
+<pre><code>sqlite3 &#x2d;&#x2d;init hw12.sql</code></pre>
+
+<p>You should also check your work using <code>ok</code>:</p>
+
+<pre><code>python3 ok</code></pre>
+
+
+<h3 id="dog-data">Dog Data</h3>
+
+
+<p>In each question below, you will define a new table based on the following
+tables.</p>
+
+<pre><code>CREATE TABLE parents AS
+  SELECT &quot;abraham&quot; AS parent, &quot;barack&quot; AS child UNION
+  SELECT &quot;abraham&quot;          , &quot;clinton&quot;         UNION
+  SELECT &quot;delano&quot;           , &quot;herbert&quot;         UNION
+  SELECT &quot;fillmore&quot;         , &quot;abraham&quot;         UNION
+  SELECT &quot;fillmore&quot;         , &quot;delano&quot;          UNION
+  SELECT &quot;fillmore&quot;         , &quot;grover&quot;          UNION
+  SELECT &quot;eisenhower&quot;       , &quot;fillmore&quot;;
+
+CREATE TABLE dogs AS
+  SELECT &quot;abraham&quot; AS name, &quot;long&quot; AS fur, 26 AS height UNION
+  SELECT &quot;barack&quot;         , &quot;short&quot;      , 52           UNION
+  SELECT &quot;clinton&quot;        , &quot;long&quot;       , 47           UNION
+  SELECT &quot;delano&quot;         , &quot;long&quot;       , 46           UNION
+  SELECT &quot;eisenhower&quot;     , &quot;short&quot;      , 35           UNION
+  SELECT &quot;fillmore&quot;       , &quot;curly&quot;      , 32           UNION
+  SELECT &quot;grover&quot;         , &quot;short&quot;      , 28           UNION
+  SELECT &quot;herbert&quot;        , &quot;curly&quot;      , 31;
+
+CREATE TABLE sizes AS
+  SELECT &quot;toy&quot; AS size, 24 AS min, 28 AS max UNION
+  SELECT &quot;mini&quot;       , 28       , 35        UNION
+  SELECT &quot;medium&quot;     , 35       , 45        UNION
+  SELECT &quot;standard&quot;   , 45       , 60;</code></pre>
+
+<p>Your tables should still perform correctly even if the values in these tables
+change. For example, if you are asked to list all dogs with a name that starts
+with h, you should write:</p>
+
+<pre><code>SELECT name FROM dogs WHERE &quot;h&quot; &lt;= name AND name &lt; &quot;i&quot;;</code></pre>
+
+<p>Instead of assuming that the <code>dogs</code> table has only the data above and writing</p>
+
+<pre><code>SELECT &quot;herbert&quot;;</code></pre>
+
+<p>The former query would still be correct if the name <code>grover</code> were changed to
+<code>hoover</code> or a row was added with the name <code>harry</code>.</p>
+
+<h3 class="question" id="q1">Q1: Size of Dogs</h3>
+The Fédération Cynologique Internationale classifies a standard poodle as over
+45 cm and up to 60 cm. The <code>sizes</code> table describes this and other such
+classifications, where a dog must be over the <code>min</code> and less than or equal to
+the <code>max</code> in height to qualify as a <code>size</code>.
+
+<p>Create a <code>size_of_dogs</code> table with two columns, one for each dog's <code>name</code> and
+another for its <code>size</code>.</p>
+
+<pre><code>&#x2d;&#x2d; The size of each dog
+CREATE TABLE size_of_dogs AS
+<div class="sol-highlight">  SELECT name, size FROM dogs, sizes
+    WHERE height &gt; min AND height &lt;= max;</div>
+&#x2d;&#x2d; Example:
+SELECT name FROM size_of_dogs WHERE size=&quot;toy&quot; OR size=&quot;mini&quot;;
+&#x2d;&#x2d; Expected output:
+&#x2d;&#x2d;   abraham
+&#x2d;&#x2d;   eisenhower
+&#x2d;&#x2d;   fillmore
+&#x2d;&#x2d;   grover
+&#x2d;&#x2d;   herbert</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q small</code></pre>
+
+<div class="sol-highlight">
+
+<p>We know that at a minimum, we need information from both the <code>dogs</code> and <code>sizes</code>
+table. Finally, we filter and keep only the rows that make sense: a size that
+corresponds to the size of the dog we're currently considering.</p>
+
+</div>
+
+<h3 class="question" id="q2">Q2: By Height</h3>
+Create a table <code>by_height</code> that has a column of the names of all dogs that have
+a <code>parent</code>, ordered by the height of the parent from tallest parent to shortest
+parent.
+
+<pre><code>&#x2d;&#x2d; All dogs with parents ordered by decreasing height of their parent
+CREATE TABLE by_height AS
+<div class="sol-highlight">  SELECT child FROM parents, dogs WHERE name = parent ORDER BY &#x2d;height;</div></code></pre>
+
+<p>For example, <code>fillmore</code> has a parent (<code>eisenhower</code>) with height 35, and so
+should appear before <code>grover</code> who has a parent (<code>fillmore</code>) with height 32.
+The names of dogs with parents of the same height should appear together in any
+order. For example, <code>barack</code> and <code>clinton</code> should both appear at the end, but
+either one can come before the other.</p>
+
+<pre><code>&#x2d;&#x2d; Example:
+SELECT * FROM by_height;
+&#x2d;&#x2d; Expected output:
+&#x2d;&#x2d;   herbert
+&#x2d;&#x2d;   fillmore
+&#x2d;&#x2d;   abraham
+&#x2d;&#x2d;   delano
+&#x2d;&#x2d;   grover
+&#x2d;&#x2d;   barack
+&#x2d;&#x2d;   clinton</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q parent-height</code></pre>
+
+<div class="sol-highlight">
+
+<p>We need information from both the <code>parents</code> and the <code>dogs</code> table. This time, the
+only rows that make sense are the ones where a child is matched up with their
+parent. Finally, we order the result by descending height.</p>
+
+</div>
+
+<h3 class="question" id="q3">Q3: Sentences</h3>
+Create a single string for every pair of siblings that have the same size.
+Each value should be a sentence describing the siblings by their size, as shown
+in the expected output below.
+
+<pre><code>&#x2d;&#x2d; Sentences about siblings that are the same size
+CREATE TABLE sentences AS
+<div class="sol-highlight">  WITH
+    siblings(first, second) AS (
+      SELECT a.child, b.child FROM parents AS a, parents AS b
+        WHERE a.parent = b.parent AND a.child &lt; b.child
+    )
+  SELECT first || &quot; and &quot; || second || &quot; are &quot; || a.size || &quot; siblings&quot;
+    FROM siblings, size_of_dogs AS a, size_of_dogs AS b
+    WHERE a.size = b.size AND a.name = first AND b.name = second;</div></code></pre>
+
+<p>Each sibling pair should appear only once in the output.</p>
+
+<p>Make sure to list the siblings in each row in alphabetical order (that is,
+"barack and clinton..." instead of "clinton and barack..." for example).</p>
+
+<pre><code>&#x2d;&#x2d; Example:
+SELECT * FROM sentences;
+&#x2d;&#x2d; Expected output:
+&#x2d;&#x2d;   barack and clinton are standard siblings
+&#x2d;&#x2d;   abraham and grover are toy siblings</code></pre>
+
+<blockquote><p><strong>Hint</strong>: First use a <code>WITH</code> clause to create a local table of siblings.
+Comparing the size of siblings will be simplified.</p>
+
+<p><strong>Hint</strong>: If you join a table with itself, use <code>AS</code> within the <code>FROM</code> clause to
+give each table an alias.</p>
+
+<p><strong>Hint</strong>: In order to concatenate two strings into one, use the <code>||</code> operator.</p></blockquote>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q size-siblings</code></pre>
+
+<div class="sol-highlight">
+
+<p>Roughly speaking, there are two tasks we need to solve here:</p>
+
+<p><strong>Figure out which dogs are siblings</strong></p>
+
+<p>A sibling is someone you share a parent with. This will probably involve the
+<code>parents</code> table.</p>
+
+<p>It might be tempting to join this with <code>dogs</code>, but there isn't any extra
+information provided by a dogs table that we need at this time. Furthermore, we
+still need information on sibling for a given dog, since the <code>parents</code> table
+just associates each dog to a parent.</p>
+
+<p>The next step, therefore, is to match all children to all other children by
+joining the parents table to itself. The only rows here that make sense are the
+rows that represent sibling relationships since they share the same parent.</p>
+
+<p>Remember that we want to avoid duplicates! If dog A and B are siblings, we don't
+want both A/B and B/A to appear in the final result. We also definitely don't
+want A/A to be a sibling pair. Enforcing ordering on the sibling names ensures
+that we don't have either issue.</p>
+
+<p><strong>Construct sentences based on sibling information</strong></p>
+
+<p>After determining the siblings, constructing the sentences just requires us to
+get the size of each sibling. We could join on the <code>dogs</code> and <code>sizes</code> tables as
+we did in an earlier problem, but there's no need to redo that work. Instead,
+we'll reuse our <code>size_of_dogs</code> table to figure out the size of each sibling in
+each pair.</p>
+
+</div>
+
+<h3 class="question" id="q4">Q4: Stacks</h3>
+Sufficiently sure-footed dogs can stand on either other's backs to form a
+stack (up to a point). We'll say that the total height of such a stack is
+the sum of the heights of the dogs.
+
+<p>Create a two-column table describing <strong>all stacks of four dogs at least 170 cm
+high.</strong> The first column should contain a comma-separated list of dogs in the
+stack, and the second column should contain the total height of the stack. Order
+the stacks in increasing order of total height.</p>
+
+<pre><code>&#x2d;&#x2d; Ways to stack 4 dogs to a height of at least 170, ordered by total height
+CREATE TABLE stacks AS
+<div class="sol-highlight">  WITH
+    sums(names, total, n, max) AS (
+      SELECT name, height, 1, height FROM dogs UNION
+      SELECT names || &quot;, &quot; || name, total+height, n+1, height
+        FROM sums, dogs
+        WHERE n &lt; 4 AND max &lt; height
+    )
+  SELECT names, total FROM sums WHERE n=4 AND total&gt;=170 ORDER BY total;</div></code></pre>
+
+<p>A valid stack of dogs includes each dog only once, and the dogs should be
+listed in increasing order of height within the stack.
+<strong>Assume that no two dogs have the same height</strong>.</p>
+
+<pre><code>&#x2d;&#x2d; Example:
+SELECT * FROM stacks;
+&#x2d;&#x2d; Expected output:
+&#x2d;&#x2d;   abraham, delano, clinton, barack|171
+&#x2d;&#x2d;   grover, delano, clinton, barack|173
+&#x2d;&#x2d;   herbert, delano, clinton, barack|176
+&#x2d;&#x2d;   fillmore, delano, clinton, barack|177
+&#x2d;&#x2d;   eisenhower, delano, clinton, barack|180</code></pre>
+
+<blockquote><p><strong>Hint</strong>: You could, of course, write a humongous <code>SELECT</code> that uses the
+<code>dogs</code> table four times and imposes all the constraints at once.
+You will probably find it cleaner, however, to use
+a <code>WITH</code> clause to create a recursive table with additional
+columns, such as the number of dogs that have been stacked
+and information about the height of the last dog added
+(to control the dog order). The recursive <code>SELECT</code> on this
+table could then add dogs one at a time.  Then, select the
+rows and columns from this larger table to generate the final solution.</p>
+
+<p><strong>Hint</strong>: Use height comparisons to ensure that dogs are not repeated in a stack.</p>
+
+<p><strong>Hint</strong>: Generating the comma-separated list of dogs is easier if your base
+case includes the name of one dog without any commas before or after it,
+rather than no dogs at all.</p></blockquote>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q stack</code></pre>
+
+<div class="sol-highlight">
+
+<p>This problem follows the standard setup for a recursive SQL problem. The
+trickiest part is figuring out what information we need to track in our local
+table.</p>
+
+<ul>
+  <li>For starters, we probably want the stack of dogs we have (<code>names</code>).</li>
+  <li>Also, we probably want to know how many dogs we have in this stack so far
+  (<code>n</code>), so we don't end up stacking too far. In a similar vein, tracking the
+  total height gained (<code>total</code>) is important since we need that for our final
+  output.</li>
+  <li>The final column (<code>max</code>) ensures we never stack a bigger top on top of a
+  smaller dog. By keep track of the "top dog", we can make the correct decisions
+  about which combinations of dogs to consider.</li>
+</ul>
+
+<p>Once we have everything in our local table, we just keep the rows from it that
+correspond to the tallest stacks.</p>
+
+</div>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#dog-data">Dog Data</a></li>
+  <li><a href="#q1">Q1: Size of Dogs</a></li>
+  <li><a href="#q2">Q2: By Height</a></li>
+  <li><a href="#q3">Q3: Sentences</a></li>
+  <li><a href="#q4">Q4: Stacks</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>

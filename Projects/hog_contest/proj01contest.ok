@@ -1,0 +1,17 @@
+{
+  "name": "Hog Contest",
+  "endpoint": "cal/cs61a/fa17/hogcontest",
+  "src": [
+    "hog_contest.py"
+  ],
+  "tests": {
+      "tests/import.py": "ok_test",
+      "tests/final.py": "ok_test"
+  },
+  "protocols": [
+      "file_contents",
+      "analytics",
+      "grading",
+      "backup"
+  ]
+}

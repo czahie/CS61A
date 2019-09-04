@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero, Paul Hilfinger" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="/assets/css/hw.css">
+
+
+    <title>
+Homework 10 Solutions | CS 61A Fall 2017
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Homework 10 Solutions
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="hw10.zip" class="label label-outline">hw10.zip</a></li>
+        </ul>
+        
+      </h1>
+    </header>
+    
+<h2>Solution Files</h2>
+
+
+    
+<h3 class="question" id="q1">Q1: How Many Dots?</h3>
+
+<p>Implement <code>how&#x2d;many&#x2d;dots</code>, which takes in a nested scheme list <code>s</code> and returns
+the number of dots that appear when it is displayed by the interpreter (not
+counting decimal points). You may assume that <code>s</code> is a nested list that
+contains only numbers.</p>
+
+<p><em>Hints</em>: A dot appears when the second element of a pair is not a well formed
+list. The procedures <code>pair?</code>, <code>null?</code>, and <code>number?</code> test whether a value is a
+pair, <code>nil</code>, or a number, respectively.</p>
+
+<solution>
+
+<pre><code>(define (how&#x2d;many&#x2d;dots s)
+<div class="sol-highlight">  (if (not (pair? s))
+    0
+    (+ (if (and (not (pair? (cdr s)))
+                (not (null? (cdr s))))
+         1
+         0)
+       (how&#x2d;many&#x2d;dots (car s))
+       (how&#x2d;many&#x2d;dots (cdr s))))</div>)</code></pre>
+
+</solution>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q how-many-dots -u
+python3 ok -q how-many-dots</code></pre>
+
+<div class="sol-highlight">
+
+<p>This is very similar to the "no dots" problem we've seen earlier. This time,
+however, instead of removing the dots, we only have to detect them.</p>
+
+<p><strong>Where are the dots?</strong></p>
+
+<p>Dots appear whenever we encounter a malformed Scheme list. That means even if a
+Scheme expression has dots in it, the resulting list may not have any. Consider
+the following:</p>
+
+<pre><code>scm&gt; &#x27;(1 . (2)) ; Contains dot in original expr, but not in final result
+(1 2)
+scm&gt; (list 1 2) ; &quot;Regular&quot; list construction results in no dots
+(1 2)</code></pre>
+
+<p>The dot represents a pair of 1 with the list containing 2, so the result is a
+well-formed list.</p>
+
+<p>Meanwhile, this <em>will</em> preserve the dot:</p>
+
+<pre><code>scm&gt; &#x27;(1 . 2)
+(1 . 2)</code></pre>
+
+<p>This represents a pair of 1 with 2, and since 2 is not a list or nil, it's a
+malformed list.</p>
+
+<p>Therefore, all of the following conditions must be satisfied for us to see a
+dot between the first and second elements of <code>s</code>:</p>
+
+<ul>
+  <li><strong><code>s</code> must be a pair.</strong></li>
+  <li><strong><code>(cdr s)</code> cannot be nil.</strong> Otherwise, this is a well-formed list.</li>
+  <li><strong><code>(cdr s)</code> cannot be a pair.</strong> Otherwise, this could be a well-formed list.
+  At the very least, we will not see a dot at this location, though it may
+  appear later in the list.</li>
+</ul>
+
+<p>Note that there is nothing relating to <code>(car s)</code> for detecting dots. Therefore,
+recurse on both the <code>(car s)</code> and the <code>(cdr s)</code> to detect any additional dots.
+We technically don't have to recurse on <code>(cdr s)</code> if we detect that <code>(cdr s)</code> is
+not a pair, but our base case handles this.</p>
+
+<p>You could implement this assuming that <code>s</code> is always a pair, but then you would
+have to be much more careful about your recursive calls, ensuring you only ever
+recurse on something else that's a pair.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/6a3hcKGLaBo">https://youtu.be/6a3hcKGLaBo</a></p>
+
+</div>
+
+<blockquote><p><strong>Note:</strong> Q2 and Q3 (Substitute, Sub All) were extra lab questions from Lab 9.
+You may check the solutions if you are stuck, but we highly recommend you work
+through the problem on your own for practice.</p></blockquote>
+
+<h3 class="question" id="q2">Q2: Substitute</h3>
+
+<p>Write a procedure <code>substitute</code> that takes three arguments: a list <code>s</code>, an <code>old</code>
+word, and a <code>new</code> word. It returns a list with the elements of <code>s</code>, but with
+every occurrence of <code>old</code> replaced by <code>new</code>, even within sub-lists.</p>
+
+<p><em>Hint</em>: The built-in <code>pair?</code> predicate returns True if its argument is a <code>cons</code>
+pair.</p>
+
+<p><em>Hint</em>: The <code>=</code> operator will only let you compare numbers, but using <code>equal?</code>
+or <code>eq?</code> will let you compare symbols as well as numbers. For more information,
+check out the
+<a href="/articles/scheme-primitives.html#general">Scheme Primitives Reference</a>.</p>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q substitute -u
+python3 ok -q substitute</code></pre>
+
+<solution>
+
+<pre><code>(define (substitute s old new)
+<div class="sol-highlight">  (cond ((null? s) nil)
+        ((pair? (car s)) (cons (substitute (car s) old new)
+                               (substitute (cdr s) old new)))
+        ((equal? (car s) old) (cons new
+                                    (substitute (cdr s) old new)))
+        (else (cons (car s) (substitute (cdr s) old new))))</div>)</code></pre>
+
+<div class="sol-highlight">
+
+<p>Remember that we want to use <code>equal?</code> to compare symbols since <code>=</code> will only
+work for numbers!</p>
+
+<p>If the input list is empty, there's nothing to substitute. That's a pretty
+straightforward base case. Otherwise, our list has at least one item.</p>
+
+<p>We can break the rest of this problem into roughly two big cases:</p>
+
+<p><strong>Nested list here</strong></p>
+
+<p>This means that <code>(car s)</code> is a pair. Since you can assume that the list is
+well-formed, <code>(list? (car s))</code> is also an adequate check. In this case, we have
+to dig deeper and recurse on <code>(car s)</code> since there could be symbols to replace
+in there. We must recurse on <code>(cdr s)</code> as well to handle the rest of the list.</p>
+
+<p><strong>No nested list here</strong></p>
+
+<p>This is the case if <code>(car s)</code> is <em>not</em> a pair. Of course, there could still be
+nesting later on in the list, but we'll rely on our recursive call to handle
+that.</p>
+
+<p>If <code>(car s)</code> matches <code>old</code>, we'll make sure to use <code>new</code> in its place.
+Otherwise, we'll use <code>(car s)</code> without replacing it. In both cases, we must
+recurse on the rest of the list.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/LAr-_twxXao">https://youtu.be/LAr-_twxXao</a></p>
+
+</div>
+
+</solution>
+
+<h3 class="question" id="q3">Q3: Sub All</h3>
+
+<p>Write <code>sub&#x2d;all</code>, which takes a list <code>s</code>, a list of <code>old</code> words, and a
+list of <code>new</code> words; the last two lists must be the same length. It returns a
+list with the elements of <code>s</code>, but with each word that occurs in the second
+argument replaced by the corresponding word of the third argument. You may use
+<code>substitute</code> in your solution.</p>
+
+<solution>
+
+<pre><code>(define (sub&#x2d;all s olds news)
+<div class="sol-highlight">  (if (null? olds)
+    s
+    (sub&#x2d;all (substitute s (car olds) (car news))
+             (cdr olds)
+             (cdr news)))</div>)</code></pre>
+
+<div class="sol-highlight">
+
+<p>Solving <code>sub&#x2d;all</code> means just repeatedly doing the substitute operation we wrote
+earlier. If this were Python, we might iterate over the list of olds and news,
+calling <code>substitute</code> and saving the result for the next call. For example, it
+might look something like this:</p>
+
+<pre><code>def sub_all(s, olds, news):
+    for o, n in zip(olds, news):
+        s = substitute(s, o, n)
+    return s</code></pre>
+
+<p>If that approach makes sense, then the only tricky part now is to translate that
+logic into Scheme. Since we don't have access to iteration, we have to reflect
+our progress in our recursive call to <code>sub&#x2d;all</code>. This means shortening the list
+of <code>olds</code> and <code>news</code>, and most importantly, feeding the result of <code>substitute</code>
+into the next call.</p>
+
+<p>Therefore, the base case is if we have nothing we want to replace in <code>olds</code>.
+Checking if <code>news</code> is empty would also be ok, since <code>olds</code> and <code>news</code> should be
+the same length.</p>
+
+<p>What doesn't work, however, is checking if <code>s</code> is an empty list. While this
+won't make your solution wrong on its own, it's an <strong>insufficient</strong> base case.
+Remember that we're passing in <code>s</code> with elements replaced into the recursive
+call, which means it won't become any shorter.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/avYPLlaBtj0">https://youtu.be/avYPLlaBtj0</a></p>
+
+</div>
+
+</solution>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q sub-all -u
+python3 ok -q sub-all</code></pre>
+
+
+<h3 id="differentiation">Differentiation</h3>
+
+
+<p>The following problems develop a system for
+<a href="http://en.wikipedia.org/wiki/Table_of_derivatives#Elementary_rules_of_differentiation">symbolic differentiation</a>
+of algebraic expressions.  The <code>derive</code> Scheme procedure takes an
+algebraic expression and a variable and returns the derivative of the
+expression with respect to the variable. Symbolic differentiation is of
+special historical significance in Lisp. It was one of the motivating
+examples behind the development of the language. Differentiating is a
+recursive process that applies different rules to different kinds of
+expressions.</p>
+
+<pre><code>; derive returns the derivative of EXPR with respect to VAR
+(define (derive expr var)
+  (cond ((number? expr) 0)
+        ((variable? expr) (if (same&#x2d;variable? expr var) 1 0))
+        ((sum? expr) (derive&#x2d;sum expr var))
+        ((product? expr) (derive&#x2d;product expr var))
+        ((exp? expr) (derive&#x2d;exp expr var))
+        (else &#x27;Error)))</code></pre>
+
+<p>To implement the system, we will use the following data abstraction.
+Sums and products are lists, and they are simplified on construction:</p>
+
+<pre><code>; Variables are represented as symbols
+(define (variable? x) (symbol? x))
+(define (same&#x2d;variable? v1 v2)
+  (and (variable? v1) (variable? v2) (eq? v1 v2)))
+
+; Numbers are compared with =
+(define (=number? expr num)
+  (and (number? expr) (= expr num)))
+
+; Sums are represented as lists that start with +.
+(define (make&#x2d;sum a1 a2)
+  (cond ((=number? a1 0) a2)
+        ((=number? a2 0) a1)
+        ((and (number? a1) (number? a2)) (+ a1 a2))
+        (else (list &#x27;+ a1 a2))))
+(define (sum? x)
+  (and (list? x) (eq? (car x) &#x27;+)))
+(define (addend s) (cadr s))
+(define (augend s) (caddr s))
+
+; Products are represented as lists that start with *.
+(define (make&#x2d;product m1 m2)
+  (cond ((or (=number? m1 0) (=number? m2 0)) 0)
+        ((=number? m1 1) m2)
+        ((=number? m2 1) m1)
+        ((and (number? m1) (number? m2)) (* m1 m2))
+        (else (list &#x27;* m1 m2))))
+(define (product? x)
+  (and (list? x) (eq? (car x) &#x27;*)))
+(define (multiplier p) (cadr p))
+(define (multiplicand p) (caddr p))</code></pre>
+
+<blockquote><p>Note that we will not test whether your solutions to this question correctly
+apply the <a href="https://en.wikipedia.org/wiki/Chain_rule">chain rule</a>. For more
+info, check out the <a href="#extensions">extensions</a> section.</p></blockquote>
+
+<h3 class="question" id="q4">Q4: Derive Sum</h3>
+
+<p>Implement <code>derive&#x2d;sum</code>, a procedure that differentiates a sum by
+summing the derivatives of the <code>addend</code> and <code>augend</code>.  Use data abstraction
+for a sum.</p>
+
+<pre><code>(define (derive&#x2d;sum expr var)
+<div class="sol-highlight">  (make&#x2d;sum (derive (addend expr) var)
+            (derive (augend expr) var))</div>)</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q derive-sum -u
+python3 ok -q derive-sum</code></pre>
+
+<div class="sol-highlight">
+
+<p>This question is deceptively simple; make sure you understand what the problem is
+asking!</p>
+
+<p>To derive a sum of values, we simply <code>derive</code> the addend (the thing before the <code>+</code>
+in normal math) and the augend (the thing after the <code>+</code>).</p>
+
+<p>Then, we have to combine the values again using a sum. In some cases, using the
+sum operator will work; in fact, since we've only implemented derivatives of
+sums and single variables, we can't do anything too complicated here!</p>
+
+<p>But the correct solution requires the use of <code>make&#x2d;sum</code> which will helpfully
+simplify arithmetic operations and handle symbols. This necessary is for cases
+where you have to derive something like the following (after implementing
+<code>derive&#x2d;exp</code>):</p>
+
+<pre><code>  scm&gt; (derive (make&#x2d;sum x^3 x^2) &#x27;x)
+  (+ (* 3 (^ x 2)) (* 2 x))</code></pre>
+
+<p>Video walkthrough: <a href="https://youtu.be/eMyYkoBUDrM">https://youtu.be/eMyYkoBUDrM</a></p>
+
+</div>
+
+<h3 class="question" id="q5">Q5: Derive Product</h3>
+
+<p>Implement <code>derive&#x2d;product</code>, which applies <a href="http://en.wikipedia.org/wiki/Product_rule">the product
+rule</a> to differentiate
+products.</p>
+
+<blockquote><p>The <code>ok</code> tests expect the terms of the result in a particular order.
+First, multiply the derivative of the multiplier by the multiplicand. Then,
+multiply the multiplier by the derivative of the multiplicand. Sum these two
+terms to form the derivative of the original product.</p></blockquote>
+
+<pre><code>(define (derive&#x2d;product expr var)
+<div class="sol-highlight">  (make&#x2d;sum
+    (make&#x2d;product (derive (multiplier expr) var)
+                  (multiplicand expr))
+    (make&#x2d;product (multiplier expr)
+                  (derive (multiplicand expr) var)))</div>)</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q derive-product -u
+python3 ok -q derive-product</code></pre>
+
+<div class="sol-highlight">
+
+<p>Much like the <code>derive&#x2d;sum</code>, make sure you understand what the problem is asking.</p>
+
+<p>The main hiccup this time is that the derivative rules are a bit more
+complicated for products, and will require using products <strong>and</strong> sums. Just
+make sure to use <code>make&#x2d;sum</code> and <code>make&#x2d;product</code>, otherwise you may run into
+issues further on.</p>
+
+<p>Video walkthrough: <a href="https://youtu.be/biE0VS5dFJA">https://youtu.be/biE0VS5dFJA</a></p>
+
+</div>
+
+<h3 class="question" id="q6">Q6: Make Exp</h3>
+
+<p>Implement a data abstraction for exponentiation: a <code>base</code> raised to the
+power of an <code>exponent</code>. The <code>base</code> can be any expression, but assume that the
+<code>exponent</code> is a non-negative integer. You can simplify the cases when
+<code>exponent</code> is <code>0</code> or <code>1</code>, or when <code>base</code> is a number, by returning numbers from
+the constructor <code>make&#x2d;exp</code>.  In other cases, you can represent the exp as a
+triple <code>(^ base exponent)</code>.</p>
+
+<blockquote><p>You may want to use the built-in procedure <code>expt</code>, which takes two number
+arguments and raises the first to the power of the second.</p></blockquote>
+
+<pre><code>; Exponentiations are represented as lists that start with ^.
+(define (make&#x2d;exp base exponent)
+<div class="sol-highlight">  (cond ((= exponent 0) 1)
+        ((= exponent 1) base)
+        ((and (number? base) (integer? exponent)) (expt base exponent))
+        (else (list &#x27;^ base exponent)))</div>)
+
+(define (base exp)
+<div class="sol-highlight">  (cadr exp)</div>)
+
+(define (exponent exp)
+<div class="sol-highlight">  (caddr exp)</div>)
+
+(define (exp? exp)
+<div class="sol-highlight">  (and (list? exp) (eq? (car exp) &#x27;^))</div>)
+
+(define x^2 (make&#x2d;exp &#x27;x 2))
+(define x^3 (make&#x2d;exp &#x27;x 3))</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q make-exp -u
+python3 ok -q make-exp</code></pre>
+
+<div class="sol-highlight">
+
+<p>It may be helpful to refer to code for <code>make&#x2d;sum</code> and <code>make&#x2d;prod</code> to see how
+they handle some special cases.</p>
+
+<ul>
+  <li>For exponent of 0 or 1, we can return a simplified result.</li>
+  <li>If we're doing the exponent of two numbers, we can compute that right away
+  using <code>expt</code> instead of creating an exponent abstraction. This is much like
+  <code>make&#x2d;sum</code> and <code>make&#x2d;prod</code> where we calculate the result using <code>+</code> or <code>*</code>.</li>
+  <li>Otherwise, we create the exponent abstraction -- a list of the caret <code>^</code>,
+  base, and exponent.</li>
+</ul>
+
+<p>Video walkthrough: <a href="https://youtu.be/JMwyLWJqOAE">https://youtu.be/JMwyLWJqOAE</a></p>
+
+</div>
+
+<h3 class="question" id="q7">Q7: Derive Exp</h3>
+
+<p>Implement <code>derive&#x2d;exp</code>, which uses the <a href="http://en.wikipedia.org/wiki/Power_rule">power
+rule</a> to derive exponents.</p>
+
+<pre><code>(define (derive&#x2d;exp exp var)
+<div class="sol-highlight">  (let ((b (base exp))
+        (n (exponent exp)))
+    (if (number? n)
+      (let ((first (make&#x2d;product n (make&#x2d;exp b (&#x2d; n 1)))))
+        (make&#x2d;product first (derive b var))) ;; Note: Chain rule isn&#x27;t tested by ok.
+        &#x27;unknown))</div>)</code></pre>
+
+<p>Use Ok to unlock and test your code:</p><pre><code class="nohighlight">python3 ok -q derive-exp -u
+python3 ok -q derive-exp</code></pre>
+
+<div class="sol-highlight">
+
+<p>Applying the power rule here is fairly straightforward -- it's arguably not much
+different from <code>derive&#x2d;sum</code> or <code>derive&#x2d;prod</code>. The only real differences are that
+we're using the power rule and the result will require using <code>make&#x2d;exp</code> and
+<code>make&#x2d;prod</code>.</p>
+
+<p>Our solution here also implements the chain rule, but it's not necessary to pass
+the tests. An implementation that doesn't use the chain rule could just
+return:</p>
+
+<pre><code>(make&#x2d;product n (make&#x2d;exp b (&#x2d; n 1)))</code></pre>
+
+<p>Video walkthrough: <a href="https://youtu.be/qMiyvKvQzEY">https://youtu.be/qMiyvKvQzEY</a></p>
+
+</div>
+
+
+<h3 id="extensions">Extensions</h3>
+
+
+<p>There are many ways to extend this symbolic differentiation
+system. For example, you could simplify nested exponentiation expression such
+as <code>(^ (^ x 3) 2)</code>, products of exponents such as <code>(* (^ x 2) (^ x 3))</code>, and
+sums of products such as <code>(+ (* 2 x) (* 3 x))</code>. You could apply the <a href="https://en.wikipedia.org/wiki/Chain_rule">chain
+rule</a> when deriving exponents, so that
+expressions like <code>(derive &#x27;(^ (^ x y) 3) &#x27;x)</code> are handled correctly. Enjoy!</p>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#q1">Q1: How Many Dots?</a></li>
+  <li><a href="#q2">Q2: Substitute</a></li>
+  <li><a href="#q3">Q3: Sub All</a></li>
+  <li><a href="#differentiation">Differentiation</a></li>
+  <li><a href="#q4">Q4: Derive Sum</a></li>
+  <li><a href="#q5">Q5: Derive Product</a></li>
+  <li><a href="#q6">Q6: Make Exp</a></li>
+  <li><a href="#q7">Q7: Derive Exp</a></li>
+  <li><a href="#extensions">Extensions</a></li>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>

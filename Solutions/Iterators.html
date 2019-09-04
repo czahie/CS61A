@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+    <title>
+Study Guide: Iterators | CS 61A Spring 2018
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Study Guide: Iterators
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="/quiz/quiz10.pdf" class="label label-outline">Quiz</a></li>
+          
+          <li><a href="/quiz/quiz10_sol.pdf" class="label label-outline">Solution</a></li>
+          
+        </ul>
+        
+      </h1>
+    </header>
+    
+
+<h2>Instructions</h2>
+
+<p>This is the companion guide to <a href="/quiz/quiz10.pdf">Quiz 10</a> with links to past
+lectures, assignments, and handouts, as well as isomorphic quiz problems and
+additional practice problems to assist you in learning the concepts.</p>
+
+
+  <p><strong>Assignments</strong></p>
+  <ul>
+  <li><a href="/lab/lab11">Lab 11</a></li>
+</ul>
+
+
+
+  <p><strong>Handouts</strong></p>
+  <ul>
+  <li><a href="/disc/disc09.pdf">Discussion 9</a> (<a href="/disc/disc09_sol.pdf">Solutions</a>)</li>
+</ul>
+
+
+
+  <p><strong>Lectures</strong></p>
+  <ul>
+  <li><a href="/assets/slides/30-Iterators_full.pdf">Iterators</a></li>
+</ul>
+
+
+
+  <p><strong>Readings</strong></p>
+  <ul>
+  <li><a href="http://composingprograms.com/pages/42-implicit-sequences.html">Section 4.2</a></li>
+</ul>
+
+
+
+    
+<h1 id="guides">Guides</h1>
+
+
+
+<h2 id="iteration">Iteration</h2>
+
+
+<p>Iterators generalize a common pattern in computation. Often, we want to get
+all the values from a compound value like the list <code>[&#x27;c&#x27;, &#x27;s&#x27;, &#x27;6&#x27;, &#x27;1&#x27;, &#x27;a&#x27;]</code>.</p>
+
+<p>We can write a program that prints the values in the list with a <code>while</code> loop.</p>
+
+<pre><code>lst = [&#x27;c&#x27;, &#x27;s&#x27;, &#x27;6&#x27;, &#x27;1&#x27;, &#x27;a&#x27;]
+i = 0
+while i &lt; len(lst):
+    value = lst[i]
+    i += 1
+    print(value)</code></pre>
+
+<p>Or, as we've seen before as well, a <code>for</code> loop.</p>
+
+<pre><code>lst = [&#x27;c&#x27;, &#x27;s&#x27;, &#x27;6&#x27;, &#x27;1&#x27;, &#x27;a&#x27;]
+for value in lst:
+    print(value)</code></pre>
+
+<p>The <code>for</code> loop has the advantage of being much more compact and easy to read as
+we no longer need to keep track of the index as we iterate through the list.</p>
+
+<p>If we think of the two bits of code above as being equivalent, we can see that
+the <code>for</code> loop actually hides a lot of complexity for us. It is somehow able to
+initialize the starting index, <code>i = 0</code>, then check the length of the list to
+determine whether we've stepped past the list's bounds, and moving the index
+forward while assign the next value in the list.</p>
+
+<p>What's more, the <code>for</code> loop can event iterate over other sequence types too,
+like dictionaries and strings, not just lists.</p>
+
+<pre><code>&gt;&gt;&gt; for key in {1: &#x27;first value&#x27;, 2: &#x27;second value&#x27;}:
+...     print(key)
+...
+1
+2
+&gt;&gt;&gt; for character in &#x27;cs61a&#x27;:
+...     print(character)
+...
+c
+s
+6
+1
+a</code></pre>
+
+
+<h3 id="iteration-abstraction">Iteration Abstraction</h3>
+
+
+<p>We can think of iterating with a <code>for</code> loop as a kind of <strong>abstraction</strong>. We
+don't really need to know how to index into a list, dictionary, or string to
+<code>for</code> loop over their values because the <code>for</code> loop hides the exact
+implementation details from us. It's also a generalization: we can store our
+data in any sequence type and iterate over it using the same <code>for</code> loop without
+having to worry too much about the underlying implementation.</p>
+
+<p>But the <code>for</code> loop, like the Python interpreter, is not magic. We'd like to
+understand how this structure works.</p>
+
+
+<h3 id="iterators">Iterators</h3>
+
+
+<p>In Python, <strong>iterators</strong> are the objects which help implement <code>for</code> loops. In
+the list example, iterators do the entire job of knowing where to start the
+iteration, checking to see if there are any more elements in the list, and
+moving the index forward while returning the next value.</p>
+
+<p>Iterators do all of this work in a magic method called <code>__next__</code>. Given an
+iterator, we can ask for its next value by calling the built-in <code>next</code> function
+on it, which really just invokes the <code>__next__</code> method in the iterator.</p>
+
+
+<h3 id="iterables">Iterables</h3>
+
+
+<p>The example of a list iterator only makes sense in the context of the
+underlying list of values. But we often work with structures that aren't just
+lists: we could work with dictionaries and strings as well. These structures
+are more generally categorized as <strong>iterables</strong> because they can be iterated
+over.</p>
+
+<p>Iterables have an <code>__iter__</code> method which we can call with the built-in <code>iter</code>
+function to return an <em>iterator</em>.</p>
+
+<pre><code>&gt;&gt;&gt; iterable = [&#x27;c&#x27;, &#x27;s&#x27;, &#x27;6&#x27;, &#x27;1&#x27;, &#x27;a&#x27;]
+&gt;&gt;&gt; iterator = iter(iterable)
+&gt;&gt;&gt; next(iterator)
+&#x27;c&#x27;</code></pre>
+
+<p>How does the iterator know how to stop?</p>
+
+<pre><code>&gt;&gt;&gt; next(iterator)
+&#x27;s&#x27;
+&gt;&gt;&gt; next(iterator)
+&#x27;6&#x27;
+&gt;&gt;&gt; next(iterator)
+&#x27;1&#x27;
+&gt;&gt;&gt; next(iterator)
+&#x27;a&#x27;
+&gt;&gt;&gt; next(iterator)
+StopIteration</code></pre>
+
+<p>A <code>StopIteration</code> exception is raised when there are no more values to return
+from calling <code>next</code>. This is how the <code>for</code> loop knows how to move on. We can
+convert the full <code>for</code> loop to a <code>while</code> loop that looks roughly like this.</p>
+
+<pre><code>iterator = iter(iterable)
+try:
+    while True:
+        item = next(iterator)
+        print(item)
+except StopIteration:
+    pass</code></pre>
+
+<p>Remember that the iterator is responsible for determining the stop condition,
+and that stopping condition is conveyed to the loop by the <code>StopIteration</code>
+exception.</p>
+
+
+<h3 id="generators">Generators</h3>
+
+
+<p><strong>Generator functions</strong> allow us to easily declare iterators. In CS 61A,
+they'll be the primary means by which we define iterators.</p>
+
+<p>While generator functions look a lot like normal functions in Python, they
+behave quite differently. While a normal function has a <code>return</code> statement to
+define the value returned when the function is called, generator functions
+always return generator objects. The <strong>generator object</strong> is the iterator which
+keeps track of state and remembers its place during execution.</p>
+
+<p>A commonly-used built-in that behaves like a generator function is <code>zip</code>.</p>
+
+<pre><code>&gt;&gt;&gt; zip
+&lt;class &#x27;zip&#x27;&gt;           # zip is not a generator, but it behaves like one
+&gt;&gt;&gt; pairs = zip([1, 2, 3], [4, 5, 6])
+&gt;&gt;&gt; pairs
+&lt;zip object at 0x...&gt;   # zip returns a generator object
+&gt;&gt;&gt; next(pairs)
+(1, 4)
+&gt;&gt;&gt; for pair in pairs:
+...     print(pair)
+...
+(2, 5)
+(3, 6)</code></pre>
+
+<p>Generator functions are defined using the <code>def</code> statement, but we use the new
+keyword, <code>yield</code>, to tell them apart from regular functions. For example, we
+can define a generator function that, given an iterable, yields the running sum
+of values in the iterable.</p>
+
+<pre><code>def running_sum(iterable):
+    total = 0
+    for value in iterable:
+        total += value
+        yield total</code></pre>
+
+<p>We can then use the <code>running_sum</code> program in the following way.</p>
+
+<pre><code>&gt;&gt;&gt; rs = running_sum([1, 2, 3, 4, 5])
+&gt;&gt;&gt; next(rs)
+1
+&gt;&gt;&gt; next(rs)
+3
+&gt;&gt;&gt; for n in rs:
+...     print(n)
+...
+6
+10
+15</code></pre>
+
+<p>When the generator object is first created, we start at the top of the body of
+the function. Then, when we call <code>next</code> on the generator, we start executing
+the body of the function until we <code>yield</code> the first value back to the caller.
+The generator object pauses, remembering its current state and waiting until
+the caller asks for the <code>next</code> value. After all the values are yielded from the
+generator, the next time the caller calls <code>next</code> will cause a <code>StopIteration</code>.</p>
+
+
+<h1 id="practice-problems">Practice Problems</h1>
+
+
+
+<h2 id="easy">Easy</h2>
+
+
+<h3 class="question" id="q1">Q1: Character generator</h3>
+
+<p>Write a generator that outputs each character of a string.</p>
+
+
+
+<pre><code>def char_gen(s):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; for char in char_gen(&quot;hello&quot;):
+    ...     print(char)
+    ...
+    h
+    e
+    l
+    l
+    o
+    &quot;&quot;&quot;
+<div class="alt solution-1">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-1">&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x63;&#x68;&#x61;&#x72;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x63;&#x68;&#x61;&#x72;</div></code></pre>
+
+
+        <button id='solution-1' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+
+<h2 id="medium">Medium</h2>
+
+
+<h3 class="question" id="q2">Q2: Generators generator</h3>
+
+<p>Write the function <code>make_generators_generator</code>, which takes a generator
+function <code>g</code> and defines a generator which yields generators. The <code>i</code>th generator 
+yielded will generate items 1 through <code>i</code> yielded by the
+generator returned by <code>g</code>.</p>
+
+
+
+<pre><code>def make_generators_generator(g):
+    &quot;&quot;&quot;Generates all the &quot;sub&quot;&#x2d;generators of the generator returned by
+    the generator function g.
+
+    &gt;&gt;&gt; def ints_to(n):
+    ...     for i in range(1, n + 1):
+    ...          yield i
+    ...
+    &gt;&gt;&gt; def ints_to_5():
+    ...     for item in ints_to(5):
+    ...         yield item
+    ...
+    &gt;&gt;&gt; for gen in make_generators_generator(ints_to_5):
+    ...     print(&quot;Next Generator:&quot;)
+    ...     for item in gen:
+    ...         print(item)
+    ...
+    Next Generator:
+    1
+    Next Generator:
+    1
+    2
+    Next Generator:
+    1
+    2
+    3
+    Next Generator:
+    1
+    2
+    3
+    4
+    Next Generator:
+    1
+    2
+    3
+    4
+    5
+    &quot;&quot;&quot;
+<div class="alt solution-2">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-2">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x67;&#x65;&#x6e;&#x28;&#x69;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x74;&#x65;&#x6d;&#x20;&#x69;&#x6e;&#x20;&#x67;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x20;&#x3c;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x62;&#x72;&#x65;&#x61;&#x6b;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x69;&#x74;&#x65;&#x6d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x2d;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x74;&#x65;&#x6d;&#x20;&#x69;&#x6e;&#x20;&#x67;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x67;&#x65;&#x6e;&#x28;&#x69;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x2b;&#x3d;&#x20;&#x31;</div></code></pre>
+
+
+        <button id='solution-2' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q make_generators_generator</code></pre>
+
+<h3 class="question" id="q3">Q3: Pairs (generator)</h3>
+
+<p>Write a generator function <code>pairs</code> that takes a list and yields all the
+possible pairs of elements from that list.</p>
+
+
+
+<pre><code>def pairs(lst):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; type(pairs([3, 4, 5]))
+    &lt;class &#x27;generator&#x27;&gt;
+    &gt;&gt;&gt; for x, y in pairs([3, 4, 5]):
+    ...     print(x, y)
+    ...
+    3 3
+    3 4
+    3 5
+    4 3
+    4 4
+    4 5
+    5 3
+    5 4
+    5 5
+    &quot;&quot;&quot;
+<div class="alt solution-3">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-3">&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x6c;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x6a;&#x20;&#x69;&#x6e;&#x20;&#x6c;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x69;&#x2c;&#x20;&#x6a;</div></code></pre>
+
+
+        <button id='solution-3' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q pairs</code></pre>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#guides">Guides</a></li>
+  <ul>
+    <li><a href="#iteration">Iteration</a></li>
+    <ul>
+      <li><a href="#iteration-abstraction">Iteration Abstraction</a></li>
+      <li><a href="#iterators">Iterators</a></li>
+      <li><a href="#iterables">Iterables</a></li>
+      <li><a href="#generators">Generators</a></li>
+    </ul>
+  </ul>
+  <li><a href="#practice-problems">Practice Problems</a></li>
+  <ul>
+    <li><a href="#easy">Easy</a></li>
+    <ul>
+      <li><a href="#q1">Q1: Character generator</a></li>
+    </ul>
+    <li><a href="#medium">Medium</a></li>
+    <ul>
+      <li><a href="#q2">Q2: Generators generator</a></li>
+      <li><a href="#q3">Q3: Pairs (generator)</a></li>
+    </ul>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+<script>
+  $(function() {
+    $('.toggle').css('display', 'inline-block');
+    $('.toggle').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
+
+  </body>
+</html>

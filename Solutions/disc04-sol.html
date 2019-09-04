@@ -1,0 +1,507 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}pre { word-wrap:break-word; }pre { white-space:pre-wrap; }</style><div id="google-cache-hdr"  dir=ltr><div>这是 <a href="https://cs61a.org/disc/disc04_sol.pdf" dir="ltr">https://cs61a.org/disc/disc04_sol.pdf</a> 的 HTML 档。<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> 在网路漫游时会自动将档案转换成 HTML 网页来储存。</div></div><div style="position:relative;margin:8px;">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX-1.40.18">
+<meta name="CreationDate" content="D:20171219170039Z">
+<meta name="ModDate" content="D:20171219170039Z">
+<meta name="Fullbanner" content="This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) kpathsea version 6.2.3">
+<title>CS 61A Growth and Nonlocals Fall 2017 1 Orders of Growth</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:261;left:81"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:261;left:367"><nobr>Growth and Nonlocals</nobr></div>
+<div style="position:absolute;top:298;left:81"><nobr>Fall 2017</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:306;left:358"><nobr>Discussion 4: September 27, 2017 <font color="#ff0000" style="font-size:19px">Solutions</font></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:372;left:81"><nobr>1 Orders of Growth</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:429;left:81"><nobr>When we talk about the efficiency of a function, we are often interested in</nobr></div>
+<div style="position:absolute;top:453;left:81"><nobr>the following: as the size of the input grows, how does the runtime of the</nobr></div>
+<div style="position:absolute;top:478;left:81"><nobr>function change? And what do we mean by “runtime”?</nobr></div>
+<div style="position:absolute;top:508;left:106"><nobr>• square(1) requires one primitive operation: * (multiplication). square</nobr></div>
+<div style="position:absolute;top:533;left:122"><nobr>(100) also requires one. No matter what input n we pass into square,</nobr></div>
+<div style="position:absolute;top:561;left:122"><nobr>it always takes one operation.</nobr></div>
+<div style="position:absolute;top:594;left:161"><nobr>input function call return value number of operations</nobr></div>
+<div style="position:absolute;top:619;left:176"><nobr>1</nobr></div>
+<div style="position:absolute;top:619;left:228"><nobr>square(1)</nobr></div>
+<div style="position:absolute;top:619;left:354"><nobr>1 · 1</nobr></div>
+<div style="position:absolute;top:619;left:502"><nobr>1</nobr></div>
+<div style="position:absolute;top:643;left:176"><nobr>2</nobr></div>
+<div style="position:absolute;top:643;left:228"><nobr>square(2)</nobr></div>
+<div style="position:absolute;top:643;left:354"><nobr>2 · 2</nobr></div>
+<div style="position:absolute;top:643;left:502"><nobr>1</nobr></div>
+<div style="position:absolute;top:661;left:177"><nobr>...</nobr></div>
+<div style="position:absolute;top:661;left:259"><nobr>...</nobr></div>
+<div style="position:absolute;top:661;left:366"><nobr>...</nobr></div>
+<div style="position:absolute;top:661;left:504"><nobr>...</nobr></div>
+<div style="position:absolute;top:697;left:167"><nobr>100</nobr></div>
+<div style="position:absolute;top:697;left:220"><nobr>square(100)</nobr></div>
+<div style="position:absolute;top:697;left:337"><nobr>100 · 100</nobr></div>
+<div style="position:absolute;top:697;left:502"><nobr>1</nobr></div>
+<div style="position:absolute;top:715;left:177"><nobr>...</nobr></div>
+<div style="position:absolute;top:715;left:259"><nobr>...</nobr></div>
+<div style="position:absolute;top:715;left:366"><nobr>...</nobr></div>
+<div style="position:absolute;top:715;left:504"><nobr>...</nobr></div>
+<div style="position:absolute;top:752;left:175"><nobr>n</nobr></div>
+<div style="position:absolute;top:752;left:227"><nobr>square(n)</nobr></div>
+<div style="position:absolute;top:752;left:352"><nobr>n · n</nobr></div>
+<div style="position:absolute;top:752;left:502"><nobr>1</nobr></div>
+<div style="position:absolute;top:778;left:106"><nobr>• factorial(1) requires one multiplication, but factorial(100) requires</nobr></div>
+<div style="position:absolute;top:807;left:122"><nobr>100 multiplications. As we increase the input size of n, the runtime</nobr></div>
+<div style="position:absolute;top:831;left:122"><nobr>(number of operations) increases linearly proportional to the input.</nobr></div>
+<div style="position:absolute;top:865;left:138"><nobr>input function call</nobr></div>
+<div style="position:absolute;top:865;left:328"><nobr>return value</nobr></div>
+<div style="position:absolute;top:865;left:453"><nobr>number of operations</nobr></div>
+<div style="position:absolute;top:890;left:153"><nobr>1</nobr></div>
+<div style="position:absolute;top:890;left:203"><nobr>factorial(1)</nobr></div>
+<div style="position:absolute;top:890;left:357"><nobr>1 · 1</nobr></div>
+<div style="position:absolute;top:890;left:525"><nobr>1</nobr></div>
+<div style="position:absolute;top:914;left:153"><nobr>2</nobr></div>
+<div style="position:absolute;top:914;left:203"><nobr>factorial(2)</nobr></div>
+<div style="position:absolute;top:914;left:347"><nobr>2 · 1 · 1</nobr></div>
+<div style="position:absolute;top:914;left:525"><nobr>2</nobr></div>
+<div style="position:absolute;top:932;left:155"><nobr>...</nobr></div>
+<div style="position:absolute;top:932;left:240"><nobr>...</nobr></div>
+<div style="position:absolute;top:932;left:369"><nobr>...</nobr></div>
+<div style="position:absolute;top:932;left:527"><nobr>...</nobr></div>
+<div style="position:absolute;top:969;left:145"><nobr>100</nobr></div>
+<div style="position:absolute;top:969;left:195"><nobr>factorial(100)</nobr></div>
+<div style="position:absolute;top:969;left:319"><nobr>100 · 99···1 · 1</nobr></div>
+<div style="position:absolute;top:969;left:517"><nobr>100</nobr></div>
+<div style="position:absolute;top:987;left:155"><nobr>...</nobr></div>
+<div style="position:absolute;top:987;left:240"><nobr>...</nobr></div>
+<div style="position:absolute;top:987;left:369"><nobr>...</nobr></div>
+<div style="position:absolute;top:987;left:527"><nobr>...</nobr></div>
+<div style="position:absolute;top:1023;left:152"><nobr>n</nobr></div>
+<div style="position:absolute;top:1023;left:202"><nobr>factorial(n)</nobr></div>
+<div style="position:absolute;top:1023;left:309"><nobr>n · (n − 1)···1 · 1</nobr></div>
+<div style="position:absolute;top:1023;left:524"><nobr>n</nobr></div>
+<div style="position:absolute;top:1055;left:81"><nobr>For expressing complexity, we use what is called big Θ (Theta) notation.</nobr></div>
+<div style="position:absolute;top:1079;left:81"><nobr>For example, if we say the running time of a function foo is in Θ(n<font style="font-size:9px">2</font>), we</nobr></div>
+<div style="position:absolute;top:1104;left:81"><nobr>mean that the running time of the process will grow proportionally with the</nobr></div>
+<div style="position:absolute;top:1128;left:81"><nobr>square of the size of the input as it increases to infinity.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1363;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:1398;left:81"><nobr>2 Growth and Nonlocals</nobr></div>
+<div style="position:absolute;top:1431;left:106"><nobr>• Ignore lower order terms: If a function requires n<font style="font-size:9px">3 </font>+3n<font style="font-size:9px">2 </font>+5n+ 10</nobr></div>
+<div style="position:absolute;top:1460;left:122"><nobr>operations with a given input n, then the runtime of this function is</nobr></div>
+<div style="position:absolute;top:1484;left:122"><nobr>Θ(n<font style="font-size:9px">3</font>). As n gets larger, the lower order terms (10, 5n, and 3n<font style="font-size:9px">2</font>) all</nobr></div>
+<div style="position:absolute;top:1509;left:122"><nobr>become insignificant compared to n<font style="font-size:9px">3</font>.</nobr></div>
+<div style="position:absolute;top:1539;left:106"><nobr>• Ignore constants: If a function requires 5n operations with a given</nobr></div>
+<div style="position:absolute;top:1568;left:122"><nobr>input n, then the runtime of this function is Θ(n). We are only con-</nobr></div>
+<div style="position:absolute;top:1592;left:122"><nobr>cerned with how the runtime grows asymptotically with the input, and</nobr></div>
+<div style="position:absolute;top:1617;left:122"><nobr>since 5n is still asymptotically linear; the constant factor does not make</nobr></div>
+<div style="position:absolute;top:1641;left:122"><nobr>a difference in runtime analysis.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:1682;left:81"><nobr>Kinds of Growth</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:1732;left:81"><nobr>Here are some common orders of growth, ranked from no growth to fastest</nobr></div>
+<div style="position:absolute;top:1757;left:81"><nobr>growth:</nobr></div>
+<div style="position:absolute;top:1787;left:106"><nobr>• Θ(1) — constant time takes the same amount of time regardless of</nobr></div>
+<div style="position:absolute;top:1816;left:122"><nobr>input size</nobr></div>
+<div style="position:absolute;top:1846;left:106"><nobr>• Θ(log n) — logarithmic time</nobr></div>
+<div style="position:absolute;top:1881;left:106"><nobr>• Θ(n) — linear time</nobr></div>
+<div style="position:absolute;top:1915;left:106"><nobr>• Θ(nlog n) — linearithmic time</nobr></div>
+<div style="position:absolute;top:1950;left:106"><nobr>• Θ(n<font style="font-size:9px">2</font>), Θ(n<font style="font-size:9px">3</font>), etc. — polynomial time</nobr></div>
+<div style="position:absolute;top:1984;left:106"><nobr>• Θ(2<font style="font-size:9px">n</font>), Θ(3<font style="font-size:9px">n</font>), etc. — exponential time (considered “intractable”; these</nobr></div>
+<div style="position:absolute;top:2013;left:122"><nobr>are really, really horrible)</nobr></div>
+<div style="position:absolute;top:2047;left:81"><nobr>In addition, some programs will never terminate if they get stuck in an</nobr></div>
+<div style="position:absolute;top:2072;left:81"><nobr>infinite loop.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2551;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2586;left:427"><nobr>Growth and Nonlocals</nobr></div>
+<div style="position:absolute;top:2586;left:607"><nobr>3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:2621;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2672;left:81"><nobr>What is the order of growth for the following functions?</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:2716;left:51"><nobr>1.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2713;left:81"><nobr><b>def </b>sum_of_factorial(n):</nobr></div>
+<div style="position:absolute;top:2737;left:114"><nobr><b>if </b>n == 0:</nobr></div>
+<div style="position:absolute;top:2762;left:146"><nobr><b>return </b>1</nobr></div>
+<div style="position:absolute;top:2786;left:114"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:2810;left:146"><nobr><b>return </b>factorial(n) + sum_of_factorial(n - 1)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2858;left:81"><nobr>Θ(n<font style="font-size:9px">2</font>), we will call factorial n times with arguments n, n−1,n−2, ...,0. The</nobr></div>
+<div style="position:absolute;top:2883;left:81"><nobr>sum from 0 to n is approximately n<font style="font-size:9px">2</font>.</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:2907;left:81"><nobr><a href="https://www.youtube.com/watch?v=XsdTV6cAAjY&vq=hd1080&t=25m25s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:2941;left:51"><nobr>1.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2938;left:81"><nobr><b>def </b>fib_recursive(n):</nobr></div>
+<div style="position:absolute;top:2962;left:106"><nobr><b>if </b>n == 0 <b>or </b>n == 1:</nobr></div>
+<div style="position:absolute;top:2987;left:138"><nobr><b>return </b>n</nobr></div>
+<div style="position:absolute;top:3011;left:106"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:3036;left:138"><nobr><b>return </b>fib_recursive(n - 1) + fib_recursive(n - 2)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3082;left:81"><nobr>Θ(Φ<font style="font-size:9px">n</font>), where Φ is the golden ratio. As long as you understand the runtime</nobr></div>
+<div style="position:absolute;top:3106;left:81"><nobr>is exponential in n, we would accept your answer.</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:3131;left:81"><nobr><a href="https://www.youtube.com/watch?v=XsdTV6cAAjY&vq=hd1080&t=30m10s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:3165;left:51"><nobr>1.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3162;left:81"><nobr><b>def </b>fib_iter(n):</nobr></div>
+<div style="position:absolute;top:3182;left:114"><nobr>prev, curr, i = 0, 1, 0</nobr></div>
+<div style="position:absolute;top:3211;left:114"><nobr><b>while </b>i &lt; n:</nobr></div>
+<div style="position:absolute;top:3231;left:146"><nobr>prev, curr = curr, prev + curr</nobr></div>
+<div style="position:absolute;top:3255;left:146"><nobr>i += 1</nobr></div>
+<div style="position:absolute;top:3284;left:114"><nobr><b>return </b>prev</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3330;left:81"><nobr>Θ(n), since the while loop executes n times with each iteration taking a</nobr></div>
+<div style="position:absolute;top:3355;left:81"><nobr>constant Θ(1) time.</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:3379;left:81"><nobr><a href="https://www.youtube.com/watch?v=XsdTV6cAAjY&vq=hd1080&t=32m40s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:3413;left:51"><nobr>1.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3410;left:81"><nobr><b>def </b>bonk(n):</nobr></div>
+<div style="position:absolute;top:3430;left:114"><nobr>total = 0</nobr></div>
+<div style="position:absolute;top:3459;left:114"><nobr><b>while </b>n &gt;= 2:</nobr></div>
+<div style="position:absolute;top:3479;left:146"><nobr>total += n</nobr></div>
+<div style="position:absolute;top:3503;left:146"><nobr>n = n / 2</nobr></div>
+<div style="position:absolute;top:3532;left:114"><nobr><b>return </b>total</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3579;left:81"><nobr>Θ(log(n)), because our while loop iterates at most log(n) times, due to n</nobr></div>
+<div style="position:absolute;top:3603;left:81"><nobr>being halved in every iteration.</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:3627;left:81"><nobr><a href="https://www.youtube.com/watch?v=XsdTV6cAAjY&vq=hd1080&t=33m18s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3739;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3774;left:81"><nobr>4 Growth and Nonlocals</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:3827;left:51"><nobr>1.5</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3824;left:81"><nobr><b>def </b>mod_7(n):</nobr></div>
+<div style="position:absolute;top:3849;left:114"><nobr><b>if </b>n % 7 == 0:</nobr></div>
+<div style="position:absolute;top:3873;left:146"><nobr><b>return </b>0</nobr></div>
+<div style="position:absolute;top:3898;left:114"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:3922;left:146"><nobr><b>return </b>1 + mod_7(n - 1)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3968;left:81"><nobr>Θ(1), since at worst it will require 6 recursive calls to reach the base case.</nobr></div>
+<div style="position:absolute;top:3993;left:81"><nobr>So this is Θ(6), which can be reduced to Θ(1).</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:4027;left:51"><nobr>1.6</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:4025;left:81"><nobr><b>def </b>bar(n):</nobr></div>
+<div style="position:absolute;top:4049;left:114"><nobr><b>if </b>n % 2 == 1:</nobr></div>
+<div style="position:absolute;top:4074;left:146"><nobr><b>return </b>n + 1</nobr></div>
+<div style="position:absolute;top:4098;left:114"><nobr><b>return </b>n</nobr></div>
+<div style="position:absolute;top:4147;left:81"><nobr><b>def </b>foo(n):</nobr></div>
+<div style="position:absolute;top:4171;left:114"><nobr><b>if </b>n &lt; 1:</nobr></div>
+<div style="position:absolute;top:4196;left:146"><nobr><b>return </b>2</nobr></div>
+<div style="position:absolute;top:4220;left:114"><nobr><b>if </b>n % 2 == 0:</nobr></div>
+<div style="position:absolute;top:4244;left:146"><nobr><b>return </b>foo(n - 1) + foo(n - 2)</nobr></div>
+<div style="position:absolute;top:4269;left:114"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:4293;left:146"><nobr><b>return </b>1 + foo(n - 2)</nobr></div>
+<div style="position:absolute;top:4336;left:81"><nobr>What is the order of growth of foo(bar(n))?</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4375;left:81"><nobr>Θ(n<font style="font-size:9px">2</font>)</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:4424;left:81"><nobr>2 Nonlocal</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:4481;left:81"><nobr>Until now, you’ve been able to access variables in parent frames, but you</nobr></div>
+<div style="position:absolute;top:4506;left:81"><nobr>have not been able to modify them. The nonlocal keyword can be used</nobr></div>
+<div style="position:absolute;top:4530;left:81"><nobr>to modify a variable in the parent frame outside the current frame. For</nobr></div>
+<div style="position:absolute;top:4554;left:81"><nobr>example, consider stepper, which uses nonlocal to modify num:</nobr></div>
+<div style="position:absolute;top:4588;left:81"><nobr><b>def </b>stepper(num):</nobr></div>
+<div style="position:absolute;top:4612;left:114"><nobr><b>def </b>step():</nobr></div>
+<div style="position:absolute;top:4632;left:146"><nobr>nonlocal num # declares num as a nonlocal variable</nobr></div>
+<div style="position:absolute;top:4657;left:146"><nobr>num = num + 1 # modifies num in the stepper frame</nobr></div>
+<div style="position:absolute;top:4686;left:146"><nobr><b>return </b>num</nobr></div>
+<div style="position:absolute;top:4710;left:114"><nobr><b>return </b>step</nobr></div>
+<div style="position:absolute;top:4753;left:81"><nobr>However, there are two important caveats with nonlocal variables:</nobr></div>
+<div style="position:absolute;top:4787;left:81"><nobr>• Global variables cannot be modified using the nonlocal keyword.</nobr></div>
+<div style="position:absolute;top:4821;left:81"><nobr>• Variables in the current frame cannot be overridden using the nonlocal</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:4927;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:4962;left:427"><nobr>Growth and Nonlocals</nobr></div>
+<div style="position:absolute;top:4962;left:607"><nobr>5</nobr></div>
+<div style="position:absolute;top:5002;left:122"><nobr>keyword. This means we cannot have both a local and nonlocal vari-</nobr></div>
+<div style="position:absolute;top:5027;left:122"><nobr>able with the same names in a single frame.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:6115;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=6><b>Page 6</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:6150;left:81"><nobr>6 Growth and Nonlocals</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:6185;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:6239;left:51"><nobr>2.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:6236;left:81"><nobr>Draw the environment diagram for the folowing code.</nobr></div>
+<div style="position:absolute;top:6269;left:81"><nobr><b>def </b>stepper(num):</nobr></div>
+<div style="position:absolute;top:6294;left:114"><nobr><b>def </b>step():</nobr></div>
+<div style="position:absolute;top:6314;left:146"><nobr>nonlocal num</nobr></div>
+<div style="position:absolute;top:6338;left:146"><nobr>num = num + 1</nobr></div>
+<div style="position:absolute;top:6367;left:146"><nobr><b>return </b>num</nobr></div>
+<div style="position:absolute;top:6391;left:114"><nobr><b>return </b>step</nobr></div>
+<div style="position:absolute;top:6435;left:81"><nobr>s = stepper(3)</nobr></div>
+<div style="position:absolute;top:6460;left:81"><nobr>s()</nobr></div>
+<div style="position:absolute;top:6484;left:81"><nobr>s()</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:6991;left:81"><nobr><a href="https://www.youtube.com/watch?v=XsdTV6cAAjY&vq=hd1080&t=38m38s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:7303;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=7><b>Page 7</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:7338;left:427"><nobr>Growth and Nonlocals</nobr></div>
+<div style="position:absolute;top:7338;left:607"><nobr>7</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:7382;left:51"><nobr>2.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:7378;left:81"><nobr>(Fall 2016) Draw the environment diagram for the following code.</nobr></div>
+<div style="position:absolute;top:7416;left:81"><nobr>lamb = da</nobr></div>
+<div style="position:absolute;top:7445;left:81"><nobr><b>def </b>da(da):</nobr></div>
+<div style="position:absolute;top:7469;left:114"><nobr><b>def </b>lamb(lamb):</nobr></div>
+<div style="position:absolute;top:7489;left:146"><nobr>nonlocal da</nobr></div>
+<div style="position:absolute;top:7518;left:146"><nobr><b>def </b>da(nk):</nobr></div>
+<div style="position:absolute;top:7538;left:179"><nobr>da = nk + [da]</nobr></div>
+<div style="position:absolute;top:7562;left:179"><nobr>da.append(nk[0:2])</nobr></div>
+<div style="position:absolute;top:7591;left:179"><nobr><b>return </b>nk.pop()</nobr></div>
+<div style="position:absolute;top:7611;left:114"><nobr>da(lamb)</nobr></div>
+<div style="position:absolute;top:7640;left:114"><nobr><b>return </b>da([[1], 2]) + 3</nobr></div>
+<div style="position:absolute;top:7684;left:81"><nobr>da(<b>lambda </b>da: da(lamb))</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:8491;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=8><b>Page 8</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:8526;left:81"><nobr>8 Growth and Nonlocals</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:8570;left:51"><nobr>2.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:8566;left:81"><nobr>Write a function that updates and prints a value x based on input functions.</nobr></div>
+<div style="position:absolute;top:8597;left:81"><nobr><b>def </b>memory(n):</nobr></div>
+<div style="position:absolute;top:8642;left:114"><nobr>&gt;&gt;&gt; f = memory(10)</nobr></div>
+<div style="position:absolute;top:8666;left:114"><nobr>&gt;&gt;&gt; f = f(lambda x: x * 2)</nobr></div>
+<div style="position:absolute;top:8690;left:114"><nobr>20</nobr></div>
+<div style="position:absolute;top:8715;left:114"><nobr>&gt;&gt;&gt; f = f(lambda x: x - 7)</nobr></div>
+<div style="position:absolute;top:8739;left:114"><nobr>13</nobr></div>
+<div style="position:absolute;top:8763;left:114"><nobr>&gt;&gt;&gt; f = f(lambda x: x &gt; 5)</nobr></div>
+<div style="position:absolute;top:8788;left:114"><nobr>True</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8875;left:114"><nobr><b>def </b>f(g):</nobr></div>
+<div style="position:absolute;top:8894;left:146"><nobr>nonlocal n</nobr></div>
+<div style="position:absolute;top:8919;left:146"><nobr>n = g(n)</nobr></div>
+<div style="position:absolute;top:8948;left:146"><nobr><b>print</b>(n)</nobr></div>
+<div style="position:absolute;top:8972;left:146"><nobr><b>return </b>f</nobr></div>
+<div style="position:absolute;top:8996;left:114"><nobr><b>return </b>f</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:9064;left:81"><nobr><a href="https://www.youtube.com/watch?v=XsdTV6cAAjY&vq=hd1080&t=57m50s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:9110;left:81"><nobr>3 Mutable Lists</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:9167;left:81"><nobr>Let’s imagine you order a mushroom and cheese pizza from La Val’s, and</nobr></div>
+<div style="position:absolute;top:9192;left:81"><nobr>that they represent your order as a list.</nobr></div>
+<div style="position:absolute;top:9226;left:81"><nobr>A couple minutes later, you realize that you really want onions on the pizza.</nobr></div>
+<div style="position:absolute;top:9251;left:81"><nobr>Based on what we know so far, La Val’s would have to build an entirely new</nobr></div>
+<div style="position:absolute;top:9275;left:81"><nobr>list to add onions:</nobr></div>
+<div style="position:absolute;top:9301;left:81"><nobr>&gt;&gt;&gt; pizza2 = pizza1 + [onions] # creates a new python list</nobr></div>
+<div style="position:absolute;top:9326;left:81"><nobr>&gt;&gt;&gt; pizza2</nobr></div>
+<div style="position:absolute;top:9350;left:81"><nobr>[cheese, mushrooms, onions]</nobr></div>
+<div style="position:absolute;top:9375;left:81"><nobr>&gt;&gt;&gt; pizza1 # the original list is unmodified</nobr></div>
+<div style="position:absolute;top:9399;left:81"><nobr>[cheese, mushrooms]</nobr></div>
+<div style="position:absolute;top:9444;left:81"><nobr>But this is silly, considering that all La Val’s had to do was add onions on</nobr></div>
+<div style="position:absolute;top:9468;left:81"><nobr>top of pizza1 instead of making an entirely new pizza2.</nobr></div>
+<div style="position:absolute;top:9503;left:81"><nobr>Python actually allows you to mutate some objects, includings lists and</nobr></div>
+<div style="position:absolute;top:9527;left:81"><nobr>dictionaries. Mutability means that the object’s contents can be changed.</nobr></div>
+<div style="position:absolute;top:9552;left:81"><nobr>So instead of building a new pizza2, we can use pizza1.append(’onions’)</nobr></div>
+<div style="position:absolute;top:9576;left:81"><nobr>to mutate pizza1.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:9679;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=9><b>Page 9</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:9714;left:427"><nobr>Growth and Nonlocals</nobr></div>
+<div style="position:absolute;top:9714;left:607"><nobr>9</nobr></div>
+<div style="position:absolute;top:9751;left:81"><nobr>&gt;&gt;&gt; pizza1.append(onions)</nobr></div>
+<div style="position:absolute;top:9775;left:81"><nobr>&gt;&gt;&gt; pizza1</nobr></div>
+<div style="position:absolute;top:9800;left:81"><nobr>[cheese, mushrooms, onions]</nobr></div>
+<div style="position:absolute;top:9847;left:81"><nobr>Although lists and dictionaries are mutable, many other objects, such as</nobr></div>
+<div style="position:absolute;top:9872;left:81"><nobr>numeric types, tuples, and strings, are immutable, meaning they cannot be</nobr></div>
+<div style="position:absolute;top:9896;left:81"><nobr>changed once they are created. We can use the familiar indexing operator</nobr></div>
+<div style="position:absolute;top:9921;left:81"><nobr>to mutate a single element in a list. For instance lst[4]=’hello’ would</nobr></div>
+<div style="position:absolute;top:9945;left:81"><nobr>change the fifth element in lst to be the string ’hello’. In addition to</nobr></div>
+<div style="position:absolute;top:9969;left:81"><nobr>the indexing operator, lists have many mutating methods. List methods are</nobr></div>
+<div style="position:absolute;top:9994;left:81"><nobr>functions that are bound to a specific list. Some useful list methods are</nobr></div>
+<div style="position:absolute;top:10018;left:81"><nobr>listed here:</nobr></div>
+<div style="position:absolute;top:10053;left:101"><nobr>1. append(el) adds el to the end of the list</nobr></div>
+<div style="position:absolute;top:10087;left:101"><nobr>2. insert(i, el) insert el at index i (does not replace element but adds</nobr></div>
+<div style="position:absolute;top:10112;left:122"><nobr>a new one)</nobr></div>
+<div style="position:absolute;top:10146;left:101"><nobr>3. remove(el) removes the first occurrence of el in list, otherwise errors</nobr></div>
+<div style="position:absolute;top:10181;left:101"><nobr>4. pop(i) removes and returns the element at index i</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:10867;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=10><b>Page 10</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:10902;left:81"><nobr>10 Growth and Nonlocals</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:10937;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:10993;left:51"><nobr>3.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:10990;left:81"><nobr>Consider the following definitions and assignments and determine what</nobr></div>
+<div style="position:absolute;top:11015;left:81"><nobr>Python would output for each of the calls below if they were evaluated in</nobr></div>
+<div style="position:absolute;top:11039;left:81"><nobr>order. It may be helpful to draw the box and pointers diagrams to the right</nobr></div>
+<div style="position:absolute;top:11064;left:81"><nobr>in order to keep track of the state.</nobr></div>
+<div style="position:absolute;top:11097;left:86"><nobr>(a) &gt;&gt;&gt; lst1 = [1, 2, 3]</nobr></div>
+<div style="position:absolute;top:11117;left:116"><nobr>&gt;&gt;&gt; lst2 = [1, 2, 3]</nobr></div>
+<div style="position:absolute;top:11142;left:116"><nobr>&gt;&gt;&gt; lst1 == lst2</nobr></div>
+<div style="position:absolute;top:11142;left:296"><nobr># compares each value</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11186;left:116"><nobr>True</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:11225;left:86"><nobr>(b) &gt;&gt;&gt; lst1 <b>is </b>lst2</nobr></div>
+<div style="position:absolute;top:11221;left:296"><nobr># compares references</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11257;left:116"><nobr>False</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:11295;left:87"><nobr>(c) &gt;&gt;&gt; lst2 = lst1</nobr></div>
+<div style="position:absolute;top:11315;left:116"><nobr>&gt;&gt;&gt; lst1.append(4)</nobr></div>
+<div style="position:absolute;top:11340;left:116"><nobr>&gt;&gt;&gt; lst1</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11385;left:116"><nobr>[1, 2, 3, 4]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:11427;left:86"><nobr>(d) &gt;&gt;&gt; lst2</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11459;left:116"><nobr>[1, 2, 3, 4]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:11499;left:87"><nobr>(e) &gt;&gt;&gt; lst1 = lst1 + [5]</nobr></div>
+<div style="position:absolute;top:11520;left:116"><nobr>&gt;&gt;&gt; lst1 == lst2</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11565;left:116"><nobr>False</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:11603;left:88"><nobr>(f) &gt;&gt;&gt; lst1</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11644;left:116"><nobr>[1, 2, 3, 4, 5]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:11686;left:86"><nobr>(g) &gt;&gt;&gt; lst2</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11718;left:116"><nobr>[1, 2, 3, 4]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:11759;left:86"><nobr>(h) &gt;&gt;&gt; lst2 <b>is </b>lst1</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11792;left:116"><nobr>False</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:11833;left:81"><nobr><a href="https://www.youtube.com/watch?v=XsdTV6cAAjY&vq=hd1080&t=52m40s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:12055;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=11><b>Page 11</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:12090;left:419"><nobr>Growth and Nonlocals</nobr></div>
+<div style="position:absolute;top:12090;left:599"><nobr>11</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:12134;left:51"><nobr>3.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:12130;left:81"><nobr>Write a function that takes in two values x and el, and a list, and adds as</nobr></div>
+<div style="position:absolute;top:12155;left:81"><nobr>many el’s to the end of the list as there are x’s.</nobr></div>
+<div style="position:absolute;top:12189;left:81"><nobr><b>def </b>add_this_many(x, el, lst):</nobr></div>
+<div style="position:absolute;top:12208;left:146"><nobr>Adds el to the end of lst the number of times x occurs</nobr></div>
+<div style="position:absolute;top:12233;left:114"><nobr>in lst.</nobr></div>
+<div style="position:absolute;top:12257;left:114"><nobr>&gt;&gt;&gt; lst = [1, 2, 4, 2, 1]</nobr></div>
+<div style="position:absolute;top:12282;left:114"><nobr>&gt;&gt;&gt; add_this_many(1, 5, lst)</nobr></div>
+<div style="position:absolute;top:12306;left:114"><nobr>&gt;&gt;&gt; lst</nobr></div>
+<div style="position:absolute;top:12330;left:114"><nobr>[1, 2, 4, 2, 1, 5, 5]</nobr></div>
+<div style="position:absolute;top:12355;left:114"><nobr>&gt;&gt;&gt; add_this_many(2, 2, lst)</nobr></div>
+<div style="position:absolute;top:12379;left:114"><nobr>&gt;&gt;&gt; lst</nobr></div>
+<div style="position:absolute;top:12403;left:114"><nobr>[1, 2, 4, 2, 1, 5, 5, 2, 2]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:12488;left:114"><nobr>count = 0</nobr></div>
+<div style="position:absolute;top:12517;left:114"><nobr><b>for </b>element <b>in </b>lst:</nobr></div>
+<div style="position:absolute;top:12542;left:146"><nobr><b>if </b>element == x:</nobr></div>
+<div style="position:absolute;top:12562;left:179"><nobr>count += 1</nobr></div>
+<div style="position:absolute;top:12591;left:114"><nobr><b>while </b>count &gt; 0:</nobr></div>
+<div style="position:absolute;top:12610;left:146"><nobr>lst.append(el)</nobr></div>
+<div style="position:absolute;top:12635;left:146"><nobr>count -= 1</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:12693;left:51"><nobr>3.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:12690;left:81"><nobr>Reverse a list in place, i.e. mutate the given list itself, instead of returning</nobr></div>
+<div style="position:absolute;top:12714;left:81"><nobr>a new list.</nobr></div>
+<div style="position:absolute;top:12748;left:81"><nobr><b>def </b>reverse(lst):</nobr></div>
+<div style="position:absolute;top:12768;left:146"><nobr>Reverses lst in place.</nobr></div>
+<div style="position:absolute;top:12792;left:114"><nobr>&gt;&gt;&gt; x = [3, 2, 4, 5, 1]</nobr></div>
+<div style="position:absolute;top:12817;left:114"><nobr>&gt;&gt;&gt; reverse(x)</nobr></div>
+<div style="position:absolute;top:12841;left:114"><nobr>&gt;&gt;&gt; x</nobr></div>
+<div style="position:absolute;top:12865;left:114"><nobr>[1, 5, 4, 2, 3]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:12955;left:114"><nobr><b>for </b>i <b>in range</b>(<b>len</b>(lst) // 2):</nobr></div>
+<div style="position:absolute;top:12975;left:146"><nobr>lst[i], lst[-i - 1] = lst[-i - 1], lst[i]</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:13022;left:81"><nobr><a href="https://www.youtube.com/watch?v=XsdTV6cAAjY&vq=hd1080&t=66m50s">Video walkthrough</a></nobr></div>
+</span></font>
+</body>
+</html>

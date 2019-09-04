@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+    <title>
+Study Guide: Mutable Trees | CS 61A Spring 2018
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Study Guide: Mutable Trees
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="/quiz/quiz07.pdf" class="label label-outline">Quiz</a></li>
+          
+          <li><a href="/quiz/quiz07_sol.pdf" class="label label-outline">Solution</a></li>
+          
+        </ul>
+        
+      </h1>
+    </header>
+    
+
+<h2>Instructions</h2>
+
+<p>This is the companion guide to <a href="/quiz/quiz07.pdf">Quiz 7</a> with links to past
+lectures, assignments, and handouts, as well as isomorphic quiz problems and
+additional practice problems to assist you in learning the concepts.</p>
+
+
+  <p><strong>Assignments</strong></p>
+  <ul>
+  <li><a href="/lab/lab07">Lab 7</a></li>
+  <li><a href="/lab/lab08">Lab 8</a></li>
+</ul>
+
+
+
+  <p><strong>Handouts</strong></p>
+  <ul>
+  <li><a href="/disc/disc06.pdf">Discussion 6</a> (<a href="/disc/disc06_sol.pdf">Solutions</a>)</li>
+</ul>
+
+
+
+  <p><strong>Lectures</strong></p>
+  <ul>
+  <li><a href="/assets/slides/19-Hierarchy_full.pdf">Hierarchy</a></li>
+</ul>
+
+
+
+  <p><strong>Readings</strong></p>
+  <ul>
+  <li><a href="http://composingprograms.com/pages/29-recursive-objects.html">Section 2.9</a></li>
+</ul>
+
+
+
+    
+<h1 id="guides">Guides</h1>
+
+
+
+<h2 id="mutable-trees">Mutable Trees</h2>
+
+
+<p>Trees are a hierarchical data structure. Previously in this class, we
+represented tree-like structures using functional abstraction with the <code>tree</code>
+constructor and <code>label</code> and <code>branches</code> selectors.  If we wanted to 'change' the
+values in the <code>tree</code> abstraction, we would need to create an entirely new tree
+with the desired values.</p>
+
+<p>But classes allow us to modify the values in a tree in-place using mutation,
+without needing to create new objects. We can reassign to <code>t.label</code> or
+<code>t.branches</code>, things that we couldn't do previously with the <code>tree</code> functional
+abstraction.</p>
+
+<pre><code>&gt;&gt;&gt; t = Tree(1)
+&gt;&gt;&gt; t.label
+1
+&gt;&gt;&gt; t.label = 2
+&gt;&gt;&gt; t.label
+2</code></pre>
+
+<p>The best way to model trees is by drawing tree diagrams like we saw in lecture.
+Each node in a tree is represented with a circle and contains its label value
+and a list of branches.</p>
+
+<p>All of our previous knowledge of trees still applies. The tree problems that we
+usually try to solve still involve tree traversal where we visit each node in
+the tree and perform some computations as we visit. For example, we can define
+a function <code>square_tree</code> which takes in a mutable <code>Tree</code> and squares each value
+in the tree.</p>
+
+<pre><code>def square_tree(t):
+    t.label = t.label ** 2
+    for b in t.branches:
+        square_tree(b)</code></pre>
+
+<p>But tree mutation problems can come in many different shapes and forms and
+require us to pay special attention to fundamentals like domain and range.</p>
+
+<p>For example, here are two ways of defining a function, <code>prune_2</code>, which removes
+the last two branches of each node in the tree. The general strategy is to
+replace each node's branches with a new list of branches containing only the
+desired branches. One way to do this would be to call <code>prune_2</code> on each branch
+we'd like to keep.</p>
+
+<pre><code>def prune_2(t):
+    t.branches = [prune_2(b) for b in t.branches[:2]]
+    return t</code></pre>
+
+<p>Notice that we had to return the input tree, <code>t</code>. Why is this necessary?</p>
+
+<p>Another way would be to first prune the branches, and then loop over the
+remaining branches. This has the advantage that it makes it clear to the person
+using this program that a new tree is not created.</p>
+
+<pre><code>def prune_2(t):
+    t.branches = t.branches[:2]
+    for b in t.branches:
+        prune_2(b)</code></pre>
+
+
+<h1 id="practice-problems">Practice Problems</h1>
+
+
+
+<h2 id="easy">Easy</h2>
+
+
+<h3 class="question" id="q1">Q1: Leaves</h3>
+
+<p>Write a function <code>leaves</code> that returns a list of all the label values of the
+leaf nodes of a <code>Tree</code>.</p>
+
+
+
+<pre><code>def leaves(t):
+    &quot;&quot;&quot;Returns a list of all the entries of the leaf nodes of the Tree t.
+
+    &gt;&gt;&gt; leaves(Tree(1))
+    [1]
+    &gt;&gt;&gt; leaves(Tree(1, [Tree(2, [Tree(3)]), Tree(4)]))
+    [3, 4]
+    &quot;&quot;&quot;
+<div class="alt solution-1">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-1">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x74;&#x2e;&#x69;&#x73;&#x5f;&#x6c;&#x65;&#x61;&#x66;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x74;&#x2e;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x61;&#x6c;&#x6c;&#x5f;&#x6c;&#x65;&#x61;&#x76;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x62;&#x20;&#x69;&#x6e;&#x20;&#x74;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x61;&#x6c;&#x6c;&#x5f;&#x6c;&#x65;&#x61;&#x76;&#x65;&#x73;&#x20;&#x2b;&#x3d;&#x20;&#x6c;&#x65;&#x61;&#x76;&#x65;&#x73;&#x28;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x6c;&#x6c;&#x5f;&#x6c;&#x65;&#x61;&#x76;&#x65;&#x73;</div></code></pre>
+
+
+        <button id='solution-1' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<h3 class="question" id="q2">Q2: Same Shape</h3>
+
+<p>Write a function <code>same_shape</code> that returns <code>True</code> if two <code>Tree</code>s have the same
+shape. Two trees have the same shape if and only if they have the same number
+of branches and each pair of corresponding children have the same shape.</p>
+
+
+
+<pre><code>def same_shape(t1, t2):
+    &quot;&quot;&quot;Returns whether two Trees t1, t2 have the same shape. Two trees have the
+    same shape iff they have the same number of branches and each pair
+    of corresponding branches have the same shape.
+
+    &gt;&gt;&gt; t, s = Tree(1), Tree(3)
+    &gt;&gt;&gt; same_shape(t, t)
+    True
+    &gt;&gt;&gt; same_shape(t, s)
+    True
+    &gt;&gt;&gt; t = Tree(1, [Tree(2), Tree(3)])
+    &gt;&gt;&gt; same_shape(t, s)
+    False
+    &gt;&gt;&gt; s = Tree(4, [Tree(3, [Tree(2, [Tree(1)])])])
+    &gt;&gt;&gt; same_shape(t, s)
+    False
+    &quot;&quot;&quot;
+<div class="alt solution-2">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-2">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x6c;&#x65;&#x6e;&#x28;&#x74;&#x31;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x74;&#x32;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x61;&#x6c;&#x6c;&#x28;&#x73;&#x61;&#x6d;&#x65;&#x5f;&#x73;&#x68;&#x61;&#x70;&#x65;&#x28;&#x73;&#x74;&#x31;&#x2c;&#x20;&#x73;&#x74;&#x32;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x73;&#x74;&#x31;&#x2c;&#x20;&#x73;&#x74;&#x32;&#x20;&#x69;&#x6e;&#x20;&#x7a;&#x69;&#x70;&#x28;&#x74;&#x31;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x2c;&#x20;&#x74;&#x32;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x29;&#x29;&#x29;</div></code></pre>
+
+
+        <button id='solution-2' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+
+<h2 id="medium">Medium</h2>
+
+
+<h3 class="question" id="q3">Q3: Prune Min</h3>
+
+<p>Write a function that prunes a <code>Tree</code> <code>t</code> mutatively. <code>t</code> and its branches
+always have zero or two branches. For the trees with two branches, reduce the
+number of branches from two to one by keeping the branch that has the smaller
+label value. Do nothing with trees with zero branches.</p>
+
+<p>Prune the tree from the bottom up. The result should be a linear tree.</p>
+
+
+
+<pre><code>def prune_min(t):
+    &quot;&quot;&quot;Prune the tree mutatively from the bottom up.
+
+    &gt;&gt;&gt; t1 = Tree(6)
+    &gt;&gt;&gt; prune_min(t1)
+    &gt;&gt;&gt; t1
+    Tree(6)
+    &gt;&gt;&gt; t2 = Tree(6, [Tree(3), Tree(4)])
+    &gt;&gt;&gt; prune_min(t2)
+    &gt;&gt;&gt; t2
+    Tree(6, [Tree(3)])
+    &gt;&gt;&gt; t3 = Tree(6, [Tree(3, [Tree(1), Tree(2)]), Tree(5, [Tree(3), Tree(4)])])
+    &gt;&gt;&gt; prune_min(t3)
+    &gt;&gt;&gt; t3
+    Tree(6, [Tree(3, [Tree(1)])])
+    &quot;&quot;&quot;
+<div class="alt solution-3">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-3">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x74;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x20;&#x3d;&#x3d;&#x20;&#x5b;&#x5d;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x75;&#x6e;&#x65;&#x5f;&#x6d;&#x69;&#x6e;&#x28;&#x74;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x5b;&#x30;&#x5d;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x75;&#x6e;&#x65;&#x5f;&#x6d;&#x69;&#x6e;&#x28;&#x74;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x5b;&#x31;&#x5d;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x28;&#x74;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x5b;&#x30;&#x5d;&#x2e;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x20;&#x3e;&#x20;&#x74;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x5b;&#x31;&#x5d;&#x2e;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x2e;&#x70;&#x6f;&#x70;&#x28;&#x30;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x2e;&#x70;&#x6f;&#x70;&#x28;&#x31;&#x29;</div></code></pre>
+
+
+        <button id='solution-3' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#guides">Guides</a></li>
+  <ul>
+    <li><a href="#mutable-trees">Mutable Trees</a></li>
+  </ul>
+  <li><a href="#practice-problems">Practice Problems</a></li>
+  <ul>
+    <li><a href="#easy">Easy</a></li>
+    <ul>
+      <li><a href="#q1">Q1: Leaves</a></li>
+      <li><a href="#q2">Q2: Same Shape</a></li>
+    </ul>
+    <li><a href="#medium">Medium</a></li>
+    <ul>
+      <li><a href="#q3">Q3: Prune Min</a></li>
+    </ul>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+<script>
+  $(function() {
+    $('.toggle').css('display', 'inline-block');
+    $('.toggle').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
+
+  </body>
+</html>

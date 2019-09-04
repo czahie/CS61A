@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+    <title>
+Study Guide: Environments and HOF | CS 61A Spring 2018
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Study Guide: Environments and HOF
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="/quiz/quiz02.pdf" class="label label-outline">Quiz</a></li>
+          
+          <li><a href="/quiz/quiz02_sol.pdf" class="label label-outline">Solution</a></li>
+          
+        </ul>
+        
+      </h1>
+    </header>
+    
+
+<h2>Instructions</h2>
+
+<p>This is the companion guide to <a href="/quiz/quiz02.pdf">Quiz 2</a> with links to past
+lectures, assignments, and handouts, as well as isomorphic quiz problems and
+additional practice problems to assist you in learning the concepts.</p>
+
+<p>In Summer 2017, the instructors made a <a href="https://www.youtube.com/watch?v=bGD728MVwcc">video walkthrough</a>
+for a similar quiz question.</p>
+
+<p>Draw environment diagrams automatically with <a href="http://tutor.cs61a.org">Python Tutor</a>.</p>
+
+
+  <p><strong>Assignments</strong></p>
+  <ul>
+  <li><a href="/hw/hw02">HW 2</a> (<a href="/hw/sol-hw02">Solutions</a>)</li>
+  <li><a href="/lab/lab02">Lab 2</a></li>
+</ul>
+
+
+
+  <p><strong>Handouts</strong></p>
+  <ul>
+  <li><a href="/disc/disc01.pdf">Discussion 1</a> (<a href="/disc/disc01_sol.pdf">Solutions</a>)</li>
+</ul>
+
+
+
+  <p><strong>Lectures</strong></p>
+  <ul>
+  <li><a href="/assets/slides/03-Control_full.pdf">Control</a></li>
+  <li><a href="/assets/slides/04-Higher-Order_Functions_full.pdf">Higher-Order Functions</a></li>
+  <li><a href="/assets/slides/05-Environments_full.pdf">Environments</a></li>
+</ul>
+
+
+
+  <p><strong>Readings</strong></p>
+  <ul>
+  <li><a href="http://composingprograms.com/pages/15-control.html">Section 1.5</a></li>
+  <li><a href="http://composingprograms.com/pages/16-higher-order-functions.html">Section 1.6</a></li>
+</ul>
+
+
+
+    
+<h1 id="guides">Guides</h1>
+
+
+
+<h2 id="quiz-rubric">Quiz Rubric</h2>
+
+
+<blockquote><p>View your work on <a href="https://gradescope.com">Gradescope</a>.</p></blockquote>
+
+<p>We identified common misconceptions and categorized student solutions for each
+frame of the environment diagram.</p>
+
+<p>Here's an overview of the order of evaluation rules for the call expression,
+<code>yes(yes)(no)(&#x27;ok&#x27;)</code>.</p>
+
+<ul>
+  <li>We're normally accustomed to calling functions of the form, <code>print(&#x27;ok&#x27;)</code>.
+  What's in the operator <code>print</code>? It's a primitive expression because it is a
+  name that evaluates to the built-in function that knows how to print values to
+  the display.</li>
+  <li>The difference with this problem is that the operator is a lot more complex.
+  Instead of just being a primitive expression, the name which evaluates to the
+  function that knows how to print, the operator is <em>itself a call expression</em>.
+  We need to evaluate <code>yes(yes)(no)</code> first to identify the function value.</li>
+</ul>
+
+<p>It may help to review the lecture on Higher-Order Functions again.</p>
+
+
+<h3 id="common-misconceptions">Common Misconceptions</h3>
+
+
+<ul>
+  <li>Remember that we cannot leave the value of a binding as <code>yes(yes)(no)</code>, or
+  other unevaluated code like <code>&#x27;ok&#x27; + &#x27;ok&#x27;</code>.</li>
+  <li>Remember that adding two strings together results in a concatenation:
+  <code>&#x27;ok&#x27; + &#x27;ok&#x27;</code> results in the single string value,<code>&#x27;okok&#x27;</code>, <em>not</em> <code>&#x27;ok&#x27; &#x27;ok&#x27;</code>.</li>
+  <li>Remember that <strong>names</strong> like <code>no</code> evaluate to values, like function values. A
+  binding cannot be left as a name like <code>no</code>. In Python, names are bound to
+  <em>values</em> like functions, numbers, booleans, strings, or <code>None</code>, to name a few.
+  Only these values can be written as values for names.</li>
+  <li>Remember that expressions enclosed in quotes evaluate to <strong>string values</strong>,
+  or sequences of characters. These quoted expressions are primitive expressions
+  that evaluate directly to string values, compared to names which require us to
+  follow a lookup procedure to evaluate the value of the name.</li>
+  <li>Remember to include quotes around string values.</li>
+  <li>Remember that function values are <em>referenced</em> in a diagram with a pointer.</li>
+  <li>Remember to include name-value bindings for all the parameters of a function
+  when opening a new frame before evaluating the body of that function.</li>
+  <li>Remember that assignment occurs in the current frame: each frame keeps track
+  of its own value for the name <code>no</code>, for instance.</li>
+</ul>
+
+
+<h3 id="global"><code>Global</code></h3>
+
+
+<ul>
+  <li><strong>(-)</strong> The final value of the name <code>no</code> is bound to the string <code>&#x27;no&#x27;</code>.
+  Remember that the rule for evaluating <code>def</code> statements require us to bind the
+  name of the function, <code>no</code>, to its value, the function object, <code>func no(no)</code>.</li>
+  <li><strong>(-)</strong> The name <code>yes</code> is not bound to the result of the call expression.
+  Here's a bookkeeping trick to help keep track of our place in the diagram.
+  Whenever user-defined function is applied and a new frame will need to be
+  opened, mark down Python's current position in the code with a label for the
+  frame number to remember to return to that position after completely evaluating
+  the call.</li>
+  <li><strong>(-)</strong> The string value <code>&#x27;no&#x27;</code> or <code>&#x27;nook&#x27;</code> is assigned to both names. This
+  is likely due to a mistake from another frame. From frame f4, the return value
+  should be <code>&#x27;ok&#x27;</code> rather than <code>&#x27;no&#x27;</code>. In frame f3, return value should be the
+  result of evaluating <code>&#x27;ok&#x27; + &#x27;ok&#x27;</code>, <code>&#x27;okok&#x27;</code>. See the frames f3 and f4 for more
+  detail.</li>
+</ul>
+
+
+<h3 id="f1"><code>f1</code></h3>
+
+
+<ul>
+  <li><strong>(-)</strong> The name of the function value is written, rather than <em>referenced</em>.
+  The value of a name is often ambiguous so we use arrows to represent references
+  to function values.</li>
+  <li><strong>(-)</strong> Missing name-value bindings for the parameter, <code>no</code>. Remember that
+  opening a new frame requires us to also bind the arguments to each of the
+  formal parameters.</li>
+  <li><strong>(-)</strong> The assignment statement <code>no = &#x27;no&#x27;</code> in the global frame is executed
+  in this local frame. Remember that Python evaluates only the body of the
+  function, or the lines that are indented by a consistent amount.</li>
+  <li><strong>(-)</strong> The value <code>&#x27;okok&#x27;</code> propagated up from other local frames. Remember
+  that the return value, <code>&#x27;okok&#x27;</code>, which occurs in later frames doesn't change
+  the return value of this local frame because this frame already returned a
+  function value!</li>
+</ul>
+
+
+<h3 id="f2"><code>f2</code></h3>
+
+
+<ul>
+  <li><strong>(-)</strong> A frame for the function <code>no</code> is opened instead of <code>yes</code>. Remember
+  that the <code>return no</code> from the first frame evaluates to <code>func yes(no)</code>.
+  Proceeding down this train of thought would cause an error when attempting to
+  add two function values.</li>
+  <li><strong>(-)</strong> Parent frame is marked as <code>f1</code> instead of global. Remember that, when
+  we open a new frame, we copy down the parent directly from the function value.
+  The parent of the frame is <strong>the frame in which it is defined, not where it is
+  called</strong>.</li>
+</ul>
+
+
+<h3 id="f3"><code>f3</code></h3>
+
+
+<ul>
+  <li><strong>(-)</strong> Unevaluated expressions like <code>&#x27;ok&#x27; + yes(no)</code> or <code>&#x27;ok&#x27; + &#x27;ok&#x27;</code> were
+  left in the diagram. Remember that name-value bindings contain two parts: the
+  name of the binding, like <code>no</code>, and the value, like <code>&#x27;ok&#x27;</code>, which must be a
+  Python <strong>value</strong>!</li>
+  <li><strong>(-)</strong> A new binding was created for the return value of <code>yes(no)</code>. Remember
+  that a new name-value binding is created only through assignment or <code>def</code>
+  statements. The environment diagram should only contain your final solution.</li>
+</ul>
+
+
+<h3 id="f4"><code>f4</code></h3>
+
+
+<ul>
+  <li><strong>(-)</strong> Frames listed out of order. Remember that frame 1 can open before
+  another frame 2, but then close after frame 2. See the order of evaluation
+  procedure for <code>yes(yes)(no)(&#x27;ok&#x27;)</code> above.</li>
+</ul>
+
+
+<h2 id="environment-diagrams">Environment Diagrams</h2>
+
+
+<blockquote><p><a href="http://albertwu.org/cs61a/notes/environments">Albert Wu's Environment Diagrams Guide</a>
+provides an alternative view of the rules and additional practice.</p></blockquote>
+
+<p>Environment diagrams help us visualize Python's process. For each line of code
+we should first identify what kind of statement or expression it is and then
+execute the line according to the rules.</p>
+
+<p>A couple tips:</p>
+
+<ul>
+  <li>You can only bind names to values. No expressions (like <code>3 + 4</code>) allowed on
+  environment diagrams!</li>
+  <li>Frames and functions both have parents.</li>
+  <li>Primitive values which include booleans (<code>True</code>, <code>False</code>), numbers (<code>42</code>),
+  and strings (<code>&#x27;cs 61a&#x27;</code>) go directly in the box for the value of a binding.</li>
+  <li>Composite values and function values are drawn off to the side and require a
+  pointer from the value box to the object.</li>
+</ul>
+
+
+<h3 id="expressions">Expressions</h3>
+
+
+
+<h4 id="primitive-expressions">Primitive Expressions</h4>
+
+
+<ol>
+  <li>In the current environment return the value of the primitive expression. If
+  the expression is just a number or a string, it evaluates to the Python
+  representation of that number or string. If the expression is a name, look
+  for the name in the current environment by following the lookup procedure by
+  starting in the current frame and looking up each parent frame until the
+  global frame.</li>
+</ol>
+
+
+<h4 id="call-expressions">Call Expressions</h4>
+
+
+<ol>
+  <li>Evaluate the operator, which could itself be another call expression.</li>
+  <li>Evaluate the operands from left to right, each of which could be call
+  expressions.</li>
+  <li>Apply the operator (evaluated as a <em>function</em>) to the operands (evaluated as
+  <em>arguments</em>). If this is a built-in function, we skip directly to the final
+  result because we don't know how built-in functions are implemented. But if
+  the function is user-defined, create a new frame in the environment diagram.</li>
+  <li>Bind the formal parameters to the argument values (the evaluated operands).</li>
+  <li>Evaluate the body of the function in the new frame.</li>
+  <li>After evaluating the body of the function, return to the frame that called
+  the function.</li>
+</ol>
+
+
+<h3 id="statements">Statements</h3>
+
+
+
+<h4 id="assignment-statements">Assignment Statements</h4>
+
+
+<blockquote><p>Note that assignment rules become more complicated with <code>nonlocal</code>.</p></blockquote>
+
+<ol>
+  <li>Evaluate the expression to the right of the assignment operator <code>=</code>.</li>
+  <li>Bind the variable name to the value of the expression in the current frame.
+  Be sure you override the variable name if it had a previous binding.</li>
+</ol>
+
+
+<h4 id="def-statements"><code>def</code> Statements</h4>
+
+
+<ol>
+  <li>Draw the <code>func name(arg1, arg2, ...)</code>.</li>
+  <li>The parent of the function is wherever the function was defined (the frame
+  we're currently in, since we're creating the function).</li>
+  <li>Bind the name of the function to the function value in the current frame.</li>
+</ol>
+
+
+<h4 id="return-statements"><code>return</code> Statements</h4>
+
+
+<ol>
+  <li>Evaluate the expression to the right of <code>return</code>.</li>
+  <li>In the current frame, create a space for the return value which contains the
+  value of the <code>return</code> expression.</li>
+</ol>
+
+
+<h1 id="practice-problems">Practice Problems</h1>
+
+
+
+<h2 id="easy">Easy</h2>
+
+
+<h3 class="question" id="q1">Q1: Make Adder</h3>
+
+<p>Draw the environment diagram for the following code.</p>
+
+<pre><code>&gt;&gt;&gt; def adder_maker(x):
+...     def adder(y):
+...         return x + y
+...     return adder
+&gt;&gt;&gt; add3 = adder_maker(3)
+&gt;&gt;&gt; add3(4)
+<div class="alt prompt-1">______</div><div class="solution prompt-1">&#x37;</div>
+&gt;&gt;&gt; sub5 = adder_maker(&#x2d;5)
+&gt;&gt;&gt; sub5(6)
+<div class="alt prompt-1">______</div><div class="solution prompt-1">&#x31;</div>
+&gt;&gt;&gt; sub5(10) == add3(2)
+<div class="alt prompt-1">______</div><div class="solution prompt-1">&#x54;&#x72;&#x75;&#x65;</div></code></pre>
+        <button id='prompt-1' class='btn btn-outline btn-lg toggle prompt'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+<h3 class="question" id="q2">Q2: Alpaca Zebra</h3>
+
+<p>Draw the environment diagram for the following code.</p>
+
+<pre><code>def yak(zebra):
+    return 20 // zebra
+
+def llama(alpaca):
+    zebra = 0
+    def yak(zebra):
+        return alpaca(zebra)
+    return yak
+
+llama(yak)(4)</code></pre>
+
+<p>Verify your solution with <a href="http://tutor.cs61a.org">Python Tutor</a>.
+<h3 class="question" id="q3">Q3: Multiplication</h3></p>
+
+<p>Using a <code>lambda</code> expression, complete the <code>mul_by_num</code> function. This function
+should take an argument and return a one argument function that multiplies any
+value passed to it by the original number.</p>
+
+
+
+<pre><code>def mul_by_num(num):
+    &quot;&quot;&quot;
+    Returns a function that takes one argument and returns num
+    times that argument.
+    &gt;&gt;&gt; x = mul_by_num(5)
+    &gt;&gt;&gt; y = mul_by_num(2)
+    &gt;&gt;&gt; x(3)
+    15
+    &gt;&gt;&gt; y(&#x2d;4)
+    &#x2d;8
+    &quot;&quot;&quot;
+<div class="alt solution-1">    "*** YOUR CODE HERE ***"
+    return ______
+</div><div class="solution solution-1">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x6e;&#x75;&#x6d;&#x32;&#x3a;&#x20;&#x6e;&#x75;&#x6d;&#x20;&#x2a;&#x20;&#x6e;&#x75;&#x6d;&#x32;</div></code></pre>
+
+
+        <button id='solution-1' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+
+<h2 id="medium">Medium</h2>
+
+
+<h3 class="question" id="q4">Q4: Community</h3>
+
+<pre><code>&gt;&gt;&gt; def troy():
+...     abed = 0
+...     while abed &lt; 3:
+...         britta = lambda: abed
+...         print(abed)
+...         abed += 2
+...     annie = abed
+...     annie += 1
+...     abed = 6 # seasons and a movie
+...     return britta
+&gt;&gt;&gt; jeff = troy()
+<div class="alt prompt-2">______</div><div class="solution prompt-2">&#x30;&#xa;&#x32;</div>
+&gt;&gt;&gt; shirley = lambda: jeff
+&gt;&gt;&gt; pierce = shirley()
+&gt;&gt;&gt; pierce()
+<div class="alt prompt-2">______</div><div class="solution prompt-2">&#x36;</div></code></pre>
+        <button id='prompt-2' class='btn btn-outline btn-lg toggle prompt'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+<h3 class="question" id="q5">Q5: Doge</h3>
+
+<p>Draw the environment diagram for the following code.</p>
+
+<pre><code>wow = 6
+
+def much(wow):
+    if much == wow:
+        such = lambda wow: 5
+        def wow():
+            return such
+        return wow
+    such = lambda wow: 4
+    return wow()
+
+wow = much(much(much))(wow)</code></pre>
+
+<p>Verify your solution with <a href="https://goo.gl/rLDpDe">Python Tutor</a>.
+<h3 class="question" id="q6">Q6: Two Kinds of People</h3></p>
+
+<p>Draw the environment diagram for the following code.</p>
+
+<pre><code>def blondie(f):
+    return lambda x: f(x + 1)
+
+tuco = blondie(lambda x: x * x)
+angel_eyes = tuco(2)</code></pre>
+
+<p>Verify your solution with <a href="http://tutor.cs61a.org">Python Tutor</a>.
+<h3 class="question" id="q7">Q7: Reruns</h3></p>
+
+<pre><code>&gt;&gt;&gt; def troy():
+...     abed = 0
+...     while abed &lt; 10:
+...         britta = lambda: abed
+...         abed += 1
+...     abed = 20
+...     return britta
+...
+&gt;&gt;&gt; jeff = troy()
+&gt;&gt;&gt; shirley = lambda : jeff
+&gt;&gt;&gt; pierce = shirley()
+&gt;&gt;&gt; pierce()
+<div class="alt prompt-3">______</div><div class="solution prompt-3">&#x32;&#x30;</div></code></pre>
+        <button id='prompt-3' class='btn btn-outline btn-lg toggle prompt'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#guides">Guides</a></li>
+  <ul>
+    <li><a href="#quiz-rubric">Quiz Rubric</a></li>
+    <ul>
+      <li><a href="#common-misconceptions">Common Misconceptions</a></li>
+      <li><a href="#global"><code>Global</code></a></li>
+      <li><a href="#f1"><code>f1</code></a></li>
+      <li><a href="#f2"><code>f2</code></a></li>
+      <li><a href="#f3"><code>f3</code></a></li>
+      <li><a href="#f4"><code>f4</code></a></li>
+    </ul>
+    <li><a href="#environment-diagrams">Environment Diagrams</a></li>
+    <ul>
+      <li><a href="#expressions">Expressions</a></li>
+      <ul>
+        <li><a href="#primitive-expressions">Primitive Expressions</a></li>
+        <li><a href="#call-expressions">Call Expressions</a></li>
+      </ul>
+      <li><a href="#statements">Statements</a></li>
+      <ul>
+        <li><a href="#assignment-statements">Assignment Statements</a></li>
+        <li><a href="#def-statements"><code>def</code> Statements</a></li>
+        <li><a href="#return-statements"><code>return</code> Statements</a></li>
+      </ul>
+    </ul>
+  </ul>
+  <li><a href="#practice-problems">Practice Problems</a></li>
+  <ul>
+    <li><a href="#easy">Easy</a></li>
+    <ul>
+      <li><a href="#q1">Q1: Make Adder</a></li>
+      <li><a href="#q2">Q2: Alpaca Zebra</a></li>
+      <li><a href="#q3">Q3: Multiplication</a></li>
+    </ul>
+    <li><a href="#medium">Medium</a></li>
+    <ul>
+      <li><a href="#q4">Q4: Community</a></li>
+      <li><a href="#q5">Q5: Doge</a></li>
+      <li><a href="#q6">Q6: Two Kinds of People</a></li>
+      <li><a href="#q7">Q7: Reruns</a></li>
+    </ul>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+<script>
+  $(function() {
+    $('.toggle').css('display', 'inline-block');
+    $('.toggle').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
+
+  </body>
+</html>

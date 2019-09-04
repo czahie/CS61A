@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+    <title>
+Study Guide: Recursion | CS 61A Spring 2018
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Study Guide: Recursion
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="/quiz/quiz03.pdf" class="label label-outline">Quiz</a></li>
+          
+          <li><a href="/quiz/quiz03_sol.pdf" class="label label-outline">Solution</a></li>
+          
+        </ul>
+        
+      </h1>
+    </header>
+    
+
+<h2>Instructions</h2>
+
+<p>This is the companion guide to <a href="/quiz/quiz03.pdf">Quiz 3</a> with links to past
+lectures, assignments, and handouts, as well as isomorphic quiz problems and
+additional practice problems to assist you in learning the concepts.</p>
+
+
+  <p><strong>Assignments</strong></p>
+  <ul>
+  <li><a href="/lab/lab03">Lab 3</a></li>
+  <li><a href="/hw/hw04">HW 4</a> (<a href="/hw/sol-hw04">Solutions</a>)</li>
+</ul>
+
+
+
+  <p><strong>Handouts</strong></p>
+  <ul>
+  <li><a href="/disc/disc02.pdf">Discussion 2</a> (<a href="/disc/disc02_sol.pdf">Solutions</a>)</li>
+</ul>
+
+
+
+  <p><strong>Lectures</strong></p>
+  <ul>
+  <li><a href="/assets/slides/06-Recursion_full.pdf">Recursion</a></li>
+  <li><a href="/assets/slides/07-Tree_Recursion_full.pdf">Tree Recursion</a></li>
+</ul>
+
+
+
+  <p><strong>Readings</strong></p>
+  <ul>
+  <li><a href="http://composingprograms.com/pages/17-recursive-functions.html">Section 1.7</a></li>
+</ul>
+
+
+
+    
+<h1 id="guides">Guides</h1>
+
+
+
+<h2 id="recursion">Recursion</h2>
+
+
+<p><strong>Recursion</strong> is a technique for solving a large computational problem by
+repeatedly applying the same procedure(s) to reduce it to successively smaller
+problems. A recursive procedure has two parts: one or more base cases and a
+recursive step.</p>
+
+<p><strong>Base cases</strong> are predetermined solutions for the simplest versions of the
+problem: if the given problem is a base case, no further computation is
+necessary to get the result.</p>
+
+<p>The <strong>recursive step</strong> is a set of rules that eventually reduces all versions
+of the problem to one of the base cases when applied repeatedly.</p>
+
+<p><strong>Infinite recursion</strong> occurs if there is no base case or the recursive step
+does not make progress towards its base case(s).</p>
+
+<pre><code>def fn(input):
+    if &lt;base case&gt;:
+        return ...
+    else:
+        return &lt;combine input and fn(input_reduced)&gt;</code></pre>
+
+
+<h3 id="an-analogy">An Analogy</h3>
+
+
+<p>Suppose you're waiting in line for a concert. You'd like to know where you are
+in line, but can't step out of line. What do you do? (Suppose you also have a
+friend with you.)</p>
+
+<p>An <strong>iterative</strong> <em>algorithm</em> (a step-by-step procedure) might look like:</p>
+
+<ol>
+  <li>Ask your friend to walk down to the front of the line.</li>
+  <li>Then count one-by-one until they reach you.</li>
+  <li>Once everyone's been counted, report your position to you.</li>
+</ol>
+
+<p>This approach is like using a <code>while</code> loop with a counter to keep track of the
+current position and only at the end returning the final value.</p>
+
+<p>A <strong>recursive</strong> algorithm, on the other hand, might look like:</p>
+
+<ol>
+  <li>If we're at the front, we know we're first in line.</li>
+  <li>Otherwise, we ask the person in front of us, "What number in line are you?"</li>
+  <li>Once the person in front figures out their position and tells you, add 1 to
+  their position to determine your position.</li>
+</ol>
+
+<p>This only works if everyone in front of you follows the same algorithm. While
+it might not work in real life because others might not follow the same steps,
+in a computer, we can define a <em>function</em> that follows the same steps.</p>
+
+<p>There are a couple points to notice about this analogy. There are two phases in
+evaluating a recursive function:</p>
+
+<ul>
+  <li>First, breaking down the problem by examining smaller and smaller problems.
+  Each person asks the person <em>in front of them</em>, "What number in line are you?"
+  We ask the person in front of us because they're closer to the front of the
+  line. Each problem is broken down into <strong>smaller subproblems that approach the
+  base case</strong>.</li>
+  <li>Second, building on the returned answer. Only the person at the front of the
+  line knows their position by default, so when they turn around to report to the
+  second person in line, the second person can't just take the answer the person
+  in front reported: they also need to account for themselves by adding 1! In the
+  same way, recursive programs need some way of <strong>adding on to the result of the
+  recursive step</strong>.</li>
+</ul>
+
+
+<h3 id="solving-recursive-problems">Solving Recursive Problems</h3>
+
+
+<blockquote><p>See the <a href="/articles/studying.html">Studying Guide</a> for more tips!</p></blockquote>
+
+<p>Recursive problems are solved similarly to the way we solve higher-order
+function problems.</p>
+
+<ol>
+  <li>Understand the problem. Restate the problem in your own words, identify the
+  <strong>domain</strong> (input), <strong>range</strong> (output), roughly define the <strong>behavior</strong> of the
+  function.</li>
+  <li>Study the examples and doctests. Develop smaller examples and identify the
+  similarities and patterns between examples. Recursion relies on solving
+  subproblems which implies that there is some relationship between the smaller
+  problem and the larger problem.</li>
+  <li>Identify similar problems. Is this question more easily solved with (linear)
+  recursion or tree recursion?</li>
+  <li>Adapt a solution. Identify the general idea of the similar problem and adapt
+  it for this new context.</li>
+  <li>Implement the solution in code and verify correctness by evaluating the
+  function.</li>
+</ol>
+
+
+<h2 id="functional-abstraction">Functional Abstraction</h2>
+
+
+<p><strong>Abstraction</strong> is a technique for managing complexity by hiding details that
+make programs complex and hard to understand.</p>
+
+<p><strong>Functional abstraction</strong> is a method for applying the idea of abstractions to
+<strong>functions</strong>, or pieces of code which accomplish specific tasks. Specifically,
+functional abstraction lets us reason about a program by answering three key
+questions.</p>
+
+<ol>
+  <li>What is the <strong>domain</strong>, or possible set of inputs, we can pass to the
+  function?</li>
+  <li>What is the <strong>range</strong>, or possible set of outputs, that can be returned from
+  the function?</li>
+  <li>What is the <strong>behavior</strong>, or transformations that the function accomplishes
+  along the way to compute the output? (So far, most of the functions we've
+  written are <strong>pure functions</strong>, which mean they have no side-effects, so we can
+  usually define the behavior with a mapping from the domain to the range.)</li>
+</ol>
+
+<p>If we think about programs in terms of these three features, we can "black-box"
+programs and make larger leaps of logic.</p>
+
+<p>Functional abstraction allows us to make claims about recursive programs and
+take the so-called recursive <em>leap of faith</em>. To believe that the recursive
+definition of <code>factorial</code> is correct without running the code to check requires
+us to believe that <code>factorial</code> is a function which maps inputs to outputs:
+<code>factorial(4)</code> just evaluates to <code>24</code>, and that's a fact we can rely on when
+recursively defining <code>factorial(5)</code> in terms of <code>factorial(4)</code>.</p>
+
+
+<h2 id="enumeration">Enumeration</h2>
+
+
+<p>Functional abstraction, or the idea that <em>pure functions</em> are just a mapping
+from inputs to outputs, can be difficult to fully understand.</p>
+
+<p>To help wrap our heads around this idea, let's revisit <code>factorial</code> from another
+angle. Suppose we knew nothing about recursion. Actually, let's up the stakes
+and suppose we didn't even know how to write a <code>while</code> or <code>for</code> loop. How could
+we define <code>factorial</code>?</p>
+
+<p>One way is to enumerate all possibilities.</p>
+
+<pre><code>def factorial(n):
+    if n == 0:
+        return 1
+    elif n == 1:
+        return 1 * 1
+    elif n == 2:
+        return 2 * 1 * 1
+    elif n == 3:
+        return 3 * 2 * 1 * 1
+    elif n == 4:
+        return 4 * 3 * 2 * 1 * 1
+    elif n == 5:
+        # You can imagine how tedious this would get</code></pre>
+
+<p>This representation is useful for two reasons: it helps us visualize the
+arithmetic underlying computing the factorial of a number, and it also helps us
+see that <code>factorial(n)</code> just returns a particular number.</p>
+
+<p>Suppose we wanted to define the case for <code>n == 5</code> without having to rewrite all
+the preceding arithmetic. We could conveniently define a case for <code>n == 5</code> in
+terms of <code>n == 4</code>, and we'd start to see the pattern: the factorial of 6, 7, 8
+would just rely on the factorial of the previous value which we've proven is
+correctly defined.</p>
+
+<pre><code>def factorial(n):
+    if n == 0:
+        return 1
+    elif n == 1:
+        return 1 * 1
+    elif n == 2:
+        return 2 * 1 * 1
+    elif n == 3:
+        return 3 * 2 * 1 * 1
+    elif n == 4:
+        return 4 * 3 * 2 * 1 * 1
+    elif n == 5:
+        return 5 * factorial(4)
+    elif n == 6:
+        return 6 * factorial(5)
+    else:
+        return n * factorial(n &#x2d; 1)</code></pre>
+
+<p>With a little more work, we can identify the redundancies in our 'arms-length'
+base cases and simplify the code.</p>
+
+<pre><code>def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n &#x2d; 1)</code></pre>
+
+
+<h2 id="tree-recursion">Tree Recursion</h2>
+
+
+<p>A function is <strong>tree-recursive</strong> if the recursive step contains more than one
+call to the same function.</p>
+
+<p>As a technique for solving problems, tree recursion allows us to explore
+multiple possibilities. Let's consider one such problem to help illustrate this
+example.</p>
+
+
+<h3 id="solution-space">Solution Space</h3>
+
+
+<p>Suppose we want to count the number of combinations of dividing 6 pieces of
+chocolate amongst my friends, but we don't want to give any one friend more
+than 4 pieces.</p>
+
+<p>How might we solve this problem?</p>
+
+<p>One way is to simply count out all the possibilities. One possible combination
+involves giving out 1 piece to 6 friends.</p>
+
+<pre><code>6 = 1 + 1 + 1 + 1 + 1 + 1</code></pre>
+
+<p>Another combination might be to give 3 pieces to 2 friends. We can come up with
+some other combinations too.</p>
+
+<pre><code>6 = 3 + 3
+6 = 2 + 4
+6 = 1 + 3 + 2</code></pre>
+
+<p>But what about <code>6 = 4 + 2</code>? Is that a valid combination if we've already
+counted <code>6 = 2 + 4</code>? This is a good chance for us to revisit our problem
+statement and clarify our understanding of what the problem is asking.</p>
+
+<blockquote><p><a href="/articles/studying.html#reinterpret-the-problem-prompt">Understand the problem</a>: ask questions, study the examples, and come
+up with examples of your own. Each clarification we make now gives us insight
+into the structure of the problem which helps a lot because, in computer
+science, the structure of a problems is very often related to the shape of
+its solution.</p></blockquote>
+
+<p>These are <strong>combinations</strong>, so we're only interested in the different ways we
+can divide the problem without differentiating for who exactly receives which
+pieces. In other words, <code>6 = 4 + 2</code> is the same as <code>6 = 2 + 4</code> because we don't
+care who receives which pieces.</p>
+
+<p>What about <code>6 = 1 + 3 + 2</code>? Since we know that we're not differentiating
+between <code>6 = 3 + 2 + 1</code>, <code>6 = 2 + 1 + 3</code>, and <code>6 = 2 + 3 + 1</code>, for example, how
+do we go about approaching this problem?</p>
+
+<p>This brings us to one of the big challenges of solving tree-recursive problems.</p>
+
+<p><strong>How do we explore the solution space of all valid combinations?</strong> We'd like
+to write some code which can somehow model this complex process, but we don't
+quite know how to go about it? Where do we start with this problem? How do we
+capture its complexity now that we have to 'uncount' the duplicates?</p>
+
+<p>Let's solve this problem by <strong>finding generality</strong> between examples. We'd
+ultimately like to come up with a general algorithm (step-by-step procedure) we
+can follow to search through all possible solutions. We should reorder our
+solution in a way that a computer can work with by <strong>reorganizing our solution
+space</strong>.</p>
+
+<p>Suppose instead of listing out all combinations randomly, we take a structured
+approach to solving the problem. Let's list out all combinations, <strong>but always
+using the most possible pieces of chocolate first</strong>.</p>
+
+<pre><code>6 = 4 + 2
+6 = 4 + 1 + 1
+6 = 3 + 3
+6 = 3 + 2 + 1
+...</code></pre>
+
+<p>In reorganizing our solution space, we identified a strategy that we can always
+follow for generating each combination: we can always use the most possible
+pieces first before moving onto smaller pieces as necessary. We give out 4
+pieces of chocolate to 1 friend which leaves us with 2 pieces to give out to
+everyone else. We can then solve that smaller problem by asking the question,
+"Count the number of combinations of dividing the remaining 2 pieces..." where
+the most pieces I can give out to any one friend is still something we need to
+determine through further experimentation.</p>
+
+
+<h3 id="order-of-recursive-calls">Order of Recursive Calls</h3>
+
+
+<p>In lecture, we defined a function <code>cascade</code> that printed a mesmerizing cascade
+of numbers.</p>
+
+<pre><code>def cascade(n):
+    if n &lt; 10:
+        print(n)
+    else:
+        print(n)
+        cascade(n // 10)
+        print(n)</code></pre>
+
+<p>Calling <code>cascade(123)</code> yields the following output.</p>
+
+<pre><code>123
+12
+1
+12
+123</code></pre>
+
+<p>Why is that the case? The best way to figure out is to try things out for
+yourself in <a href="http://tutor.cs61a.org/">Python Tutor</a>.</p>
+
+<p>Let's look at a tree-recursive variant of <code>cascade</code> called <code>treecade</code>.</p>
+
+<pre><code>def treecade(n):
+    if n &lt; 10:
+        print(n)
+    else:
+        treecade(n // 10)
+        print(n)
+        treecade(n // 10)</code></pre>
+
+<p>Fully describe the behavior of this function. Then, try it out for yourself in
+the interactive interpreter or <a href="http://tutor.cs61a.org/">Python Tutor</a>. Finally, answer the
+questions below to verify your understanding.</p>
+
+<ol>
+  <li>Between <code>treecade</code> and <code>cascade</code>, which lines differ?</li>
+  <li>How does Python keep track of all the separate values of <code>n</code> which are
+  printed out?</li>
+  <li>What happens after a call to <code>treecade</code> hits the base case? Where does
+  Python go next?</li>
+</ol>
+
+
+<h1 id="practice-problems">Practice Problems</h1>
+
+
+
+<h2 id="easy">Easy</h2>
+
+
+<h3 class="question" id="q1">Q1: In sum...</h3>
+
+<p>Write a function <code>sum</code> that takes a single argument <code>n</code>
+and computes the sum of all integers between 0 and <code>n</code> inclusive. 
+Assume <code>n</code> is non-negative.</p>
+
+
+
+<pre><code>def sum(n):
+    &quot;&quot;&quot;Computes the sum of all integers between 1 and n, inclusive.
+    Assume n is positive.
+
+    &gt;&gt;&gt; sum(1)
+    1
+    &gt;&gt;&gt; sum(5)  # 1 + 2 + 3 + 4 + 5
+    15
+    &quot;&quot;&quot;
+<div class="alt solution-1">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-1">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x3d;&#x3d;&#x20;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x20;&#x2b;&#x20;&#x73;&#x75;&#x6d;&#x28;&#x6e;&#x20;&#x2d;&#x20;&#x31;&#x29;</div></code></pre>
+
+
+        <button id='solution-1' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<h3 class="question" id="q2">Q2: Sine</h3>
+
+<p>Now we're going to approximate the sine trigonemetric function using 2
+useful facts. One is that <em>sin(x)</em> is approximately equal to <em>x</em> as <em>x</em>
+gets small (for this question, below 0.0001). The other fact is the
+trigonometric identity</p>
+
+<p><img class="img-responsive center-block" src="/assets/images/sin.gif" alt="sine"></p>
+
+<p>Using these two facts, write a function <code>sine</code> that returns the sine of
+a value in radians.</p>
+
+
+
+<pre><code>def sine(x):
+<div class="alt solution-2">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-2">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x61;&#x62;&#x73;&#x28;&#x78;&#x29;&#x20;&#x3c;&#x20;&#x30;&#x2e;&#x30;&#x30;&#x30;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x33;&#x20;&#x2a;&#x20;&#x73;&#x69;&#x6e;&#x65;&#x28;&#x78;&#x20;&#x2f;&#x20;&#x33;&#x29;&#x20;&#x2d;&#x20;&#x34;&#x20;&#x2a;&#x20;&#x70;&#x6f;&#x77;&#x28;&#x73;&#x69;&#x6e;&#x65;&#x28;&#x78;&#x20;&#x2f;&#x20;&#x33;&#x29;&#x2c;&#x20;&#x33;&#x29;</div></code></pre>
+
+
+        <button id='solution-2' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<h3 class="question" id="q3">Q3: Countdown-Up</h3>
+
+<p>Write a function <code>Countdown_up</code> that takes a single argument <code>n</code>
+and simultaneously prints out the countdown from n to 0 and the 
+countup from n to 2n, inclusive. Hint: We probably need to introduce
+another parameter, so maybe use a helper function!</p>
+
+
+
+<pre><code>def countdown_up(n):
+    &quot;&quot;&quot;Starts at n and simultaneously prints out the countdown from n to 0
+    and the countup from n to 2*n, inclusive.
+
+    &gt;&gt;&gt; countdown_up(0)
+    0
+
+    &gt;&gt;&gt; countdown_up(5)
+    5
+    4
+    6
+    3
+    7
+    2
+    8
+    1
+    9
+    0
+    10
+    &quot;&quot;&quot;
+<div class="alt solution-3">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-3">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x68;&#x65;&#x6c;&#x70;&#x65;&#x72;&#x28;&#x69;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x6e;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x69;&#x20;&#x3e;&#x20;&#x6e;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x6e;&#x2d;&#x69;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x6e;&#x2b;&#x69;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x68;&#x65;&#x6c;&#x70;&#x65;&#x72;&#x28;&#x69;&#x20;&#x2b;&#x20;&#x31;&#x29;&#xa;&#xa;&#x20;&#x20;&#x20;&#x20;&#x68;&#x65;&#x6c;&#x70;&#x65;&#x72;&#x28;&#x30;&#x29;</div></code></pre>
+
+
+        <button id='solution-3' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+
+<h2 id="medium">Medium</h2>
+
+
+<h3 class="question" id="q4">Q4: Super Mario</h3>
+
+<p>Mario needs to jump over a sequence of Piranha plants, represented as a
+string of spaces (no plant) and P's (plant!).  He only moves forward,
+and he can either step (move forward one space) or jump (move forward
+two spaces) from each position.  How many different ways can Mario
+traverse a level without stepping or jumping into a Piranha plant?
+Assume that every level begins with a space (where Mario starts) and
+ends with a space (where Mario must end up):</p>
+
+<blockquote><p><em>Hint</em>: You can get the <em>i</em>th character in a string <code>s</code> by using <code>s[i]</code>. For
+example,</p>
+
+<pre><code>&gt;&gt;&gt; s = &#x27;abcdefg&#x27;
+&gt;&gt;&gt; s[0]
+&#x27;a&#x27;
+&gt;&gt;&gt; s[2]
+&#x27;c&#x27;</code></pre>
+
+<p>You can find the total number of characters in a string with the built-in
+<code>len</code> function:</p>
+
+<pre><code>&gt;&gt;&gt; s = &#x27;abcdefg&#x27;
+&gt;&gt;&gt; len(s)
+7
+&gt;&gt;&gt; len(&#x27;&#x27;)
+0</code></pre></blockquote>
+
+
+
+<pre><code>def mario_number(level):
+    &quot;&quot;&quot;Return the number of ways that Mario can perform a sequence of steps
+    or jumps to reach the end of the level without ever landing in a Piranha
+    plant. Assume that every level begins and ends with a space.
+
+    &gt;&gt;&gt; mario_number(&#x27; P P &#x27;)   # jump, jump
+    1
+    &gt;&gt;&gt; mario_number(&#x27; P P  &#x27;)   # jump, jump, step
+    1
+    &gt;&gt;&gt; mario_number(&#x27;  P P &#x27;)  # step, jump, jump
+    1
+    &gt;&gt;&gt; mario_number(&#x27;   P P &#x27;) # step, step, jump, jump or jump, jump, jump
+    2
+    &gt;&gt;&gt; mario_number(&#x27; P PP &#x27;)  # Mario cannot jump two plants
+    0
+    &gt;&gt;&gt; mario_number(&#x27;    &#x27;)    # step, jump ; jump, step ; step, step, step
+    3
+    &gt;&gt;&gt; mario_number(&#x27;    P    &#x27;)
+    9
+    &gt;&gt;&gt; mario_number(&#x27;   P    P P   P  P P    P     P &#x27;)
+    180
+    &quot;&quot;&quot;
+<div class="alt solution-4">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-4">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x77;&#x61;&#x79;&#x73;&#x28;&#x6e;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x3d;&#x3d;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x6c;&#x65;&#x76;&#x65;&#x6c;&#x29;&#x2d;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x3e;&#x3d;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x6c;&#x65;&#x76;&#x65;&#x6c;&#x29;&#x20;&#x6f;&#x72;&#x20;&#x6c;&#x65;&#x76;&#x65;&#x6c;&#x5b;&#x6e;&#x5d;&#x20;&#x3d;&#x3d;&#x20;&#x27;&#x50;&#x27;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x77;&#x61;&#x79;&#x73;&#x28;&#x6e;&#x2b;&#x31;&#x29;&#x20;&#x2b;&#x20;&#x77;&#x61;&#x79;&#x73;&#x28;&#x6e;&#x2b;&#x32;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x77;&#x61;&#x79;&#x73;&#x28;&#x30;&#x29;</div></code></pre>
+
+
+        <button id='solution-4' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q mario</code></pre>
+
+
+<h2 id="difficult">Difficult</h2>
+
+
+<h3 class="question" id="q5">Q5: Knapsack</h3>
+
+<p>You're are a thief, and your job is to pick among <code>n</code> items that are of
+different weights and values. You have a knapsack that supports <code>c</code> pounds, and
+you want to pick some subset of the items so that you maximize the value you've
+stolen.</p>
+
+<p>Define <code>knapsack</code>, which takes a list <code>weights</code>, list <code>values</code> and a capacity
+<code>c</code>, and returns that max value.  You may assume that item 0 weighs
+<code>weights[0]</code> pounds, and is worth <code>values[0]</code>; item 1 weighs <code>weights[1]</code>
+pounds, and is worth <code>values[1]</code>; etc.</p>
+
+
+
+<pre><code>def knapsack(weights, values, c):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; w = [2, 6, 3, 3]
+    &gt;&gt;&gt; v = [1, 5, 3, 3]
+    &gt;&gt;&gt; knapsack(w, v, 6)
+    6
+    &quot;&quot;&quot;
+<div class="alt solution-5">    "*** YOUR CODE HERE ***"
+</div><div class="solution solution-5">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x77;&#x65;&#x69;&#x67;&#x68;&#x74;&#x73;&#x20;&#x3d;&#x3d;&#x20;&#x5b;&#x5d;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x5f;&#x77;&#x65;&#x69;&#x67;&#x68;&#x74;&#x2c;&#x20;&#x72;&#x65;&#x73;&#x74;&#x5f;&#x77;&#x65;&#x69;&#x67;&#x68;&#x74;&#x73;&#x20;&#x3d;&#x20;&#x77;&#x65;&#x69;&#x67;&#x68;&#x74;&#x73;&#x5b;&#x30;&#x5d;&#x2c;&#x20;&#x77;&#x65;&#x69;&#x67;&#x68;&#x74;&#x73;&#x5b;&#x31;&#x3a;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x5f;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x2c;&#x20;&#x72;&#x65;&#x73;&#x74;&#x5f;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x73;&#x5b;&#x30;&#x5d;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x73;&#x5b;&#x31;&#x3a;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x77;&#x69;&#x74;&#x68;&#x5f;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x5f;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x20;&#x2b;&#x20;&#x6b;&#x6e;&#x61;&#x70;&#x73;&#x61;&#x63;&#x6b;&#x28;&#x72;&#x65;&#x73;&#x74;&#x5f;&#x77;&#x65;&#x69;&#x67;&#x68;&#x74;&#x73;&#x2c;&#x20;&#x72;&#x65;&#x73;&#x74;&#x5f;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x73;&#x2c;&#x20;&#x63;&#x2d;&#x66;&#x69;&#x72;&#x73;&#x74;&#x5f;&#x77;&#x65;&#x69;&#x67;&#x68;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x77;&#x69;&#x74;&#x68;&#x6f;&#x75;&#x74;&#x5f;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x6b;&#x6e;&#x61;&#x70;&#x73;&#x61;&#x63;&#x6b;&#x28;&#x72;&#x65;&#x73;&#x74;&#x5f;&#x77;&#x65;&#x69;&#x67;&#x68;&#x74;&#x73;&#x2c;&#x20;&#x72;&#x65;&#x73;&#x74;&#x5f;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x73;&#x2c;&#x20;&#x63;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x5f;&#x77;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3c;&#x3d;&#x20;&#x63;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x77;&#x69;&#x74;&#x68;&#x5f;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x77;&#x69;&#x74;&#x68;&#x6f;&#x75;&#x74;&#x5f;&#x66;&#x69;&#x72;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x77;&#x69;&#x74;&#x68;&#x6f;&#x75;&#x74;&#x5f;&#x66;&#x69;&#x72;&#x73;&#x74;</div></code></pre>
+
+
+        <button id='solution-5' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<h3 class="question" id="q6">Q6: Y combinator</h3>
+
+<!-- This question is a variation on anonymous-factorial-->
+
+<p>The recursive factorial function can be written as a single expression
+by using a <a href="http://docs.python.org/py3k/reference/expressions.html#conditional-expressions">conditional expression</a>.</p>
+
+<pre><code>&gt;&gt;&gt; fact = lambda n: 1 if n == 1 else mul(n, fact(sub(n, 1)))
+&gt;&gt;&gt; fact(5)
+120</code></pre>
+
+<p>However, this implementation relies on the fact (no pun intended) that
+<code>fact</code> has a name, to which we refer in the body of <code>fact</code>.  To write a
+recursive function, we have always given it a name using a <code>def</code> or
+assignment statement so that we can refer to the function within its
+own body.  In this question, your job is to define fact recursively
+without giving it a name!</p>
+
+<p>There's actually a general way to do this that uses a function <code>Y</code>
+defined</p>
+
+<pre><code>def Y(f):
+    return f(lambda: Y(f))</code></pre>
+
+<p>Using this function, you can define <code>fact</code> with an assignment statement
+like this:</p>
+
+<pre><code> fact = Y(?)</code></pre>
+
+<p>where ? is an expression containing <em>only</em> lambda expressions,
+conditional expressions, function calls, and the functions <code>mul</code> and
+<code>sub</code>.  That is, ? contains no statements (no assignments or <strong>def</strong>
+statements in particular), and no mention of <code>fact</code> or any other
+identifier defined outside <code>?</code>  other than <code>mul</code> or <code>sub</code>
+from the <code>operator</code> module.  You are also allowed to use the equality (==)
+operator.  Find such an expression to use in place of <code>?</code>.</p>
+
+
+
+<pre><code>from operator import sub, mul
+
+def Y(f):
+    &quot;&quot;&quot;The Y (&quot;paradoxical&quot;) combinator.&quot;&quot;&quot;
+    return f(lambda: Y(f))
+
+def Y_tester():
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; tmp = Y_tester()
+    &gt;&gt;&gt; tmp(1)
+    1
+    &gt;&gt;&gt; tmp(5)
+    120
+    &gt;&gt;&gt; tmp(2)
+    2
+    &quot;&quot;&quot;
+<div class="alt solution-6">    "*** YOUR CODE HERE ***"
+    return Y(________)  # Replace 
+</div><div class="solution solution-6">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x59;&#x28;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x66;&#x3a;&#x20;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x6e;&#x3a;&#x20;&#x31;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x3d;&#x3d;&#x30;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x20;&#x6e;&#x20;&#x2a;&#x20;&#x66;&#x28;&#x29;&#x28;&#x6e;&#x2d;&#x31;&#x29;&#x29;</div></code></pre>
+
+
+        <button id='solution-6' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#guides">Guides</a></li>
+  <ul>
+    <li><a href="#recursion">Recursion</a></li>
+    <ul>
+      <li><a href="#an-analogy">An Analogy</a></li>
+      <li><a href="#solving-recursive-problems">Solving Recursive Problems</a></li>
+    </ul>
+    <li><a href="#functional-abstraction">Functional Abstraction</a></li>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#tree-recursion">Tree Recursion</a></li>
+    <ul>
+      <li><a href="#solution-space">Solution Space</a></li>
+      <li><a href="#order-of-recursive-calls">Order of Recursive Calls</a></li>
+    </ul>
+  </ul>
+  <li><a href="#practice-problems">Practice Problems</a></li>
+  <ul>
+    <li><a href="#easy">Easy</a></li>
+    <ul>
+      <li><a href="#q1">Q1: In sum...</a></li>
+      <li><a href="#q2">Q2: Sine</a></li>
+      <li><a href="#q3">Q3: Countdown-Up</a></li>
+    </ul>
+    <li><a href="#medium">Medium</a></li>
+    <ul>
+      <li><a href="#q4">Q4: Super Mario</a></li>
+    </ul>
+    <li><a href="#difficult">Difficult</a></li>
+    <ul>
+      <li><a href="#q5">Q5: Knapsack</a></li>
+      <li><a href="#q6">Q6: Y combinator</a></li>
+    </ul>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+<script>
+  $(function() {
+    $('.toggle').css('display', 'inline-block');
+    $('.toggle').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,399 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}pre { word-wrap:break-word; }pre { white-space:pre-wrap; }</style><div id="google-cache-hdr"  dir=ltr><div>这是 <a href="https://cs61a.org/disc/disc11_sol.pdf" dir="ltr">https://cs61a.org/disc/disc11_sol.pdf</a> 的 HTML 档。<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> 在网路漫游时会自动将档案转换成 HTML 网页来储存。</div></div><div style="position:relative;margin:8px;">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX-1.40.18">
+<meta name="CreationDate" content="D:20171219170044Z">
+<meta name="ModDate" content="D:20171219170044Z">
+<meta name="Fullbanner" content="This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) kpathsea version 6.2.3">
+<title>CS 61A Final Review Fall 2017 1 Mutation</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:258;left:81"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:258;left:473"><nobr>Final Review</nobr></div>
+<div style="position:absolute;top:294;left:81"><nobr>Fall 2017</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:301;left:353"><nobr>Discussion 11: November 29, 2017 <font color="#ff0000" style="font-size:19px">Solutions</font></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:363;left:81"><nobr>1 Mutation</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:420;left:52"><nobr>1.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:417;left:81"><nobr>For each row below, fill in the blanks in the output displayed by the interactive</nobr></div>
+<div style="position:absolute;top:438;left:81"><nobr>Python interpreter when the expression is evaluated. Expressions are evaluated in</nobr></div>
+<div style="position:absolute;top:460;left:81"><nobr>order, and expressions may affect later expressions.</nobr></div>
+<div style="position:absolute;top:486;left:81"><nobr>&gt;&gt;&gt; cats = [1, 2]</nobr></div>
+<div style="position:absolute;top:508;left:81"><nobr>&gt;&gt;&gt; dogs = [cats, cats.append(23), <b>list</b>(cats)]</nobr></div>
+<div style="position:absolute;top:529;left:81"><nobr>&gt;&gt;&gt; cats</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:584;left:81"><nobr>[1, 2, 23]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:630;left:81"><nobr>&gt;&gt;&gt; dogs[1] = <b>list</b>(dogs)</nobr></div>
+<div style="position:absolute;top:651;left:81"><nobr>&gt;&gt;&gt; dogs[1]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:706;left:81"><nobr>[[1, 2, 23], None, [1, 2, 23]]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:752;left:81"><nobr>&gt;&gt;&gt; dogs[0].append(2)</nobr></div>
+<div style="position:absolute;top:773;left:81"><nobr>&gt;&gt;&gt; cats</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:828;left:81"><nobr>[1, 2, 23, 2]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:874;left:81"><nobr>&gt;&gt;&gt; dogs[2].extend([<b>list</b>(cats).pop(0), 3])</nobr></div>
+<div style="position:absolute;top:895;left:81"><nobr>&gt;&gt;&gt; dogs[3]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:950;left:81"><nobr>Index Error</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:996;left:81"><nobr>&gt;&gt;&gt; dogs</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1050;left:81"><nobr>[[1, 2, 23, 2], [[1, 2, 23, 2], None, [1, 2, 23, 1, 3]], [1, 2, 23, 1, 3]]</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1363;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1400;left:81"><nobr>2 Final Review</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:1440;left:52"><nobr>1.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1437;left:81"><nobr>(Fall 2013) Draw the environment diagram for the folowing code.</nobr></div>
+<div style="position:absolute;top:1475;left:81"><nobr><b>def </b>miley(ray):</nobr></div>
+<div style="position:absolute;top:1497;left:111"><nobr><b>def </b>cy():</nobr></div>
+<div style="position:absolute;top:1518;left:141"><nobr><b>def </b>rus(billy):</nobr></div>
+<div style="position:absolute;top:1535;left:171"><nobr>nonlocal cy</nobr></div>
+<div style="position:absolute;top:1557;left:171"><nobr>cy = <b>lambda</b>: billy + ray</nobr></div>
+<div style="position:absolute;top:1583;left:171"><nobr><b>return </b>[1, billy]</nobr></div>
+<div style="position:absolute;top:1604;left:141"><nobr><b>if len</b>(rus(2)) == 1:</nobr></div>
+<div style="position:absolute;top:1626;left:171"><nobr><b>return </b>[3, 4]</nobr></div>
+<div style="position:absolute;top:1647;left:141"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:1669;left:171"><nobr><b>return </b>[cy(), 5]</nobr></div>
+<div style="position:absolute;top:1690;left:111"><nobr><b>return </b>cy()[1]</nobr></div>
+<div style="position:absolute;top:1729;left:81"><nobr>billy = 6</nobr></div>
+<div style="position:absolute;top:1751;left:81"><nobr>miley(7)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2551;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2588;left:502"><nobr>Final Review</nobr></div>
+<div style="position:absolute;top:2588;left:609"><nobr>3</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:2620;left:81"><nobr>2 Recursion</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:2676;left:52"><nobr>2.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2673;left:81"><nobr>Write a procedure merge(s1, s2) which takes two sorted (smallest value first) lists</nobr></div>
+<div style="position:absolute;top:2695;left:81"><nobr>and returns a single list with all of the elements of the two lists, in ascending order.</nobr></div>
+<div style="position:absolute;top:2716;left:81"><nobr>Use recursion.</nobr></div>
+<div style="position:absolute;top:2747;left:81"><nobr>Hint: If you can figure out which list has the smallest element out of both, then</nobr></div>
+<div style="position:absolute;top:2768;left:81"><nobr>we know that the resulting merged list will have that smallest element, followed by</nobr></div>
+<div style="position:absolute;top:2790;left:81"><nobr>the merge of the two lists with the smallest item removed. Don’t forget to handle</nobr></div>
+<div style="position:absolute;top:2811;left:81"><nobr>the case where one list is empty!</nobr></div>
+<div style="position:absolute;top:2842;left:81"><nobr><b>def </b>merge(s1, s2):</nobr></div>
+<div style="position:absolute;top:2860;left:141"><nobr>Merges two sorted lists</nobr></div>
+<div style="position:absolute;top:2881;left:111"><nobr>&gt;&gt;&gt; merge([1, 3], [2, 4])</nobr></div>
+<div style="position:absolute;top:2903;left:111"><nobr>[1, 2, 3, 4]</nobr></div>
+<div style="position:absolute;top:2924;left:111"><nobr>&gt;&gt;&gt; merge([1, 2], [])</nobr></div>
+<div style="position:absolute;top:2946;left:111"><nobr>[1, 2]</nobr></div>
+<div style="position:absolute;top:2993;left:111"><nobr><b>if </b>______________________________________________________________________________:</nobr></div>
+<div style="position:absolute;top:3057;left:141"><nobr><b>return </b>s2</nobr></div>
+<div style="position:absolute;top:3122;left:111"><nobr><b>elif </b>____________________________________________________________________________:</nobr></div>
+<div style="position:absolute;top:3186;left:141"><nobr><b>return </b>s1</nobr></div>
+<div style="position:absolute;top:3251;left:111"><nobr><b>elif </b>____________________________________________________________________________:</nobr></div>
+<div style="position:absolute;top:3316;left:141"><nobr><b>return </b>______________________________________________________________________</nobr></div>
+<div style="position:absolute;top:3380;left:111"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:3445;left:141"><nobr><b>return </b>______________________________________________________________________</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3499;left:111"><nobr><b>if len</b>(s1) == 0:</nobr></div>
+<div style="position:absolute;top:3521;left:141"><nobr><b>return </b>s2</nobr></div>
+<div style="position:absolute;top:3542;left:111"><nobr><b>elif len</b>(s2) == 0:</nobr></div>
+<div style="position:absolute;top:3564;left:141"><nobr><b>return </b>s1</nobr></div>
+<div style="position:absolute;top:3585;left:111"><nobr><b>elif </b>s1[0] &lt; s2[0]:</nobr></div>
+<div style="position:absolute;top:3607;left:141"><nobr><b>return </b>[s1[0]] + merge(s1[1:], s2)</nobr></div>
+<div style="position:absolute;top:3628;left:111"><nobr><b>else</b>:</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3739;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3776;left:81"><nobr>4 Final Review</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3819;left:141"><nobr><b>return </b>[s2[0]] + merge(s1, s2[1:])</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:3868;left:52"><nobr>2.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3865;left:81"><nobr>Consider the subset sum problem: you are given a list of integers and a number k.</nobr></div>
+<div style="position:absolute;top:3886;left:81"><nobr>Is there a subset of the list that adds up to k? For example:</nobr></div>
+<div style="position:absolute;top:3913;left:111"><nobr>&gt;&gt;&gt; subset_sum([2, 4, 7, 3], 5)</nobr></div>
+<div style="position:absolute;top:3913;left:410"><nobr># 2 + 3 = 5</nobr></div>
+<div style="position:absolute;top:3934;left:111"><nobr>True</nobr></div>
+<div style="position:absolute;top:3956;left:111"><nobr>&gt;&gt;&gt; subset_sum([1, 9, 5, 7, 3], 2)</nobr></div>
+<div style="position:absolute;top:3977;left:111"><nobr>False</nobr></div>
+<div style="position:absolute;top:3999;left:111"><nobr>&gt;&gt;&gt; subset_sum([1, 1, 5, -1], 3)</nobr></div>
+<div style="position:absolute;top:4020;left:111"><nobr>False</nobr></div>
+<div style="position:absolute;top:4064;left:81"><nobr><b>def </b>subset_sum(seq, k):</nobr></div>
+<div style="position:absolute;top:4125;left:111"><nobr><b>if </b>______________________________________________________________________________:</nobr></div>
+<div style="position:absolute;top:4189;left:141"><nobr><b>return </b>False</nobr></div>
+<div style="position:absolute;top:4254;left:111"><nobr><b>elif </b>____________________________________________________________________________:</nobr></div>
+<div style="position:absolute;top:4319;left:141"><nobr><b>return </b>True</nobr></div>
+<div style="position:absolute;top:4383;left:111"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:4448;left:141"><nobr><b>return </b>______________________________________________________________________</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4502;left:111"><nobr><b>if len</b>(seq) == 0:</nobr></div>
+<div style="position:absolute;top:4524;left:141"><nobr><b>return </b>False</nobr></div>
+<div style="position:absolute;top:4545;left:111"><nobr><b>elif </b>k <b>in </b>seq:</nobr></div>
+<div style="position:absolute;top:4567;left:141"><nobr><b>return </b>True</nobr></div>
+<div style="position:absolute;top:4588;left:111"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:4610;left:141"><nobr><b>return </b>subset_sum(seq[1:], k - seq[0]) <b>or </b>\</nobr></div>
+<div style="position:absolute;top:4627;left:193"><nobr>subset_sum(seq[1:], k)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:4927;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4964;left:502"><nobr>Final Review</nobr></div>
+<div style="position:absolute;top:4964;left:609"><nobr>5</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:4996;left:81"><nobr>3 Trees</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:5052;left:52"><nobr>3.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5049;left:81"><nobr>Assuming that every value in t is a number, define average(t), which returns the</nobr></div>
+<div style="position:absolute;top:5071;left:81"><nobr>average of all the values in t. You may not need to use all the provided lines.</nobr></div>
+<div style="position:absolute;top:5099;left:81"><nobr><b>def </b>average(t):</nobr></div>
+<div style="position:absolute;top:5138;left:111"><nobr>Returns the average value of all the nodes in t.</nobr></div>
+<div style="position:absolute;top:5160;left:111"><nobr>&gt;&gt;&gt; t0 = Tree(0, [Tree(1), Tree(2, [Tree(3)])])</nobr></div>
+<div style="position:absolute;top:5181;left:111"><nobr>&gt;&gt;&gt; average(t0)</nobr></div>
+<div style="position:absolute;top:5203;left:111"><nobr>1.5</nobr></div>
+<div style="position:absolute;top:5224;left:111"><nobr>&gt;&gt;&gt; t1 = Tree(8, [t0, Tree(4)])</nobr></div>
+<div style="position:absolute;top:5246;left:111"><nobr>&gt;&gt;&gt; average(t1)</nobr></div>
+<div style="position:absolute;top:5267;left:111"><nobr>3.0</nobr></div>
+<div style="position:absolute;top:5314;left:111"><nobr><b>def </b>sum_helper(t):</nobr></div>
+<div style="position:absolute;top:5353;left:141"><nobr>total, count = _______________________________________________________________</nobr></div>
+<div style="position:absolute;top:5422;left:141"><nobr><b>for </b>__________________________________________________________________________:</nobr></div>
+<div style="position:absolute;top:5482;left:171"><nobr>__________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:5547;left:171"><nobr>__________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:5611;left:171"><nobr>__________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:5680;left:141"><nobr><b>return </b>total, count</nobr></div>
+<div style="position:absolute;top:5741;left:111"><nobr>total, count = ___________________________________________________________________</nobr></div>
+<div style="position:absolute;top:5788;left:111"><nobr><b>return </b>total / count</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5837;left:111"><nobr><b>def </b>sum_helper(t):</nobr></div>
+<div style="position:absolute;top:5854;left:141"><nobr>total, count = t.label, 1</nobr></div>
+<div style="position:absolute;top:5880;left:141"><nobr><b>for </b>b <b>in </b>t.branches:</nobr></div>
+<div style="position:absolute;top:5897;left:171"><nobr>b_total, b_count = sum_helper(b)</nobr></div>
+<div style="position:absolute;top:5919;left:171"><nobr>total += b_total</nobr></div>
+<div style="position:absolute;top:5940;left:171"><nobr>count += b_count</nobr></div>
+<div style="position:absolute;top:5966;left:141"><nobr><b>return </b>total, count</nobr></div>
+<div style="position:absolute;top:5983;left:111"><nobr>total, count = sum_helper(t)</nobr></div>
+<div style="position:absolute;top:6009;left:111"><nobr><b>return </b>total / count</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:6115;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=6><b>Page 6</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6152;left:81"><nobr>6 Final Review</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:7303;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=7><b>Page 7</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7340;left:502"><nobr>Final Review</nobr></div>
+<div style="position:absolute;top:7340;left:609"><nobr>7</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:7372;left:81"><nobr>4 Streams</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:7428;left:52"><nobr>4.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7425;left:81"><nobr>Write a function merge that takes 2 sorted streams s1 and s2, and returns a new</nobr></div>
+<div style="position:absolute;top:7447;left:81"><nobr>sorted stream which contains all the elements from s1 and s2.</nobr></div>
+<div style="position:absolute;top:7468;left:81"><nobr>Assume that both s1 and s2 have infinite length.</nobr></div>
+<div style="position:absolute;top:7495;left:81"><nobr>(define (merge s1 s2)</nobr></div>
+<div style="position:absolute;top:7559;left:111"><nobr>(<b>if </b>_________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:7624;left:141"><nobr>_________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:7689;left:141"><nobr>_________________________________________________________________________))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7743;left:81"><nobr>(define (merge s1 s2)</nobr></div>
+<div style="position:absolute;top:7765;left:111"><nobr>(<b>if </b>(&lt; (car s1) (car s2))</nobr></div>
+<div style="position:absolute;top:7786;left:141"><nobr>(cons-stream (car s1) (merge (cdr-stream s1) s2))</nobr></div>
+<div style="position:absolute;top:7808;left:141"><nobr>(cons-stream (car s2) (merge s1 (cdr-stream s2)))))</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:7861;left:52"><nobr>4.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7857;left:81"><nobr>(Adapted from Fall 2014) Implement cycle which returns a stream repeating the</nobr></div>
+<div style="position:absolute;top:7879;left:81"><nobr>digits 1, 3, 0, 2, and 4, forever. Write cons-stream only once in your solution!</nobr></div>
+<div style="position:absolute;top:7900;left:81"><nobr>Hint: (3+2) % 5 == 0.</nobr></div>
+<div style="position:absolute;top:7927;left:81"><nobr>(define (cycle start)</nobr></div>
+<div style="position:absolute;top:7992;left:111"><nobr>______________________________________________________________________________)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8046;left:81"><nobr>(define (cycle start)</nobr></div>
+<div style="position:absolute;top:8068;left:111"><nobr>(cons-stream start (cycle (modulo (+ start 2) 5))))</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:8491;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=8><b>Page 8</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8528;left:81"><nobr>8 Final Review</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:8560;left:81"><nobr>5 Generators</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:8616;left:52"><nobr>5.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8613;left:81"><nobr>Implement accumulate, which takes in an iterable and a function f and yields</nobr></div>
+<div style="position:absolute;top:8634;left:81"><nobr>each accumulated value from applying f to the running total and the next element.</nobr></div>
+<div style="position:absolute;top:8665;left:81"><nobr><b>from </b>operator <b>import </b>add, mul</nobr></div>
+<div style="position:absolute;top:8708;left:81"><nobr><b>def </b>accumulate(iterable, f):</nobr></div>
+<div style="position:absolute;top:8747;left:111"><nobr>&gt;&gt;&gt; list(accumulate([1, 2, 3, 4, 5], add))</nobr></div>
+<div style="position:absolute;top:8768;left:111"><nobr>[1, 3, 6, 10, 15]</nobr></div>
+<div style="position:absolute;top:8790;left:111"><nobr>&gt;&gt;&gt; list(accumulate([1, 2, 3, 4, 5], mul))</nobr></div>
+<div style="position:absolute;top:8811;left:111"><nobr>[1, 2, 6, 24, 120]</nobr></div>
+<div style="position:absolute;top:8854;left:111"><nobr>it = <b>iter</b>(iterable)</nobr></div>
+<div style="position:absolute;top:8919;left:111"><nobr>______________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:8984;left:111"><nobr>______________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:9052;left:111"><nobr><b>for </b>__________________________________________________________________________:</nobr></div>
+<div style="position:absolute;top:9113;left:141"><nobr>__________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:9177;left:141"><nobr>__________________________________________________________________________</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9232;left:111"><nobr>total = <b>next</b>(it)</nobr></div>
+<div style="position:absolute;top:9257;left:111"><nobr><b>yield </b>total</nobr></div>
+<div style="position:absolute;top:9279;left:111"><nobr><b>for </b>element <b>in </b>it:</nobr></div>
+<div style="position:absolute;top:9296;left:141"><nobr>total = f(total, element)</nobr></div>
+<div style="position:absolute;top:9322;left:141"><nobr><b>yield </b>total</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:9679;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=9><b>Page 9</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9716;left:502"><nobr>Final Review</nobr></div>
+<div style="position:absolute;top:9716;left:609"><nobr>9</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:9756;left:52"><nobr>5.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9753;left:81"><nobr>Write a generator function that yields functions that are repeated applications of</nobr></div>
+<div style="position:absolute;top:9774;left:81"><nobr>a one-argument function f. The first function yielded should apply f 0 times (the</nobr></div>
+<div style="position:absolute;top:9796;left:81"><nobr>identity function), the second function yielded should apply f once, etc.</nobr></div>
+<div style="position:absolute;top:9826;left:81"><nobr><b>def </b>repeated(f):</nobr></div>
+<div style="position:absolute;top:9865;left:111"><nobr>&gt;&gt;&gt; double = lambda x: 2 * x</nobr></div>
+<div style="position:absolute;top:9887;left:111"><nobr>&gt;&gt;&gt; funcs = repeated(double)</nobr></div>
+<div style="position:absolute;top:9908;left:111"><nobr>&gt;&gt;&gt; identity = next(funcs)</nobr></div>
+<div style="position:absolute;top:9930;left:111"><nobr>&gt;&gt;&gt; double = next(funcs)</nobr></div>
+<div style="position:absolute;top:9951;left:111"><nobr>&gt;&gt;&gt; quad = next(funcs)</nobr></div>
+<div style="position:absolute;top:9973;left:111"><nobr>&gt;&gt;&gt; oct = next(funcs)</nobr></div>
+<div style="position:absolute;top:9994;left:111"><nobr>&gt;&gt;&gt; quad(1)</nobr></div>
+<div style="position:absolute;top:10016;left:111"><nobr>4</nobr></div>
+<div style="position:absolute;top:10037;left:111"><nobr>&gt;&gt;&gt; oct(1)</nobr></div>
+<div style="position:absolute;top:10059;left:111"><nobr>8</nobr></div>
+<div style="position:absolute;top:10080;left:111"><nobr>&gt;&gt;&gt; [g(1) for _, g in</nobr></div>
+<div style="position:absolute;top:10102;left:111"><nobr>... zip(range(5), repeated(lambda x: 2 * x))]</nobr></div>
+<div style="position:absolute;top:10123;left:111"><nobr>[1, 2, 4, 8, 16]</nobr></div>
+<div style="position:absolute;top:10210;left:111"><nobr>g = ________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:10257;left:111"><nobr><b>while </b>True:</nobr></div>
+<div style="position:absolute;top:10317;left:141"><nobr>________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:10382;left:141"><nobr>________________________________________________________________________</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10440;left:81"><nobr><b>def </b>repeated(f):</nobr></div>
+<div style="position:absolute;top:10458;left:111"><nobr>g = <b>lambda </b>x: x</nobr></div>
+<div style="position:absolute;top:10483;left:111"><nobr><b>while </b>True:</nobr></div>
+<div style="position:absolute;top:10505;left:141"><nobr><b>yield </b>g</nobr></div>
+<div style="position:absolute;top:10522;left:141"><nobr>g = (<b>lambda </b>g: <b>lambda </b>x: f(g(x)))(g)</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:10575;left:52"><nobr>5.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10572;left:81"><nobr>Ben Bitdiddle proposes the following alternate solution. Does it work?</nobr></div>
+<div style="position:absolute;top:10603;left:81"><nobr><b>def </b>ben_repeated(f):</nobr></div>
+<div style="position:absolute;top:10620;left:111"><nobr>g = <b>lambda </b>x: x</nobr></div>
+<div style="position:absolute;top:10646;left:111"><nobr><b>while </b>True:</nobr></div>
+<div style="position:absolute;top:10667;left:141"><nobr><b>yield </b>g</nobr></div>
+<div style="position:absolute;top:10685;left:141"><nobr>g = <b>lambda </b>x: f(g(x))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10729;left:81"><nobr>This solution does not work. The value g changes with each iteration so the bodies</nobr></div>
+<div style="position:absolute;top:10751;left:81"><nobr>of the lambdas yielded change as well.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:10867;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=10><b>Page 10</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10904;left:81"><nobr>10 Final Review</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:10936;left:81"><nobr>6 SQL</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:10992;left:52"><nobr>6.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10989;left:81"><nobr>You’re trying to re-organize your music library! The table tracks below contains</nobr></div>
+<div style="position:absolute;top:11011;left:81"><nobr>song titles and the corresponding album. Create another table tracklist with two</nobr></div>
+<div style="position:absolute;top:11032;left:81"><nobr>columns: the album and a comma-separated list of all songs from that album in</nobr></div>
+<div style="position:absolute;top:11054;left:81"><nobr>alphabetical order.</nobr></div>
+<div style="position:absolute;top:11093;left:81"><nobr><b>CREATE TABLE </b>tracks <b>AS</b></nobr></div>
+<div style="position:absolute;top:11115;left:96"><nobr><b>SELECT </b>Human <b>AS </b>title , The Definition <b>AS </b>album <b>UNION</b></nobr></div>
+<div style="position:absolute;top:11136;left:96"><nobr><b>SELECT </b>Simple and Sweet , The Definition</nobr></div>
+<div style="position:absolute;top:11136;left:492"><nobr><b>UNION</b></nobr></div>
+<div style="position:absolute;top:11158;left:96"><nobr><b>SELECT </b>Paper Planes</nobr></div>
+<div style="position:absolute;top:11154;left:283"><nobr>, Translations Through Speakers ;</nobr></div>
+<div style="position:absolute;top:11206;left:81"><nobr><b>CREATE TABLE </b>tracklist <b>AS</b></nobr></div>
+<div style="position:absolute;top:11223;left:96"><nobr>WITH songs(album, total) <b>AS </b>(</nobr></div>
+<div style="position:absolute;top:11266;left:126"><nobr>____________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:11310;left:111"><nobr>),</nobr></div>
+<div style="position:absolute;top:11353;left:111"><nobr>____________________________________________________ <b>AS </b>(</nobr></div>
+<div style="position:absolute;top:11396;left:126"><nobr>____________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:11439;left:126"><nobr>____________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:11482;left:126"><nobr>____________________________________________________________________________</nobr></div>
+<div style="position:absolute;top:11525;left:111"><nobr>)</nobr></div>
+<div style="position:absolute;top:11572;left:111"><nobr><b>SELECT </b>_______________________________________________________________________</nobr></div>
+<div style="position:absolute;top:11615;left:126"><nobr><b>WHERE </b>______________________________________________________________________;</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11665;left:81"><nobr>CREATE TABLE tracklist AS</nobr></div>
+<div style="position:absolute;top:11687;left:96"><nobr>WITH songs(album, total) AS (</nobr></div>
+<div style="position:absolute;top:11708;left:126"><nobr>SELECT album, COUNT(*) FROM tracks GROUP BY album</nobr></div>
+<div style="position:absolute;top:11730;left:111"><nobr>),</nobr></div>
+<div style="position:absolute;top:11751;left:111"><nobr>listing(album, songs_so_far, last_song, num_songs_so_far) AS (</nobr></div>
+<div style="position:absolute;top:11773;left:126"><nobr>SELECT album, title, title, 1 FROM tracks UNION</nobr></div>
+<div style="position:absolute;top:11794;left:126"><nobr>SELECT l.album, songs_so_far || ,</nobr></div>
+<div style="position:absolute;top:11794;left:402"><nobr>|| title, title, num_songs_so_far + 1</nobr></div>
+<div style="position:absolute;top:11816;left:133"><nobr>FROM tracks AS t, listing AS l</nobr></div>
+<div style="position:absolute;top:11837;left:133"><nobr>WHERE l.album = t.album AND title &gt; last_song</nobr></div>
+<div style="position:absolute;top:11859;left:111"><nobr>)</nobr></div>
+<div style="position:absolute;top:11880;left:111"><nobr>SELECT l.album, l.songs_so_far</nobr></div>
+<div style="position:absolute;top:11902;left:126"><nobr>FROM songs AS s, listing AS l</nobr></div>
+<div style="position:absolute;top:11923;left:126"><nobr>WHERE s.album = l.album AND total = num_songs_so_far;</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:12055;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=11><b>Page 11</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12092;left:495"><nobr>Final Review</nobr></div>
+<div style="position:absolute;top:12092;left:601"><nobr>11</nobr></div>
+<div style="position:absolute;top:12125;left:81"><nobr>sqlite3&gt; <b>SELECT </b>* <b>FROM </b>tracklist <b>ORDER BY </b>album;</nobr></div>
+<div style="position:absolute;top:12146;left:81"><nobr>The Definition|Human, Simple <b>and </b>Sweet</nobr></div>
+<div style="position:absolute;top:12168;left:81"><nobr>Translations Through Speakers|Paper Planes</nobr></div>
+</span></font>
+</body>
+</html>

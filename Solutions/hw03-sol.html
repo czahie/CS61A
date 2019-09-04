@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero, Paul Hilfinger" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="/assets/css/hw.css">
+
+
+    <title>
+Homework 3 Solutions | CS 61A Fall 2017
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Homework 3 Solutions
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="hw03.zip" class="label label-outline">hw03.zip</a></li>
+        </ul>
+        
+      </h1>
+    </header>
+    
+<h2>Solution Files</h2>
+<p>You can find solutions for all questions in <a href="hw03.py">hw03.py</a>.</p>
+
+    
+<p>The <code>construct_check</code> module is used in this assignment, which defines a
+function <code>check</code>.  For example, a call such as</p>
+
+<pre><code>check(&quot;foo.py&quot;, &quot;func1&quot;, [&quot;While&quot;, &quot;For&quot;, &quot;Recursion&quot;])</code></pre>
+
+<p>checks that the function <code>func1</code> in file <code>foo.py</code> does <em>not</em> contain
+any <code>while</code> or <code>for</code> constructs, and is not an overtly recursive function (i.e.,
+one in which a function contains a call to itself by name.)</p>
+
+
+<h2 id="required-questions">Required questions</h2>
+
+
+<h3 class="question" id="q1">Q1: Has Seven</h3>
+
+<p>Write a function <code>has_seven</code> that takes a positive integer <code>n</code> and
+returns whether <code>n</code> contains the digit 7.  <em>Do not use any assignment
+statements - use recursion instead</em>:</p>
+
+<solution>
+
+<pre><code>def has_seven(k):
+    &quot;&quot;&quot;Returns True if at least one of the digits of k is a 7, False otherwise.
+
+    &gt;&gt;&gt; has_seven(3)
+    False
+    &gt;&gt;&gt; has_seven(7)
+    True
+    &gt;&gt;&gt; has_seven(2734)
+    True
+    &gt;&gt;&gt; has_seven(2634)
+    False
+    &gt;&gt;&gt; has_seven(734)
+    True
+    &gt;&gt;&gt; has_seven(7777)
+    True
+    &quot;&quot;&quot;
+<div class="sol-highlight">    if k % 10 == 7:
+        return True
+    elif k &lt; 10:
+        return False
+    else:
+        return has_seven(k // 10)</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q has_seven</code></pre>
+<h3 class="question" id="q2">Q2: Summation</h3>
+
+<p>Write a recursive implementation of <code>summation</code>, which takes a positive integer
+<code>n</code> and a function <code>term</code>. It applies <code>term</code> to every number from <code>1</code> to <code>n</code>
+including <code>n</code> and returns the sum of the results.</p>
+
+<solution>
+
+<pre><code>def summation(n, term):
+
+    &quot;&quot;&quot;Return the sum of the first n terms in the sequence defined by term.
+    Implement using recursion!
+
+    &gt;&gt;&gt; summation(5, lambda x: x * x * x) # 1^3 + 2^3 + 3^3 + 4^3 + 5^3
+    225
+    &gt;&gt;&gt; summation(9, lambda x: x + 1) # 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10
+    54
+    &gt;&gt;&gt; summation(5, lambda x: 2**x) # 2^1 + 2^2 + 2^3 + 2^4 + 2^5
+    62
+    &gt;&gt;&gt; # Do not use while/for loops!
+    &gt;&gt;&gt; from construct_check import check
+    &gt;&gt;&gt; check(HW_SOURCE_FILE, &#x27;summation&#x27;,
+    ...       [&#x27;While&#x27;, &#x27;For&#x27;])
+    True
+    &quot;&quot;&quot;
+    assert n &gt;= 1
+<div class="sol-highlight">    if n == 1:
+        return term(n)
+    else:
+        return term(n) + summation(n &#x2d; 1, term)</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q summation</code></pre>
+Several doctests refer to these one-argument functions:
+
+<pre><code>from operator import add, mul
+
+def square(x):
+    return x * x
+
+def triple(x):
+    return 3 * x
+
+def identity(x):
+    return x
+
+def increment(x):
+    return x + 1</code></pre>
+
+<h3 class="question" id="q3">Q3: Accumulate</h3>
+
+<p>Show that both <code>summation</code> and <code>product</code> (from <a href="/hw/hw02/#q1">Homework 2</a>) are instances of a
+more general function, called <code>accumulate</code>:</p>
+
+<pre><code>def accumulate(combiner, base, n, term):
+    &quot;&quot;&quot;Return the result of combining the first n terms in a sequence and base.
+    The terms to be combined are term(1), term(2), ..., term(n).  combiner is a
+    two&#x2d;argument commutative function.
+
+    &gt;&gt;&gt; accumulate(add, 0, 5, identity)  # 0 + 1 + 2 + 3 + 4 + 5
+    15
+    &gt;&gt;&gt; accumulate(add, 11, 5, identity) # 11 + 1 + 2 + 3 + 4 + 5
+    26
+    &gt;&gt;&gt; accumulate(add, 11, 0, identity) # 11
+    11
+    &gt;&gt;&gt; accumulate(add, 11, 3, square)   # 11 + 1^2 + 2^2 + 3^2
+    25
+    &gt;&gt;&gt; accumulate(mul, 2, 3, square)   # 2 * 1^2 * 2^2 * 3^2
+    72
+    &quot;&quot;&quot;
+<div class="sol-highlight">    total, k = base, 1
+    while k &lt;= n:
+        total, k = combiner(total, term(k)), k + 1
+    return total
+
+    # Recursive solution
+    # if n == 0:
+    #     return base
+    # else:
+    #     return combiner(term(n), accumulate(combiner, base, n&#x2d;1, term))
+
+    # Recursive solution using base to keep track of total
+    # if n == 0:
+    #     return base
+    # else:
+    #     return accumulate(combiner, combiner(base, term(n)), n&#x2d;1, term)
+</div></code></pre>
+
+<p><code>accumulate(combiner, base, n, term)</code> takes the following arguments:</p>
+
+<ul>
+  <li><code>term</code> and <code>n</code>: the same arguments as in <code>summation</code> and <code>product</code></li>
+  <li><code>combiner</code>: a two-argument function that specifies how the current term
+  combined with the previously accumulated terms. You may assume that <code>combiner</code>
+  is commutative, i.e., <code>combiner(a, b) = combiner(b, a)</code>.</li>
+  <li><code>base</code>: value that specifies what value to use to start the accumulation.</li>
+</ul>
+
+<p>For example, <code>accumulate(add, 11, 3, square)</code> is</p>
+
+<pre><code>11 + square(1) + square(2) + square(3)</code></pre>
+
+<p>Implement <code>accumulate</code> and show how <code>summation</code> and <code>product</code> can both be
+defined as simple calls to <code>accumulate</code>:</p>
+
+<pre><code>def summation_using_accumulate(n, term):
+    &quot;&quot;&quot;Returns the sum of term(1) + ... + term(n). The implementation
+    uses accumulate.
+
+    &gt;&gt;&gt; summation_using_accumulate(5, square)
+    55
+    &gt;&gt;&gt; summation_using_accumulate(5, triple)
+    45
+    &gt;&gt;&gt; from construct_check import check
+    &gt;&gt;&gt; check(HW_SOURCE_FILE, &#x27;summation_using_accumulate&#x27;,
+    ...       [&#x27;Recursion&#x27;, &#x27;For&#x27;, &#x27;While&#x27;])
+    True
+    &quot;&quot;&quot;
+<div class="sol-highlight">    return accumulate(add, 0, n, term)</div>
+def product_using_accumulate(n, term):
+    &quot;&quot;&quot;An implementation of product using accumulate.
+
+    &gt;&gt;&gt; product_using_accumulate(4, square)
+    576
+    &gt;&gt;&gt; product_using_accumulate(6, triple)
+    524880
+    &gt;&gt;&gt; from construct_check import check
+    &gt;&gt;&gt; check(HW_SOURCE_FILE, &#x27;product_using_accumulate&#x27;,
+    ...       [&#x27;Recursion&#x27;, &#x27;For&#x27;, &#x27;While&#x27;])
+    True
+    &quot;&quot;&quot;
+<div class="sol-highlight">    return accumulate(mul, 1, n, term)</div></code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q accumulate
+python3 ok -q summation_using_accumulate
+python3 ok -q product_using_accumulate</code></pre>
+<h3 class="question" id="q4">Q4: Filtered Accumulate</h3>
+
+<p>Show how to extend the <code>accumulate</code> function to allow for <em>filtering</em> the
+results produced by its <code>term</code> argument, by implementing the
+<code>filtered_accumulate</code> function in terms of <code>accumulate</code>:</p>
+
+<pre><code>def filtered_accumulate(combiner, base, pred, n, term):
+    &quot;&quot;&quot;Return the result of combining the terms in a sequence of N terms
+    that satisfy the predicate PRED.  COMBINER is a two&#x2d;argument function.
+    If v1, v2, ..., vk are the values in TERM(1), TERM(2), ..., TERM(N)
+    that satisfy PRED, then the result is
+         BASE COMBINER v1 COMBINER v2 ... COMBINER vk
+    (treating COMBINER as if it were a binary operator, like +). The
+    implementation uses accumulate.
+
+    &gt;&gt;&gt; filtered_accumulate(add, 0, lambda x: True, 5, identity)  # 0 + 1 + 2 + 3 + 4 + 5
+    15
+    &gt;&gt;&gt; filtered_accumulate(add, 11, lambda x: False, 5, identity) # 11
+    11
+    &gt;&gt;&gt; filtered_accumulate(add, 0, odd, 5, identity)   # 0 + 1 + 3 + 5
+    9
+    &gt;&gt;&gt; filtered_accumulate(mul, 1, greater_than_5, 5, square)  # 1 * 9 * 16 * 25
+    3600
+    &gt;&gt;&gt; # Do not use while/for loops or recursion
+    &gt;&gt;&gt; from construct_check import check
+    &gt;&gt;&gt; check(HW_SOURCE_FILE, &#x27;filtered_accumulate&#x27;,
+    ...       [&#x27;While&#x27;, &#x27;For&#x27;, &#x27;Recursion&#x27;])
+    True
+    &quot;&quot;&quot;
+    def combine_if(x, y):
+<div class="sol-highlight">        if pred(y):
+            return combiner(x, y)
+        else:
+            return x</div>    return accumulate(combine_if, base, n, term)
+
+def odd(x):
+    return x % 2 == 1
+
+def greater_than_5(x):
+    return x &gt; 5</code></pre>
+
+<p><code>filtered_accumulate(combiner, base, pred, n, term)</code> takes
+the following arguments:</p>
+
+<ul>
+  <li><code>combiner</code>, <code>base</code>, <code>term</code> and <code>n</code>: the same arguments as <code>accumulate</code>.</li>
+  <li><code>pred</code>: a one-argument predicate function applied to the values of <code>term(k)</code>,
+  <code>k</code> from 1 to <code>n</code>. Only values for which <code>pred</code> returns a true value are
+  combined to form the result.  If no values satisfy <code>pred</code>, then <code>base</code> is
+  returned.</li>
+</ul>
+
+<p>For example, <code>filtered_accumulate(add, 0, is_prime, 11, identity)</code> would be</p>
+
+<pre><code>0 + 2 + 3 + 5 + 7 + 11</code></pre>
+
+<p>for a suitable definition of <code>is_prime</code>.</p>
+
+<p>Implement <code>filtered_accumulate</code> by defining the <code>combine_if</code> function. Exactly
+what this function does is something for you to discover. Do not write any
+loops or recursive calls to <code>filtered_accumulate</code>.</p>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q filtered_accumulate</code></pre>
+
+<h3 class="question" id="q5">Q5: Make Repeater</h3>
+
+<p>Implement a function <code>make_repeater</code> so that
+<code>make_repeater(f, n)(x)</code> returns <code>f(f(...f(x)...))</code>, where <code>f</code> is applied
+<code>n</code> times. That is, <code>make_repeater(f, n)</code> returns another function that can then be
+applied to another argument. For example,
+<code>make_repeater(square, 3)(42)</code> evaluates to <code>square(square(square(42)))</code>.  Yes, it
+makes sense to apply the function zero times!  See if you can figure out a
+reasonable function to return for that case.</p>
+
+<pre><code>def make_repeater(f, n):
+    &quot;&quot;&quot;Return the function that computes the nth application of f.
+
+    &gt;&gt;&gt; add_three = make_repeater(increment, 3)
+    &gt;&gt;&gt; add_three(5)
+    8
+    &gt;&gt;&gt; make_repeater(triple, 5)(1) # 3 * 3 * 3 * 3 * 3 * 1
+    243
+    &gt;&gt;&gt; make_repeater(square, 2)(5) # square(square(5))
+    625
+    &gt;&gt;&gt; make_repeater(square, 4)(5) # square(square(square(square(5))))
+    152587890625
+    &gt;&gt;&gt; make_repeater(square, 0)(5)
+    5
+    &quot;&quot;&quot;
+<div class="sol-highlight">    g = identity
+    while n &gt; 0:
+        g = compose1(f, g)
+        n = n &#x2d; 1
+    return g
+
+# Alternatives
+
+def make_repeater2(f, n):
+    def h(x):
+        k = 0
+        while k &lt; n:
+            x, k = f(x), k + 1
+        return x
+    return h
+
+def make_repeater3(f, n):
+    return accumulate(compose1, lambda x: x, n, lambda k: f)</div></code></pre>
+
+<blockquote><p>For an extra challenge, try defining <code>make_repeater</code> using <code>compose1</code> and
+your <code>accumulate</code> function in a single one-line return statement.</p></blockquote>
+
+<pre><code>def compose1(f, g):
+    &quot;&quot;&quot;Return a function h, such that h(x) = f(g(x)).&quot;&quot;&quot;
+    def h(x):
+        return f(g(x))
+    return h</code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q make_repeater</code></pre>
+
+<div class="sol-highlight">
+
+<p>There are many correct ways to implement <code>make_repeater</code>.  The first
+solution above creates a new function in every iteration of the <code>while</code>
+statement (via <code>compose1</code>).  The second solution shows that it is also
+possible to implement <code>make_repeater</code> by creating only a single new
+function.  That function make_repeaterly applies <code>f</code>.</p>
+
+<p><code>make_repeater</code> can also be implemented compactly using <code>accumulate</code>, the
+third solution.</p>
+
+</div>
+
+
+<h2 id="extra-questions">Extra questions</h2>
+
+
+<blockquote><p>Extra questions are not worth extra credit and are entirely optional.
+They are designed to challenge you to think creatively!</p></blockquote>
+
+<h3 class="question" id="q6">Q6: Quine</h3>
+
+<p>Write a one-line program that prints itself, using only the following features
+of the Python language:</p>
+
+<ul>
+  <li>Number literals</li>
+  <li>Assignment statements</li>
+  <li>String literals that can be expressed using single or double quotes</li>
+  <li>The arithmetic operators <code>+</code>, <code>&#x2d;</code>, <code>*</code>, and <code>/</code></li>
+  <li>The built-in <code>print</code> function</li>
+  <li>The built-in <code>eval</code> function, which evaluates a string as a Python expression</li>
+  <li>The built-in <code>repr</code> function, which returns an expression that evaluates to its argument</li>
+</ul>
+
+<p>You can concatenate two strings by adding them together with <code>+</code> and repeat a
+string by multipying it by an integer. Semicolons can be used to separate
+multiple statements on the same line. E.g.,</p>
+
+<pre><code>&gt;&gt;&gt; c=&#x27;c&#x27;;print(&#x27;a&#x27;);print(&#x27;b&#x27; + c * 2)
+a
+bcc</code></pre>
+
+<p>Hint: Explore the relationship between single quotes, double quotes, and the
+<code>repr</code> function applied to strings.</p>
+
+<p>A program that prints itself is called a Quine. Place your solution in the multi-line string named <code>quine</code>.</p>
+
+<p><em>Note</em>: No tests will be run on your solution to this problem.
+<h3 class="question" id="q7">Q7: Church numerals</h3></p>
+
+<p>The logician Alonzo Church invented a system of representing non-negative
+integers entirely using functions. The purpose was to show that functions are
+sufficient to describe all of number theory: if we have functions, we do not
+need to assume that numbers exist, but instead we can invent them.</p>
+
+<p>Your goal in this problem is to rediscover this representation known as <em>Church
+numerals</em>. Here are the definitions of <code>zero</code>, as well as a function that
+returns one more than its argument:</p>
+
+<pre><code>def zero(f):
+    return lambda x: x
+
+def successor(n):
+    return lambda f: lambda x: f(n(f)(x))</code></pre>
+
+<p>First, define functions <code>one</code> and <code>two</code> such that they have the same behavior
+as <code>successor(zero)</code> and <code>successsor(successor(zero))</code> respectively, but <em>do
+not call <code>successor</code> in your implementation</em>.</p>
+
+<p>Next, implement a function <code>church_to_int</code> that converts a church numeral
+argument to a regular Python integer.</p>
+
+<p>Finally, implement functions <code>add_church</code>, <code>mul_church</code>, and <code>pow_church</code> that
+perform addition, multiplication, and exponentiation on church numerals.</p>
+
+<pre><code>def one(f):
+    &quot;&quot;&quot;Church numeral 1: same as successor(zero)&quot;&quot;&quot;
+<div class="sol-highlight">    return lambda x: f(x)</div>
+def two(f):
+    &quot;&quot;&quot;Church numeral 2: same as successor(successor(zero))&quot;&quot;&quot;
+<div class="sol-highlight">    return lambda x: f(f(x))</div>
+three = successor(two)
+
+def church_to_int(n):
+    &quot;&quot;&quot;Convert the Church numeral n to a Python integer.
+
+    &gt;&gt;&gt; church_to_int(zero)
+    0
+    &gt;&gt;&gt; church_to_int(one)
+    1
+    &gt;&gt;&gt; church_to_int(two)
+    2
+    &gt;&gt;&gt; church_to_int(three)
+    3
+    &quot;&quot;&quot;
+<div class="sol-highlight">    return n(lambda x: x + 1)(0)</div>
+def add_church(m, n):
+    &quot;&quot;&quot;Return the Church numeral for m + n, for Church numerals m and n.
+
+    &gt;&gt;&gt; church_to_int(add_church(two, three))
+    5
+    &quot;&quot;&quot;
+<div class="sol-highlight">    return lambda f: lambda x: m(f)(n(f)(x))</div>
+def mul_church(m, n):
+    &quot;&quot;&quot;Return the Church numeral for m * n, for Church numerals m and n.
+
+    &gt;&gt;&gt; four = successor(three)
+    &gt;&gt;&gt; church_to_int(mul_church(two, three))
+    6
+    &gt;&gt;&gt; church_to_int(mul_church(three, four))
+    12
+    &quot;&quot;&quot;
+<div class="sol-highlight">    return lambda f: m(n(f))</div>
+def pow_church(m, n):
+    &quot;&quot;&quot;Return the Church numeral m ** n, for Church numerals m and n.
+
+    &gt;&gt;&gt; church_to_int(pow_church(two, three))
+    8
+    &gt;&gt;&gt; church_to_int(pow_church(three, two))
+    9
+    &quot;&quot;&quot;
+<div class="sol-highlight">    return n(m)</div></code></pre>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q church_to_int
+python3 ok -q add_church
+python3 ok -q mul_church
+python3 ok -q pow_church</code></pre>
+
+<div class="sol-highlight">
+
+<p>Church numerals are a way to represent non-negative integers via
+repeated function application.  The definitions of <code>zero</code>, <code>one</code>, and
+<code>two</code> show that each numeral is a function that takes a function and
+repeats it a number of times on some argument <code>x</code>.</p>
+
+<p>The <code>church_to_int</code> function reveals how a Church numeral can be mapped
+to our normal notion of non-negative integers using the increment
+function.</p>
+
+<p>Addition of Church numerals is function composition of the functions of
+<code>x</code>, while multiplication is composition of the functions of <code>f</code>.</p>
+
+</div>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#required-questions">Required questions</a></li>
+  <ul>
+    <li><a href="#q1">Q1: Has Seven</a></li>
+    <li><a href="#q2">Q2: Summation</a></li>
+    <li><a href="#q3">Q3: Accumulate</a></li>
+    <li><a href="#q4">Q4: Filtered Accumulate</a></li>
+    <li><a href="#q5">Q5: Make Repeater</a></li>
+  </ul>
+  <li><a href="#extra-questions">Extra questions</a></li>
+  <ul>
+    <li><a href="#q6">Q6: Quine</a></li>
+    <li><a href="#q7">Q7: Church numerals</a></li>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>

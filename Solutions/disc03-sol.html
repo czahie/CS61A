@@ -1,0 +1,479 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}pre { word-wrap:break-word; }pre { white-space:pre-wrap; }</style><div id="google-cache-hdr"  dir=ltr><div>这是 <a href="https://cs61a.org/disc/disc03_sol.pdf" dir="ltr">https://cs61a.org/disc/disc03_sol.pdf</a> 的 HTML 档。<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> 在网路漫游时会自动将档案转换成 HTML 网页来储存。</div></div><div style="position:relative;margin:8px;">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX-1.40.18">
+<meta name="CreationDate" content="D:20171219170038Z">
+<meta name="ModDate" content="D:20171219170038Z">
+<meta name="Fullbanner" content="This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) kpathsea version 6.2.3">
+<title>CS 61A Trees and Sequences Fall 2017 1 Sequences and Lists</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:261;left:81"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:261;left:390"><nobr>Trees and Sequences</nobr></div>
+<div style="position:absolute;top:303;left:81"><nobr>Fall 2017</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:311;left:358"><nobr>Discussion 3: September 20, 2017 <font color="#ff0000" style="font-size:19px">Solutions</font></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:377;left:81"><nobr>1 Sequences and Lists</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:434;left:81"><nobr>A sequence is an ordered collection of values. It has two fundamental prop-</nobr></div>
+<div style="position:absolute;top:458;left:81"><nobr>erties: length and element selection. In this discussion, we’ll explore one of</nobr></div>
+<div style="position:absolute;top:483;left:81"><nobr>Python’s data types, the list, which implements this abstraction.</nobr></div>
+<div style="position:absolute;top:517;left:81"><nobr>In Python, we can have lists of whatever values we want, be it numbers,</nobr></div>
+<div style="position:absolute;top:542;left:81"><nobr>strings, functions, or even other lists! Furthermore, the types of the list’s</nobr></div>
+<div style="position:absolute;top:566;left:81"><nobr>contents need not be the same. In other words, the list need not be homoge-</nobr></div>
+<div style="position:absolute;top:591;left:81"><nobr>nous.</nobr></div>
+<div style="position:absolute;top:625;left:81"><nobr>Lists can be created using square braces. Their elements can be accessed</nobr></div>
+<div style="position:absolute;top:649;left:81"><nobr>(or indexed) with square braces. Lists are zero-indexed: to access the first</nobr></div>
+<div style="position:absolute;top:674;left:81"><nobr>element, we must index at 0; to access the ith element, we must index at</nobr></div>
+<div style="position:absolute;top:698;left:81"><nobr>i - 1.</nobr></div>
+<div style="position:absolute;top:733;left:81"><nobr>We can also index with negative numbers. These begin indexing at the end</nobr></div>
+<div style="position:absolute;top:757;left:81"><nobr>of the list, so the index -1 is equivalent to the index len(list) - 1 and</nobr></div>
+<div style="position:absolute;top:782;left:81"><nobr>index -2 is the same as len(list) - 2.</nobr></div>
+<div style="position:absolute;top:816;left:81"><nobr>Let’s try out some indexing:</nobr></div>
+<div style="position:absolute;top:845;left:81"><nobr>&gt;&gt;&gt; fantasy_team = [aaron rodgers, desean jackson]</nobr></div>
+<div style="position:absolute;top:870;left:81"><nobr>&gt;&gt;&gt; <b>print</b>(fantasy_team)</nobr></div>
+<div style="position:absolute;top:894;left:81"><nobr>[aaron rodgers, desean jackson]</nobr></div>
+<div style="position:absolute;top:918;left:81"><nobr>&gt;&gt;&gt; fantasy_team[0]</nobr></div>
+<div style="position:absolute;top:943;left:89"><nobr>aaron rodgers</nobr></div>
+<div style="position:absolute;top:967;left:81"><nobr>&gt;&gt;&gt; fantasy_team[<b>len</b>(fantasy_team) - 1]</nobr></div>
+<div style="position:absolute;top:992;left:89"><nobr>desean jackson</nobr></div>
+<div style="position:absolute;top:1016;left:81"><nobr>&gt;&gt;&gt; fantasy_team[-1]</nobr></div>
+<div style="position:absolute;top:1040;left:89"><nobr>desean jackson</nobr></div>
+<div style="position:absolute;top:1088;left:81"><nobr>If we have two lists, we can use the + operator to create a new list with the</nobr></div>
+<div style="position:absolute;top:1112;left:81"><nobr>values of the original two lists, concatenated together.</nobr></div>
+<div style="position:absolute;top:1142;left:81"><nobr>&gt;&gt;&gt; fish_names = [Dory, Flounder]</nobr></div>
+<div style="position:absolute;top:1166;left:81"><nobr>&gt;&gt;&gt; rabbit_names = [Bugs Bunny, Officer Hopps]</nobr></div>
+<div style="position:absolute;top:1190;left:81"><nobr>&gt;&gt;&gt; animal_names = fish_names + rabbit_names</nobr></div>
+<div style="position:absolute;top:1215;left:81"><nobr>&gt;&gt;&gt; animal_names</nobr></div>
+<div style="position:absolute;top:1239;left:81"><nobr>[Dory, Flounder, Bugs Bunny, Officer Hopps]</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1363;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:1398;left:81"><nobr>2 Trees and Sequences</nobr></div>
+<div style="position:absolute;top:1438;left:81"><nobr>Sequences also have a notion of length, the number of items stored in the</nobr></div>
+<div style="position:absolute;top:1463;left:81"><nobr>sequence. In Python,we can check how long a sequence is with the len</nobr></div>
+<div style="position:absolute;top:1487;left:81"><nobr>built-in function.</nobr></div>
+<div style="position:absolute;top:1522;left:81"><nobr>We can also check if an item exists within a list with the in statement.</nobr></div>
+<div style="position:absolute;top:1551;left:81"><nobr>&gt;&gt;&gt; poke_team = [Meowth, Mewtwo]</nobr></div>
+<div style="position:absolute;top:1575;left:81"><nobr>&gt;&gt;&gt; <b>len</b>(poke_team)</nobr></div>
+<div style="position:absolute;top:1600;left:81"><nobr>2</nobr></div>
+<div style="position:absolute;top:1624;left:81"><nobr>&gt;&gt;&gt; Meowth <b>in </b>poke_team</nobr></div>
+<div style="position:absolute;top:1648;left:81"><nobr>True</nobr></div>
+<div style="position:absolute;top:1673;left:81"><nobr>&gt;&gt;&gt; Pikachu <b>in </b>poke_team</nobr></div>
+<div style="position:absolute;top:1697;left:81"><nobr>False</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:1752;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:1805;left:51"><nobr>1.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:1802;left:81"><nobr>What would Python display?</nobr></div>
+<div style="position:absolute;top:1831;left:81"><nobr>&gt;&gt;&gt; a = [1, 5, 4, [2, 3], 3]</nobr></div>
+<div style="position:absolute;top:1856;left:81"><nobr>&gt;&gt;&gt; <b>print</b>(a[0], a[-1])</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1916;left:81"><nobr>1 3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:1966;left:81"><nobr>&gt;&gt;&gt; <b>len</b>(a)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2015;left:81"><nobr>5</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2044;left:81"><nobr>&gt;&gt;&gt; 2 <b>in </b>a</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2095;left:81"><nobr>False</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2124;left:81"><nobr>&gt;&gt;&gt; 4 <b>in </b>a</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2174;left:81"><nobr>True</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2203;left:81"><nobr>&gt;&gt;&gt; a[3][0]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:2252;left:81"><nobr>2</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:2289;left:81"><nobr><a href="https://www.youtube.com/watch?v=zP4jWZpwACM&index=1&list=PLx38hZJ5RLZcgrSJp16YmzNwn9hL5JD8q&vq=hd1080&t=14m22s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2551;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2586;left:439"><nobr>Trees and Sequences</nobr></div>
+<div style="position:absolute;top:2586;left:607"><nobr>3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:2621;left:81"><nobr>Slicing</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2672;left:81"><nobr>If we want to access more than one element of a list at a time, we can use</nobr></div>
+<div style="position:absolute;top:2696;left:81"><nobr>a slice. Slicing a sequence is very similar to indexing. We specify a starting</nobr></div>
+<div style="position:absolute;top:2721;left:81"><nobr>index and an ending index, separated by a colon. Python creates a new</nobr></div>
+<div style="position:absolute;top:2745;left:81"><nobr>list with the elements from the starting index up to (but not including) the</nobr></div>
+<div style="position:absolute;top:2769;left:81"><nobr>ending index.</nobr></div>
+<div style="position:absolute;top:2804;left:81"><nobr>We can also specify a step size, which tells Python how to collect values for</nobr></div>
+<div style="position:absolute;top:2828;left:81"><nobr>us. For example, if we set step size to 2, the returned list will include every</nobr></div>
+<div style="position:absolute;top:2853;left:81"><nobr>other value, from the starting index until the ending index. A negative step</nobr></div>
+<div style="position:absolute;top:2877;left:81"><nobr>size indicates that we are stepping backwards through a list when collecting</nobr></div>
+<div style="position:absolute;top:2901;left:81"><nobr>values.</nobr></div>
+<div style="position:absolute;top:2936;left:81"><nobr>You can also choose not to specify any/all of the slice arguments. Python</nobr></div>
+<div style="position:absolute;top:2960;left:81"><nobr>will perform some default behaviour if this is the case:</nobr></div>
+<div style="position:absolute;top:2991;left:101"><nobr>• If the step size is left out, the default step size is 1.</nobr></div>
+<div style="position:absolute;top:3025;left:101"><nobr>• If the start index is left out, the default start index is the beginning of</nobr></div>
+<div style="position:absolute;top:3054;left:117"><nobr>the list.</nobr></div>
+<div style="position:absolute;top:3084;left:101"><nobr>• If the end index is left out, the default end index is the end of the list.</nobr></div>
+<div style="position:absolute;top:3119;left:101"><nobr>• If the step size is negative, the default start index becomes the end of</nobr></div>
+<div style="position:absolute;top:3147;left:117"><nobr>the list, and the default end index becomes the beginning the of the</nobr></div>
+<div style="position:absolute;top:3172;left:117"><nobr>list.</nobr></div>
+<div style="position:absolute;top:3206;left:81"><nobr>Thus, lst[:] creates a list that is identical to lst (a copy of lst). lst[::-1]</nobr></div>
+<div style="position:absolute;top:3231;left:81"><nobr>creates a list that has the same elements of lst, but reversed. Those rules</nobr></div>
+<div style="position:absolute;top:3255;left:81"><nobr>still apply if more than just the step size is specified e.g. lst[3::-1].</nobr></div>
+<div style="position:absolute;top:3284;left:81"><nobr>&gt;&gt;&gt; directors = [jenkins, spielberg, bigelow, kubrick]</nobr></div>
+<div style="position:absolute;top:3309;left:81"><nobr>&gt;&gt;&gt; directors[:2]</nobr></div>
+<div style="position:absolute;top:3333;left:81"><nobr>[jenkins, spielberg]</nobr></div>
+<div style="position:absolute;top:3357;left:81"><nobr>&gt;&gt;&gt; directors[1:3]</nobr></div>
+<div style="position:absolute;top:3382;left:81"><nobr>[spielberg, bigelow]</nobr></div>
+<div style="position:absolute;top:3406;left:81"><nobr>&gt;&gt;&gt; directors[1:]</nobr></div>
+<div style="position:absolute;top:3431;left:81"><nobr>[spielberg, bigelow, kubrick]</nobr></div>
+<div style="position:absolute;top:3455;left:81"><nobr>&gt;&gt;&gt; directors[0:4:2]</nobr></div>
+<div style="position:absolute;top:3479;left:81"><nobr>[jenkins, bigelow]</nobr></div>
+<div style="position:absolute;top:3504;left:81"><nobr>&gt;&gt;&gt; directors[::-1]</nobr></div>
+<div style="position:absolute;top:3528;left:81"><nobr>[kubrick, bigelow, spielberg, jenkins]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:3583;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:3636;left:51"><nobr>1.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3633;left:81"><nobr>What would Python display?</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3739;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3774;left:81"><nobr>4 Trees and Sequences</nobr></div>
+<div style="position:absolute;top:3811;left:81"><nobr>&gt;&gt;&gt; a = [3, 1, 4, 2, 5, 3]</nobr></div>
+<div style="position:absolute;top:3835;left:81"><nobr>&gt;&gt;&gt; a[1::2]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3881;left:81"><nobr>[1, 2, 3]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3917;left:81"><nobr>&gt;&gt;&gt; a[:]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3962;left:81"><nobr>[3, 1, 4, 2, 5, 3]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3999;left:81"><nobr>&gt;&gt;&gt; a[4:2]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4044;left:81"><nobr>[]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:4079;left:81"><nobr>&gt;&gt;&gt; a[1:-2]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4124;left:81"><nobr>[1, 4, 2]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:4161;left:81"><nobr>&gt;&gt;&gt; a[::-1]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4206;left:81"><nobr>[3, 5, 2, 4, 1, 3]</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:4250;left:81"><nobr><a href="https://www.youtube.com/watch?v=VcZPTlE56G8&vq=hd1080&t=25m49s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:4927;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:4962;left:439"><nobr>Trees and Sequences</nobr></div>
+<div style="position:absolute;top:4962;left:607"><nobr>5</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:4997;left:81"><nobr>2 List Comprehensions</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:5055;left:81"><nobr>A list comprehension is a compact way to create a list whose elements are</nobr></div>
+<div style="position:absolute;top:5079;left:81"><nobr>the results of applying a fixed expression to elements in another sequence.</nobr></div>
+<div style="position:absolute;top:5110;left:138"><nobr>[&lt;map exp&gt; for &lt;name&gt; in &lt;iter exp&gt; if &lt;filter exp&gt;]</nobr></div>
+<div style="position:absolute;top:5148;left:81"><nobr>Let’s break down an example:</nobr></div>
+<div style="position:absolute;top:5179;left:146"><nobr>[x * x - 3 for x in [1, 2, 3, 4, 5] if x % 2 == 1]</nobr></div>
+<div style="position:absolute;top:5217;left:81"><nobr>In this list comprehension, we are creating a new list after performing a</nobr></div>
+<div style="position:absolute;top:5242;left:81"><nobr>series of operations to our initial sequence [1, 2, 3, 4, 5]. We only keep</nobr></div>
+<div style="position:absolute;top:5266;left:81"><nobr>the elements that satisfy the filter expression x % 2 == 1 (1, 3, and 5). For</nobr></div>
+<div style="position:absolute;top:5291;left:81"><nobr>each retained element, we apply the map expression x*x - 3 before adding</nobr></div>
+<div style="position:absolute;top:5315;left:81"><nobr>it to the new list that we are creating, resulting in the output [-2, 6, 22].</nobr></div>
+<div style="position:absolute;top:5350;left:81"><nobr>Note: The if clause in a list comprehension is optional.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:5386;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:5439;left:51"><nobr>2.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:5436;left:81"><nobr>What would Python display?</nobr></div>
+<div style="position:absolute;top:5465;left:81"><nobr>&gt;&gt;&gt; [i + 1 <b>for </b>i <b>in </b>[1, 2, 3, 4, 5] <b>if </b>i % 2 == 0]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5526;left:81"><nobr>[3, 5]</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:5574;left:81"><nobr><a href="https://www.youtube.com/watch?v=VcZPTlE56G8&vq=hd1080&t=31m12s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:5606;left:81"><nobr>&gt;&gt;&gt; [i * i - i <b>for </b>i <b>in </b>[5, -1, 3, -1, 3] <b>if </b>i &gt; 2]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5667;left:81"><nobr>[20, 6, 6]</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:5714;left:81"><nobr><a href="https://www.youtube.com/watch?v=VcZPTlE56G8&vq=hd1080&t=35m26s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:5747;left:81"><nobr>&gt;&gt;&gt; [[y * 2 <b>for </b>y <b>in </b>[x, x + 1]] <b>for </b>x <b>in </b>[1, 2, 3, 4]]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5807;left:81"><nobr>[[2, 4], [4, 6], [6, 8], [8, 10]]</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:5855;left:81"><nobr><a href="https://www.youtube.com/watch?v=VcZPTlE56G8&vq=hd1080&t=36m05s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:6115;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=6><b>Page 6</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:6150;left:81"><nobr>6 Trees and Sequences</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:6185;left:81"><nobr>3 Trees</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:6229;left:818"><nobr>7</nobr></div>
+<div style="position:absolute;top:6272;left:775"><nobr>1</nobr></div>
+<div style="position:absolute;top:6314;left:733"><nobr>3</nobr></div>
+<div style="position:absolute;top:6357;left:690"><nobr>2</nobr></div>
+<div style="position:absolute;top:6398;left:641"><nobr>-4</nobr></div>
+<div style="position:absolute;top:6399;left:733"><nobr>0</nobr></div>
+<div style="position:absolute;top:6357;left:775"><nobr>8</nobr></div>
+<div style="position:absolute;top:6399;left:775"><nobr>6</nobr></div>
+<div style="position:absolute;top:6314;left:814"><nobr>11</nobr></div>
+<div style="position:absolute;top:6357;left:814"><nobr>16</nobr></div>
+<div style="position:absolute;top:6399;left:814"><nobr>17</nobr></div>
+<div style="position:absolute;top:6272;left:856"><nobr>19</nobr></div>
+<div style="position:absolute;top:6314;left:856"><nobr>20</nobr></div>
+<div style="position:absolute;top:6243;left:81"><nobr>In computer science, trees are recursive data structures that are widely used</nobr></div>
+<div style="position:absolute;top:6267;left:81"><nobr>in various settings. The diagram to the right is an example of a simple tree.</nobr></div>
+<div style="position:absolute;top:6301;left:81"><nobr>Notice that the tree branches downward. In computer science, the root of</nobr></div>
+<div style="position:absolute;top:6326;left:81"><nobr>a tree starts at the top, and the leaves are at the bottom.</nobr></div>
+<div style="position:absolute;top:6360;left:81"><nobr>Some terminology regarding trees:</nobr></div>
+<div style="position:absolute;top:6391;left:106"><nobr>• Parent node: A node that has branches. Parent nodes can have</nobr></div>
+<div style="position:absolute;top:6419;left:122"><nobr>multiple branches.</nobr></div>
+<div style="position:absolute;top:6450;left:106"><nobr>• Branch node: A node that has a parent. A branch node can only</nobr></div>
+<div style="position:absolute;top:6478;left:122"><nobr>belong to one parent.</nobr></div>
+<div style="position:absolute;top:6509;left:106"><nobr>• Root: The top node of the tree. In our example, the node that con-</nobr></div>
+<div style="position:absolute;top:6537;left:122"><nobr>tains 7 is the root.</nobr></div>
+<div style="position:absolute;top:6568;left:106"><nobr>• Label: The value at a node. In our example, all of the integers are</nobr></div>
+<div style="position:absolute;top:6596;left:122"><nobr>values.</nobr></div>
+<div style="position:absolute;top:6627;left:106"><nobr>• Leaf: A node that has no branches. In our example, the nodes that</nobr></div>
+<div style="position:absolute;top:6655;left:122"><nobr>contain -4, 0, 6, 17, and 20 are leaves.</nobr></div>
+<div style="position:absolute;top:6685;left:106"><nobr>• Branch: Notice that each branch of a parent is itself the root of a</nobr></div>
+<div style="position:absolute;top:6714;left:122"><nobr>smaller tree. In our example, the node containing 1 is the root of</nobr></div>
+<div style="position:absolute;top:6738;left:122"><nobr>another tree. This is why trees are recursive data structures: trees</nobr></div>
+<div style="position:absolute;top:6763;left:122"><nobr>have branches, which are trees themselves.</nobr></div>
+<div style="position:absolute;top:6793;left:106"><nobr>• Depth: How far away a node is from the root. In other words, the</nobr></div>
+<div style="position:absolute;top:6822;left:122"><nobr>number of edges between the root of the tree to the node. In the</nobr></div>
+<div style="position:absolute;top:6846;left:122"><nobr>diagram, the node containing 19 has depth 1; the node containing 3</nobr></div>
+<div style="position:absolute;top:6871;left:122"><nobr>has depth 2. Since there are no edges between the root of the tree and</nobr></div>
+<div style="position:absolute;top:6895;left:122"><nobr>itself, the depth of the root is 0.</nobr></div>
+<div style="position:absolute;top:6925;left:106"><nobr>• Height: The depth of the lowest leaf. In the diagram, the nodes</nobr></div>
+<div style="position:absolute;top:6954;left:122"><nobr>containing -4, 0, 6, and 17 are all the “lowest leaves,” and they have</nobr></div>
+<div style="position:absolute;top:6978;left:122"><nobr>depth 4. Thus, the entire tree has height 4.</nobr></div>
+<div style="position:absolute;top:7013;left:81"><nobr>In computer science, there are many different types of trees. Some vary in</nobr></div>
+<div style="position:absolute;top:7037;left:81"><nobr>the number of branches each node has; others vary in the structure of the</nobr></div>
+<div style="position:absolute;top:7062;left:81"><nobr>tree.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:7303;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=7><b>Page 7</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:7338;left:439"><nobr>Trees and Sequences</nobr></div>
+<div style="position:absolute;top:7338;left:607"><nobr>7</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:7373;left:81"><nobr>Implementation</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:7415;left:637"><nobr># Constructor</nobr></div>
+<div style="position:absolute;top:7444;left:637"><nobr><b>def </b>tree(label, branches=[]):</nobr></div>
+<div style="position:absolute;top:7469;left:670"><nobr><b>for </b>branch <b>in </b>branches:</nobr></div>
+<div style="position:absolute;top:7493;left:703"><nobr><b>assert </b>is_tree(branch)</nobr></div>
+<div style="position:absolute;top:7517;left:670"><nobr><b>return </b>[label] + <b>list</b>(branches)</nobr></div>
+<div style="position:absolute;top:7562;left:637"><nobr># Selectors</nobr></div>
+<div style="position:absolute;top:7591;left:637"><nobr><b>def </b>label(tree):</nobr></div>
+<div style="position:absolute;top:7615;left:670"><nobr><b>return </b>tree[0]</nobr></div>
+<div style="position:absolute;top:7664;left:637"><nobr><b>def </b>branches(tree):</nobr></div>
+<div style="position:absolute;top:7688;left:670"><nobr><b>return </b>tree[1:]</nobr></div>
+<div style="position:absolute;top:7732;left:637"><nobr># For convenience</nobr></div>
+<div style="position:absolute;top:7761;left:637"><nobr><b>def </b>is_leaf(tree):</nobr></div>
+<div style="position:absolute;top:7786;left:670"><nobr><b>return not </b>branches(tree)</nobr></div>
+<div style="position:absolute;top:7424;left:81"><nobr>A tree has both a value for the root node and a sequence of branches, which</nobr></div>
+<div style="position:absolute;top:7448;left:81"><nobr>are also trees. In our implementation, we represent the branches as a list of</nobr></div>
+<div style="position:absolute;top:7473;left:81"><nobr>trees. Since a tree is an abstract data type, our choice to use lists is simply</nobr></div>
+<div style="position:absolute;top:7497;left:81"><nobr>an implementation detail.</nobr></div>
+<div style="position:absolute;top:7527;left:106"><nobr>• The arguments to the constructor tree are the value for the root node</nobr></div>
+<div style="position:absolute;top:7556;left:122"><nobr>and a list of branches.</nobr></div>
+<div style="position:absolute;top:7586;left:106"><nobr>• The selectors for these are label and branches.</nobr></div>
+<div style="position:absolute;top:7634;left:81"><nobr>Note that branches returns a list of trees and not a tree directly. It’s im-</nobr></div>
+<div style="position:absolute;top:7658;left:81"><nobr>portant to distinguish between working with a tree and working with a list</nobr></div>
+<div style="position:absolute;top:7683;left:81"><nobr>of trees.</nobr></div>
+<div style="position:absolute;top:7717;left:81"><nobr>We have also provided a convenience function, is_leaf.</nobr></div>
+<div style="position:absolute;top:7761;left:81"><nobr>It’s simple to construct a tree. Let’s try to create the tree below.</nobr></div>
+<div style="position:absolute;top:7795;left:379"><nobr>1</nobr></div>
+<div style="position:absolute;top:7831;left:315"><nobr>3</nobr></div>
+<div style="position:absolute;top:7867;left:251"><nobr>4</nobr></div>
+<div style="position:absolute;top:7867;left:315"><nobr>5</nobr></div>
+<div style="position:absolute;top:7867;left:379"><nobr>6</nobr></div>
+<div style="position:absolute;top:7831;left:443"><nobr>2</nobr></div>
+<div style="position:absolute;top:7905;left:81"><nobr># Example tree construction</nobr></div>
+<div style="position:absolute;top:7930;left:81"><nobr>t = tree(1,</nobr></div>
+<div style="position:absolute;top:7954;left:130"><nobr>[tree(3,</nobr></div>
+<div style="position:absolute;top:7978;left:163"><nobr>[tree(4),</nobr></div>
+<div style="position:absolute;top:8003;left:171"><nobr>tree(5),</nobr></div>
+<div style="position:absolute;top:8027;left:171"><nobr>tree(6)]),</nobr></div>
+<div style="position:absolute;top:8052;left:130"><nobr>tree(2)])</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:8491;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=8><b>Page 8</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:8526;left:81"><nobr>8 Trees and Sequences</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:8561;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:8615;left:51"><nobr>3.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:8612;left:81"><nobr>Define a function tree max(t) that returns the largest number in a tree.</nobr></div>
+<div style="position:absolute;top:8645;left:81"><nobr><b>def </b>tree_max(t):</nobr></div>
+<div style="position:absolute;top:8665;left:138"><nobr>Return the max of a tree.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8730;left:114"><nobr><b>return max</b>([label(t)] + [tree_max(branch) <b>for </b>branch <b>in </b>branches(t)])</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:8773;left:81"><nobr><a href="https://www.youtube.com/watch?v=VcZPTlE56G8&vq=hd1080&t=49m52s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:8814;left:51"><nobr>3.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:8811;left:81"><nobr>Define a function height(t) that returns the height of a tree. Recall that</nobr></div>
+<div style="position:absolute;top:8836;left:81"><nobr>the height of a tree is the length of the longest path from the root to a leaf.</nobr></div>
+<div style="position:absolute;top:8869;left:81"><nobr><b>def </b>height(t):</nobr></div>
+<div style="position:absolute;top:8889;left:138"><nobr>Return the height of a tree</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8954;left:114"><nobr><b>if </b>is_leaf(t):</nobr></div>
+<div style="position:absolute;top:8979;left:146"><nobr><b>return </b>0</nobr></div>
+<div style="position:absolute;top:9003;left:114"><nobr><b>return </b>1 + <b>max</b>([height(branch) <b>for </b>branch <b>in </b>branches(t)])</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:9046;left:81"><nobr><a href="https://www.youtube.com/watch?v=cZWnevsmb5o&index=2&list=PLx38hZJ5RLZcgrSJp16YmzNwn9hL5JD8q&t=1m45s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:9087;left:51"><nobr>3.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:9084;left:81"><nobr>Define a function square tree(t) that squares every value in the tree t. It</nobr></div>
+<div style="position:absolute;top:9108;left:81"><nobr>should return a new tree. You can assume that every item is a number.</nobr></div>
+<div style="position:absolute;top:9142;left:81"><nobr><b>def </b>square_tree(t):</nobr></div>
+<div style="position:absolute;top:9162;left:138"><nobr>Return a tree with the square of every element in t</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9222;left:114"><nobr>sq_branches = [square_tree(branch) <b>for </b>branch <b>in </b>branches(t)]</nobr></div>
+<div style="position:absolute;top:9251;left:114"><nobr><b>return </b>tree(label(t)**2, sq_branches)</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:9295;left:81"><nobr><a href="https://www.youtube.com/watch?v=cZWnevsmb5o&index=2&list=PLx38hZJ5RLZcgrSJp16YmzNwn9hL5JD8q&t=5m3s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:9679;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=9><b>Page 9</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:9714;left:439"><nobr>Trees and Sequences</nobr></div>
+<div style="position:absolute;top:9714;left:607"><nobr>9</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:9758;left:51"><nobr>3.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:9754;left:81"><nobr>Define the procedure find path(tree, x) that, given a tree tree and a value</nobr></div>
+<div style="position:absolute;top:9775;left:81"><nobr>x, returns a list containing the nodes along the path required to get from the</nobr></div>
+<div style="position:absolute;top:9803;left:81"><nobr>root of tree to a node x. If x is not present in tree, return None. Assume</nobr></div>
+<div style="position:absolute;top:9828;left:81"><nobr>that the entries of tree are unique.</nobr></div>
+<div style="position:absolute;top:9862;left:81"><nobr>For the following tree, find path(t, 5) should return [2, 7, 6, 5]</nobr></div>
+<div style="position:absolute;top:9897;left:384"><nobr>2</nobr></div>
+<div style="position:absolute;top:9932;left:235"><nobr>7</nobr></div>
+<div style="position:absolute;top:9968;left:161"><nobr>3</nobr></div>
+<div style="position:absolute;top:9968;left:310"><nobr>6</nobr></div>
+<div style="position:absolute;top:10004;left:260"><nobr>5</nobr></div>
+<div style="position:absolute;top:10004;left:355"><nobr>11</nobr></div>
+<div style="position:absolute;top:9932;left:529"><nobr>15</nobr></div>
+<div style="position:absolute;top:10046;left:81"><nobr><b>def </b>find_path(tree, x):</nobr></div>
+<div style="position:absolute;top:10090;left:114"><nobr>&gt;&gt;&gt; find_path(t, 5)</nobr></div>
+<div style="position:absolute;top:10115;left:114"><nobr>[2, 7, 6, 5]</nobr></div>
+<div style="position:absolute;top:10139;left:114"><nobr>&gt;&gt;&gt; find_path(t, 10) # returns None</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10228;left:114"><nobr><b>if </b>label(tree) == x:</nobr></div>
+<div style="position:absolute;top:10252;left:146"><nobr><b>return </b>[label(tree)]</nobr></div>
+<div style="position:absolute;top:10272;left:114"><nobr>node, trees = label(tree), branches(tree)</nobr></div>
+<div style="position:absolute;top:10301;left:114"><nobr><b>for </b>path <b>in </b>[find_path(t, x) <b>for </b>t <b>in </b>trees]:</nobr></div>
+<div style="position:absolute;top:10325;left:146"><nobr><b>if </b>path:</nobr></div>
+<div style="position:absolute;top:10350;left:179"><nobr><b>return </b>[node] + path</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:10393;left:81"><nobr><a href="https://www.youtube.com/watch?v=OnLa_VUrWiA&list=PLx38hZJ5RLZcgrSJp16YmzNwn9hL5JD8q&index=3&t=0m11s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:10434;left:51"><nobr>3.5</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:10431;left:81"><nobr>Implement a prune function which takes in a tree t and a depth k, and</nobr></div>
+<div style="position:absolute;top:10455;left:81"><nobr>should return a new tree that is a copy of only the first k levels of t. For</nobr></div>
+<div style="position:absolute;top:10479;left:81"><nobr>example, if t is the tree shown in the previous question, then prune(t, 2)</nobr></div>
+<div style="position:absolute;top:10504;left:81"><nobr>should return the tree</nobr></div>
+<div style="position:absolute;top:10535;left:384"><nobr>2</nobr></div>
+<div style="position:absolute;top:10571;left:235"><nobr>7</nobr></div>
+<div style="position:absolute;top:10607;left:161"><nobr>3</nobr></div>
+<div style="position:absolute;top:10607;left:310"><nobr>6</nobr></div>
+<div style="position:absolute;top:10571;left:529"><nobr>15</nobr></div>
+<div style="position:absolute;top:10649;left:81"><nobr><b>def </b>prune(t, k):</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10708;left:114"><nobr><b>if </b>k == 0:</nobr></div>
+<div style="position:absolute;top:10733;left:146"><nobr><b>return </b>tree(label(t), [])</nobr></div>
+<div style="position:absolute;top:10757;left:114"><nobr><b>else</b>:</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:10867;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=10><b>Page 10</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:10902;left:81"><nobr>10 Trees and Sequences</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10951;left:146"><nobr><b>return </b>tree(label(t), [prune(branch, k - 1) <b>for </b>branch <b>in </b>branches(t)])</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:10994;left:81"><nobr><a href="https://www.youtube.com/watch?v=OnLa_VUrWiA&list=PLx38hZJ5RLZcgrSJp16YmzNwn9hL5JD8q&index=3&t=5m56s">Video walkthrough</a></nobr></div>
+</span></font>
+<!-- t8131r6a6c8131e5634n2491u6l0m0k0 -->
+</body>
+</html>

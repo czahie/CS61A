@@ -1,0 +1,423 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}pre { word-wrap:break-word; }pre { white-space:pre-wrap; }</style><div id="google-cache-hdr"  dir=ltr><div>这是 <a href="https://cs61a.org/disc/disc01_sol.pdf" dir="ltr">https://cs61a.org/disc/disc01_sol.pdf</a> 的 HTML 档。<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> 在网路漫游时会自动将档案转换成 HTML 网页来储存。</div></div><div style="position:relative;margin:8px;">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX-1.40.18">
+<meta name="CreationDate" content="D:20171219170036Z">
+<meta name="ModDate" content="D:20171219170036Z">
+<meta name="Fullbanner" content="This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) kpathsea version 6.2.3">
+<title>CS 61A Control and Environments Fall 2017 1 Control</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:261;left:81"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:261;left:321"><nobr>Control and Environments</nobr></div>
+<div style="position:absolute;top:298;left:81"><nobr>Fall 2017</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:306;left:384"><nobr>Discussion 1: August 30, 2017 <font color="#ff0000" style="font-size:19px">Solutions</font></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:372;left:81"><nobr>1 Control</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:429;left:81"><nobr>Control structures direct the flow of logic in a program. For example,</nobr></div>
+<div style="position:absolute;top:453;left:81"><nobr>conditionals (if-elif-else) allow a program to skip sections of code, while</nobr></div>
+<div style="position:absolute;top:478;left:81"><nobr>iteration (while), allows a program to repeat a section.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:516;left:81"><nobr>If statements</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:567;left:81"><nobr>Conditional statements let programs execute different lines of code de-</nobr></div>
+<div style="position:absolute;top:591;left:81"><nobr>pending on certain conditions. Let’s review the if- elif-else syntax.</nobr></div>
+<div style="position:absolute;top:626;left:81"><nobr>Recall the following points:</nobr></div>
+<div style="position:absolute;top:656;left:106"><nobr>• The else and elif clauses are optional, and you can have any number</nobr></div>
+<div style="position:absolute;top:684;left:122"><nobr>of elif clauses.</nobr></div>
+<div style="position:absolute;top:715;left:106"><nobr>• A conditional expression is a expression that evaluates to either a</nobr></div>
+<div style="position:absolute;top:743;left:122"><nobr>true value (True, a non-zero integer, etc.) or a false value (False, 0,</nobr></div>
+<div style="position:absolute;top:768;left:122"><nobr>None,</nobr></div>
+<div style="position:absolute;top:768;left:181"><nobr>, [], etc.).</nobr></div>
+<div style="position:absolute;top:798;left:106"><nobr>• Only the suite that is indented under the first if/elif with a condi-</nobr></div>
+<div style="position:absolute;top:827;left:122"><nobr>tional expression evaluating to a true value will be executed.</nobr></div>
+<div style="position:absolute;top:857;left:106"><nobr>• If none of the conditional expressions evaluate to a true value, then</nobr></div>
+<div style="position:absolute;top:886;left:122"><nobr>the else suite is executed. There can only be one else clause in a</nobr></div>
+<div style="position:absolute;top:910;left:122"><nobr>conditional statement!</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:946;left:81"><nobr>Boolean Operators</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:997;left:81"><nobr>Python also includes the boolean operators and, or, and not. These</nobr></div>
+<div style="position:absolute;top:1021;left:81"><nobr>operators are used to combine and manipulate boolean values.</nobr></div>
+<div style="position:absolute;top:1052;left:106"><nobr>• not returns the opposite truth value of the following expression.</nobr></div>
+<div style="position:absolute;top:1086;left:106"><nobr>• and stops evaluating any more expressions (short-circuits) once it reaches</nobr></div>
+<div style="position:absolute;top:1115;left:122"><nobr>the first false value and returns it. If all values evaluate to a true value,</nobr></div>
+<div style="position:absolute;top:1139;left:122"><nobr>the last value is returned.</nobr></div>
+<div style="position:absolute;top:1169;left:106"><nobr>• or short-circuits at the first true value and returns it. If all values</nobr></div>
+<div style="position:absolute;top:1198;left:122"><nobr>evaluate to a false value, the last value is returned.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1363;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:1398;left:81"><nobr>2 Control and Environments</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:1433;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:1489;left:51"><nobr>1.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:1486;left:81"><nobr>Alfonso will only wear a jacket outside if it is below 60 degrees or it is raining.</nobr></div>
+<div style="position:absolute;top:1511;left:81"><nobr>Fill in the function wears_jacket which takes in the current temperature and</nobr></div>
+<div style="position:absolute;top:1535;left:81"><nobr>a Boolean value telling if it is raining and returns True if Alfonso will wear</nobr></div>
+<div style="position:absolute;top:1560;left:81"><nobr>a jacket and False otherwise.</nobr></div>
+<div style="position:absolute;top:1594;left:81"><nobr>This should only take one line of code!</nobr></div>
+<div style="position:absolute;top:1628;left:81"><nobr><b>def </b>wears_jacket(temp, raining):</nobr></div>
+<div style="position:absolute;top:1677;left:114"><nobr>&gt;&gt;&gt; wears_jacket(90, False)</nobr></div>
+<div style="position:absolute;top:1701;left:114"><nobr>False</nobr></div>
+<div style="position:absolute;top:1726;left:114"><nobr>&gt;&gt;&gt; wears_jacket(40, False)</nobr></div>
+<div style="position:absolute;top:1750;left:114"><nobr>True</nobr></div>
+<div style="position:absolute;top:1774;left:114"><nobr>&gt;&gt;&gt; wears_jacket(100, True)</nobr></div>
+<div style="position:absolute;top:1799;left:114"><nobr>True</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1884;left:114"><nobr><b>return </b>temp &lt; 60 <b>or </b>raining</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:1927;left:81"><nobr><a href="https://www.youtube.com/watch?v=Fiw0f5yuQgo&vq=hd1080&t=27m43s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2551;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2586;left:395"><nobr>Control and Environments</nobr></div>
+<div style="position:absolute;top:2586;left:607"><nobr>3</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:2635;left:51"><nobr>1.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2632;left:81"><nobr>To handle discussion section overflow, TAs may direct students to a more</nobr></div>
+<div style="position:absolute;top:2656;left:81"><nobr>empty section that is happening at the same time. Define handle_overflow,</nobr></div>
+<div style="position:absolute;top:2680;left:81"><nobr>which takes in the number of students in two sections and prints out what to</nobr></div>
+<div style="position:absolute;top:2705;left:81"><nobr>do if either section exceeds 30 students. Note: Don’t worry about printing</nobr></div>
+<div style="position:absolute;top:2729;left:81"><nobr>“spot” for singular values and “spots” for multiple values.</nobr></div>
+<div style="position:absolute;top:2763;left:81"><nobr><b>def </b>handle_overflow(s1, s2):</nobr></div>
+<div style="position:absolute;top:2812;left:114"><nobr>&gt;&gt;&gt; handle_overflow(27, 15)</nobr></div>
+<div style="position:absolute;top:2836;left:114"><nobr>No overflow.</nobr></div>
+<div style="position:absolute;top:2861;left:114"><nobr>&gt;&gt;&gt; handle_overflow(35, 29)</nobr></div>
+<div style="position:absolute;top:2885;left:114"><nobr>1 spot left in Section 2.</nobr></div>
+<div style="position:absolute;top:2909;left:114"><nobr>&gt;&gt;&gt; handle_overflow(20, 32)</nobr></div>
+<div style="position:absolute;top:2934;left:114"><nobr>10 spots left in Section 1.</nobr></div>
+<div style="position:absolute;top:2958;left:114"><nobr>&gt;&gt;&gt; handle_overflow(35, 30)</nobr></div>
+<div style="position:absolute;top:2983;left:114"><nobr>No space left in either section.</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:3067;left:114"><nobr><b>if </b>s1 &lt;= 30 <b>and </b>s2 &lt;= 30:</nobr></div>
+<div style="position:absolute;top:3092;left:146"><nobr><b>print</b>( No overflow. )</nobr></div>
+<div style="position:absolute;top:3116;left:114"><nobr><b>elif </b>s2 &gt; 30 <b>and </b>s1 &lt; 30:</nobr></div>
+<div style="position:absolute;top:3140;left:146"><nobr><b>print</b>(<b>str</b>(30 - s1) + spots left in Section 1. )</nobr></div>
+<div style="position:absolute;top:3165;left:114"><nobr><b>elif </b>s1 &gt; 30 <b>and </b>s2 &lt; 30:</nobr></div>
+<div style="position:absolute;top:3189;left:146"><nobr><b>print</b>(<b>str</b>(30 - s2) + spots left in Section 2. )</nobr></div>
+<div style="position:absolute;top:3214;left:114"><nobr><b>else</b>:</nobr></div>
+<div style="position:absolute;top:3238;left:146"><nobr><b>print</b>( No space left in either section. )</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:3281;left:81"><nobr><a href="https://www.youtube.com/watch?v=Fiw0f5yuQgo&vq=hd1080&t=29m19s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:3322;left:81"><nobr>While loops</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3373;left:81"><nobr>Iteration lets a program repeat statements multiple times. A common iter-</nobr></div>
+<div style="position:absolute;top:3397;left:81"><nobr>ative block of code is the <b>while </b>loop.</nobr></div>
+<div style="position:absolute;top:3431;left:81"><nobr>As long as &lt;conditional clause&gt; evaluates to a true value, &lt;body of</nobr></div>
+<div style="position:absolute;top:3456;left:81"><nobr>statements&gt; will continue to be executed. The conditional clause gets eval-</nobr></div>
+<div style="position:absolute;top:3480;left:81"><nobr>uated each time the body finishes executing.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3739;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3774;left:81"><nobr>4 Control and Environments</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:3809;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:3865;left:51"><nobr>1.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3862;left:81"><nobr>What is the result of evaluating the following code?</nobr></div>
+<div style="position:absolute;top:3896;left:81"><nobr><b>def </b>square(x):</nobr></div>
+<div style="position:absolute;top:3921;left:114"><nobr><b>return </b>x * x</nobr></div>
+<div style="position:absolute;top:3969;left:81"><nobr><b>def </b>so_slow(num):</nobr></div>
+<div style="position:absolute;top:3994;left:114"><nobr>x = num</nobr></div>
+<div style="position:absolute;top:4018;left:114"><nobr><b>while </b>x &gt; 0:</nobr></div>
+<div style="position:absolute;top:4043;left:146"><nobr>x = x + 1</nobr></div>
+<div style="position:absolute;top:4067;left:114"><nobr><b>return </b>x / 0</nobr></div>
+<div style="position:absolute;top:4116;left:81"><nobr>square(so_slow(5))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4161;left:81"><nobr>Infinite loop because x will always be greater than 0; the num / 0 is never</nobr></div>
+<div style="position:absolute;top:4186;left:81"><nobr>executed.</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:4210;left:81"><nobr><a href="https://www.youtube.com/watch?v=Fiw0f5yuQgo&vq=hd1080&t=39m34s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:4239;left:51"><nobr>1.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:4236;left:81"><nobr>Fill in the is_prime function, which returns True if n is a prime number and</nobr></div>
+<div style="position:absolute;top:4261;left:81"><nobr>False otherwise. After you have a working solution, think about potential</nobr></div>
+<div style="position:absolute;top:4285;left:81"><nobr>ways to make your solution more efficient.</nobr></div>
+<div style="position:absolute;top:4319;left:81"><nobr>Hint: use the % operator: x % y returns the remainder of x when divided</nobr></div>
+<div style="position:absolute;top:4344;left:81"><nobr>by y.</nobr></div>
+<div style="position:absolute;top:4378;left:81"><nobr><b>def </b>is_prime(n):</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4438;left:114"><nobr><b>if </b>n == 1:</nobr></div>
+<div style="position:absolute;top:4463;left:146"><nobr><b>return </b>False</nobr></div>
+<div style="position:absolute;top:4487;left:114"><nobr>k = 2</nobr></div>
+<div style="position:absolute;top:4511;left:114"><nobr><b>while </b>k &lt; n:</nobr></div>
+<div style="position:absolute;top:4536;left:146"><nobr><b>if </b>n % k == 0:</nobr></div>
+<div style="position:absolute;top:4560;left:179"><nobr><b>return </b>False</nobr></div>
+<div style="position:absolute;top:4585;left:146"><nobr>k += 1</nobr></div>
+<div style="position:absolute;top:4609;left:114"><nobr><b>return </b>True</nobr></div>
+<div style="position:absolute;top:4652;left:81"><nobr>Alternatively, the while loop’s conditional expression could ensure that k is</nobr></div>
+<div style="position:absolute;top:4676;left:81"><nobr>less than the square root of n.</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:4701;left:81"><nobr><a href="https://www.youtube.com/watch?v=Fiw0f5yuQgo&vq=hd1080&t=41m20s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:4927;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:4962;left:395"><nobr>Control and Environments</nobr></div>
+<div style="position:absolute;top:4962;left:607"><nobr>5</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:4997;left:81"><nobr>2 Environment Diagrams</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:5048;left:81"><nobr>An environment diagram keeps track of all the variables that have been</nobr></div>
+<div style="position:absolute;top:5072;left:81"><nobr>defined and the values they are bound to.</nobr></div>
+<div style="position:absolute;top:5114;left:81"><nobr>x = 3</nobr></div>
+<div style="position:absolute;top:5162;left:81"><nobr><b>def </b>square(x):</nobr></div>
+<div style="position:absolute;top:5187;left:114"><nobr><b>return </b>x ** 2</nobr></div>
+<div style="position:absolute;top:5236;left:81"><nobr>square(2)</nobr></div>
+<div style="position:absolute;top:5275;left:81"><nobr>When you execute assignment statements in an environment diagram (like</nobr></div>
+<div style="position:absolute;top:5300;left:81"><nobr>x = 3), you need to record the variable name and the value:</nobr></div>
+<div style="position:absolute;top:5334;left:101"><nobr>1. Evaluate the expression on the right side of the = sign</nobr></div>
+<div style="position:absolute;top:5369;left:101"><nobr>2. Write the variable name and the expression’s value in the current</nobr></div>
+<div style="position:absolute;top:5393;left:122"><nobr>frame.</nobr></div>
+<div style="position:absolute;top:5416;left:81"><nobr>When you execute def statements, you need to record the function name</nobr></div>
+<div style="position:absolute;top:5441;left:81"><nobr>and bind the function object to the name.</nobr></div>
+<div style="position:absolute;top:5475;left:101"><nobr>1. Write the function name (e.g., square) in the frame and point it</nobr></div>
+<div style="position:absolute;top:5500;left:122"><nobr>to a function object (e.g., func square(x) [parent=Global]). The</nobr></div>
+<div style="position:absolute;top:5525;left:122"><nobr>[parent=Global] denotes the frame in which the function was defined.</nobr></div>
+<div style="position:absolute;top:5551;left:81"><nobr>When you execute a call expression (like square(2)), you need to create a</nobr></div>
+<div style="position:absolute;top:5576;left:81"><nobr>new frame to keep track of local variables.</nobr></div>
+<div style="position:absolute;top:5610;left:101"><nobr>1. Draw a new frame. <font color="#ff0000" style="font-size:9px"><a href="#5">a </a></font>Label it with</nobr></div>
+<div style="position:absolute;top:5640;left:142"><nobr>• a unique index (f1, f2, f3 and so on)</nobr></div>
+<div style="position:absolute;top:5675;left:142"><nobr>• the intrinsic name of the function (square), which is the name</nobr></div>
+<div style="position:absolute;top:5704;left:158"><nobr>of the function object itself. For example, if the function object is</nobr></div>
+<div style="position:absolute;top:5729;left:158"><nobr>func square(x) [parent=Global], the intrinsic name is square.</nobr></div>
+<div style="position:absolute;top:5758;left:142"><nobr>• the parent frame ([parent=Global])</nobr></div>
+<div style="position:absolute;top:5797;left:101"><nobr>2. Bind the formal parameters to the arguments passed in (e.g. bind x to</nobr></div>
+<div style="position:absolute;top:5821;left:122"><nobr>3).</nobr></div>
+<div style="position:absolute;top:5856;left:101"><nobr>3. Evaluate the body of the function.</nobr></div>
+<div style="position:absolute;top:5891;left:81"><nobr>If a function does not have a return value, it implicitly returns None. Thus,</nobr></div>
+<div style="position:absolute;top:5915;left:81"><nobr>the “Return value” box should contain None.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:6px;font-family:Times">
+<div style="position:absolute;top:5941;left:100"><nobr>a<font style="font-size:11px">Since we do not know how built-in functions like add(...) or min(...) are imple-</font></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:11px;font-family:Times">
+<div style="position:absolute;top:5963;left:81"><nobr>mented, we do not draw a new frame when we call built-in functions.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:6115;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=6><b>Page 6</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:6150;left:81"><nobr>6 Control and Environments</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:6185;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:6241;left:51"><nobr>2.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:6238;left:81"><nobr>Draw the environment diagram that results from running the following code.</nobr></div>
+<div style="position:absolute;top:6272;left:81"><nobr>a = 1</nobr></div>
+<div style="position:absolute;top:6297;left:81"><nobr><b>def </b>b(b):</nobr></div>
+<div style="position:absolute;top:6321;left:114"><nobr><b>return </b>a + b</nobr></div>
+<div style="position:absolute;top:6345;left:81"><nobr>a = b(a)</nobr></div>
+<div style="position:absolute;top:6370;left:81"><nobr>a = b(a)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:7303;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=7><b>Page 7</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:7338;left:395"><nobr>Control and Environments</nobr></div>
+<div style="position:absolute;top:7338;left:607"><nobr>7</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:7387;left:51"><nobr>2.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:7384;left:81"><nobr>Draw the environment diagram so we can visualize exactly how Python eval-</nobr></div>
+<div style="position:absolute;top:7408;left:81"><nobr>uates the code. What is the output of running this code in the interpreter?</nobr></div>
+<div style="position:absolute;top:7442;left:81"><nobr><b>from </b>operator <b>import </b>add</nobr></div>
+<div style="position:absolute;top:7466;left:81"><nobr><b>def </b>sub(a, b):</nobr></div>
+<div style="position:absolute;top:7491;left:114"><nobr>sub = add</nobr></div>
+<div style="position:absolute;top:7515;left:114"><nobr><b>return </b>a - b</nobr></div>
+<div style="position:absolute;top:7539;left:81"><nobr>add = sub</nobr></div>
+<div style="position:absolute;top:7564;left:81"><nobr>sub = <b>min</b></nobr></div>
+<div style="position:absolute;top:7588;left:81"><nobr><b>print</b>(add(2, sub(2, 3)))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:7983;left:81"><nobr>Output:</nobr></div>
+<div style="position:absolute;top:8007;left:81"><nobr>0</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:8050;left:81"><nobr><a href="https://www.youtube.com/watch?v=Fiw0f5yuQgo&vq=hd1080&t=59m22s">Video walkthrough</a></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:8097;left:81"><nobr>3 Higher Order Functions</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:8155;left:81"><nobr>A higher order function (HOF) is a function that manipulates other func-</nobr></div>
+<div style="position:absolute;top:8179;left:81"><nobr>tions by taking in functions as arguments, returning a function, or both.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:8216;left:81"><nobr>Functions as Arguments</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:8266;left:81"><nobr>One way a higher order function can manipulate other functions is by taking</nobr></div>
+<div style="position:absolute;top:8290;left:81"><nobr>functions as input (an argument). Consider this higher order function called</nobr></div>
+<div style="position:absolute;top:8315;left:81"><nobr>negate.</nobr></div>
+<div style="position:absolute;top:8350;left:81"><nobr>negate takes in a function f and a number x. It doesn’t care what exactly</nobr></div>
+<div style="position:absolute;top:8374;left:81"><nobr>f does, as long as f is a function, takes in a number and returns a number.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:8491;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=8><b>Page 8</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:8526;left:81"><nobr>8 Control and Environments</nobr></div>
+<div style="position:absolute;top:8566;left:81"><nobr>Its job is simple: call f on x and return the negation of that value.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:8603;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:8659;left:51"><nobr>3.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:8656;left:81"><nobr>Implement a function keep_ints, which takes in a function cond and a num-</nobr></div>
+<div style="position:absolute;top:8680;left:81"><nobr>ber n, and only prints a number from 1 to n if calling cond on that number</nobr></div>
+<div style="position:absolute;top:8705;left:81"><nobr>returns True:</nobr></div>
+<div style="position:absolute;top:8738;left:81"><nobr><b>def </b>keep_ints(cond, n):</nobr></div>
+<div style="position:absolute;top:8763;left:138"><nobr>Print out all integers 1..i..n where cond(i) is true</nobr></div>
+<div style="position:absolute;top:8812;left:114"><nobr>&gt;&gt;&gt; def is_even(x):</nobr></div>
+<div style="position:absolute;top:8836;left:114"><nobr>...</nobr></div>
+<div style="position:absolute;top:8836;left:179"><nobr># Even numbers have remainder 0 when divided by 2.</nobr></div>
+<div style="position:absolute;top:8861;left:114"><nobr>...</nobr></div>
+<div style="position:absolute;top:8861;left:179"><nobr>return x % 2 == 0</nobr></div>
+<div style="position:absolute;top:8885;left:114"><nobr>&gt;&gt;&gt; keep_ints(is_even, 5)</nobr></div>
+<div style="position:absolute;top:8909;left:114"><nobr>2</nobr></div>
+<div style="position:absolute;top:8934;left:114"><nobr>4</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9019;left:114"><nobr>i = 1</nobr></div>
+<div style="position:absolute;top:9043;left:114"><nobr><b>while </b>i &lt;= n:</nobr></div>
+<div style="position:absolute;top:9067;left:146"><nobr><b>if </b>cond(i):</nobr></div>
+<div style="position:absolute;top:9092;left:179"><nobr><b>print</b>(i)</nobr></div>
+<div style="position:absolute;top:9116;left:146"><nobr>i += 1</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:9159;left:81"><nobr><a href="https://www.youtube.com/watch?v=Fiw0f5yuQgo&vq=hd1080&t=72m24s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:9679;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=9><b>Page 9</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:9714;left:395"><nobr>Control and Environments</nobr></div>
+<div style="position:absolute;top:9714;left:607"><nobr>9</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:9749;left:81"><nobr>Functions as Return Values</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:9800;left:81"><nobr>Often, we will need to write a function that returns another function. One</nobr></div>
+<div style="position:absolute;top:9824;left:81"><nobr>way to do this is to define a function inside of a function:</nobr></div>
+<div style="position:absolute;top:9859;left:81"><nobr>The return value of outer is the function inner. This is a case of a function</nobr></div>
+<div style="position:absolute;top:9883;left:81"><nobr>returning a function. In this example, inner is defined inside of outer.</nobr></div>
+<div style="position:absolute;top:9908;left:81"><nobr>Although this is a common pattern, we can also define inner outside of</nobr></div>
+<div style="position:absolute;top:9932;left:81"><nobr>outer and still use the same return statement. However, note that in this</nobr></div>
+<div style="position:absolute;top:9956;left:81"><nobr>second example (unlike the first example), inner doesn’t have access to</nobr></div>
+<div style="position:absolute;top:9981;left:81"><nobr>variables defined within the outer function, like x.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:10017;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:10073;left:51"><nobr>3.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:10070;left:81"><nobr>Use this definition of outer to fill in what Python would display when the</nobr></div>
+<div style="position:absolute;top:10095;left:81"><nobr>following lines are evaluated.</nobr></div>
+<div style="position:absolute;top:10129;left:81"><nobr>&gt;&gt;&gt; <b>def </b>outer(n):</nobr></div>
+<div style="position:absolute;top:10153;left:81"><nobr>...</nobr></div>
+<div style="position:absolute;top:10153;left:146"><nobr><b>def </b>inner(m):</nobr></div>
+<div style="position:absolute;top:10177;left:81"><nobr>...</nobr></div>
+<div style="position:absolute;top:10177;left:179"><nobr><b>return </b>n - m</nobr></div>
+<div style="position:absolute;top:10202;left:81"><nobr>...</nobr></div>
+<div style="position:absolute;top:10201;left:146"><nobr><b>return </b>inner</nobr></div>
+<div style="position:absolute;top:10244;left:81"><nobr>&gt;&gt;&gt; outer(61)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10305;left:81"><nobr>&lt;function outer.inner ...&gt;</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:10354;left:81"><nobr>&gt;&gt;&gt; f = outer(10)</nobr></div>
+<div style="position:absolute;top:10379;left:81"><nobr>&gt;&gt;&gt; f(4)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10439;left:81"><nobr>6</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:10489;left:81"><nobr>&gt;&gt;&gt; outer(5)(4)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10549;left:81"><nobr>1</nobr></div>
+</span></font>
+<font size=3 color="#ec008c" face="Times"><span style="font-size:14px;font-family:Times;color:#ec008c">
+<div style="position:absolute;top:10592;left:81"><nobr><a href="https://www.youtube.com/watch?v=Fiw0f5yuQgo&vq=hd1080&t=75m34s">Video walkthrough</a></nobr></div>
+</span></font>
+
+<div style="position:absolute;top:10867;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=10><b>Page 10</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:10902;left:81"><nobr>10 Control and Environments</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:9px;font-family:Times">
+<div style="position:absolute;top:10951;left:51"><nobr>3.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:10948;left:81"><nobr>Implement a function keep_ints like before, but now it takes in a number n</nobr></div>
+<div style="position:absolute;top:10972;left:81"><nobr>and returns a function that has one parameter cond. The returned function</nobr></div>
+<div style="position:absolute;top:10996;left:81"><nobr>prints out all numbers from 1...i...n where calling cond(i) returns True.</nobr></div>
+<div style="position:absolute;top:11030;left:81"><nobr><b>def </b>keep_ints(n):</nobr></div>
+<div style="position:absolute;top:11055;left:138"><nobr>Returns a function which takes one parameter cond and</nobr></div>
+<div style="position:absolute;top:11079;left:114"><nobr>prints out all integers 1..i..n where calling cond(i)</nobr></div>
+<div style="position:absolute;top:11103;left:114"><nobr>returns True.</nobr></div>
+<div style="position:absolute;top:11152;left:114"><nobr>&gt;&gt;&gt; def is_even(x):</nobr></div>
+<div style="position:absolute;top:11177;left:114"><nobr>...</nobr></div>
+<div style="position:absolute;top:11177;left:179"><nobr># Even numbers have remainder 0 when divided by 2.</nobr></div>
+<div style="position:absolute;top:11201;left:114"><nobr>...</nobr></div>
+<div style="position:absolute;top:11201;left:179"><nobr>return x % 2 == 0</nobr></div>
+<div style="position:absolute;top:11225;left:114"><nobr>&gt;&gt;&gt; keep_ints(5)(is_even)</nobr></div>
+<div style="position:absolute;top:11250;left:114"><nobr>2</nobr></div>
+<div style="position:absolute;top:11274;left:114"><nobr>4</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11359;left:114"><nobr><b>def </b>do_keep(cond):</nobr></div>
+<div style="position:absolute;top:11383;left:146"><nobr>i = 1</nobr></div>
+<div style="position:absolute;top:11408;left:146"><nobr><b>while </b>i &lt;= n:</nobr></div>
+<div style="position:absolute;top:11432;left:179"><nobr><b>if </b>cond(i):</nobr></div>
+<div style="position:absolute;top:11456;left:212"><nobr><b>print</b>(i)</nobr></div>
+<div style="position:absolute;top:11481;left:179"><nobr>i += 1</nobr></div>
+<div style="position:absolute;top:11505;left:114"><nobr><b>return </b>do_keep</nobr></div>
+</span></font>
+</body>
+</html>

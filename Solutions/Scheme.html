@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+    <title>
+Study Guide: Scheme | CS 61A Spring 2018
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Study Guide: Scheme
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="/quiz/quiz08.pdf" class="label label-outline">Quiz</a></li>
+          
+          <li><a href="/quiz/quiz08_sol.pdf" class="label label-outline">Solution</a></li>
+          
+        </ul>
+        
+      </h1>
+    </header>
+    
+
+<h2>Instructions</h2>
+
+<p>This is the companion guide to <a href="/quiz/quiz08.pdf">Quiz 8</a> with links to past
+lectures, assignments, and handouts, as well as isomorphic quiz problems and
+additional practice problems to assist you in learning the concepts.</p>
+
+
+  <p><strong>Assignments</strong></p>
+  <ul>
+  <li><a href="/lab/lab09">Lab 9</a></li>
+  <li><a href="/hw/hw09">HW 9</a> (<a href="/hw/sol-hw09">Solutions</a>)</li>
+  <li><a href="/hw/hw10">HW 10</a> (<a href="/hw/sol-hw10">Solutions</a>)</li>
+</ul>
+
+
+
+  <p><strong>Handouts</strong></p>
+  <ul>
+  <li><a href="/disc/disc07.pdf">Discussion 7</a> (<a href="/disc/disc07_sol.pdf">Solutions</a>)</li>
+</ul>
+
+
+
+  <p><strong>Lectures</strong></p>
+  <ul>
+  <li><a href="/assets/slides/24-Scheme_full.pdf">Scheme</a></li>
+</ul>
+
+
+
+  <p><strong>Readings</strong></p>
+  <ul>
+  <li><a href="http://composingprograms.com/pages/31-introduction.html">Section 3.1</a></li>
+  <li><a href="http://composingprograms.com/pages/32-functional-programming.html">Section 3.2</a></li>
+</ul>
+
+
+
+    
+<h1 id="guides">Guides</h1>
+
+
+<p>Computer science is not just about writing programs, but also understanding how
+they behave. We learned in the first week of class about the Python programming
+language and its expressive syntax. We saw how we could pose questions to the
+Python interpreter and how we could define functions that teach Python how to
+solve more and more complex problems.</p>
+
+<p>Underlying all of the evaluation rules, we also learned about several different
+programming paradigms in Python by composing functions together, creating
+compound values and data abstractions with lists and dictionaries, and modeling
+those data abstractions using object-oriented programming.</p>
+
+<p>But these aren't the only programming paradigms that exist and Python isn't the
+only language that we use to solve problems. We learn about Scheme to help
+answer both of these questions: what are the ways of thinking that transfer
+between languages, and how a computer understands programs.</p>
+
+
+<h2 id="scheme">Scheme</h2>
+
+
+<p>Scheme is like Python in some ways and unlike it in others. Like Python, Scheme
+is an interpreted language so we can always ask questions in the interpreter.</p>
+
+<pre><code>scm&gt; 1
+1
+scm&gt; #t
+#t
+scm&gt; &#x27;symbol
+symbol</code></pre>
+
+<p>Like Python, Scheme has a similar set of familiar data types like numbers,
+booleans, strings, and an unfamiliar type, <em>symbols</em>. There are also call
+expressions, which evaluate using the same evaluation procedure as in Python.</p>
+
+<pre><code>scm&gt; (+ 1 2)
+3
+scm&gt; (not #t)
+#f</code></pre>
+
+<p>An expression enclosed in parentheses is called a <em>combination</em>, but not all
+combinations are call expressions!</p>
+
+<pre><code>scm&gt; (if (= 1 2)
+         (/ 1 0)
+         #f)
+#f</code></pre>
+
+<p>Some combinations, like the <code>if</code> special form, look like call expressions, but
+have very unique logic. If <code>if</code> were a call expression, we would the operator
+and each operand, which isn't what happens here. Instead, the <code>if</code> special form
+follows its own set of evaluation rules by first evaluating the condition and
+then chooses the corresponding consequent based on the truth value of the
+condition.</p>
+
+
+<h3 id="pairs">Pairs</h3>
+
+
+<p>Scheme has a simple data type for representing compound values, the <code>pair</code>. Any
+value can go in the first or second field of a pair and we can compose pairs
+together to create <em>nested data types</em> (like trees!) and <em>lists</em>.</p>
+
+<pre><code>scm&gt; (cons 1 2)
+(1 . 2)</code></pre>
+
+<p>What's going on here? <code>cons</code> creates a pair where 1 is the first and 2 is the
+second value of the pair. Scheme then needs to figure out how to display this
+pair back to the interpreter. Just like how the Python interpreter calls the
+<code>__repr__</code> method to determine what to show to the user, Scheme follows a
+similar procedure to determine how to represent the pair structure.</p>
+
+<p>In general, a pair is displayed in the following format.</p>
+
+<pre><code>scm&gt; (cons &#x27;first &#x27;second)
+(first . second)</code></pre>
+
+<p>The dot separates the two values in the pair. Nested pairs are also nested in
+their representation.</p>
+
+<pre><code>scm&gt; (cons (cons &#x27;first &#x27;second) &#x27;third)
+((first . second) . third)</code></pre>
+
+<p>...except if the nesting happens in the second field, because the resulting
+structure is considered a <em>list</em> so we instead use a more streamlined notation.</p>
+
+<pre><code>scm&gt; (cons &#x27;first (cons &#x27;second &#x27;third))
+(first second . third)</code></pre>
+
+<p>We can think of this as a simplification of the following representation.</p>
+
+<pre><code>(first . (second . third)) &#x2d;&gt; (first second . third)</code></pre>
+
+<p>We can also play around with how we compose pairs to get yet other examples.</p>
+
+<pre><code>scm&gt; (cons (cons &#x27;first &#x27;second) (cons &#x27;third &#x27;fourth))
+((first . second) third . fourth)</code></pre>
+
+
+<h3 id="problem-solving">Problem-Solving</h3>
+
+
+<p>Code-writing in Scheme follows the same overarching problem-solving strategy
+we've been honing all semester long, just with additional rules. Scheme
+encourages us to write programs in a <em>functional style</em> by composing together
+several small programs, each solving a single problem, but which combine to
+solve a larger problem. Think of this as yet another form of <em>abstraction</em>,
+except now at the scale of how we organize programs as a whole!</p>
+
+<p>Practically-speaking, there are a couple of restrictions we need to be
+cognizant of when writing Scheme programs as they'll require us to change the
+way we solve problems.</p>
+
+<p>One part will require us to grapple with how we come up with <em>algorithms</em>, or
+step-by-step solutions.</p>
+
+<ul>
+  <li>Scheme data types are (mostly) immutable. The values of compound data types
+  like pairs can't be easily changed.</li>
+  <li>Scheme does not support iteration. We use recursion and helper procedures
+  instead.</li>
+</ul>
+
+<p>The other will affect how we convert the algorithm or idea into code.</p>
+
+<ul>
+  <li><p>Scheme prefers a composition of function calls. Scheme syntax is all
+  expressions, which means that even special forms like <code>if</code> can be nested and
+  composed in useful ways. (Remember that in Python, we can't drop an <code>if</code>
+  block statement in the middle of a function call!)</p>
+
+  <p>scm> (define x 1)
+  x
+  scm> (+ 1 (if (= x 1) 1 2))
+  2</p></li>
+</ul>
+
+<p>We'll usually define several small procedures. The procedures we define tend
+to have a well-defined domain and range, and their behavior can be explained in
+simple words.</p>
+
+<p>We might, for example, want to remove all the duplicate values in a list. Based
+on the algorithm restrictions, we know we can't mutate the original list, so
+our only other option is to return a new list containing the unique values. We
+can use recursion to traverse down the list, checking each item to see whether
+or not it's a unique value. From here, the idea can vary in two directions
+depending on whether we want to filter the remaining values, or check backwards
+and add to our growing list of unique values if it's not already there.</p>
+
+
+<h1 id="practice-problems">Practice Problems</h1>
+
+
+
+<h2 id="easy">Easy</h2>
+
+
+<h3 class="question" id="q1">Q1: all-satisfies</h3>
+
+<p>Implement a function <code>(all&#x2d;satisfies lst pred)</code> that returns <code>True</code> if all of
+the elements in <code>lst</code> satisfy <code>pred</code>.</p>
+
+
+
+<pre><code>(define (all&#x2d;satisfies lst pred)
+<div class="alt solution-1">  'YOUR-CODE-HERE
+</div><div class="solution solution-1">&#x20;&#x20;&#x28;&#x69;&#x66;&#x20;&#x28;&#x6e;&#x75;&#x6c;&#x6c;&#x3f;&#x20;&#x6c;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x28;&#x61;&#x6e;&#x64;&#x20;&#x28;&#x70;&#x72;&#x65;&#x64;&#x20;&#x28;&#x63;&#x61;&#x72;&#x20;&#x6c;&#x73;&#x74;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x28;&#x61;&#x6c;&#x6c;&#x2d;&#x73;&#x61;&#x74;&#x69;&#x73;&#x66;&#x69;&#x65;&#x73;&#x20;&#x28;&#x63;&#x64;&#x72;&#x20;&#x6c;&#x73;&#x74;&#x29;&#x20;&#x70;&#x72;&#x65;&#x64;&#x29;&#x29;&#x29;</div>)
+
+;;; Tests
+
+(all&#x2d;satisfies nil even?)
+; expect True
+(all&#x2d;satisfies &#x27;(2 4 6) even?)
+; expect True
+(all&#x2d;satisfies &#x27;(2 3 6) even?)
+; expect False
+(all&#x2d;satisfies &#x27;((1 2) (3 4 5) (6)) pair?)
+; expect True</code></pre>
+
+
+        <button id='solution-1' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+
+<h2 id="medium">Medium</h2>
+
+
+<h3 class="question" id="q2">Q2: Interleave</h3>
+
+<p>Implement the function interleave, which takes a two lists as arguments.
+interleave will return a new list that interleaves the elements of the two
+lists, with list1 starting first. Refer to the tests for sample input/output.</p>
+
+<pre><code>(define (interleave list1 ist2)
+  ; BEGIN SOLUTION
+  (if (or (null? list1) (null? list2))
+      (append list1 list2)
+      (cons (car list1)
+            (cons (car list2)
+                  (interleave (cdr list1) (cdr list2))))))
+  ; END SOLUTION
+
+(interleave (list 1 3 5) (list 2 4 6))
+; expect (1 2 3 4 5 6)
+
+(interleave (list 1 3 5) nil)
+; expect (1 3 5)
+
+(interleave (list 1 3 5) (list 2 4))
+; expect (1 2 3 4 5)</code></pre>
+
+<h3 class="question" id="q3">Q3: Matching</h3>
+
+<p>Implement <code>num&#x2d;adjacent&#x2d;matches</code>, which takes as input a list of
+numbers <code>s</code> and returns the number of adjacent elements that are equal.</p>
+
+
+
+<pre><code>(define (num&#x2d;adjacent&#x2d;matches s)
+<div class="alt solution-2">  'YOUR-CODE-HERE
+</div><div class="solution solution-2">&#x20;&#x20;&#x28;&#x69;&#x66;&#x20;&#x28;&#x6f;&#x72;&#x20;&#x28;&#x6e;&#x75;&#x6c;&#x6c;&#x3f;&#x20;&#x73;&#x29;&#x20;&#x28;&#x6e;&#x75;&#x6c;&#x6c;&#x3f;&#x20;&#x28;&#x63;&#x64;&#x72;&#x20;&#x73;&#x29;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x28;&#x2b;&#x20;&#x28;&#x6e;&#x75;&#x6d;&#x2d;&#x61;&#x64;&#x6a;&#x61;&#x63;&#x65;&#x6e;&#x74;&#x2d;&#x6d;&#x61;&#x74;&#x63;&#x68;&#x65;&#x73;&#x20;&#x28;&#x63;&#x64;&#x72;&#x20;&#x73;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x28;&#x69;&#x66;&#x20;&#x28;&#x3d;&#x20;&#x28;&#x63;&#x61;&#x72;&#x20;&#x73;&#x29;&#x20;&#x28;&#x63;&#x61;&#x64;&#x72;&#x20;&#x73;&#x29;&#x29;&#x20;&#x31;&#x20;&#x30;&#x29;&#x29;&#x29;</div>)
+
+;;; Tests
+
+; no pairs
+(num&#x2d;adjacent&#x2d;matches &#x27;(1 2 3 4))
+; expect 0
+
+; one pair of 1&#x27;s
+(num&#x2d;adjacent&#x2d;matches &#x27;(1 1 2 3))
+; expect 1
+
+; one pair of 1&#x27;s, one pair of 2&#x27;s
+(num&#x2d;adjacent&#x2d;matches &#x27;(1 1 2 2))
+; expect 2
+
+; three pairs of 1&#x27;s
+(num&#x2d;adjacent&#x2d;matches &#x27;(1 1 1 1))
+; expect 3
+
+(num&#x2d;adjacent&#x2d;matches &#x27;(6 6 6 1 6 1))
+; expect 2
+
+<div class="solution solution-2">&#x28;&#x6e;&#x75;&#x6d;&#x2d;&#x61;&#x64;&#x6a;&#x61;&#x63;&#x65;&#x6e;&#x74;&#x2d;&#x6d;&#x61;&#x74;&#x63;&#x68;&#x65;&#x73;&#x20;&#x27;&#x28;&#x36;&#x29;&#x29;&#xa;&#x3b;&#x20;&#x65;&#x78;&#x70;&#x65;&#x63;&#x74;&#x20;&#x30;&#xa;&#x28;&#x6e;&#x75;&#x6d;&#x2d;&#x61;&#x64;&#x6a;&#x61;&#x63;&#x65;&#x6e;&#x74;&#x2d;&#x6d;&#x61;&#x74;&#x63;&#x68;&#x65;&#x73;&#x20;&#x27;&#x28;&#x36;&#x20;&#x31;&#x29;&#x29;&#xa;&#x3b;&#x20;&#x65;&#x78;&#x70;&#x65;&#x63;&#x74;&#x20;&#x30;&#xa;&#x28;&#x6e;&#x75;&#x6d;&#x2d;&#x61;&#x64;&#x6a;&#x61;&#x63;&#x65;&#x6e;&#x74;&#x2d;&#x6d;&#x61;&#x74;&#x63;&#x68;&#x65;&#x73;&#x20;&#x27;&#x28;&#x36;&#x20;&#x31;&#x20;&#x36;&#x20;&#x31;&#x20;&#x36;&#x20;&#x31;&#x29;&#x29;&#xa;&#x3b;&#x20;&#x65;&#x78;&#x70;&#x65;&#x63;&#x74;&#x20;&#x30;&#xa;&#x28;&#x6e;&#x75;&#x6d;&#x2d;&#x61;&#x64;&#x6a;&#x61;&#x63;&#x65;&#x6e;&#x74;&#x2d;&#x6d;&#x61;&#x74;&#x63;&#x68;&#x65;&#x73;&#x20;&#x27;&#x28;&#x36;&#x20;&#x36;&#x29;&#x29;&#xa;&#x3b;&#x20;&#x65;&#x78;&#x70;&#x65;&#x63;&#x74;&#x20;&#x31;&#xa;&#x28;&#x6e;&#x75;&#x6d;&#x2d;&#x61;&#x64;&#x6a;&#x61;&#x63;&#x65;&#x6e;&#x74;&#x2d;&#x6d;&#x61;&#x74;&#x63;&#x68;&#x65;&#x73;&#x20;&#x27;&#x28;&#x36;&#x20;&#x36;&#x20;&#x36;&#x20;&#x31;&#x20;&#x36;&#x20;&#x31;&#x29;&#x29;&#xa;&#x3b;&#x20;&#x65;&#x78;&#x70;&#x65;&#x63;&#x74;&#x20;&#x32;&#xa;&#x28;&#x6e;&#x75;&#x6d;&#x2d;&#x61;&#x64;&#x6a;&#x61;&#x63;&#x65;&#x6e;&#x74;&#x2d;&#x6d;&#x61;&#x74;&#x63;&#x68;&#x65;&#x73;&#x20;&#x27;&#x28;&#x30;&#x20;&#x31;&#x20;&#x36;&#x20;&#x36;&#x20;&#x36;&#x20;&#x31;&#x29;&#x29;&#xa;&#x3b;&#x20;&#x65;&#x78;&#x70;&#x65;&#x63;&#x74;&#x20;&#x32;&#xa;&#x28;&#x6e;&#x75;&#x6d;&#x2d;&#x61;&#x64;&#x6a;&#x61;&#x63;&#x65;&#x6e;&#x74;&#x2d;&#x6d;&#x61;&#x74;&#x63;&#x68;&#x65;&#x73;&#x20;&#x27;&#x28;&#x34;&#x20;&#x34;&#x20;&#x33;&#x20;&#x33;&#x20;&#x32;&#x20;&#x32;&#x20;&#x31;&#x20;&#x31;&#x29;&#x29;&#xa;&#x3b;&#x20;&#x65;&#x78;&#x70;&#x65;&#x63;&#x74;&#x20;&#x34;</div></code></pre>
+
+
+        <button id='solution-2' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<explanation>
+
+<p>Our base cases are when our input list <code>s</code> is too short to have any adjacent
+matches. We call <code>num&#x2d;adjacent&#x2d;matches</code> recursively on <code>(cdr s)</code> to count the
+adjacent matches in the rest of the list <code>s</code>, then add 0 or 1 depending on
+whether the first and second elements of <code>s</code> are equal.</p>
+
+</explanation>
+
+<h3 class="question" id="q4">Q4: Split</h3>
+
+<p>Implement <code>split&#x2d;at</code>, which takes a list <code>lst</code> and a positive number <code>n</code> as
+input and returns a pair <code>new</code> such that <code>(car new)</code> is the first <code>n</code>
+elements of <code>lst</code> and <code>(cdr new)</code> is the remaining elements of <code>lst</code>. If <code>n</code> is
+greater than the length of <code>lst</code>, <code>(car new)</code> should be <code>lst</code> and <code>(cdr new)</code>
+should be <code>nil</code>.</p>
+
+
+
+<pre><code>(define (split&#x2d;at lst n)
+<div class="alt solution-3">  'YOUR-CODE-HERE
+</div><div class="solution solution-3">&#x20;&#x20;&#x28;&#x63;&#x6f;&#x6e;&#x64;&#x20;&#x28;&#x28;&#x3d;&#x20;&#x6e;&#x20;&#x30;&#x29;&#x20;&#x28;&#x63;&#x6f;&#x6e;&#x73;&#x20;&#x6e;&#x69;&#x6c;&#x20;&#x6c;&#x73;&#x74;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x28;&#x28;&#x6e;&#x75;&#x6c;&#x6c;&#x3f;&#x20;&#x6c;&#x73;&#x74;&#x29;&#x20;&#x28;&#x63;&#x6f;&#x6e;&#x73;&#x20;&#x6c;&#x73;&#x74;&#x20;&#x6e;&#x69;&#x6c;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x28;&#x65;&#x6c;&#x73;&#x65;&#x20;&#x28;&#x6c;&#x65;&#x74;&#x20;&#x28;&#x28;&#x72;&#x65;&#x63;&#x20;&#x28;&#x73;&#x70;&#x6c;&#x69;&#x74;&#x2d;&#x61;&#x74;&#x20;&#x28;&#x63;&#x64;&#x72;&#x20;&#x6c;&#x73;&#x74;&#x29;&#x20;&#x28;&#x2d;&#x20;&#x6e;&#x20;&#x31;&#x29;&#x29;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x28;&#x63;&#x6f;&#x6e;&#x73;&#x20;&#x28;&#x63;&#x6f;&#x6e;&#x73;&#x20;&#x28;&#x63;&#x61;&#x72;&#x20;&#x6c;&#x73;&#x74;&#x29;&#x20;&#x28;&#x63;&#x61;&#x72;&#x20;&#x72;&#x65;&#x63;&#x29;&#x29;&#x20;&#x28;&#x63;&#x64;&#x72;&#x20;&#x72;&#x65;&#x63;&#x29;&#x29;&#x29;&#x29;&#x29;</div>)</code></pre>
+
+
+        <button id='solution-3' class='btn btn-outline btn-lg toggle solution'>
+        Toggle Solution<noscript> (enable JavaScript)</noscript>
+        </button>
+        
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q split-at</code></pre>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#guides">Guides</a></li>
+  <ul>
+    <li><a href="#scheme">Scheme</a></li>
+    <ul>
+      <li><a href="#pairs">Pairs</a></li>
+      <li><a href="#problem-solving">Problem-Solving</a></li>
+    </ul>
+  </ul>
+  <li><a href="#practice-problems">Practice Problems</a></li>
+  <ul>
+    <li><a href="#easy">Easy</a></li>
+    <ul>
+      <li><a href="#q1">Q1: all-satisfies</a></li>
+    </ul>
+    <li><a href="#medium">Medium</a></li>
+    <ul>
+      <li><a href="#q2">Q2: Interleave</a></li>
+      <li><a href="#q3">Q3: Matching</a></li>
+      <li><a href="#q4">Q4: Split</a></li>
+    </ul>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+<script>
+  $(function() {
+    $('.toggle').css('display', 'inline-block');
+    $('.toggle').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
+
+  </body>
+</html>

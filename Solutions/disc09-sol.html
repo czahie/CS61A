@@ -1,0 +1,655 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}pre { word-wrap:break-word; }pre { white-space:pre-wrap; }</style><div id="google-cache-hdr"  dir=ltr><div>这是 <a href="https://cs61a.org/disc/disc09_sol.pdf" dir="ltr">https://cs61a.org/disc/disc09_sol.pdf</a> 的 HTML 档。<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> 在网路漫游时会自动将档案转换成 HTML 网页来储存。</div></div><div style="position:relative;margin:8px;">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX-1.40.18">
+<meta name="CreationDate" content="D:20171219170042Z">
+<meta name="ModDate" content="D:20171219170042Z">
+<meta name="Fullbanner" content="This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) kpathsea version 6.2.3">
+<title>CS 61A Delayed Expressions Fall 2017 1 Iterables and Iterators</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:258;left:81"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:258;left:391"><nobr>Delayed Expressions</nobr></div>
+<div style="position:absolute;top:299;left:81"><nobr>Fall 2017</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:306;left:371"><nobr>Discussion 9: November 8, 2017 <font color="#ff0000" style="font-size:19px">Solutions</font></nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:368;left:81"><nobr>1 Iterables and Iterators</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:412;left:636"><nobr>&gt;&gt;&gt; lst = [4, 2]</nobr></div>
+<div style="position:absolute;top:433;left:636"><nobr>&gt;&gt;&gt; i = <b>iter</b>(lst)</nobr></div>
+<div style="position:absolute;top:455;left:636"><nobr>&gt;&gt;&gt; j = <b>iter</b>(lst)</nobr></div>
+<div style="position:absolute;top:476;left:636"><nobr>&gt;&gt;&gt; i</nobr></div>
+<div style="position:absolute;top:498;left:636"><nobr>&lt;list_iterator <b>object</b>&gt;</nobr></div>
+<div style="position:absolute;top:519;left:636"><nobr>&gt;&gt;&gt; <b>next</b>(i)</nobr></div>
+<div style="position:absolute;top:541;left:636"><nobr>4</nobr></div>
+<div style="position:absolute;top:562;left:636"><nobr>&gt;&gt;&gt; <b>next</b>(i)</nobr></div>
+<div style="position:absolute;top:584;left:636"><nobr>2</nobr></div>
+<div style="position:absolute;top:605;left:636"><nobr>&gt;&gt;&gt; <b>next</b>(j)</nobr></div>
+<div style="position:absolute;top:627;left:636"><nobr>4</nobr></div>
+<div style="position:absolute;top:648;left:636"><nobr>&gt;&gt;&gt; <b>next</b>(i)</nobr></div>
+<div style="position:absolute;top:670;left:636"><nobr>StopIteration</nobr></div>
+<div style="position:absolute;top:691;left:636"><nobr>&gt;&gt;&gt; <b>next</b>(j)</nobr></div>
+<div style="position:absolute;top:713;left:636"><nobr>2</nobr></div>
+<div style="position:absolute;top:422;left:81"><nobr>An iterable is any container that can be processed sequentially. Examples include</nobr></div>
+<div style="position:absolute;top:443;left:81"><nobr>lists, tuples, strings, and dictionaries. Often we want to access the elements of an</nobr></div>
+<div style="position:absolute;top:465;left:81"><nobr>iterable, one at a time. We find ourselves writing lst[0], lst[1], lst[2], and so</nobr></div>
+<div style="position:absolute;top:486;left:81"><nobr>on. It would be more convenient if there was an object that could do this for us, so</nobr></div>
+<div style="position:absolute;top:508;left:81"><nobr>that we don’t have to keep track of the indices.</nobr></div>
+<div style="position:absolute;top:538;left:81"><nobr>This is where iterators come in. Given an iterable, we can call the <b>iter </b>function on</nobr></div>
+<div style="position:absolute;top:560;left:81"><nobr>that iterable to return a new iterator object. Each time we call <b>next </b>on the iterator</nobr></div>
+<div style="position:absolute;top:581;left:81"><nobr>object, it gives us one element at a time, just like we wanted. When it runs out</nobr></div>
+<div style="position:absolute;top:603;left:81"><nobr>of elements to give, calling <b>next </b>on the iterator object will raise a StopIteration</nobr></div>
+<div style="position:absolute;top:625;left:81"><nobr>exception.</nobr></div>
+<div style="position:absolute;top:655;left:81"><nobr>We can create as many iterators as we would like from a single iterable. But, each</nobr></div>
+<div style="position:absolute;top:677;left:81"><nobr>iterator goes through the elements of the iterable only once. If you want to go</nobr></div>
+<div style="position:absolute;top:698;left:81"><nobr>through an iterable twice, create two iterators!</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:732;left:81"><nobr>For Loops</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:773;left:636"><nobr>&gt;&gt;&gt; counts = [1, 2, 3]</nobr></div>
+<div style="position:absolute;top:794;left:636"><nobr>&gt;&gt;&gt; items = <b>iter</b>(counts)</nobr></div>
+<div style="position:absolute;top:816;left:636"><nobr>&gt;&gt;&gt; <b>try</b>:</nobr></div>
+<div style="position:absolute;top:837;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:841;left:696"><nobr><b>while </b>True:</nobr></div>
+<div style="position:absolute;top:859;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:859;left:726"><nobr>item = <b>next</b>(items)</nobr></div>
+<div style="position:absolute;top:880;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:884;left:726"><nobr><b>print</b>(item)</nobr></div>
+<div style="position:absolute;top:902;left:636"><nobr>... <b>except </b>StopIteration:</nobr></div>
+<div style="position:absolute;top:923;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:927;left:696"><nobr><b>pass </b># Do nothing</nobr></div>
+<div style="position:absolute;top:945;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:966;left:636"><nobr>1</nobr></div>
+<div style="position:absolute;top:988;left:636"><nobr>2</nobr></div>
+<div style="position:absolute;top:1009;left:636"><nobr>3</nobr></div>
+<div style="position:absolute;top:779;left:81"><nobr>By now, you are familiar with using <b>for </b>loops to iterate over iterables like lists and</nobr></div>
+<div style="position:absolute;top:800;left:81"><nobr>dictionaries.</nobr></div>
+<div style="position:absolute;top:831;left:81"><nobr>This only works because the <b>for </b>loop implicitly creates an iterator using the built-</nobr></div>
+<div style="position:absolute;top:852;left:81"><nobr>in <b>iter </b>function. Python then calls <b>next </b>repeatedly on the iterator, until it raises</nobr></div>
+<div style="position:absolute;top:870;left:81"><nobr>StopIteration. The code to the right is (basically) equivalent to using a <b>for </b>loop</nobr></div>
+<div style="position:absolute;top:895;left:81"><nobr>to iterate over a list of [1, 2, 3].</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:929;left:81"><nobr>Other Iterable Uses</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:976;left:81"><nobr>We have already encountered functions that use and create iterables. Here are some</nobr></div>
+<div style="position:absolute;top:997;left:81"><nobr>that we have seen (and some that we have not):</nobr></div>
+<div style="position:absolute;top:1024;left:103"><nobr>• range(start, end) - Creates iterable of numbers from start (inclusive) to end</nobr></div>
+<div style="position:absolute;top:1049;left:118"><nobr>(exclusive)</nobr></div>
+<div style="position:absolute;top:1076;left:103"><nobr>• map(f, iterable) - Creates iterator over f(x) for x in iterable</nobr></div>
+<div style="position:absolute;top:1106;left:103"><nobr>• filter(f, iterable) - Creates iterator over x for x in iterable if f(x)</nobr></div>
+<div style="position:absolute;top:1137;left:103"><nobr>• zip(iter1, iter2) - Creates iterator over co-indexed pairs (x, y)</nobr></div>
+<div style="position:absolute;top:1167;left:103"><nobr>• reversed(iterable) - Creates iterator sequence in reverse order</nobr></div>
+<div style="position:absolute;top:1198;left:103"><nobr>• list(iterable) - Creates a list containing all x in iterable</nobr></div>
+<div style="position:absolute;top:1228;left:103"><nobr>• tuple(iterable) - Creates a tuple containing all x in iterable</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1363;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1400;left:81"><nobr>2 Delayed Expressions</nobr></div>
+<div style="position:absolute;top:1433;left:103"><nobr>• sorted(iterable) - Creates a sorted list containing all x in iterable</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:1470;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:1520;left:52"><nobr>1.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1517;left:81"><nobr>What would Python display?</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1549;left:81"><nobr>It can be helpful to refer back to the iter example on the first page. Remember that</nobr></div>
+<div style="position:absolute;top:1571;left:81"><nobr>calling iter returns something that you can call next on. The rest of the challenge</nobr></div>
+<div style="position:absolute;top:1592;left:81"><nobr>in this problem is just keeping track of where you currently are in the sequence.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1613;left:81"><nobr>&gt;&gt;&gt; lst = [[1, 2]]</nobr></div>
+<div style="position:absolute;top:1634;left:81"><nobr>&gt;&gt;&gt; i = <b>iter</b>(lst)</nobr></div>
+<div style="position:absolute;top:1656;left:81"><nobr>&gt;&gt;&gt; j = <b>iter</b>(<b>next</b>(i))</nobr></div>
+<div style="position:absolute;top:1677;left:81"><nobr>&gt;&gt;&gt; <b>next</b>(j)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1714;left:81"><nobr>1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1742;left:81"><nobr>&gt;&gt;&gt; lst.append(3)</nobr></div>
+<div style="position:absolute;top:1763;left:81"><nobr>&gt;&gt;&gt; <b>next</b>(i)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1800;left:81"><nobr>3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1828;left:81"><nobr>&gt;&gt;&gt; <b>next</b>(j)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1864;left:81"><nobr>2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:1892;left:81"><nobr>&gt;&gt;&gt; <b>next</b>(i)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1929;left:81"><nobr>StopIteration</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:1979;left:81"><nobr>2 Generators</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2022;left:636"><nobr>&gt;&gt;&gt; <b>def </b>gen_naturals():</nobr></div>
+<div style="position:absolute;top:2044;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:2044;left:696"><nobr>current = 0</nobr></div>
+<div style="position:absolute;top:2065;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:2070;left:696"><nobr><b>while </b>True:</nobr></div>
+<div style="position:absolute;top:2087;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:2091;left:726"><nobr><b>yield </b>current</nobr></div>
+<div style="position:absolute;top:2109;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:2109;left:726"><nobr>current += 1</nobr></div>
+<div style="position:absolute;top:2130;left:636"><nobr>&gt;&gt;&gt; gen = gen_naturals()</nobr></div>
+<div style="position:absolute;top:2152;left:636"><nobr>&gt;&gt;&gt; gen</nobr></div>
+<div style="position:absolute;top:2173;left:636"><nobr>&lt;generator <b>object </b>gen at ...&gt;</nobr></div>
+<div style="position:absolute;top:2195;left:636"><nobr>&gt;&gt;&gt; <b>next</b>(gen)</nobr></div>
+<div style="position:absolute;top:2216;left:636"><nobr>0</nobr></div>
+<div style="position:absolute;top:2238;left:636"><nobr>&gt;&gt;&gt; <b>next</b>(gen)</nobr></div>
+<div style="position:absolute;top:2259;left:636"><nobr>1</nobr></div>
+<div style="position:absolute;top:2033;left:81"><nobr>A generator function is a special kind of Python function that uses a <b>yield</b></nobr></div>
+<div style="position:absolute;top:2054;left:88"><nobr>statement instead of a <b>return </b>statement to report values. When a generator</nobr></div>
+<div style="position:absolute;top:2076;left:81"><nobr>function is called, it returns an iterator. To the right, you can see a function that</nobr></div>
+<div style="position:absolute;top:2097;left:81"><nobr>returns an iterator over the natural numbers.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:2128;left:81"><nobr>2.1 <font style="font-size:12px">yield</font></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2174;left:81"><nobr>The <b>yield </b>statement is similar to a <b>return </b>statement. However, while a <b>return</b></nobr></div>
+<div style="position:absolute;top:2196;left:81"><nobr>statement closes the current frame after the function exits, a <b>yield </b>statement causes</nobr></div>
+<div style="position:absolute;top:2217;left:81"><nobr>the frame to be saved until the next time <b>next </b>is called, which allows the generator</nobr></div>
+<div style="position:absolute;top:2239;left:81"><nobr>to automatically keep track of the iteration state.</nobr></div>
+<div style="position:absolute;top:2269;left:81"><nobr>Once <b>next </b>is called again, execution resumes where it last stopped and continues</nobr></div>
+<div style="position:absolute;top:2291;left:81"><nobr>until the next <b>yield </b>statement or the end of the function. A generator function can</nobr></div>
+<div style="position:absolute;top:2312;left:81"><nobr>have multiple <b>yield </b>statements.</nobr></div>
+<div style="position:absolute;top:2343;left:81"><nobr>Including a <b>yield </b>statement in a function automatically tells Python that this</nobr></div>
+<div style="position:absolute;top:2364;left:81"><nobr>function will create a generator. When we call the function, it returns a generator</nobr></div>
+<div style="position:absolute;top:2386;left:81"><nobr>object instead of executing the the body. When the generator’s <b>next </b>method is</nobr></div>
+<div style="position:absolute;top:2407;left:81"><nobr>called, the body is executed until the next <b>yield </b>statement is executed.</nobr></div>
+<div style="position:absolute;top:2428;left:636"><nobr>&gt;&gt;&gt; square = <b>lambda </b>x: x*x</nobr></div>
+<div style="position:absolute;top:2449;left:636"><nobr>&gt;&gt;&gt; <b>def </b>many_squares(s):</nobr></div>
+<div style="position:absolute;top:2471;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:2475;left:696"><nobr><b>for </b>x <b>in </b>s:</nobr></div>
+<div style="position:absolute;top:2492;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:2496;left:726"><nobr><b>yield </b>square(x)</nobr></div>
+<div style="position:absolute;top:2514;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:2518;left:696"><nobr><b>yield from </b>[square(x) \</nobr></div>
+<div style="position:absolute;top:2539;left:785"><nobr><b>for </b>x <b>in </b>s]</nobr></div>
+<div style="position:absolute;top:2557;left:636"><nobr>...</nobr></div>
+<div style="position:absolute;top:2561;left:696"><nobr><b>yield from map</b>(square, s)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2551;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2588;left:455"><nobr>Delayed Expressions</nobr></div>
+<div style="position:absolute;top:2588;left:609"><nobr>3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:2619;left:81"><nobr>2.2 <font style="font-size:12px">yield from</font></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:2666;left:81"><nobr>When <b>yield from </b>is called on an iterator, it will <b>yield </b>every value from that iter-</nobr></div>
+<div style="position:absolute;top:2687;left:81"><nobr>ator. It’s similar to doing the following:</nobr></div>
+<div style="position:absolute;top:2718;left:81"><nobr><b>for </b>x <b>in </b>an_iterator:</nobr></div>
+<div style="position:absolute;top:2740;left:111"><nobr><b>yield </b>x</nobr></div>
+<div style="position:absolute;top:2779;left:81"><nobr>The example to the right demonstrates different ways of accomplishing the same</nobr></div>
+<div style="position:absolute;top:2800;left:81"><nobr>result.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3739;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3776;left:81"><nobr>4 Delayed Expressions</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:3808;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:3858;left:52"><nobr>2.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:3855;left:81"><nobr>Write a generator function combiner that combines two input iterators using a given</nobr></div>
+<div style="position:absolute;top:3876;left:81"><nobr>combiner function. The resulting iterator should have a size equal to the size of the</nobr></div>
+<div style="position:absolute;top:3898;left:81"><nobr>shorter of its two input iterators.</nobr></div>
+<div style="position:absolute;top:3931;left:81"><nobr>&gt;&gt;&gt; <b>from </b>operator <b>import </b>add</nobr></div>
+<div style="position:absolute;top:3953;left:81"><nobr>&gt;&gt;&gt; evens = combiner(gen_naturals(), gen_naturals(), add)</nobr></div>
+<div style="position:absolute;top:3974;left:81"><nobr>&gt;&gt;&gt; <b>next</b>(evens)</nobr></div>
+<div style="position:absolute;top:3996;left:81"><nobr>0</nobr></div>
+<div style="position:absolute;top:4017;left:81"><nobr>&gt;&gt;&gt; <b>next</b>(evens)</nobr></div>
+<div style="position:absolute;top:4039;left:81"><nobr>2</nobr></div>
+<div style="position:absolute;top:4060;left:81"><nobr>&gt;&gt;&gt; <b>next</b>(evens)</nobr></div>
+<div style="position:absolute;top:4082;left:81"><nobr>4</nobr></div>
+<div style="position:absolute;top:4125;left:81"><nobr><b>def </b>combiner(iterator1, iterator2, combiner):</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4171;left:111"><nobr><b>while </b>True:</nobr></div>
+<div style="position:absolute;top:4192;left:141"><nobr><b>yield </b>combiner(<b>next</b>(iterator1), <b>next</b>(iterator2))</nobr></div>
+<div style="position:absolute;top:4223;left:81"><nobr>While this is the most compact solution, it may not be immediately obvious that</nobr></div>
+<div style="position:absolute;top:4244;left:81"><nobr>we would arrive at this. It’s acceptable to start with the “basic skeleton” of all</nobr></div>
+<div style="position:absolute;top:4266;left:81"><nobr>generators:</nobr></div>
+<div style="position:absolute;top:4296;left:111"><nobr><b>while </b>True:</nobr></div>
+<div style="position:absolute;top:4314;left:141"><nobr>&lt;do some work here&gt;</nobr></div>
+<div style="position:absolute;top:4339;left:141"><nobr><b>yield </b>&lt;something&gt;</nobr></div>
+<div style="position:absolute;top:4357;left:141"><nobr>&lt;do some other work here&gt;</nobr></div>
+<div style="position:absolute;top:4391;left:81"><nobr>From this, we put in some basic steps:</nobr></div>
+<div style="position:absolute;top:4409;left:103"><nobr>• We want to fetch the next item from both our iterators.</nobr></div>
+<div style="position:absolute;top:4430;left:103"><nobr>• Then, we would want to combine them using our combiner function.</nobr></div>
+<div style="position:absolute;top:4452;left:103"><nobr>• Finally, we want to yield the result (be very careful not to return!).</nobr></div>
+<div style="position:absolute;top:4487;left:111"><nobr><b>while </b>True:</nobr></div>
+<div style="position:absolute;top:4504;left:141"><nobr>n1 = <b>next</b>(iterator1)</nobr></div>
+<div style="position:absolute;top:4525;left:141"><nobr>n2 = <b>next</b>(iterator2)</nobr></div>
+<div style="position:absolute;top:4547;left:141"><nobr>result = combiner(n1, n2)</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:4590;left:52"><nobr>2.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4587;left:81"><nobr>What is the result of executing this sequence of commands?</nobr></div>
+<div style="position:absolute;top:4614;left:81"><nobr>&gt;&gt;&gt; nats = gen_naturals()</nobr></div>
+<div style="position:absolute;top:4635;left:81"><nobr>&gt;&gt;&gt; doubled_nats = combiner(nats, nats, add)</nobr></div>
+<div style="position:absolute;top:4657;left:81"><nobr>&gt;&gt;&gt; <b>next</b>(doubled_nats)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4701;left:81"><nobr>1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4727;left:81"><nobr>&gt;&gt;&gt; <b>next</b>(doubled_nats)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:4771;left:81"><nobr>5</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:4927;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:4964;left:455"><nobr>Delayed Expressions</nobr></div>
+<div style="position:absolute;top:4964;left:609"><nobr>5</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5002;left:81"><nobr>The naturals iterator has been fed into combiner twice. So the first yield will get</nobr></div>
+<div style="position:absolute;top:5023;left:81"><nobr>the first two numbers out of naturals, the second yield will the the third and fourth</nobr></div>
+<div style="position:absolute;top:5045;left:81"><nobr>numbers, and so on.</nobr></div>
+<div style="position:absolute;top:5072;left:103"><nobr>• 0+1=1</nobr></div>
+<div style="position:absolute;top:5102;left:103"><nobr>• 2+3=5</nobr></div>
+<div style="position:absolute;top:5136;left:81"><nobr>If you expected this to return 0 then 2, think about what would need to be changed</nobr></div>
+<div style="position:absolute;top:5158;left:81"><nobr>in how we use combiner. Also, let’s assume we don’t want to change the behaviour</nobr></div>
+<div style="position:absolute;top:5179;left:81"><nobr>of the combiner function.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:5213;left:52"><nobr>2.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:5210;left:81"><nobr>Write a generator function gen_all_items that takes a list of iterators and yields</nobr></div>
+<div style="position:absolute;top:5232;left:81"><nobr>items from all of them in order.</nobr></div>
+<div style="position:absolute;top:5262;left:81"><nobr><b>def </b>gen_all_items(lst):</nobr></div>
+<div style="position:absolute;top:5301;left:111"><nobr>&gt;&gt;&gt; nums = [[1, 2], [3, 4], [[5, 6]]]</nobr></div>
+<div style="position:absolute;top:5323;left:111"><nobr>&gt;&gt;&gt; num_iters = [iter(l) for l in nums]</nobr></div>
+<div style="position:absolute;top:5344;left:111"><nobr>&gt;&gt;&gt; list(gen_all_items(num_iters))</nobr></div>
+<div style="position:absolute;top:5366;left:111"><nobr>[1, 2, 3, 4, [5, 6]]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:5446;left:111"><nobr><b>for </b>it <b>in </b>lst:</nobr></div>
+<div style="position:absolute;top:5468;left:141"><nobr><b>yield from </b>it</nobr></div>
+<div style="position:absolute;top:5507;left:81"><nobr>The yield from solution is nice and short. But this can also be done with just</nobr></div>
+<div style="position:absolute;top:5528;left:81"><nobr>yield:</nobr></div>
+<div style="position:absolute;top:5559;left:111"><nobr><b>for </b>it <b>in </b>lst:</nobr></div>
+<div style="position:absolute;top:5581;left:141"><nobr><b>for </b>x <b>in </b>it:</nobr></div>
+<div style="position:absolute;top:5602;left:171"><nobr><b>yield </b>x</nobr></div>
+<div style="position:absolute;top:5641;left:81"><nobr>Notice that this function will not yield out of deep lists. That is, it will keep the</nobr></div>
+<div style="position:absolute;top:5663;left:81"><nobr>brackets around deep lists and yield them together instead of one element at a time.</nobr></div>
+<div style="position:absolute;top:5693;left:81"><nobr>For an extra challenge, figure out how to yield deep list items! (so the example in</nobr></div>
+<div style="position:absolute;top:5715;left:81"><nobr>the doctest would return [1, 2, 3, 4, 5, 6])</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:6115;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=6><b>Page 6</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6152;left:81"><nobr>6 Delayed Expressions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:6192;left:52"><nobr>2.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6189;left:81"><nobr>Write a generator function generate_subsets that returns all subsets of the positive</nobr></div>
+<div style="position:absolute;top:6210;left:81"><nobr>integers from 1 to n. Each call to this generator’s <b>next </b>method will return a list of</nobr></div>
+<div style="position:absolute;top:6232;left:81"><nobr>subsets of the set [1, 2, ..., n], where n is the number of previous calls to next.</nobr></div>
+<div style="position:absolute;top:6262;left:81"><nobr><b>def </b>generate_subsets():</nobr></div>
+<div style="position:absolute;top:6301;left:111"><nobr>&gt;&gt;&gt; subsets = generate_subsets()</nobr></div>
+<div style="position:absolute;top:6323;left:111"><nobr>&gt;&gt;&gt; for _ in range(3):</nobr></div>
+<div style="position:absolute;top:6344;left:111"><nobr>...</nobr></div>
+<div style="position:absolute;top:6344;left:171"><nobr>print(next(subsets))</nobr></div>
+<div style="position:absolute;top:6366;left:111"><nobr>...</nobr></div>
+<div style="position:absolute;top:6387;left:111"><nobr>[[]]</nobr></div>
+<div style="position:absolute;top:6409;left:111"><nobr>[[], [1]]</nobr></div>
+<div style="position:absolute;top:6430;left:111"><nobr>[[], [1], [2], [1, 2]]</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:6506;left:111"><nobr>subsets = [[]]</nobr></div>
+<div style="position:absolute;top:6528;left:111"><nobr>n = 1</nobr></div>
+<div style="position:absolute;top:6554;left:111"><nobr><b>while </b>True:</nobr></div>
+<div style="position:absolute;top:6575;left:141"><nobr><b>yield </b>subsets</nobr></div>
+<div style="position:absolute;top:6592;left:141"><nobr>subsets = subsets + [s + [n] <b>for </b>s <b>in </b>subsets]</nobr></div>
+<div style="position:absolute;top:6614;left:141"><nobr>n += 1</nobr></div>
+<div style="position:absolute;top:6657;left:81"><nobr>We start with a base list of subsets. To get the next sequence of subsets, we need</nobr></div>
+<div style="position:absolute;top:6679;left:81"><nobr>two things:</nobr></div>
+<div style="position:absolute;top:6705;left:103"><nobr>• All current subsets will continue to be valid subsets in the future.</nobr></div>
+<div style="position:absolute;top:6736;left:103"><nobr>• We take all the subsets we currently have, and add the next number. These</nobr></div>
+<div style="position:absolute;top:6761;left:118"><nobr>are also valid subsets.</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:6801;left:81"><nobr>3 Streams</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:6855;left:81"><nobr>In Python, we can use iterators to represent infinite sequences (for example, the</nobr></div>
+<div style="position:absolute;top:6876;left:81"><nobr>generator for all natural numbers). However, Scheme does not support iterators.</nobr></div>
+<div style="position:absolute;top:6898;left:81"><nobr>Let’s see what happens when we try to use a Scheme list to represent an infinite</nobr></div>
+<div style="position:absolute;top:6919;left:81"><nobr>sequence of natural numbers:</nobr></div>
+<div style="position:absolute;top:6946;left:81"><nobr>scm&gt; (<b>define </b>(naturals n)</nobr></div>
+<div style="position:absolute;top:6967;left:148"><nobr>(cons n (naturals (+ n 1))))</nobr></div>
+<div style="position:absolute;top:6989;left:81"><nobr>naturals</nobr></div>
+<div style="position:absolute;top:7010;left:81"><nobr>scm&gt; (naturals 0)</nobr></div>
+<div style="position:absolute;top:7032;left:81"><nobr>Error: maximum recursion depth exceeded</nobr></div>
+<div style="position:absolute;top:7075;left:81"><nobr>Because the second argument to cons is always evaluated, we cannot create an</nobr></div>
+<div style="position:absolute;top:7097;left:81"><nobr>infinite sequence of integers using a Scheme list.</nobr></div>
+<div style="position:absolute;top:7127;left:81"><nobr>Instead, our Scheme interpreter supports streams, which are lazy Scheme lists. The</nobr></div>
+<div style="position:absolute;top:7149;left:81"><nobr>first element is represented explicitly, but the rest of the stream’s elements are</nobr></div>
+<div style="position:absolute;top:7170;left:81"><nobr>computed only when needed. Computing a value only when it’s needed is also</nobr></div>
+<div style="position:absolute;top:7192;left:81"><nobr>known as lazy evaluation.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:7303;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=7><b>Page 7</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:7340;left:455"><nobr>Delayed Expressions</nobr></div>
+<div style="position:absolute;top:7340;left:609"><nobr>7</nobr></div>
+<div style="position:absolute;top:7373;left:81"><nobr>scm&gt; (<b>define </b>(naturals n)</nobr></div>
+<div style="position:absolute;top:7394;left:148"><nobr>(cons-stream n (naturals (+ n 1))))</nobr></div>
+<div style="position:absolute;top:7416;left:81"><nobr>naturals</nobr></div>
+<div style="position:absolute;top:7437;left:81"><nobr>scm&gt; (<b>define </b>nat (naturals 0))</nobr></div>
+<div style="position:absolute;top:7459;left:81"><nobr>nat</nobr></div>
+<div style="position:absolute;top:7480;left:81"><nobr>scm&gt; (car nat)</nobr></div>
+<div style="position:absolute;top:7502;left:81"><nobr>0</nobr></div>
+<div style="position:absolute;top:7523;left:81"><nobr>scm&gt; (car (cdr-stream nat))</nobr></div>
+<div style="position:absolute;top:7545;left:81"><nobr>1</nobr></div>
+<div style="position:absolute;top:7566;left:81"><nobr>scm&gt; (car (cdr-stream (cdr-stream nat)))</nobr></div>
+<div style="position:absolute;top:7588;left:81"><nobr>2</nobr></div>
+<div style="position:absolute;top:7631;left:81"><nobr>We use the special form cons-stream to create a stream. Note that cons-stream is</nobr></div>
+<div style="position:absolute;top:7653;left:81"><nobr>a special form, because the second operand (naturals (+ n 1))) is not evaluated</nobr></div>
+<div style="position:absolute;top:7674;left:81"><nobr>when cons-stream is called. It’s only evaluated when cdr-stream is used to inspect</nobr></div>
+<div style="position:absolute;top:7696;left:81"><nobr>the rest of the stream.</nobr></div>
+<div style="position:absolute;top:7722;left:103"><nobr>• nil is the empty stream</nobr></div>
+<div style="position:absolute;top:7753;left:103"><nobr>• cons-stream creates a non-empty stream from an initial element and an ex-</nobr></div>
+<div style="position:absolute;top:7778;left:118"><nobr>pression to compute the rest of the stream</nobr></div>
+<div style="position:absolute;top:7805;left:103"><nobr>• car returns the first element of the stream</nobr></div>
+<div style="position:absolute;top:7835;left:103"><nobr>• cdr-stream computes and returns the rest of stream</nobr></div>
+<div style="position:absolute;top:7870;left:81"><nobr>Streams are very similar to Scheme lists. The cdr of a Scheme list is either another</nobr></div>
+<div style="position:absolute;top:7891;left:81"><nobr>Scheme list or nil; likewise, the cdr-stream of a stream is either a stream or nil.</nobr></div>
+<div style="position:absolute;top:7913;left:81"><nobr>The difference is that the expression for the rest of the stream is computed the first</nobr></div>
+<div style="position:absolute;top:7934;left:81"><nobr>time that cdr-stream is called, instead of when cons-stream is used. Subsequent</nobr></div>
+<div style="position:absolute;top:7956;left:81"><nobr>calls to cdr-stream return this value without recomputing it. This allows us to</nobr></div>
+<div style="position:absolute;top:7977;left:81"><nobr>efficiently work with infinite streams like the naturals example above. We can see</nobr></div>
+<div style="position:absolute;top:7999;left:81"><nobr>this in action by using a non-pure function to compute the rest of the stream:</nobr></div>
+<div style="position:absolute;top:8026;left:81"><nobr>scm&gt; (define (compute-rest n)</nobr></div>
+<div style="position:absolute;top:8047;left:81"><nobr>...&gt;</nobr></div>
+<div style="position:absolute;top:8047;left:133"><nobr>(<b>print </b>evaluating!)</nobr></div>
+<div style="position:absolute;top:8069;left:81"><nobr>...&gt;</nobr></div>
+<div style="position:absolute;top:8069;left:133"><nobr>(cons-stream n nil))</nobr></div>
+<div style="position:absolute;top:8090;left:81"><nobr>compute-rest</nobr></div>
+<div style="position:absolute;top:8112;left:81"><nobr>scm&gt; (define s (cons-stream 0 (compute-rest 1)))</nobr></div>
+<div style="position:absolute;top:8133;left:81"><nobr>s</nobr></div>
+<div style="position:absolute;top:8155;left:81"><nobr>scm&gt; (car (cdr-stream s))</nobr></div>
+<div style="position:absolute;top:8176;left:81"><nobr>evaluating!</nobr></div>
+<div style="position:absolute;top:8198;left:81"><nobr>1</nobr></div>
+<div style="position:absolute;top:8219;left:81"><nobr>scm&gt; (car (cdr-stream s))</nobr></div>
+<div style="position:absolute;top:8241;left:81"><nobr>1</nobr></div>
+<div style="position:absolute;top:8284;left:81"><nobr>Note that the symbol evaluating! is only printed the first time cdr-stream is</nobr></div>
+<div style="position:absolute;top:8306;left:81"><nobr>called.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:8336;left:81"><nobr>Questions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:8386;left:52"><nobr>3.1</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8383;left:81"><nobr>What would Scheme display?</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:8491;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=8><b>Page 8</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8528;left:81"><nobr>8 Delayed Expressions</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:8566;left:81"><nobr>As you work through these problems, remember that streams have two important</nobr></div>
+<div style="position:absolute;top:8587;left:81"><nobr>components:</nobr></div>
+<div style="position:absolute;top:8614;left:103"><nobr>• Lazy evaluation – so the remainder of the stream isn’t computed until explic-</nobr></div>
+<div style="position:absolute;top:8639;left:118"><nobr>itly requested.</nobr></div>
+<div style="position:absolute;top:8666;left:103"><nobr>• Memoization – so anything we compute won’t be recomputed.</nobr></div>
+<div style="position:absolute;top:8700;left:81"><nobr>The examples here stretch these concepts to the limit. In most practical use cases,</nobr></div>
+<div style="position:absolute;top:8722;left:81"><nobr>you may find you rarely need to redefine functions that compute the remainder of</nobr></div>
+<div style="position:absolute;top:8743;left:81"><nobr>the stream.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:8761;left:81"><nobr>scm&gt; (<b>define </b>(has-even? s)</nobr></div>
+<div style="position:absolute;top:8783;left:133"><nobr>(<b>cond </b>((null? s) #f)</nobr></div>
+<div style="position:absolute;top:8804;left:178"><nobr>((even? (car s)) #t)</nobr></div>
+<div style="position:absolute;top:8826;left:178"><nobr>(<b>else </b>(has-even? (cdr-stream s)))))</nobr></div>
+<div style="position:absolute;top:8847;left:81"><nobr>has-even?</nobr></div>
+<div style="position:absolute;top:8869;left:81"><nobr>scm&gt; (<b>define </b>(f x) (* 3 x))</nobr></div>
+<div style="position:absolute;top:8890;left:81"><nobr>f</nobr></div>
+<div style="position:absolute;top:8912;left:81"><nobr>scm&gt; (<b>define </b>nums (cons-stream 1 (cons-stream (f 3) (cons-stream (f 5) nil))))</nobr></div>
+<div style="position:absolute;top:8933;left:81"><nobr>nums</nobr></div>
+<div style="position:absolute;top:8965;left:81"><nobr>scm&gt; nums</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9002;left:81"><nobr>(1 . #[promise (<b>not </b>forced)])</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9030;left:81"><nobr>scm&gt; (cdr nums)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9066;left:81"><nobr>#[promise (<b>not </b>forced)]</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9094;left:81"><nobr>scm&gt; (cdr-stream nums)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9131;left:81"><nobr>(9 . #[promise (<b>not </b>forced)])</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9159;left:81"><nobr>scm&gt; (<b>define </b>(f x) (* 2 x))</nobr></div>
+<div style="position:absolute;top:9180;left:81"><nobr>f</nobr></div>
+<div style="position:absolute;top:9202;left:81"><nobr>scm&gt; (cdr-stream nums)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9239;left:81"><nobr>(9 . #[promise (<b>not </b>forced)])</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9267;left:81"><nobr>scm&gt; (has-even? nums)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9303;left:81"><nobr>True</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:9337;left:52"><nobr>3.2</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9334;left:81"><nobr>Using streams can be tricky! Compare the following two implementations of filter-stream,</nobr></div>
+<div style="position:absolute;top:9356;left:81"><nobr>the first is a correct implementation whereas the second is wrong in some way.</nobr></div>
+<div style="position:absolute;top:9377;left:81"><nobr>What’s wrong with the second implementation?</nobr></div>
+<div style="position:absolute;top:9395;left:81"><nobr>; Correct</nobr></div>
+<div style="position:absolute;top:9417;left:81"><nobr>(<b>define </b>(filter-stream f s)</nobr></div>
+<div style="position:absolute;top:9438;left:96"><nobr>(<b>cond</b></nobr></div>
+<div style="position:absolute;top:9460;left:111"><nobr>((null? s) nil)</nobr></div>
+<div style="position:absolute;top:9481;left:111"><nobr>((f (car s)) (cons-stream (car s) (filter-stream f (cdr-stream s))))</nobr></div>
+<div style="position:absolute;top:9503;left:111"><nobr>(<b>else </b>(filter-stream f (cdr-stream s)))))</nobr></div>
+<div style="position:absolute;top:9546;left:81"><nobr>; Incorrect</nobr></div>
+<div style="position:absolute;top:9567;left:81"><nobr>(<b>define </b>(filter-stream f s)</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:9679;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=9><b>Page 9</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9716;left:455"><nobr>Delayed Expressions</nobr></div>
+<div style="position:absolute;top:9716;left:609"><nobr>9</nobr></div>
+<div style="position:absolute;top:9749;left:96"><nobr>(<b>if </b>(null? s) nil</nobr></div>
+<div style="position:absolute;top:9770;left:111"><nobr>(<b>let </b>((rest (filter-stream f (cdr-stream s))))</nobr></div>
+<div style="position:absolute;top:9792;left:126"><nobr>(<b>if </b>(f (car s))</nobr></div>
+<div style="position:absolute;top:9813;left:141"><nobr>(cons-stream (car s) rest)</nobr></div>
+<div style="position:absolute;top:9835;left:141"><nobr>rest))))</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:9871;left:81"><nobr>Evaluating rest will result in infinite recursion if s is an infinite stream! In the</nobr></div>
+<div style="position:absolute;top:9892;left:81"><nobr>body of filter-stream, rest is always computed before cons-stream can delay the</nobr></div>
+<div style="position:absolute;top:9914;left:81"><nobr>evaluation.</nobr></div>
+<div style="position:absolute;top:9944;left:81"><nobr>Another way of thinking about this is that everything in the body of the let doesn’t</nobr></div>
+<div style="position:absolute;top:9966;left:81"><nobr>matter. All we will be doing is repeatedly doing the recursive call on filter-stream.</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:10002;left:52"><nobr>3.3</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:9999;left:81"><nobr>Write a function map-stream, which takes a function f and a stream s. It returns a</nobr></div>
+<div style="position:absolute;top:10021;left:81"><nobr>new stream which has all the elements from s, but with f applied to each one.</nobr></div>
+<div style="position:absolute;top:10038;left:81"><nobr>(<b>define </b>(map-stream f s)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:10075;left:96"><nobr>(<b>if </b>(null? s)</nobr></div>
+<div style="position:absolute;top:10096;left:111"><nobr>nil</nobr></div>
+<div style="position:absolute;top:10118;left:111"><nobr>(cons-stream (f (car s)) (map-stream f (cdr-stream s))))</nobr></div>
+<div style="position:absolute;top:10152;left:81"><nobr>It might help to also compare this to the version of map for regular (non-stream)</nobr></div>
+<div style="position:absolute;top:10174;left:81"><nobr>Scheme lists:</nobr></div>
+<div style="position:absolute;top:10191;left:81"><nobr>(<b>define </b>(<b>map </b>f s)</nobr></div>
+<div style="position:absolute;top:10213;left:96"><nobr>(<b>if </b>(null? s)</nobr></div>
+<div style="position:absolute;top:10234;left:111"><nobr>nil</nobr></div>
+<div style="position:absolute;top:10256;left:111"><nobr>(cons (f (car s)) (<b>map </b>f (cdr s)))))</nobr></div>
+<div style="position:absolute;top:10290;left:81"><nobr>Not too different, eh? The main change we’ve made is indicating we want to lazily</nobr></div>
+<div style="position:absolute;top:10312;left:81"><nobr>evaluate the rest of our stream by using cons-stream instead of cons, and recog-</nobr></div>
+<div style="position:absolute;top:10333;left:81"><nobr>nizing is a stream rather than a regular list by using cdr-stream.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10354;left:81"><nobr>scm&gt; (<b>define </b>evens (map-stream (<b>lambda </b>(x) (* x 2)) nat))</nobr></div>
+<div style="position:absolute;top:10375;left:81"><nobr>evens</nobr></div>
+<div style="position:absolute;top:10397;left:81"><nobr>scm&gt; (car (cdr-stream evens))</nobr></div>
+<div style="position:absolute;top:10418;left:81"><nobr>2</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:10867;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=10><b>Page 10</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10904;left:81"><nobr>10 Delayed Expressions</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:10944;left:52"><nobr>3.4</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:10941;left:81"><nobr>Write a function range-stream which takes a start and end, and returns a stream</nobr></div>
+<div style="position:absolute;top:10962;left:81"><nobr>that represents the integers between start and end - 1 (inclusive).</nobr></div>
+<div style="position:absolute;top:10980;left:81"><nobr>(<b>define </b>(range-stream start end)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11016;left:96"><nobr>(<b>if </b>(= start end)</nobr></div>
+<div style="position:absolute;top:11038;left:111"><nobr>nil</nobr></div>
+<div style="position:absolute;top:11059;left:111"><nobr>(cons-stream start (range-stream (+ start 1) end))))</nobr></div>
+<div style="position:absolute;top:11094;left:81"><nobr>It might help to compare this to the version of range for regular (non-stream)</nobr></div>
+<div style="position:absolute;top:11115;left:81"><nobr>Scheme lists:</nobr></div>
+<div style="position:absolute;top:11133;left:81"><nobr>(<b>define </b>(range start end)</nobr></div>
+<div style="position:absolute;top:11154;left:96"><nobr>(<b>if </b>(= start end)</nobr></div>
+<div style="position:absolute;top:11176;left:111"><nobr>nil</nobr></div>
+<div style="position:absolute;top:11197;left:111"><nobr>(cons start (range (+ start 1) end))))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:11225;left:81"><nobr>scm&gt; (<b>define </b>s (range-stream 1 5))</nobr></div>
+<div style="position:absolute;top:11247;left:81"><nobr>s</nobr></div>
+<div style="position:absolute;top:11268;left:81"><nobr>scm&gt; (car (cdr-stream s))</nobr></div>
+<div style="position:absolute;top:11290;left:81"><nobr>2</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:11327;left:52"><nobr>3.5</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:11324;left:81"><nobr>Write a function slice which takes in a stream s, a start, and an end. It should</nobr></div>
+<div style="position:absolute;top:11346;left:81"><nobr>return a Scheme list that contains the elements of s between index start and end,</nobr></div>
+<div style="position:absolute;top:11367;left:81"><nobr>not including end. If the stream ends before end, you can return nil.</nobr></div>
+<div style="position:absolute;top:11385;left:81"><nobr>(<b>define </b>(slice s start end)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:11422;left:96"><nobr>(<b>cond</b></nobr></div>
+<div style="position:absolute;top:11443;left:111"><nobr>((<b>or </b>(null? s) (= end 0)) nil)</nobr></div>
+<div style="position:absolute;top:11465;left:111"><nobr>((&gt; start 0)</nobr></div>
+<div style="position:absolute;top:11486;left:126"><nobr>(slice (cdr-stream s) (- start 1) (- end 1)))</nobr></div>
+<div style="position:absolute;top:11508;left:111"><nobr>(<b>else</b></nobr></div>
+<div style="position:absolute;top:11529;left:126"><nobr>(cons (car s)</nobr></div>
+<div style="position:absolute;top:11551;left:141"><nobr>(slice (cdr-stream s) (- start 1) (- end 1))))))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:11579;left:81"><nobr>scm&gt; (slice nat 4 12)</nobr></div>
+<div style="position:absolute;top:11600;left:81"><nobr>(4 5 6 7 8 9 10 11)</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:11638;left:52"><nobr>3.6</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:11635;left:81"><nobr>Since streams only evaluate the next element when they are needed, we can combine</nobr></div>
+<div style="position:absolute;top:11656;left:81"><nobr>infinite streams together for interesting results! Use it to define a few of our favorite</nobr></div>
+<div style="position:absolute;top:11678;left:81"><nobr>sequences. We’ve defined the function combine-with for you below, as well as an</nobr></div>
+<div style="position:absolute;top:11699;left:81"><nobr>example of how to use it to define the stream of even numbers.</nobr></div>
+<div style="position:absolute;top:11717;left:81"><nobr>(<b>define </b>(combine-with f xs ys)</nobr></div>
+<div style="position:absolute;top:11738;left:96"><nobr>(<b>if </b>(<b>or </b>(null? xs) (null? ys))</nobr></div>
+<div style="position:absolute;top:11760;left:111"><nobr>nil</nobr></div>
+<div style="position:absolute;top:11781;left:111"><nobr>(cons-stream</nobr></div>
+<div style="position:absolute;top:11803;left:126"><nobr>(f (car xs) (car ys))</nobr></div>
+<div style="position:absolute;top:11824;left:126"><nobr>(combine-with f (cdr-stream xs) (cdr-stream ys)))))</nobr></div>
+<div style="position:absolute;top:11846;left:81"><nobr>scm&gt; (<b>define </b>evens (combine-with + (naturals 0) (naturals 0)))</nobr></div>
+<div style="position:absolute;top:11867;left:81"><nobr>evens</nobr></div>
+<div style="position:absolute;top:11889;left:81"><nobr>scm&gt; (slice evens 0 10)</nobr></div>
+<div style="position:absolute;top:11910;left:81"><nobr>(0 2 4 6 8 10 12 14 16 18)</nobr></div>
+<div style="position:absolute;top:11945;left:81"><nobr>For these questions, you may use the naturals stream in addition to combine-with.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:12055;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=11><b>Page 11</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12092;left:448"><nobr>Delayed Expressions</nobr></div>
+<div style="position:absolute;top:12092;left:601"><nobr>11</nobr></div>
+<div style="position:absolute;top:12129;left:81"><nobr>(Continued on the next page)</nobr></div>
+<div style="position:absolute;top:12158;left:93"><nobr>i. (<b>define </b>factorials</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:12191;left:124"><nobr>(cons-stream 1 (combine-with * (naturals 1) factorials)))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12219;left:109"><nobr>scm&gt; (slice factorials 0 10)</nobr></div>
+<div style="position:absolute;top:12240;left:109"><nobr>(1 1 2 6 24 120 720 5040 40320 362880)</nobr></div>
+<div style="position:absolute;top:12265;left:89"><nobr>ii. (<b>define </b>fibs</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:12298;left:124"><nobr>(cons-stream 0</nobr></div>
+<div style="position:absolute;top:12320;left:139"><nobr>(cons-stream 1</nobr></div>
+<div style="position:absolute;top:12341;left:154"><nobr>(combine-with + fibs (cdr-stream fibs)))))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12369;left:109"><nobr>scm&gt; (slice fibs 0 10)</nobr></div>
+<div style="position:absolute;top:12391;left:109"><nobr>(0 1 1 2 3 5 8 13 21 34)</nobr></div>
+<div style="position:absolute;top:12425;left:85"><nobr>iii. Write exp, which returns a stream where the nth term represents the degree-n</nobr></div>
+<div style="position:absolute;top:12446;left:109"><nobr>polynomial expantion for e<font style="font-size:8px">x</font>, which is ∑</nobr></div>
+</span></font>
+<font size=2 face="Times"><span style="font-size:8px;font-family:Times">
+<div style="position:absolute;top:12442;left:375"><nobr>n</nobr></div>
+<div style="position:absolute;top:12454;left:375"><nobr>i=0 <font style="font-size:12px">x</font>i<font style="font-size:12px">/i!.</font></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12477;left:109"><nobr>You may use factorials in addition to combine-with and naturals in your</nobr></div>
+<div style="position:absolute;top:12498;left:109"><nobr>solution.</nobr></div>
+<div style="position:absolute;top:12516;left:109"><nobr>(<b>define </b>(exp x)</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:12px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:12553;left:124"><nobr>(<b>let </b>((terms (combine-with (<b>lambda </b>(a b) (/ (expt x a) b))</nobr></div>
+<div style="position:absolute;top:12574;left:326"><nobr>(cdr-stream (naturals 0))</nobr></div>
+<div style="position:absolute;top:12596;left:326"><nobr>(cdr-stream factorials))))</nobr></div>
+<div style="position:absolute;top:12617;left:139"><nobr>(cons-stream 1 (combine-with + terms (exp x)))))</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:12px;font-family:Times">
+<div style="position:absolute;top:12645;left:109"><nobr>scm&gt; (slice (exp 2) 0 5)</nobr></div>
+<div style="position:absolute;top:12667;left:109"><nobr>(1 3 5 6.333333333 7 7.266666667)</nobr></div>
+</span></font>
+</body>
+</html>

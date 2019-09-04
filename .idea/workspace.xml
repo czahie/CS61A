@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ac530795-b52e-4a19-9262-313e7b36a7c5" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Homework/hw01/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw01/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw01/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw01/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw02/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw02/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw02/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw02/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw03/.ok_history" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw03/.ok_history" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw03/.ok_messages" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw03/.ok_messages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw03/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw03/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw03/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw03/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw03/hw03.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw03/hw03.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw04/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw04/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw04/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw04/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw05/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw05/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw05/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw05/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw05/tests/check_par.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw05/tests/check_par.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw05/tests/div_interval.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw05/tests/div_interval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw05/tests/interval.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw05/tests/interval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw05/tests/mul_interval.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw05/tests/mul_interval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw05/tests/polynomial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw05/tests/polynomial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw05/tests/quadratic.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw05/tests/quadratic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw05/tests/sub_interval.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw05/tests/sub_interval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw06/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw06/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw06/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw06/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw07/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw07/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw07/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw07/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw09/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw09/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw09/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw09/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw09/tests/add.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw09/tests/add.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw09/tests/cadr-caddr.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw09/tests/cadr-caddr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw09/tests/contains.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw09/tests/contains.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw09/tests/intersect.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw09/tests/intersect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw09/tests/nodots.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw09/tests/nodots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw09/tests/ordered.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw09/tests/ordered.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw09/tests/pow.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw09/tests/pow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw09/tests/sign.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw09/tests/sign.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw09/tests/union.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw09/tests/union.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw10/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw10/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw10/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw10/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw10/tests/derive-exp.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw10/tests/derive-exp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw10/tests/derive-product.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw10/tests/derive-product.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw10/tests/derive-sum.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw10/tests/derive-sum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw10/tests/how-many-dots.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw10/tests/how-many-dots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw10/tests/make-exp.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw10/tests/make-exp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw10/tests/sub-all.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw10/tests/sub-all.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw10/tests/substitute.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw10/tests/substitute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw11/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw11/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw11/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw11/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw11/tests/find.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw11/tests/find.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw11/tests/has-cycle-constant.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw11/tests/has-cycle-constant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw11/tests/has-cycle.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw11/tests/has-cycle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw11/tests/scale-stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw11/tests/scale-stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw12/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw12/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw12/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw12/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw12/tests/parent-height.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw12/tests/parent-height.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw12/tests/size-siblings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw12/tests/size-siblings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw12/tests/small.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw12/tests/small.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw12/tests/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw12/tests/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw13/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw13/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw13/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw13/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw13/tests/cyber-monday-part1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw13/tests/cyber-monday-part1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw13/tests/cyber-monday-part2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw13/tests/cyber-monday-part2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw13/tests/cyber-monday-part3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw13/tests/cyber-monday-part3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw13/tests/cyber-monday-part4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw13/tests/cyber-monday-part4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw13/tests/meals-part1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw13/tests/meals-part1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw13/tests/meals-part2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw13/tests/meals-part2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw13/tests/meals-part3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw13/tests/meals-part3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework/hw13/tests/schedule.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework/hw13/tests/schedule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab01/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab01/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab01/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab01/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab01/tests/loops.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab01/tests/loops.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab01/tests/short_circuiting.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab01/tests/short_circuiting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab01/tests/truthiness.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab01/tests/truthiness.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab01/tests/what_if.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab01/tests/what_if.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab02/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab02/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab02/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab02/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab02/tests/hof.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab02/tests/hof.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab02/tests/lambda.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab02/tests/lambda.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab03/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab03/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab03/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab03/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab03/tests/count_up_ok.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab03/tests/count_up_ok.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab03/tests/factorial_ok.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab03/tests/factorial_ok.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab03/tests/skip_mul_ok.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab03/tests/skip_mul_ok.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab04/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab04/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab04/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab04/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab04/tests/indexing.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab04/tests/indexing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab04/tests/lists.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab04/tests/lists.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab05/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab05/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab05/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab05/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab05/tests/dicts.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab05/tests/dicts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab05/tests/height_depth.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab05/tests/height_depth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab05/tests/structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab05/tests/structure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab06/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab06/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab06/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab06/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab06/tests/car.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab06/tests/car.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab06/tests/me.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab06/tests/me.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab06/tests/prologue.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab06/tests/prologue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab07/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab07/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab07/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab07/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab07/tests/link.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab07/tests/link.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab07/tests/trees.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab07/tests/trees.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab08/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab08/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab08/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab08/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab08/tests/attributes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab08/tests/attributes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab08/tests/foobar.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab08/tests/foobar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/tests/composed.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/tests/composed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/tests/filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/tests/filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/tests/gcd.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/tests/gcd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/tests/make-adder.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/tests/make-adder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/tests/make-list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/tests/make-list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/tests/no-repeats.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/tests/no-repeats.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/tests/over-or-under.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/tests/over-or-under.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/tests/remove.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/tests/remove.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/tests/sub-all.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/tests/sub-all.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/tests/substitute.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/tests/substitute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab09/tests/wwsp-lists.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab09/tests/wwsp-lists.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab10/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab10/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab10/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab10/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab10/tests/prologue.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab10/tests/prologue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab11/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab11/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab11/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab11/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab11/tests/generators.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab11/tests/generators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab11/tests/iterators.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab11/tests/iterators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab12/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab12/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab12/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab12/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab12/tests/greatstudents.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab12/tests/greatstudents.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab12/tests/lets-count.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab12/tests/lets-count.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab12/tests/matchmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab12/tests/matchmaker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab12/tests/obedience.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab12/tests/obedience.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab12/tests/sevens.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab12/tests/sevens.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab12/tests/smallest-int-count.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab12/tests/smallest-int-count.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab12/tests/smallest-int.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab12/tests/smallest-int.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab13/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab13/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab13/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab13/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab13/tests/compose-all.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab13/tests/compose-all.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab13/tests/deep-map.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab13/tests/deep-map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab13/tests/pairs.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab13/tests/pairs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab13/tests/rle.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab13/tests/rle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labs/lab13/tests/tally.py" beforeDir="false" afterPath="$PROJECT_DIR$/Labs/lab13/tests/tally.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/.ok_history" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/.ok_history" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/.ok_storage.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/.ok_storage.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/00.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/00.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/01.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/02.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/02.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/03.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/03.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/04.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/04.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/05.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/05.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/06.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/06.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/07.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/07.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/08.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/08.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/09.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/09.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/10.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/11.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/11.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/12.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/12.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/13.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/13.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/ants/tests/EC.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/ants/tests/EC.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/00.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/00.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/01.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/02.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/02.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/03.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/03.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/04.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/04.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/05.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/05.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/06.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/06.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/07.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/07.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/08.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/08.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/09.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/09.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/10.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/11.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/11.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/hog/tests/12.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/hog/tests/12.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/tests/00.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/tests/00.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/tests/01.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/tests/01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/tests/02.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/tests/02.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/tests/03.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/tests/03.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/tests/04.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/tests/04.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/tests/05.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/tests/05.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/tests/06.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/tests/06.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/tests/07.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/tests/07.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/tests/08.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/tests/08.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/tests/09.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/tests/09.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/maps/tests/10.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/maps/tests/10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/.ok_history" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/.ok_history" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/.ok_messages" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/.ok_messages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/.ok_storage.bak" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/.ok_storage.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/.ok_storage.dir" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/.ok_storage.dir" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/01.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/02.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/02.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/03.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/03.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/04.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/04.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/05.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/05.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/06.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/06.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/07.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/07.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/08.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/08.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/09.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/09.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/10.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/11.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/11.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/12.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/12.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/13.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/13.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/14.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/14.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/15.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/15.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/16.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/16.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/17.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/17.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/18.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/18.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/19.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/19.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/20.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/20.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/21.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/21.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme/tests/eval_apply.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme/tests/eval_apply.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme_contest/cs61a.scm" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme_contest/cs61a.scm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scheme_contest/reflective_ball.scm" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scheme_contest/reflective_ball.scm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/CS61A$lecture1.coverage" NAME="lecture1 Coverage Results" MODIFIED="1516631241683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS61A$Newton__Method.coverage" NAME="Newton' Method Coverage Results" MODIFIED="1519291854620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS61A$Lecture_19.coverage" NAME="Lecture 19 Coverage Results" MODIFIED="1519295898759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS61A$hw01.coverage" NAME="hw01 Coverage Results" MODIFIED="1516890005235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Homework/hw01/hw01" />
+    <SUITE FILE_PATH="coverage/CS61A$plt.coverage" NAME="plt Coverage Results" MODIFIED="1522076807488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="CS61A" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="hw01.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Homework/hw01/hw01.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>time</find>
+      <find>True</find>
+      <find>check_pro</find>
+      <find>read_line</find>
+      <find>do_</find>
+      <find>Special_forms</find>
+      <find>define</find>
+      <find>creat</find>
+      <find>scheme_string</find>
+      <find>scheme_symbolp</find>
+      <find>check_formals</find>
+      <find>scheme</find>
+      <find>check_form</find>
+      <find>eval_all</find>
+      <find>make_child_frame</find>
+      <find>Mup</find>
+      <find>symbolp</find>
+      <find>check_procedure</find>
+      <find>scheme_eval</find>
+      <find>complete_eval</find>
+      <find>Lambdaprocedure</find>
+      <find>map</find>
+      <find>eval_call</find>
+      <find>scheme_apply</find>
+      <find>Literal</find>
+      <find>apply</find>
+      <find>eval</find>
+      <find>make_withdraw</find>
+      <find>sub</find>
+      <find>raytrace</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Homework/hw04/hw04.py" />
+        <option value="$PROJECT_DIR$/Lab/lab04/lab04.py" />
+        <option value="$PROJECT_DIR$/Lab/lab04/lab04_extra.py" />
+        <option value="$PROJECT_DIR$/Homework/hw05/hw05.py" />
+        <option value="$PROJECT_DIR$/Lab/lab05/lab05.py" />
+        <option value="$PROJECT_DIR$/Lab/lab05/lab05_extra.py" />
+        <option value="$PROJECT_DIR$/Project/maps/utils.py" />
+        <option value="$PROJECT_DIR$/Project/maps/abstractions.py" />
+        <option value="$PROJECT_DIR$/Project/maps/tests/04.py" />
+        <option value="$PROJECT_DIR$/Project/maps/recommend.py" />
+        <option value="$PROJECT_DIR$/Project/maps/users/Joe.dat" />
+        <option value="$PROJECT_DIR$/Lab/lab06/data.py" />
+        <option value="$PROJECT_DIR$/Lab/lab06/classes.py" />
+        <option value="$PROJECT_DIR$/Lab/lab06/vending_machine.py" />
+        <option value="$PROJECT_DIR$/Homework/hw06/hw06.py" />
+        <option value="$PROJECT_DIR$/Homework/hw07/hw07.py" />
+        <option value="$PROJECT_DIR$/Lecture 19.py" />
+        <option value="$PROJECT_DIR$/Lab/lab07/lab07.py" />
+        <option value="$PROJECT_DIR$/Lab/lab07/lab07_extra.py" />
+        <option value="$PROJECT_DIR$/../../../Ants-master/Ants-master/ants.py" />
+        <option value="$PROJECT_DIR$/Project/ants/tests/10.py" />
+        <option value="$PROJECT_DIR$/Project/ants/ants.py" />
+        <option value="$PROJECT_DIR$/Lab/lab08/lab08.py" />
+        <option value="$PROJECT_DIR$/Lab/lab08/lab08_extra.py" />
+        <option value="$PROJECT_DIR$/Lab/lab09/lab09.scm" />
+        <option value="$PROJECT_DIR$/Lab/lab09/lab09_extra.scm" />
+        <option value="$PROJECT_DIR$/Homework/hw10/hw10.scm" />
+        <option value="$PROJECT_DIR$/Homework/hw09/hw09.scm" />
+        <option value="$PROJECT_DIR$/Project/scheme/tests/01.py" />
+        <option value="$PROJECT_DIR$/Project/scheme/scheme_reader.py" />
+        <option value="$PROJECT_DIR$/Project/scheme/tests.scm" />
+        <option value="$PROJECT_DIR$/Project/scheme/questions.scm" />
+        <option value="$PROJECT_DIR$/Project/scheme/scheme.py" />
+        <option value="$PROJECT_DIR$/Lab/lab10/expr.py" />
+        <option value="$PROJECT_DIR$/Lab/lab10/repl.py" />
+        <option value="$PROJECT_DIR$/Lab/lab11/lab11.py" />
+        <option value="$PROJECT_DIR$/Lab/lab11/lab11_extra.py" />
+        <option value="$PROJECT_DIR$/Homework/hw11/hw11.scm" />
+        <option value="$PROJECT_DIR$/Lab/lab12/lab12.sql" />
+        <option value="$PROJECT_DIR$/Lab/lab12/lab12_extra.sql" />
+        <option value="$PROJECT_DIR$/Homework/hw12/hw12.sql" />
+        <option value="$PROJECT_DIR$/Projects/scheme_contest/contest.scm" />
+        <option value="$PROJECT_DIR$/Projects/scheme_contest/cs61a.scm" />
+        <option value="$PROJECT_DIR$/Projects/scheme_contest/reflective_ball.scm" />
+        <option value="$PROJECT_DIR$/Projects/scheme_contest/scheme_primitives.py" />
+        <option value="$PROJECT_DIR$/Homework/hw13/hw13.sql" />
+        <option value="$PROJECT_DIR$/Lab/lab13/lab13.scm" />
+        <option value="$PROJECT_DIR$/Lab/lab13/lab13.py" />
+        <option value="$PROJECT_DIR$/Lab/lab13/lab13_extra.scm" />
+        <option value="$PROJECT_DIR$/Lab/lab13/lab13_extra.sql" />
+        <option value="$PROJECT_DIR$/plt.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="959" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>AngularJS</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="CS61A" type="cbb8eebc:String" user="CS61A" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="CS61A" type="cbb8eebc:String" user="CS61A" />
+              <item name="Homework" type="cbb8eebc:String" user="Homework" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="CS61A" type="cbb8eebc:String" user="CS61A" />
+              <item name="Projects" type="cbb8eebc:String" user="Projects" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="CS61A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS61A" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS61A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS61A" type="462c0819:PsiDirectoryNode" />
+              <item name="Exams" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS61A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS61A" type="462c0819:PsiDirectoryNode" />
+              <item name="Homework" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS61A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS61A" type="462c0819:PsiDirectoryNode" />
+              <item name="Homework" type="462c0819:PsiDirectoryNode" />
+              <item name="hw01" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS61A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS61A" type="462c0819:PsiDirectoryNode" />
+              <item name="Labs" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/study/计算机/CS61A/Lab/lab11/lab11.py" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\study\CS61A" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.plt">
+    <configuration name="Lecture 19" type="PythonConfigurationType" factoryName="Python">
+      <module name="CS61A" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lecture 19.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="Newton' Method" type="PythonConfigurationType" factoryName="Python">
+      <module name="CS61A" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="E:\study\CS61A\Newton's Method.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="hw01" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CS61A" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Homework/hw01/hw01" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Homework/hw01/hw01/hw01.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="lecture1" type="PythonConfigurationType" factoryName="Python">
+      <module name="CS61A" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lecture1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="plt" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CS61A" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plt.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Lecture 19" />
+      <item itemvalue="Python.Newton' Method" />
+      <item itemvalue="Python.lecture1" />
+      <item itemvalue="Python.hw01" />
+      <item itemvalue="Python.plt" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.plt" />
+        <item itemvalue="Python.hw01" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ac530795-b52e-4a19-9262-313e7b36a7c5" name="Default" comment="" />
+      <created>1516630852172</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1516630852172</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1680" height="959" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295325" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5029522" side_tool="true" weight="0.32486188" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49791667" weight="0.3281768" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.3295325" />
+      <window_info anchor="bottom" id="Python Console" order="8" weight="0.3295325" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49704778" weight="0.3295325" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4931973" visible="true" weight="0.14166667" />
+      <window_info anchor="right" id="R Packages" order="4" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="right" id="R Graphics" order="7" />
+      <window_info anchor="right" id="Database" order="5" weight="0.3299356" />
+      <window_info anchor="right" id="SciView" order="6" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" sideWeight="0.50680274" side_tool="true" weight="0.2275899" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Scheme.REPL" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.3295325" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="Favorites" order="2" sideWeight="0.50680274" side_tool="true" weight="0.2275899" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4931973" visible="true" weight="0.19791667" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295325" />
+      <window_info anchor="right" id="R Graphics" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49791667" weight="0.32839224" />
+      <window_info anchor="right" id="R Packages" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Scheme.REPL" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49704778" weight="0.3295325" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5029522" side_tool="true" weight="0.32486188" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Database" order="5" weight="0.3299356" />
+      <window_info anchor="bottom" id="Python Console" order="8" weight="0.3295325" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Project/hog/hog.py</url>
+          <line>382</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Lab/lab05/lab05_extra.py</url>
+          <line>88</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="29" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Project/scheme/tests/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/Project/scheme/tests/02.py" />
+    <entry file="file://$PROJECT_DIR$/Project/scheme/tests/01.py" />
+    <entry file="file://$PROJECT_DIR$/Project/scheme/tests/03.py" />
+    <entry file="file://$PROJECT_DIR$/Project/scheme/tests/06.py" />
+    <entry file="file://$PROJECT_DIR$/Project/scheme/buffer.py" />
+    <entry file="file://$PROJECT_DIR$/Project/scheme/mytests.rst" />
+    <entry file="file://$PROJECT_DIR$/Project/scheme/scheme_primitives.py" />
+    <entry file="file://$PROJECT_DIR$/Project/scheme/tests/19.py" />
+    <entry file="file://$PROJECT_DIR$/Project/scheme/tests.scm" />
+    <entry file="file://$PROJECT_DIR$/Project/scheme/questions.scm" />
+    <entry file="file://$PROJECT_DIR$/Project/scheme/scheme_reader.py" />
+    <entry file="file://$PROJECT_DIR$/Project/scheme/scheme.py" />
+    <entry file="file://$PROJECT_DIR$/venv/pip-selfcheck.json" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab09/lab09.scm" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab10/lab10.ok" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab10/reader.py" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab01/lab01.ok" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab01/lab01.py" />
+    <entry file="file://$PROJECT_DIR$/Projects/scheme/scheme.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lab/lab10/expr.py" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab10/repl.py" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab11/lab11_extra.py" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab11/lab11.py" />
+    <entry file="file://$PROJECT_DIR$/Projects/maps/abstractions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="91" column="33" selection-start-line="91" selection-start-column="33" selection-end-line="91" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lab/lab12/sp17data.sql" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab12/fa17data.sql" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab12/lab12_extra.sql" />
+    <entry file="file://$PROJECT_DIR$/Homework/hw11/hw11.ok">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Homework/hw06/hw06.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="37" column="14" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Homework/hw07/hw07.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Homework/hw05/hw05.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="192" column="19" selection-start-line="192" selection-start-column="19" selection-end-line="192" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projects/scheme_contest/contest.scm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4232">
+          <caret line="184" column="1" selection-start-line="184" selection-start-column="1" selection-end-line="184" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projects/scheme_contest/reflective_ball.scm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10557">
+          <caret line="459" column="45" selection-start-line="459" selection-start-column="45" selection-end-line="459" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projects/scheme_contest/scheme_primitives.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="514" column="28" lean-forward="true" selection-start-line="514" selection-start-column="28" selection-end-line="514" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projects/scheme_contest/cs61a.scm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="217" column="15" selection-start-line="217" selection-start-column="15" selection-end-line="217" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lab/lab12/lab12.sql" />
+    <entry file="file://$PROJECT_DIR$/Homework/hw10/hw10.scm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="118" column="12" lean-forward="true" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Homework/hw09/hw09.scm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="966">
+          <caret line="84" column="28" selection-start-line="84" selection-start-column="28" selection-end-line="84" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lab/lab13/lab13.scm" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab13/lab13_extra.scm" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab13/lab13_extra.sql" />
+    <entry file="file://$PROJECT_DIR$/Lab/lab13/lab13.py" />
+    <entry file="file://$PROJECT_DIR$/Homework/hw11/hw11.scm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Projects/hog/hog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Homework/hw12/hw12.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Homework/hw13/hw13.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="119" column="61" selection-start-line="119" selection-start-column="61" selection-end-line="119" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plt.py" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="60">
+            <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Homework/hw01/hw01.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

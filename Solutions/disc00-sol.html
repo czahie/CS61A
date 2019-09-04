@@ -1,0 +1,264 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}pre { word-wrap:break-word; }pre { white-space:pre-wrap; }</style><div id="google-cache-hdr"  dir=ltr><div>这是 <a href="https://cs61a.org/disc/disc00_sol.pdf" dir="ltr">https://cs61a.org/disc/disc00_sol.pdf</a> 的 HTML 档。<br> <b><font color=#0039b6>G</font> <font color=#c41200>o</font> <font color=#f3c518>o</font> <font color=#0039b6>g</font> <font color=#30a72f>l</font> <font color=#c41200>e</font></b> 在网路漫游时会自动将档案转换成 HTML 网页来储存。</div></div><div style="position:relative;margin:8px;">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Creator" content="LaTeX with hyperref package">
+<meta name="Producer" content="pdfTeX-1.40.18">
+<meta name="CreationDate" content="D:20171219170036Z">
+<meta name="ModDate" content="D:20171219170036Z">
+<meta name="Fullbanner" content="This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) kpathsea version 6.2.3">
+<title>CS 61A Lost on the Moon Fall 2017</title>
+</head><body  bgcolor=#ffffff vlink="blue" link="blue">
+<table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=1><b>Page 1</b></a></font></td></tr></table><font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:261;left:81"><nobr>CS 61A</nobr></div>
+<div style="position:absolute;top:261;left:418"><nobr>Lost on the Moon</nobr></div>
+<div style="position:absolute;top:298;left:81"><nobr>Fall 2017</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:15px;font-family:Times">
+<div style="position:absolute;top:306;left:384"><nobr>Discussion 0: August 23, 2017 <font color="#ff0000" style="font-size:19px">Solutions</font></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:359;left:81"><nobr>Your spaceship has just crashed on the moon. You were scheduled to ren-</nobr></div>
+<div style="position:absolute;top:383;left:81"><nobr>dezvous with a mother ship 200 miles away on the lighted surface of the</nobr></div>
+<div style="position:absolute;top:407;left:81"><nobr>moon, but the rough landing has ruined your ship and destroyed all the</nobr></div>
+<div style="position:absolute;top:432;left:81"><nobr>equipment on board except for the 15 items listed below.</nobr></div>
+<div style="position:absolute;top:466;left:81"><nobr>Your crew’s survival depends on reaching the mother ship, so you must</nobr></div>
+<div style="position:absolute;top:491;left:81"><nobr>choose the most critical items available for the 200-mile trip.</nobr></div>
+<div style="position:absolute;top:525;left:81"><nobr>Your task is to rank the 15 items in terms of their importance for survival.</nobr></div>
+<div style="position:absolute;top:550;left:81"><nobr>Place a number 1 by the most important item, number 2 by the second most</nobr></div>
+<div style="position:absolute;top:574;left:81"><nobr>important, and so on, through number 15, the least important.</nobr></div>
+<div style="position:absolute;top:639;left:91"><nobr>Item</nobr></div>
+<div style="position:absolute;top:628;left:407"><nobr>Your</nobr></div>
+<div style="position:absolute;top:652;left:407"><nobr>Rank (1)</nobr></div>
+<div style="position:absolute;top:628;left:489"><nobr>Group’s</nobr></div>
+<div style="position:absolute;top:652;left:489"><nobr>Rank (2)</nobr></div>
+<div style="position:absolute;top:628;left:571"><nobr>NASA’s</nobr></div>
+<div style="position:absolute;top:652;left:571"><nobr>Rank (3)</nobr></div>
+<div style="position:absolute;top:639;left:654"><nobr>|(3) − (1)| |(3) − (2)|</nobr></div>
+<div style="position:absolute;top:682;left:91"><nobr>Box of matches</nobr></div>
+<div style="position:absolute;top:718;left:91"><nobr>Food concentrate</nobr></div>
+<div style="position:absolute;top:755;left:91"><nobr>50 feet of nylon rope</nobr></div>
+<div style="position:absolute;top:791;left:91"><nobr>Parachute silk</nobr></div>
+<div style="position:absolute;top:828;left:91"><nobr>Solar-powered portable heating unit</nobr></div>
+<div style="position:absolute;top:864;left:91"><nobr>Two .45 caliber pistols</nobr></div>
+<div style="position:absolute;top:901;left:91"><nobr>One case of dehydrated milk</nobr></div>
+<div style="position:absolute;top:937;left:91"><nobr>Two 100-pound tanks of oxygen</nobr></div>
+<div style="position:absolute;top:974;left:91"><nobr>Stellar map (of the moon’s constellations)</nobr></div>
+<div style="position:absolute;top:1010;left:91"><nobr>Self-inflating life raft</nobr></div>
+<div style="position:absolute;top:1046;left:91"><nobr>Magnetic compass</nobr></div>
+<div style="position:absolute;top:1083;left:91"><nobr>5 gallons of water</nobr></div>
+<div style="position:absolute;top:1119;left:91"><nobr>Signal flares</nobr></div>
+<div style="position:absolute;top:1156;left:91"><nobr>First-aid kit containing injection needles</nobr></div>
+<div style="position:absolute;top:1192;left:91"><nobr>Solar-powered FM receiver-transmitter</nobr></div>
+<div style="position:absolute;top:1229;left:91"><nobr>Total</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:1363;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=2><b>Page 2</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:1398;left:81"><nobr>2 Lost on the Moon</nobr></div>
+</span></font>
+<font size=3 color="#ff0000" face="Times"><span style="font-size:14px;font-family:Times;color:#ff0000">
+<div style="position:absolute;top:1441;left:81"><nobr>Error points are the absolute difference between your rankings and NASA’s</nobr></div>
+<div style="position:absolute;top:1465;left:81"><nobr>(disregard plus or minus signs).</nobr></div>
+<div style="position:absolute;top:1496;left:106"><nobr>• 0 - 25: excellent</nobr></div>
+<div style="position:absolute;top:1530;left:106"><nobr>• 26 - 32: good</nobr></div>
+<div style="position:absolute;top:1565;left:106"><nobr>• 33 - 55: fair</nobr></div>
+<div style="position:absolute;top:1599;left:106"><nobr>• 56 - 70: oops</nobr></div>
+<div style="position:absolute;top:1634;left:106"><nobr>• 71 - 112: oh well</nobr></div>
+<div style="position:absolute;top:1727;left:91"><nobr>Item</nobr></div>
+<div style="position:absolute;top:1727;left:279"><nobr>NASA’s Reasoning</nobr></div>
+<div style="position:absolute;top:1716;left:638"><nobr>NASA’s</nobr></div>
+<div style="position:absolute;top:1740;left:638"><nobr>Rank</nobr></div>
+<div style="position:absolute;top:1765;left:91"><nobr>Box of matches</nobr></div>
+<div style="position:absolute;top:1765;left:279"><nobr>No oxygen to sustain flame, virtually worthless 15</nobr></div>
+<div style="position:absolute;top:1791;left:91"><nobr>Food concentrate</nobr></div>
+<div style="position:absolute;top:1791;left:279"><nobr>Efficient means of supplying energy require-</nobr></div>
+<div style="position:absolute;top:1816;left:279"><nobr>ments</nobr></div>
+<div style="position:absolute;top:1792;left:638"><nobr>4</nobr></div>
+<div style="position:absolute;top:1841;left:91"><nobr>50 feet of nylon rope</nobr></div>
+<div style="position:absolute;top:1841;left:279"><nobr>Useful in scaling cliffs, tying injured together</nobr></div>
+<div style="position:absolute;top:1841;left:638"><nobr>6</nobr></div>
+<div style="position:absolute;top:1866;left:91"><nobr>Parachute silk</nobr></div>
+<div style="position:absolute;top:1866;left:279"><nobr>Protection from sun’s rays</nobr></div>
+<div style="position:absolute;top:1867;left:638"><nobr>8</nobr></div>
+<div style="position:absolute;top:1892;left:91"><nobr>Solar-powered portable</nobr></div>
+<div style="position:absolute;top:1917;left:91"><nobr>heating unit</nobr></div>
+<div style="position:absolute;top:1892;left:279"><nobr>Not needed unless on dark side</nobr></div>
+<div style="position:absolute;top:1893;left:638"><nobr>13</nobr></div>
+<div style="position:absolute;top:1942;left:91"><nobr>Two .45 caliber pistols</nobr></div>
+<div style="position:absolute;top:1942;left:279"><nobr>Possible means of self-propulsion</nobr></div>
+<div style="position:absolute;top:1942;left:638"><nobr>11</nobr></div>
+<div style="position:absolute;top:1967;left:91"><nobr>One case of dehydrated</nobr></div>
+<div style="position:absolute;top:1992;left:91"><nobr>milk</nobr></div>
+<div style="position:absolute;top:1967;left:279"><nobr>Bulkier duplication of food concentrate</nobr></div>
+<div style="position:absolute;top:1968;left:638"><nobr>12</nobr></div>
+<div style="position:absolute;top:2017;left:91"><nobr>Two 100-pound tanks</nobr></div>
+<div style="position:absolute;top:2041;left:91"><nobr>of oxygen</nobr></div>
+<div style="position:absolute;top:2017;left:279"><nobr>Most pressing survival need</nobr></div>
+<div style="position:absolute;top:2017;left:638"><nobr>1</nobr></div>
+<div style="position:absolute;top:2066;left:91"><nobr>Stellar map (of the</nobr></div>
+<div style="position:absolute;top:2090;left:91"><nobr>moon’s constellations)</nobr></div>
+<div style="position:absolute;top:2066;left:279"><nobr>Primary means of navigation</nobr></div>
+<div style="position:absolute;top:2067;left:638"><nobr>3</nobr></div>
+<div style="position:absolute;top:2115;left:91"><nobr>Self-inflating life raft</nobr></div>
+<div style="position:absolute;top:2115;left:279"><nobr>CO<font style="font-size:9px">2 </font>bottle in military raft may be used for</nobr></div>
+<div style="position:absolute;top:2140;left:279"><nobr>propulsion</nobr></div>
+<div style="position:absolute;top:2116;left:638"><nobr>9</nobr></div>
+<div style="position:absolute;top:2165;left:91"><nobr>Magnetic compass</nobr></div>
+<div style="position:absolute;top:2165;left:279"><nobr>Magnetic field on moon is not polarized; worth-</nobr></div>
+<div style="position:absolute;top:2189;left:279"><nobr>less for navigation</nobr></div>
+<div style="position:absolute;top:2166;left:638"><nobr>14</nobr></div>
+<div style="position:absolute;top:2214;left:91"><nobr>5gallonsofwater</nobr></div>
+<div style="position:absolute;top:2214;left:279"><nobr>Replacement for tremendous liquid loss on</nobr></div>
+<div style="position:absolute;top:2239;left:279"><nobr>lighted side</nobr></div>
+<div style="position:absolute;top:2215;left:638"><nobr>2</nobr></div>
+<div style="position:absolute;top:2264;left:91"><nobr>Signal flares</nobr></div>
+<div style="position:absolute;top:2264;left:279"><nobr>Distress signal when mother ship is sighted</nobr></div>
+<div style="position:absolute;top:2264;left:638"><nobr>10</nobr></div>
+<div style="position:absolute;top:2289;left:91"><nobr>First-aid kit containing</nobr></div>
+<div style="position:absolute;top:2314;left:91"><nobr>injection needles</nobr></div>
+<div style="position:absolute;top:2289;left:279"><nobr>Needles for vitamins, medicines, etc., will fit spe-</nobr></div>
+<div style="position:absolute;top:2314;left:279"><nobr>cial aperture in NASA space suits</nobr></div>
+<div style="position:absolute;top:2290;left:638"><nobr>7</nobr></div>
+<div style="position:absolute;top:2339;left:91"><nobr>Solar-powered FM</nobr></div>
+<div style="position:absolute;top:2363;left:91"><nobr>receiver-transmitter</nobr></div>
+<div style="position:absolute;top:2339;left:279"><nobr>For communication with mother ship; but FM</nobr></div>
+<div style="position:absolute;top:2363;left:279"><nobr>requires line-of-sight transmission and short</nobr></div>
+<div style="position:absolute;top:2387;left:279"><nobr>ranges</nobr></div>
+<div style="position:absolute;top:2339;left:638"><nobr>5</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:2551;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=3><b>Page 3</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2586;left:458"><nobr>Lost on the Moon</nobr></div>
+<div style="position:absolute;top:2586;left:607"><nobr>3</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:2621;left:81"><nobr>1 Secrets to Success in CS 61A</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:2679;left:81"><nobr>CS 61A is definitely a challenge, but we all want you to learn and succeed,</nobr></div>
+<div style="position:absolute;top:2703;left:81"><nobr>so here are a few tips that might help:</nobr></div>
+<div style="position:absolute;top:2733;left:106"><nobr>• Ask questions. When you encounter something you don’t know, ask.</nobr></div>
+<div style="position:absolute;top:2762;left:122"><nobr>That is what we are here for. This is not to say you should raise your</nobr></div>
+<div style="position:absolute;top:2786;left:122"><nobr>hand impulsively; some usage of the brain first is preferred. You are</nobr></div>
+<div style="position:absolute;top:2811;left:122"><nobr>going to see a lot of challenging stuff in this class, and you can always</nobr></div>
+<div style="position:absolute;top:2835;left:122"><nobr>come to us for help.</nobr></div>
+<div style="position:absolute;top:2865;left:106"><nobr>• Study in groups. Again, this class is not trivial; you might feel over-</nobr></div>
+<div style="position:absolute;top:2894;left:122"><nobr>whelmed going at it alone. Work with someone, either on homework,</nobr></div>
+<div style="position:absolute;top:2918;left:122"><nobr>on lab, or for midterms, as long as you don‘t violate the cheating policy!</nobr></div>
+<div style="position:absolute;top:2949;left:106"><nobr>• Go to office hours. Office hours give you time with the instructor or</nobr></div>
+<div style="position:absolute;top:2977;left:122"><nobr>TAs by themselves, and you will be able to get some (nearly) one-</nobr></div>
+<div style="position:absolute;top:3002;left:122"><nobr>on-one instruction to clear up confusion. You are not intruding; the</nobr></div>
+<div style="position:absolute;top:3026;left:122"><nobr>instructors and TAs like to teach! Remember that, if you cannot make</nobr></div>
+<div style="position:absolute;top:3050;left:122"><nobr>office hours, you can always make separate appointments with us!</nobr></div>
+<div style="position:absolute;top:3081;left:106"><nobr>• Do (or at least attempt seriously) all the homework. We do not give</nobr></div>
+<div style="position:absolute;top:3109;left:122"><nobr>many homework problems, but those we do give are challenging, time-</nobr></div>
+<div style="position:absolute;top:3134;left:122"><nobr>consuming, and rewarding. The fact that homework is graded on effort</nobr></div>
+<div style="position:absolute;top:3158;left:122"><nobr>does not imply that you should ignore it: it will be one of your primary</nobr></div>
+<div style="position:absolute;top:3183;left:122"><nobr>sources of preparation and understanding.</nobr></div>
+<div style="position:absolute;top:3213;left:106"><nobr>• Do all the lab exercises. Most of them are simple and take no more</nobr></div>
+<div style="position:absolute;top:3242;left:122"><nobr>than an hour or two. This is a great time to get acquainted with new</nobr></div>
+<div style="position:absolute;top:3266;left:122"><nobr>material. If you do not finish, work on it at home, and come to office</nobr></div>
+<div style="position:absolute;top:3290;left:122"><nobr>hours if you need more guidance!</nobr></div>
+<div style="position:absolute;top:3321;left:106"><nobr>• Do the readings before lecture! There is a reason why they are assigned.</nobr></div>
+<div style="position:absolute;top:3349;left:122"><nobr>And it is not because we are evil; that is only partially true.</nobr></div>
+<div style="position:absolute;top:3380;left:106"><nobr>• Most importantly, have fun!</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:3739;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=4><b>Page 4</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3774;left:81"><nobr>4 Lost on the Moon</nobr></div>
+</span></font>
+<font size=4 face="Times"><span style="font-size:23px;font-family:Times">
+<div style="position:absolute;top:3809;left:81"><nobr>Solving Problems</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3867;left:122"><nobr>Based on original research by <font color="#ec008c"><a href="http://dx.doi.org/10.1145/2858036.2858252">Loksa, Ko, et al.</a></font></nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:3903;left:81"><nobr>Reinterpret the problem prompt</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:3954;left:81"><nobr>Read and reinterpret the question. Usually, we begin with a description of</nobr></div>
+<div style="position:absolute;top:3978;left:81"><nobr>the problem to be solved. What’s important is not just reading the problem,</nobr></div>
+<div style="position:absolute;top:4002;left:81"><nobr>but thinking critically about the implications of the details in the problems</nobr></div>
+<div style="position:absolute;top:4027;left:81"><nobr>and clear up any ambiguities. When we jump into coding directly with-</nobr></div>
+<div style="position:absolute;top:4051;left:81"><nobr>out first thinking through the problem and posing questions for ourselves,</nobr></div>
+<div style="position:absolute;top:4075;left:81"><nobr>we often run into scenarios where we get stuck and need to ask ourselves,</nobr></div>
+<div style="position:absolute;top:4100;left:81"><nobr>“What should I put here?” or “What is the right loop end condition?” This</nobr></div>
+<div style="position:absolute;top:4124;left:81"><nobr>increases the cognitive load by requiring us to context-switch and remove</nobr></div>
+<div style="position:absolute;top:4149;left:81"><nobr>ourselves from the problem while we answer a side question.</nobr></div>
+<div style="position:absolute;top:4183;left:81"><nobr>A couple concrete starting questions to ask yourself on any problem include:</nobr></div>
+<div style="position:absolute;top:4214;left:106"><nobr>• What is the domain (input) and range (output) of the program?</nobr></div>
+<div style="position:absolute;top:4248;left:106"><nobr>• Restate the intended behavior of the program in your own words.</nobr></div>
+<div style="position:absolute;top:4283;left:106"><nobr>• How will the values in this program change as the program executes?</nobr></div>
+<div style="position:absolute;top:4321;left:81"><nobr>Verify your understanding by studying the doctests. In computer science,</nobr></div>
+<div style="position:absolute;top:4346;left:81"><nobr>the mental representation for a problem is often closely related to its solution.</nobr></div>
+<div style="position:absolute;top:4380;left:81"><nobr>Big hints are always given away in the doctest! The doctests inform</nobr></div>
+<div style="position:absolute;top:4405;left:81"><nobr>us about the shape and format of the solution. If we look closely enough</nobr></div>
+<div style="position:absolute;top:4429;left:81"><nobr>for the patterns in the doctest, we’ll often expose details in the structure of</nobr></div>
+<div style="position:absolute;top:4454;left:81"><nobr>how the problem is meant to be solved.</nobr></div>
+<div style="position:absolute;top:4488;left:81"><nobr>Although they provide many hints, the doctests are not exhaustive and they</nobr></div>
+<div style="position:absolute;top:4512;left:81"><nobr>usually don’t show the most important cases. Develop examples that cover</nobr></div>
+<div style="position:absolute;top:4537;left:81"><nobr>at least the following situations:</nobr></div>
+<div style="position:absolute;top:4567;left:106"><nobr>• What’s the smallest or simplest possible input I could give to this</nobr></div>
+<div style="position:absolute;top:4596;left:122"><nobr>function?</nobr></div>
+<div style="position:absolute;top:4626;left:106"><nobr>• Is there a similar small input that is invalid for this problem? How is</nobr></div>
+<div style="position:absolute;top:4655;left:122"><nobr>it related to or different from the earlier case?</nobr></div>
+<div style="position:absolute;top:4685;left:106"><nobr>• Can we come up with any larger inputs to the program that are related</nobr></div>
+<div style="position:absolute;top:4714;left:122"><nobr>to or rely on smaller cases? The idea is to come up with some of the</nobr></div>
+<div style="position:absolute;top:4738;left:122"><nobr>subproblems we might have to solve with recursion or other techniques.</nobr></div>
+</span></font>
+
+<div style="position:absolute;top:4927;left:0"><hr><table border=0 width=100%><tr><td bgcolor=eeeeee align=right><font face=arial,sans-serif><a name=5><b>Page 5</b></a></font></td></tr></table></div><font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:4962;left:458"><nobr>Lost on the Moon</nobr></div>
+<div style="position:absolute;top:4962;left:607"><nobr>5</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:4997;left:81"><nobr>Search for analogous problems</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:5048;left:81"><nobr>Does this problem look similar to something you’ve seen before? Armed</nobr></div>
+<div style="position:absolute;top:5072;left:81"><nobr>with your experience from homework, lab, and discussion, develop a general</nobr></div>
+<div style="position:absolute;top:5097;left:81"><nobr>idea of how to solve the problem.</nobr></div>
+<div style="position:absolute;top:5131;left:81"><nobr>Once we’ve identified a similar problem, we can then extract the general</nobr></div>
+<div style="position:absolute;top:5156;left:81"><nobr>strategy for solving the problem. While details are useful, copy-and-pasting</nobr></div>
+<div style="position:absolute;top:5180;left:81"><nobr>the solution from the analogous problem usually won’t get us very far. In-</nobr></div>
+<div style="position:absolute;top:5204;left:81"><nobr>stead, verbalize the code and reinterpret it in English by asking, “What’s</nobr></div>
+<div style="position:absolute;top:5229;left:81"><nobr>the purpose of including this code?”</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:5265;left:81"><nobr>Adapting previous solutions</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:5315;left:81"><nobr>Implement a solution by applying the problem solving techniques you’ve</nobr></div>
+<div style="position:absolute;top:5340;left:81"><nobr>learned alongside your experience with analogous problems. With recursion,</nobr></div>
+<div style="position:absolute;top:5364;left:81"><nobr>for example, it helps to try to follow the steps of finding a base case, iden-</nobr></div>
+<div style="position:absolute;top:5389;left:81"><nobr>tifying the recursive calls, and then combining the results. However, the</nobr></div>
+<div style="position:absolute;top:5413;left:81"><nobr>particular implementation in code will depend upon the specific details of</nobr></div>
+<div style="position:absolute;top:5437;left:81"><nobr>the problem.</nobr></div>
+<div style="position:absolute;top:5472;left:81"><nobr>It might not be fully correct, but that’s fine and completely normal; refining</nobr></div>
+<div style="position:absolute;top:5496;left:81"><nobr>mental representations of the problem takes time and practice.</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:19px;font-family:Times">
+<div style="position:absolute;top:5533;left:81"><nobr>Evaluating solutions</nobr></div>
+</span></font>
+<font size=3 face="Times"><span style="font-size:14px;font-family:Times">
+<div style="position:absolute;top:5583;left:81"><nobr>Analyze and test the resulting implementation. We’d like to answer two</nobr></div>
+<div style="position:absolute;top:5607;left:81"><nobr>central questions:</nobr></div>
+<div style="position:absolute;top:5642;left:101"><nobr>1. Is my approach on the right track? If not, maybe we should consider</nobr></div>
+<div style="position:absolute;top:5666;left:122"><nobr>another analogous problem.</nobr></div>
+<div style="position:absolute;top:5701;left:101"><nobr>2. If my approach is in the right direction, let’s evaluate and verify the</nobr></div>
+<div style="position:absolute;top:5725;left:122"><nobr>correctness of the solution.</nobr></div>
+<div style="position:absolute;top:5760;left:81"><nobr>To improve our code, we just need to ask ourselves the right ques-</nobr></div>
+<div style="position:absolute;top:5784;left:81"><nobr>tions. What input would break the program? Think like Python: run</nobr></div>
+<div style="position:absolute;top:5809;left:81"><nobr>through the code step-by-step until there’s a problem. We have examples</nobr></div>
+<div style="position:absolute;top:5833;left:81"><nobr>of what the output should look like, so make sure the actual result matches</nobr></div>
+<div style="position:absolute;top:5857;left:81"><nobr>expectations.</nobr></div>
+<div style="position:absolute;top:5892;left:81"><nobr>If the results aren’t consistent, let’s try to identify why and make adjustments</nobr></div>
+<div style="position:absolute;top:5916;left:81"><nobr>by asking more specific questions. Where is the root of problem? Let’s trace</nobr></div>
+<div style="position:absolute;top:5941;left:81"><nobr>back through the code to find the source of the problem. Then, once we’ve</nobr></div>
+<div style="position:absolute;top:5965;left:81"><nobr>found the problem, let’s try the same approach of searching for analogous</nobr></div>
+<div style="position:absolute;top:5989;left:81"><nobr>problems, except on this one, particular subproblem.</nobr></div>
+</span></font>
+</body>
+</html>

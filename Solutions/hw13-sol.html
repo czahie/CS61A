@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS 61A: Structure and Interpretation of Computer Programs" />
+    <meta name="keywords" content ="CS 61A, Computer Science, CS, 61A, Programming, John DeNero, Berkeley, EECS" />
+    <meta name="author" content ="John DeNero, Paul Hilfinger" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500|Work+Sans:400,700">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    
+
+<link rel="stylesheet" type="text/css" href="/assets/css/hw.css">
+
+
+    <title>
+Homework 13 Solutions | CS 61A Fall 2017
+</title>
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container noselect">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 61A</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <li><a href="/resources.html">Resources</a></li>
+            <li><a href="/articles/about.html">Policies</a></li>
+            <li><a href="http://tutor.cs61a.org">Tutor</a></li>
+            <li><a href="https://piazza.com/berkeley/fall2017/cs61a" target="_blank">Piazza</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="container">
+      
+<div class='row'>
+  <div class='col-md-9'>
+    <header>
+      <h1>
+        
+Homework 13 Solutions
+
+        
+        <ul class="inline-block list-inline">
+          <li><a href="hw13.zip" class="label label-outline">hw13.zip</a></li>
+        </ul>
+        
+      </h1>
+    </header>
+    
+<h2>Solution Files</h2>
+<p>You can find the solutions in the <a href="hw13.sql">hw13.sql</a> file.</p>
+
+    
+<p>To complete this homework assignment, you will need to use SQLite version
+3.8.3 or greater. See <a href="/lab/lab12">Lab 12</a> for setup and usage instructions.</p>
+
+<p>To check your progress, you can run <code>sqlite3</code> directly by running:</p>
+
+<pre><code>sqlite3 &#x2d;&#x2d;init hw13.sql</code></pre>
+
+<p>You should also check your work using <code>ok</code>:</p>
+
+<pre><code>python3 ok</code></pre>
+
+<p>Also recall that you can perform string concatenation with the || operator:</p>
+
+<pre><code>sqlite&gt; SELECT &quot;hello&quot; || &quot; &quot; || &quot;world&quot;
+hello world</code></pre>
+
+<h3 class="question" id="q1">Q1: A Friend in Need Requires Turkey Indeed</h3>
+
+<p>One of your friends has made the terrible mistake of booking Thanksgiving plane
+tickets late! However, upon seeing how well you did on your 61A SQL lab, your
+friend asked you to help find the best plane tickets for flying home in this
+darkest of hours.</p>
+
+<p>Of course, you'd like to find the cheapest flight possible, but regardless of
+the savings, you would also like to make sure you don't send your friend on too
+many flight transfers.</p>
+
+<p>Therefore, to help out your friend, find the cheapest set of flights from <strong>SFO
+to PDX</strong> but <strong>do not include options with more than two flights!</strong> You should
+generate a table with the following columns:</p>
+
+<ul>
+  <li>The set of airports that the flights pass through.</li>
+  <li>Total cost of a set of flights.</li>
+</ul>
+
+<p>Be sure to order your table from the <strong>cheapest to most expensive</strong> option.</p>
+
+<p>All of the available flights as well as their prices can be found in the
+<code>flights</code> table.</p>
+
+<p>You should get the following output:</p>
+
+<pre><code>sqlite&gt; SELECT * FROM schedule;
+SFO, SLC, PDX|176
+SFO, LAX, PDX|186
+SFO, PDX|192</code></pre>
+
+<solution>
+
+<pre><code>CREATE TABLE schedule AS
+<div class="sol-highlight">  WITH trips(path, ending, flights, cost) AS (
+    SELECT departure || &quot;, &quot; || arrival, arrival, 1, price FROM flights
+      WHERE departure = &quot;SFO&quot; UNION
+    SELECT path || &quot;, &quot; || arrival, arrival, flights + 1, cost + price
+      FROM trips, flights
+      WHERE ending = departure AND flights &lt; 2
+  )
+  SELECT path, cost FROM trips WHERE ending = &quot;PDX&quot; ORDER BY cost;</div></code></pre>
+
+</solution>
+
+<blockquote><p><strong>Hint:</strong> As with before, you may find it helpful to create a table using
+recursive select. What are all the things you need to keep track of? For
+example, it might be helpful to save the number of flights taken on the current
+path.</p>
+
+<p><strong>Hint:</strong> If your table is taking a long time to generate, it might be stuck in a
+loop somewhere. Notice that there are some flight paths that loop, e.g SLC to
+LAX to SLC again. To handle this, consider when you should stop adding rows to
+your table.</p></blockquote>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q schedule</code></pre>
+
+<div class="sol-highlight">
+
+<p>Roughly speaking, our goal is to construct a table of all paths from SFO to PDX.
+Obviously, there's the direct route in this case, but we also want to consider
+some alternatives with more than one hop.</p>
+
+<p><strong>Main idea:</strong> We'll start with all one hop paths starting from SFO. For each
+path, we'll take another step outwards, using all the possible flight data from
+where we end up after the previous hop.</p>
+
+<p>There are a few more details that are worth mentioning:</p>
+
+<ul>
+  <li>We have to store the path so far, otherwise all our work will be for nothing.
+  Remember, we're trying to figure what possible paths there are! We also store
+  the airport at the end of the path to make calculating transfers easy.</li>
+  <li>In a similar vein, we also cared about the total cost, so we will store that
+  information as well and update whenever we transfer planes.</li>
+  <li>To avoid loops, we keep track of the current length of our path. Remember that
+  our friend doesn't want to transfer planes more than twice, so we can stop
+  early.</li>
+</ul>
+
+<p>So far, the <code>WITH</code> table we create here isn't actually all the flights from SFO
+to PDX, but all the 2 hop flights from SFO. To get the flights from SFO to PDX,
+we just select those with the appropriate ending location.</p>
+
+</div>
+
+
+<h2 id="sql-aggregation">SQL Aggregation</h2>
+
+
+<p>Previously, we have been dealing with queries that process one row at a time.
+When we join, we make pairwise combinations of all of the rows. When we use
+<code>WHERE</code>, we filter out certain rows based on the condition. Alternatively,
+applying an <a href="http://www.sqlite.org/lang_aggfunc.html">aggregate function</a>
+such as <code>MAX(column)</code> combines the values in multiple rows.</p>
+
+<p>By default, we combine the values of the <em>entire</em> table. For example, if we
+wanted to count the number of flights from our <code>flights</code> table, we could use:</p>
+
+<pre><code>sqlite&gt; SELECT COUNT(*) from FLIGHTS;
+13</code></pre>
+
+<p>What if we wanted to group together the values in similar rows and perform the
+aggregation operations within those groups? We use a <code>GROUP BY</code> clause.</p>
+
+<p>Here's another example. For each unique departure, collect all the rows having
+the same departure airport into a group. Then, select the <code>price</code> column and
+apply the <code>MIN</code> aggregation to recover the price of the cheapest departure from
+that group. The end result is a table of departure airports and the cheapest
+departing flight.</p>
+
+<pre><code>sqlite&gt; SELECT departure, MIN(price) FROM flights GROUP BY departure;
+AUH|932
+LAS|50
+LAX|89
+SEA|32
+SFO|40
+SLC|42</code></pre>
+
+<p>Just like how we can filter out rows with <code>WHERE</code>, we can also filter out
+groups with <code>HAVING</code>. <strong>Important:</strong> A <code>HAVING</code> clause should use an aggregate
+function. Suppose we want to see all airports with at least two departures:</p>
+
+<pre><code>sqlite&gt; SELECT departure FROM flights GROUP BY departure HAVING COUNT(*) &gt;= 2;
+LAX
+SFO
+SLC</code></pre>
+
+<p>Note that the <code>COUNT(*)</code> aggregate just counts the number of rows in each group.
+Say we want to count the number of <em>distinct</em> airports instead. Then, we could
+use the following query:</p>
+
+<pre><code>sqlite&gt; SELECT COUNT(DISTINCT departure) FROM flights;
+6</code></pre>
+
+<p>This enumerates all the different departure airports available in our <code>flights</code>
+table (in this case: SFO, LAX, AUH, SLC, SEA, and LAS).</p>
+
+
+<h3 id="self-restraint">Self Restraint</h3>
+
+
+<p>Tragically, many people find themselves overeating during Thanksgiving. With
+your new knowledge from 61A, you resolve to use SQL and plan a healthier meal!</p>
+
+<p>You are given a table <code>main_course</code> where each row corresponds to a possible
+Thanksgiving meal with two components: the meat and the side dish (in an amazing
+display of restraint, you are limiting yourself to just one side dish). You are
+also given a second table <code>pies</code> containing different types of pies as well as
+their caloric content. The idea is that you will pair the two items consisting
+of your main course (a row of the table <code>main_course</code>) with a pie that you will
+have for dessert. Use SQL's aggregation features to answer the following
+questions.</p>
+
+<h3 class="question" id="q2">Q2: Self Restraint, Part I</h3>
+
+<p>For this first part, we want to know how many selections of meats we have for
+our meal. Use a select statement to see how many different types of meats we
+have in our list of main courses (we would like to point out that the 61A staff
+is inclusive, and we have included tofurky as the "meat" in some meals 🙂).</p>
+
+<p>Store this answer in a one column, one row table called <code>number_of_options</code>.</p>
+
+<solution>
+
+<pre><code>CREATE TABLE number_of_options AS
+<div class="sol-highlight">  SELECT COUNT(DISTINCT meat) FROM main_course;</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q meals-part1</code></pre>
+
+<div class="sol-highlight">
+
+<p>If we had one row per type of meat, we would be done (just count the total
+number of rows). Unfortunately, some meats show up more than once. The solution
+is to get a distinct count.</p>
+
+<p>An alternate solution: group by the type of meat, and count the number of
+groupings.</p>
+
+<pre><code>CREATE TABLE number_of_options AS
+  WITH options(meat) AS (
+    SELECT meat FROM main_course GROUP BY meat
+  )
+  SELECT COUNT(*) FROM options;</code></pre>
+
+</div>
+
+<h3 class="question" id="q3">Q3: Self Restraint, Part II</h3>
+
+<p>Use aggregation in a select statement to count the number of "full" meals (i.e
+main course plus a pie) we can make with under 2500 calories total. For example,
+if you have turkey and cranberries along with pumpkin pie, you will have 2000 +
+500 = 2500 calories total (2000 from the main course, 500 from the pie).</p>
+
+<p>Store this answer in a one column, one row table called <code>calories</code>.</p>
+
+<solution>
+
+<pre><code>CREATE TABLE calories AS
+<div class="sol-highlight">  SELECT COUNT(*) FROM main_course AS m, pies AS p
+    WHERE m.calories + p.calories &lt; 2500;</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q meals-part2</code></pre>
+
+<div class="sol-highlight">
+
+<p>No tricky joins needed here, just consider all combinations of main courses and
+pies! Finally, we only want to keep the rows where the calorie count is not too
+high. Then we just count the total number of rows in the result.</p>
+
+</div>
+
+<h3 class="question" id="q4">Q4: Self Restraint, Part III</h3>
+
+<p>We are mainly concerned with what meat is in our planned meal.
+For every type of meat, we want to see how healthy a meal exists with this meat
+(healthier means fewer calories for our purposes). Include this information for
+each meat in a table <code>healthiest_meats</code>.</p>
+
+<p>Also, if it is possible to make ANY full meal of more than 3000 calories (even
+just one) using a certain type of meat, then temptation will take over. For this
+reason, <strong>exclude such types of meat from your table.</strong></p>
+
+<p>In summary:</p>
+
+<ul>
+  <li>The <code>healthiest_meats</code> table should have two columns: meat and total calories.</li>
+  <li>Each row should have a meat and the number of calories of the full meal with
+  the least calories (full meals include pie) involving that type of meat.
+  Finally, exclude meats that are in <strong>any</strong> full meals of more than 3000
+  calories.</li>
+</ul>
+
+<blockquote><p><strong>Note:</strong> Remember that a <code>HAVING</code> clause requires an aggregate function!</p></blockquote>
+
+<solution>
+
+<pre><code>CREATE TABLE healthiest_meats AS
+<div class="sol-highlight">  SELECT meat, MIN(m.calories + p.calories) AS calories
+    FROM main_course AS m, pies AS p
+    GROUP BY meat HAVING MAX(m.calories + p.calories) &lt; 3000;</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q meals-part3</code></pre>
+
+<div class="sol-highlight">
+
+<p>We do the same join from part 2, and then we consider rows grouped by the meat
+in the main course.</p>
+
+<p>If <em>any</em> of the items in that grouping are more than 3000 calories, then that
+means the maximum of the items in that grouping is more than 3000 calories and
+we exclude that in the <code>HAVING</code> clause.</p>
+
+<p>Finally, we select the combination in that grouping that has the least amount of
+calories.</p>
+
+</div>
+
+
+<h3 id="shopping-spree">Shopping Spree</h3>
+
+
+<h3 class="question" id="q5">Q5: Price Check</h3>
+
+<p>After you are full from your Thanksgiving dinner, you realize that you still
+need to buy gifts for all your loved ones over the holidays. However, you also
+want to spend as little money as possible (you're not cheap, just looking for a
+great sale!).</p>
+
+<p>Let's start off by surveying our options. Using the <code>products</code> table, write a
+query that creates a table <code>average_prices</code> that lists categories and the
+average price of items in the category
+(using <a href="https://en.wikipedia.org/wiki/List_price">MSRP</a> as the price).</p>
+
+<p>You should get the following output:</p>
+
+<pre><code>sqlite&gt; SELECT * FROM average_prices;
+computer|109.09
+games|349.99
+phone|89.99</code></pre>
+
+<solution>
+
+<pre><code>CREATE TABLE average_prices AS
+<div class="sol-highlight">  SELECT category, AVG(msrp) FROM products GROUP BY category;
+  &#x2d;&#x2d; alternate solution
+  &#x2d;&#x2d; SELECT category, SUM(msrp)/COUNT(*) FROM products GROUP BY category;</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q cyber-monday-part1</code></pre>
+
+<div class="sol-highlight">
+
+<p>For each category, we're interested in getting the average MSRP. This happens to
+translate quite nicely into a SQL query.</p>
+
+</div>
+
+<h3 class="question" id="q6">Q6: The Price is Right</h3>
+
+<p>Now, you want to figure out which stores sell each item in products for the
+lowest price. Write a SQL query that uses the <code>inventory</code> table to create a
+table <code>lowest_prices</code> that lists items, the stores that sells that item for the
+lowest price, and the price that the store sells that item for.</p>
+
+<p>You should expect the following output:</p>
+
+<pre><code>sqlite&gt; SELECT * FROM lowest_prices;
+Hallmart|GameStation|298.98
+Targive|QBox|390.98
+Targive|iBook|110.99
+RestBuy|kBook|94.99
+Hallmart|qPhone|85.99
+Hallmart|rPhone|69.99
+RestBuy|uPhone|89.99
+RestBuy|wBook|114.29</code></pre>
+
+<solution>
+
+<pre><code>CREATE TABLE lowest_prices AS
+<div class="sol-highlight">  SELECT * FROM inventory GROUP BY item HAVING MIN(price);</div></code></pre>
+
+</solution>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q cyber-monday-part2</code></pre>
+
+<div class="sol-highlight">
+
+<p>The inventory table lists all the products on sale at each store.</p>
+
+<p>We're only interested in comparing like products with each other, so it makes
+sense to <code>GROUP BY</code> item here. In each group, we only keep the row that has the
+minimum price of that group.</p>
+
+</div>
+
+<h3 class="question" id="q7">Q7: Bang for your Buck</h3>
+
+<p>You want to make a shopping list by choosing the item that is the best deal
+possible for every category. For example, for the "phone" category, the uPhone
+is the best deal because the MSRP price of a uPhone divided by its ratings
+yields the lowest cost. That means that uPhones cost the lowest money per rating
+point out of all of the phones.</p>
+
+<p>Write a query to create a table <code>shopping_list</code> that lists the items that you
+want to buy from each category.</p>
+
+<p>After you've figured out which item you want to buy for each category, add
+another column that lists the store that sells that item for the lowest price.</p>
+
+<p>You should expect the following output:</p>
+
+<pre><code>sqlite&gt; SELECT * FROM shopping_list;
+GameStation|Hallmart
+uPhone|RestBuy
+wBook|RestBuy</code></pre>
+
+<solution>
+
+<pre><code>CREATE TABLE shopping_list AS
+<div class="sol-highlight">  SELECT l.name, store FROM products AS p, lowest_prices AS l
+    WHERE l.item = p.name
+    GROUP BY category HAVING MIN(MSRP/rating);</div></code></pre>
+
+</solution>
+
+<blockquote><p><strong>Hint</strong>: You should use the <code>lowest_prices</code> table you created in the previous
+question.</p></blockquote>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q cyber-monday-part3</code></pre>
+
+<div class="sol-highlight">
+
+<p>Instead of doing one big query, we could split this into two steps:</p>
+
+<ol>
+  <li>Create a temporary table first that lists out the most cost-efficient product
+  for each category (this tells us <strong>what</strong> we want to buy).</li>
+  <li>Then, we combine that with the <code>lowest_prices</code> table from before to figure
+  out where to buy each item (this tells us <strong>where</strong> we want to buy).</li>
+</ol>
+
+<p>Splitting up the work in this way makes a complicated problem statement much
+easier to manage.</p>
+
+<pre><code>CREATE TABLE shopping_list AS
+  WITH what(name) AS (
+    SELECT name FROM products GROUP BY category HAVING MIN(MSRP / rating)
+  )
+  SELECT p.name, l.store FROM what AS p, lowest_prices AS l WHERE p.name = l.item;</code></pre>
+
+<p>If you stare at the solutions long enough, you should be able to convince
+yourself that they do the same thing.</p>
+
+</div>
+
+<h3 class="question" id="q8">Q8: Driving the Cyber Highways</h3>
+
+<p>Using the Mb (megabits) column from the <code>stores</code> table, write a query to
+calculate the total amount of bandwidth needed to get everything in your
+shopping list.</p>
+
+<solution>
+
+<pre><code>CREATE TABLE total_bandwidth AS
+<div class="sol-highlight">  SELECT SUM(s.mbs) FROM stores AS s, shopping_list AS sl WHERE s.store = sl.store;</div></code></pre>
+
+</solution>
+
+<blockquote><p><strong>Hint</strong>: You should use the <code>shopping_list</code> table you created in the
+previous question.</p></blockquote>
+
+<p>Use Ok to test your code:</p><pre><code class="nohighlight">python3 ok -q cyber-monday-part4</code></pre>
+
+<div class="sol-highlight">
+
+<p>This truthfully isn't much of an aggregation question, but it is a nice way to
+combine our work from the past couple of problems.</p>
+
+<p>For each of the things we want to purchase, we get the "Mb" cost for getting it.
+The last step is summing it all together.</p>
+
+</div>
+
+  </div>
+
+  <div class='col-md-3 sticky'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#q1">Q1: A Friend in Need Requires Turkey Indeed</a></li>
+  <li><a href="#sql-aggregation">SQL Aggregation</a></li>
+  <ul>
+    <li><a href="#self-restraint">Self Restraint</a></li>
+    <li><a href="#q2">Q2: Self Restraint, Part I</a></li>
+    <li><a href="#q3">Q3: Self Restraint, Part II</a></li>
+    <li><a href="#q4">Q4: Self Restraint, Part III</a></li>
+    <li><a href="#shopping-spree">Shopping Spree</a></li>
+    <li><a href="#q5">Q5: Price Check</a></li>
+    <li><a href="#q6">Q6: The Price is Right</a></li>
+    <li><a href="#q7">Q7: Bang for your Buck</a></li>
+    <li><a href="#q8">Q8: Driving the Cyber Highways</a></li>
+  </ul>
+</ul>
+    </nav>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="container">
+      <div class="row text-center">
+        <div class="col col-sm-4">
+          <h3><a href="/">CS 61A</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/weekly.html">Weekly Schedule</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/resources.html">Resources</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/studying.html">Studying Guide</a></li>
+            <li><a href="/articles/debugging.html">Debugging Guide</a></li>
+            <li><a href="/articles/composition.html">Composition Guide</a></li>
+          </ul>
+        </div>
+        <div class="col col-sm-4">
+          <h3><a href="/articles/about.html">Policies</a></h3>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/articles/about.html#assignments">Assignments</a></li>
+            <li><a href="/articles/about.html#exams">Exams</a></li>
+            <li><a href="/articles/about.html#grading">Grading</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
+
+<script>
+  $('.sidebar ul').addClass('nav nav-stacked noselect');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>
